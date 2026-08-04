@@ -1413,3 +1413,21 @@ resources:
     note: 'รายละเอียด API ของปุ่มจาก @solana-commerce/kit — โหมดการจ่าย, config, event callback, ทำ trigger เองได้; ระวัง เอกสารเตือนเองว่า Commerce Kit ยังเป็น beta API เปลี่ยนได้ก่อนออกตัวจริง อย่าเพิ่งเอาไปสอนว่าเป็นมาตรฐาน'
     status: ok
     added: 2026-08-04
+
+  - url: https://jobs.ashbyhq.com/Solana%20Foundation
+    name: 'Solana Foundation — บอร์ดสมัครงาน'
+    category: funding
+    source: foundation
+    tags: [jobs, careers, ashby, remote]
+    note: 'บอร์ดงานทางการของ Foundation (Ashby) — ส.ค. 2026 เปิด 10 ตำแหน่ง ส่วนใหญ่เป็นสาย BD/growth และมีฝั่งเอเชียหลายตัว (Greater China, Japan, Trading Growth Lead - Asia) ซึ่งใกล้ตัวคนไทยกว่าที่คิด; หน้าเว็บเป็น SPA อ่านผ่าน curl ไม่ได้ แต่ Ashby มี public API ดึงได้ทั้งบอร์ดพร้อมรายละเอียด: https://api.ashbyhq.com/posting-api/job-board/Solana%20Foundation?includeCompensation=true แล้วอ่านด้วย jq'
+    status: ok
+    added: 2026-08-04
+
+  - url: https://jobs.ashbyhq.com/Solana%20Foundation/6be29283-a2e0-48f4-b388-d06f48e240b3
+    name: 'Solana Program Engineer (เปิดรับตลอด ไม่ใช่ตำแหน่งเดียว)'
+    category: funding
+    source: foundation
+    tags: [jobs, defi, anchor, pinocchio, remote-international, open-application]
+    note: 'ไม่ใช่ประกาศรับตำแหน่งเดียวแต่เป็น open application เอาไว้แสดงความสนใจ แล้ว Foundation จะจับคู่กับทีมในระบบนิเวศให้ — Remote-International เต็มเวลา เปิดมาตั้งแต่ พ.ย. 2025 ถึง ส.ค. 2026 ก็ยังเปิดอยู่ คนไทยสมัครได้ไม่ติดเรื่องที่อยู่; สายงานที่ระบุไว้ตรงกับสิ่งที่คนจบ Blueshift/Turbin3 ฝึกมาพอดี — DeFi ขั้นสูง (CLOB, AMM, lending/perps, oracle, liquidation engine), core infra (smart wallet, gasless relayer, session key, indexer, contribute Anchor/Pinocchio), และ on-chain app (token launch, RWA, DePIN); ใช้เป็นปลายทางที่จับต้องได้เวลามีคนถามว่าเรียนไปแล้วไปทำอะไรต่อ'
+    status: ok
+    added: 2026-08-04

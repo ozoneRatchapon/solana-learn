@@ -3,7 +3,7 @@
 > ไฟล์นี้ถูก generate จาก [data/resources.yml](data/resources.yml) — **อย่าแก้ตรงนี้**
 > แก้ที่ YAML แล้วรัน `./scripts/render.sh`
 
-รวม **160** รายการ · อัปเดต 2026-08-04
+รวม **162** รายการ · อัปเดต 2026-08-04
 
 หมายเหตุสถานะ: `blocked` = เว็บกัน bot ตอน curl (ลิงก์ยังใช้ได้), `unverified` = เช็คอัตโนมัติไม่ผ่าน ต้องดูด้วยตา
 
@@ -25,7 +25,7 @@
 - [Mobile](#mobile) — 2
 - [Protocol internals — Agave, Firedancer, network upgrades](#protocol-internals--agave-firedancer-network-upgrades) — 6
 - [Governance — SGP, SIMD, โหวตบนเชน](#governance--sgp-simd-โหวตบนเชน) — 8
-- [Funding — grants, hackathon, bounty, jobs](#funding--grants-hackathon-bounty-jobs) — 9
+- [Funding — grants, hackathon, bounty, jobs](#funding--grants-hackathon-bounty-jobs) — 11
 - [Thailand — ชุมชนไทย](#thailand--ชุมชนไทย) — 3
 
 ## Official — Foundation & Anza (source of truth ตัวจริง)
@@ -475,6 +475,12 @@
   <sub>grant</sub>
 - [Superteam Events Calendar](https://luma.com/superteam)
   <sub>events</sub>
+- [Solana Foundation — บอร์ดสมัครงาน](https://jobs.ashbyhq.com/Solana%20Foundation) `official`
+  บอร์ดงานทางการของ Foundation (Ashby) — ส.ค. 2026 เปิด 10 ตำแหน่ง ส่วนใหญ่เป็นสาย BD/growth และมีฝั่งเอเชียหลายตัว (Greater China, Japan, Trading Growth Lead - Asia) ซึ่งใกล้ตัวคนไทยกว่าที่คิด; หน้าเว็บเป็น SPA อ่านผ่าน curl ไม่ได้ แต่ Ashby มี public API ดึงได้ทั้งบอร์ดพร้อมรายละเอียด: https://api.ashbyhq.com/posting-api/job-board/Solana%20Foundation?includeCompensation=true แล้วอ่านด้วย jq
+  <sub>jobs, careers, ashby, remote</sub>
+- [Solana Program Engineer (เปิดรับตลอด ไม่ใช่ตำแหน่งเดียว)](https://jobs.ashbyhq.com/Solana%20Foundation/6be29283-a2e0-48f4-b388-d06f48e240b3) `official`
+  ไม่ใช่ประกาศรับตำแหน่งเดียวแต่เป็น open application เอาไว้แสดงความสนใจ แล้ว Foundation จะจับคู่กับทีมในระบบนิเวศให้ — Remote-International เต็มเวลา เปิดมาตั้งแต่ พ.ย. 2025 ถึง ส.ค. 2026 ก็ยังเปิดอยู่ คนไทยสมัครได้ไม่ติดเรื่องที่อยู่; สายงานที่ระบุไว้ตรงกับสิ่งที่คนจบ Blueshift/Turbin3 ฝึกมาพอดี — DeFi ขั้นสูง (CLOB, AMM, lending/perps, oracle, liquidation engine), core infra (smart wallet, gasless relayer, session key, indexer, contribute Anchor/Pinocchio), และ on-chain app (token launch, RWA, DePIN); ใช้เป็นปลายทางที่จับต้องได้เวลามีคนถามว่าเรียนไปแล้วไปทำอะไรต่อ
+  <sub>jobs, defi, anchor, pinocchio, remote-international, open-application</sub>
 
 ## Thailand — ชุมชนไทย
 
