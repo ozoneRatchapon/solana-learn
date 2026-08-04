@@ -3,13 +3,13 @@
 > ไฟล์นี้ถูก generate จาก [data/resources.yml](data/resources.yml) — **อย่าแก้ตรงนี้**
 > แก้ที่ YAML แล้วรัน `./scripts/render.sh`
 
-รวม **172** รายการ · อัปเดต 2026-08-04
+รวม **173** รายการ · อัปเดต 2026-08-04
 
 หมายเหตุสถานะ: `blocked` = เว็บกัน bot ตอน curl (ลิงก์ยังใช้ได้), `unverified` = เช็คอัตโนมัติไม่ผ่าน ต้องดูด้วยตา
 
 ## สารบัญ
 
-- [Official — Foundation & Anza (source of truth ตัวจริง)](#official--foundation--anza-source-of-truth-ตัวจริง) — 17
+- [Official — Foundation & Anza (source of truth ตัวจริง)](#official--foundation--anza-source-of-truth-ตัวจริง) — 18
 - [Learning — คอร์ส, bootcamp, tutorial](#learning--คอร์ส-bootcamp-tutorial) — 13
 - [Program Frameworks — Anchor / Pinocchio / native](#program-frameworks--anchor--pinocchio--native) — 12
 - [Client SDK — Kit, web3.js, scaffolding](#client-sdk--kit-web3js-scaffolding) — 10
@@ -75,6 +75,9 @@
 - [Solana Policy Institute](https://www.solanapolicyinstitute.org/)
   องค์กรไม่แสวงกำไร ไม่ฝักใฝ่พรรค ทำหน้าที่อธิบายเครือข่ายกระจายศูนย์ให้ผู้ออกกฎหมายเข้าใจ — ทำงาน 6 เรื่อง: stablecoin, Project Open, การคุ้มครองนักพัฒนา, การเปิดให้คนทั่วไปเข้าถึงการลงทุน, ความชัดเจนเรื่องภาษีจาก staking/mining และกฎหมายโครงสร้างตลาด; มีคลังเอกสารกฎหมาย (amicus brief, จดหมายร่วม) และห้องข่าวที่ตาม CLARITY Act อยู่; ค่าที่แท้จริงสำหรับงานไทยคือใช้เป็นแม่แบบว่าเวลาคุยกับหน่วยงานกำกับควรวางกรอบเรื่องยังไง โดยเฉพาะประเด็นการคุ้มครองนักพัฒนา (เขียนโค้ดโอเพนซอร์สไม่ควรถูกตีความเป็นตัวกลาง) ที่ตรงกับความกังวลของ dev ไทย; ระวัง เป็นมุมนโยบายสหรัฐ เอามาใช้ตรงๆ กับกฎไทยไม่ได้ และเว็บไม่ได้ระบุความสัมพันธ์กับ Solana Foundation ชัดเจน
   <sub>policy, regulation, nonprofit, advocacy, legal</sub>
+- [Global Developer Event Calendar — ฟอร์มส่งอีเวนต์เข้าปฏิทินโลก](https://docs.google.com/forms/d/e/1FAIpQLSfTosHwpQg2Uvf7tgySMSIEzyJGxaRaNNSL9HhTl_GgNFQvWg/viewform) `official`
+  ฟอร์มส่งอีเวนต์เข้าปฏิทินนักพัฒนาระดับโลกของ Foundation (ท้ายฟอร์มยืนยันว่าสร้างภายใน solana.foundation) — กรอกไม่กี่ช่อง: ชื่องาน วันที่ สถานที่ เว็บไซต์ (4 ช่องนี้บังคับ) แล้วเลือกโฟกัส (Solana/คริปโต/เทคคอนเฟอเรนซ์/แฮกกาธอน/AI/ความปลอดภัย) กับรูปแบบ (ออนไลน์/ในสถานที่/ผสม) พร้อมสรุปงานและอีเมลติดต่อ; นี่คือช่องกระจายงานที่ต้นทุนเกือบศูนย์สำหรับงาน Genesis และ Superteam TH — ไม่ต้องรออนุมัติจากใคร ไม่ต้องมีคอนเนกชัน แค่กรอก ต่างจากช่องทางอื่นในลิสต์นี้ที่ต้องมีของก่อนถึงจะเข้าไปได้; ไม่ระบุเดดไลน์ เป็นฟอร์มเปิดรับต่อเนื่อง แต่เป็น Google Form ที่ปิดเมื่อไหร่ก็ได้ ควรเช็คก่อนวางแผนพึ่งพา
+  <sub>events, submission, devrel, calendar, distribution</sub>
 
 ## Learning — คอร์ส, bootcamp, tutorial
 

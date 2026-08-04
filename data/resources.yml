@@ -1525,3 +1525,12 @@ resources:
     note: 'ตารางความเข้ากันได้ทางการ 15 KB ครอบ Anchor 0.29 ถึง 1.1.x, Solana CLI 1.16-4.1, Platform Tools, GLIBC รายดิสโทร, และเวอร์ชัน litesvm ฝั่ง Rust/node — น่าอายที่ repo นี้เพิ่งเพิ่มวันนี้ทั้งที่เป็นวัตถุดิบหลักของงานตารางเวอร์ชันที่ตั้งเป็นเป้าไว้เอง; สิ่งที่ตารางนี้ไม่มีและเป็นช่องที่เหลือให้ทำจริงคือแกน @solana/kit และ web3.js v3 กับการยืนยันบน macOS (ของเขาอิง Debian)'
     status: ok
     added: 2026-08-04
+
+  - url: https://docs.google.com/forms/d/e/1FAIpQLSfTosHwpQg2Uvf7tgySMSIEzyJGxaRaNNSL9HhTl_GgNFQvWg/viewform
+    name: 'Global Developer Event Calendar — ฟอร์มส่งอีเวนต์เข้าปฏิทินโลก'
+    category: official
+    source: foundation
+    tags: [events, submission, devrel, calendar, distribution]
+    note: 'ฟอร์มส่งอีเวนต์เข้าปฏิทินนักพัฒนาระดับโลกของ Foundation (ท้ายฟอร์มยืนยันว่าสร้างภายใน solana.foundation) — กรอกไม่กี่ช่อง: ชื่องาน วันที่ สถานที่ เว็บไซต์ (4 ช่องนี้บังคับ) แล้วเลือกโฟกัส (Solana/คริปโต/เทคคอนเฟอเรนซ์/แฮกกาธอน/AI/ความปลอดภัย) กับรูปแบบ (ออนไลน์/ในสถานที่/ผสม) พร้อมสรุปงานและอีเมลติดต่อ; นี่คือช่องกระจายงานที่ต้นทุนเกือบศูนย์สำหรับงาน Genesis และ Superteam TH — ไม่ต้องรออนุมัติจากใคร ไม่ต้องมีคอนเนกชัน แค่กรอก ต่างจากช่องทางอื่นในลิสต์นี้ที่ต้องมีของก่อนถึงจะเข้าไปได้; ไม่ระบุเดดไลน์ เป็นฟอร์มเปิดรับต่อเนื่อง แต่เป็น Google Form ที่ปิดเมื่อไหร่ก็ได้ ควรเช็คก่อนวางแผนพึ่งพา'
+    status: ok
+    added: 2026-08-04
