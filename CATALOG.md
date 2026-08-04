@@ -3,7 +3,7 @@
 > ไฟล์นี้ถูก generate จาก [data/resources.yml](data/resources.yml) — **อย่าแก้ตรงนี้**
 > แก้ที่ YAML แล้วรัน `./scripts/render.sh`
 
-รวม **162** รายการ · อัปเดต 2026-08-04
+รวม **166** รายการ · อัปเดต 2026-08-04
 
 หมายเหตุสถานะ: `blocked` = เว็บกัน bot ตอน curl (ลิงก์ยังใช้ได้), `unverified` = เช็คอัตโนมัติไม่ผ่าน ต้องดูด้วยตา
 
@@ -19,13 +19,13 @@
 - [Payments & Commerce](#payments--commerce) — 19
 - [Security & Audit](#security--audit) — 5
 - [AI / Agent Skills / MCP](#ai--agent-skills--mcp) — 15
-- [Infra & RPC providers](#infra--rpc-providers) — 7
-- [Data & Analytics](#data--analytics) — 10
+- [Infra & RPC providers](#infra--rpc-providers) — 8
+- [Data & Analytics](#data--analytics) — 12
 - [DeFi & Ecosystem protocols](#defi--ecosystem-protocols) — 12
 - [Mobile](#mobile) — 2
 - [Protocol internals — Agave, Firedancer, network upgrades](#protocol-internals--agave-firedancer-network-upgrades) — 6
 - [Governance — SGP, SIMD, โหวตบนเชน](#governance--sgp-simd-โหวตบนเชน) — 8
-- [Funding — grants, hackathon, bounty, jobs](#funding--grants-hackathon-bounty-jobs) — 11
+- [Funding — grants, hackathon, bounty, jobs](#funding--grants-hackathon-bounty-jobs) — 12
 - [Thailand — ชุมชนไทย](#thailand--ชุมชนไทย) — 3
 
 ## Official — Foundation & Anza (source of truth ตัวจริง)
@@ -341,6 +341,9 @@
 - [rpcpool / Triton One — repo ทั้งหมด (106 repo)](https://github.com/orgs/rpcpool/repositories) `vendor`
   org GitHub ของ Triton One (คนละชื่อกับเว็บ เลยหาไม่เจอถ้าไม่รู้) — ตระกูล Yellowstone อยู่ที่นี่ทั้งหมดและเป็น open-source จริง: yellowstone-grpc (Dragon's Mouth ตัวจริง ดาว 988), yellowstone-vixen (toolkit parse โปรแกรม), yellowstone-faithful (ประวัติ Solana ทั้งเชนแบบ content-addressed), yellowstone-jet (ส่ง tx ผ่าน QUIC + SwQoS), yellowstone-thorofare (เบนช์มาร์ก Geyser gRPC); ของพวกนี้รันเองได้ ไม่ต้องซื้อบริการ เหมาะเป็นวัตถุดิบเวิร์กช็อป infra
   <sub>github, index, yellowstone, grpc, indexing, opensource</sub>
+- [rpc-latency-monitor (วัด latency ผู้ให้บริการ RPC)](https://github.com/solana-foundation/rpc-latency-monitor) `official`
+  Rust + Apache-2.0 วัด latency ของผู้ให้บริการ RPC แบบ read-only หลายภูมิภาค ส่งออกเป็น Prometheus metrics — จุดขายคือความเป็นกลาง ไม่ใช่เบนช์มาร์กที่ vendor ทำเอง รันเองได้เพื่อวัดจากไทยโดยเฉพาะ ซึ่งตัวเลขจากสิงคโปร์/ญี่ปุ่นที่ vendor โชว์มักไม่ตรงกับที่คนไทยเจอจริง
+  <sub>rust, prometheus, benchmark, neutral, self-host</sub>
 
 ## Data & Analytics
 
@@ -368,6 +371,12 @@
 - [Solana Network Data (first-party)](https://solana.com/data) `official`
   ตัวเลขเครือข่ายทางการ (tx, fee, CU, fee payer, slot) — ใช้อ้างอิงในสไลด์/คอนเทนต์ได้โดยไม่ต้องแก้ตัวเลขเอง แต่ refresh วันละ 2 รอบและ lag 1 วัน ไม่ใช่ realtime ถ้าต้องสดใช้ explorer/Dune แทน; หน้านี้ยังลิงก์ไป Allium / Tokens.xyz / Lightspeed / Tx Sender Metrics ด้วย
   <sub>network-stats, dashboard, official-numbers</sub>
+- [Solana State (รายงานสถานะเครือข่ายอัตโนมัติ)](https://solana-state.vercel.app/)
+  แดชบอร์ดอิสระ (ประกาศเองว่าไม่ได้สังกัด Foundation) รวม execution / validator / เศรษฐกิจ / การใช้งาน / upgrade ที่กำลังจะมา รีเฟรชทุก 30 นาที; ของเด็ดคือมี API สองตัวที่ curl ได้ตรงๆ — /api/report เป็น JSON มี schemaVersion, sources, freshness, alerts, incidents ครบ และ /api/report/markdown เป็นสรุป ~4.6 KB พร้อมตารางที่โยนให้ agent หรือแปะลงคอนเทนต์ได้เลย; เทียบกับ solana.com/data ที่ lag 1 วัน ตัวนี้สดกว่ามาก แต่แลกด้วยความเป็นทางการที่น้อยกว่า — เอาตัวเลขไปอ้างในสไลด์ควรยึด solana.com/data, จะดูสดๆ หรือให้ AI อ่านใช้ตัวนี้; ข้อควรระวัง: โฮสต์บน vercel.app ฟรี หายได้ทุกเมื่อ
+  <sub>dashboard, realtime, json-api, markdown-api, agent-friendly</sub>
+- [solana-data-aggregator (เครื่องยนต์หลัง solana.com/data)](https://github.com/solana-foundation/solana-data-aggregator) `official`
+  Python + MIT — ตัวที่ประมวลผลตัวเลขให้หน้า solana.com/data ทั้งหมด เปิดโค้ดให้ดูว่านิยามของแต่ละ metric คำนวณมายังไงจริงๆ (เช่นนับ non-vote tx ยังไง) แทนที่จะเชื่อตัวเลขบนหน้าเว็บอย่างเดียว — มีประโยชน์ตอนต้องตอบคำถามว่า TPS ที่เห็นนับแบบไหน ซึ่งเถียงกันบ่อยมาก
+  <sub>python, mit, pipeline, opensource, metrics</sub>
 
 ## DeFi & Ecosystem protocols
 
@@ -481,6 +490,9 @@
 - [Solana Program Engineer (เปิดรับตลอด ไม่ใช่ตำแหน่งเดียว)](https://jobs.ashbyhq.com/Solana%20Foundation/6be29283-a2e0-48f4-b388-d06f48e240b3) `official`
   ไม่ใช่ประกาศรับตำแหน่งเดียวแต่เป็น open application เอาไว้แสดงความสนใจ แล้ว Foundation จะจับคู่กับทีมในระบบนิเวศให้ — Remote-International เต็มเวลา เปิดมาตั้งแต่ พ.ย. 2025 ถึง ส.ค. 2026 ก็ยังเปิดอยู่ คนไทยสมัครได้ไม่ติดเรื่องที่อยู่; สายงานที่ระบุไว้ตรงกับสิ่งที่คนจบ Blueshift/Turbin3 ฝึกมาพอดี — DeFi ขั้นสูง (CLOB, AMM, lending/perps, oracle, liquidation engine), core infra (smart wallet, gasless relayer, session key, indexer, contribute Anchor/Pinocchio), และ on-chain app (token launch, RWA, DePIN); ใช้เป็นปลายทางที่จับต้องได้เวลามีคนถามว่าเรียนไปแล้วไปทำอะไรต่อ
   <sub>jobs, defi, anchor, pinocchio, remote-international, open-application</sub>
+- [Alpenglow Bug Bounty — 50,000 SOL (5-19 ส.ค. 2026)](https://github.com/anza-xyz/alpenglow) `anza`
+  เตือน: หน้าต่างส่งแค่ 5-19 ส.ค. 2026 เท่านั้น เงินรางวัลรวมสูงสุด 50,000 SOL; repo นี้ไม่มีโค้ด เป็นแค่ประตูรับ submission — ตัว Alpenglow จริงอยู่ใน agave เขาชี้จุดเริ่มไว้ 4 crate คือ votor (เครื่องโหวต), votor-messages (ชนิดของ vote/certificate), bls-sigverify, bls-cert-verify; เดิม Alpenglow ถูกกันออกจาก bug bounty ของ agave เพิ่งมาเข้าเกณฑ์รอบนี้ แปลว่าโค้ดส่วนนี้ยังผ่านสายตาคนนอกน้อยกว่าส่วนอื่น; ส่งผ่าน GitHub Security Advisory และห้ามเปิดเผยถึงจะเข้าเกณฑ์ — ควรกระจายข่าวในชุมชนทันทีเพราะปิดเร็ว
+  <sub>bounty, security, consensus, alpenglow, audit, deadline</sub>
 
 ## Thailand — ชุมชนไทย
 

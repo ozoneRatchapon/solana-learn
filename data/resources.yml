@@ -1431,3 +1431,39 @@ resources:
     note: 'ไม่ใช่ประกาศรับตำแหน่งเดียวแต่เป็น open application เอาไว้แสดงความสนใจ แล้ว Foundation จะจับคู่กับทีมในระบบนิเวศให้ — Remote-International เต็มเวลา เปิดมาตั้งแต่ พ.ย. 2025 ถึง ส.ค. 2026 ก็ยังเปิดอยู่ คนไทยสมัครได้ไม่ติดเรื่องที่อยู่; สายงานที่ระบุไว้ตรงกับสิ่งที่คนจบ Blueshift/Turbin3 ฝึกมาพอดี — DeFi ขั้นสูง (CLOB, AMM, lending/perps, oracle, liquidation engine), core infra (smart wallet, gasless relayer, session key, indexer, contribute Anchor/Pinocchio), และ on-chain app (token launch, RWA, DePIN); ใช้เป็นปลายทางที่จับต้องได้เวลามีคนถามว่าเรียนไปแล้วไปทำอะไรต่อ'
     status: ok
     added: 2026-08-04
+
+  - url: https://solana-state.vercel.app/
+    name: 'Solana State (รายงานสถานะเครือข่ายอัตโนมัติ)'
+    category: data-analytics
+    source: community
+    tags: [dashboard, realtime, json-api, markdown-api, agent-friendly]
+    note: 'แดชบอร์ดอิสระ (ประกาศเองว่าไม่ได้สังกัด Foundation) รวม execution / validator / เศรษฐกิจ / การใช้งาน / upgrade ที่กำลังจะมา รีเฟรชทุก 30 นาที; ของเด็ดคือมี API สองตัวที่ curl ได้ตรงๆ — /api/report เป็น JSON มี schemaVersion, sources, freshness, alerts, incidents ครบ และ /api/report/markdown เป็นสรุป ~4.6 KB พร้อมตารางที่โยนให้ agent หรือแปะลงคอนเทนต์ได้เลย; เทียบกับ solana.com/data ที่ lag 1 วัน ตัวนี้สดกว่ามาก แต่แลกด้วยความเป็นทางการที่น้อยกว่า — เอาตัวเลขไปอ้างในสไลด์ควรยึด solana.com/data, จะดูสดๆ หรือให้ AI อ่านใช้ตัวนี้; ข้อควรระวัง: โฮสต์บน vercel.app ฟรี หายได้ทุกเมื่อ'
+    status: ok
+    added: 2026-08-04
+
+  - url: https://github.com/solana-foundation/solana-data-aggregator
+    name: 'solana-data-aggregator (เครื่องยนต์หลัง solana.com/data)'
+    category: data-analytics
+    source: foundation
+    tags: [python, mit, pipeline, opensource, metrics]
+    note: 'Python + MIT — ตัวที่ประมวลผลตัวเลขให้หน้า solana.com/data ทั้งหมด เปิดโค้ดให้ดูว่านิยามของแต่ละ metric คำนวณมายังไงจริงๆ (เช่นนับ non-vote tx ยังไง) แทนที่จะเชื่อตัวเลขบนหน้าเว็บอย่างเดียว — มีประโยชน์ตอนต้องตอบคำถามว่า TPS ที่เห็นนับแบบไหน ซึ่งเถียงกันบ่อยมาก'
+    status: ok
+    added: 2026-08-04
+
+  - url: https://github.com/solana-foundation/rpc-latency-monitor
+    name: 'rpc-latency-monitor (วัด latency ผู้ให้บริการ RPC)'
+    category: infra-rpc
+    source: foundation
+    tags: [rust, prometheus, benchmark, neutral, self-host]
+    note: 'Rust + Apache-2.0 วัด latency ของผู้ให้บริการ RPC แบบ read-only หลายภูมิภาค ส่งออกเป็น Prometheus metrics — จุดขายคือความเป็นกลาง ไม่ใช่เบนช์มาร์กที่ vendor ทำเอง รันเองได้เพื่อวัดจากไทยโดยเฉพาะ ซึ่งตัวเลขจากสิงคโปร์/ญี่ปุ่นที่ vendor โชว์มักไม่ตรงกับที่คนไทยเจอจริง'
+    status: ok
+    added: 2026-08-04
+
+  - url: https://github.com/anza-xyz/alpenglow
+    name: 'Alpenglow Bug Bounty — 50,000 SOL (5-19 ส.ค. 2026)'
+    category: funding
+    source: anza
+    tags: [bounty, security, consensus, alpenglow, audit, deadline]
+    note: 'เตือน: หน้าต่างส่งแค่ 5-19 ส.ค. 2026 เท่านั้น เงินรางวัลรวมสูงสุด 50,000 SOL; repo นี้ไม่มีโค้ด เป็นแค่ประตูรับ submission — ตัว Alpenglow จริงอยู่ใน agave เขาชี้จุดเริ่มไว้ 4 crate คือ votor (เครื่องโหวต), votor-messages (ชนิดของ vote/certificate), bls-sigverify, bls-cert-verify; เดิม Alpenglow ถูกกันออกจาก bug bounty ของ agave เพิ่งมาเข้าเกณฑ์รอบนี้ แปลว่าโค้ดส่วนนี้ยังผ่านสายตาคนนอกน้อยกว่าส่วนอื่น; ส่งผ่าน GitHub Security Advisory และห้ามเปิดเผยถึงจะเข้าเกณฑ์ — ควรกระจายข่าวในชุมชนทันทีเพราะปิดเร็ว'
+    status: ok
+    added: 2026-08-04
