@@ -665,8 +665,8 @@ resources:
     name: Solana Developer MCP
     category: ai-agent
     source: foundation
-    tags: [mcp, docs-search, autofixer]
-    note: semantic search เอกสาร + autofixer โปรแกรม Anchor/Pinocchio ต่อ Claude Code ได้
+    tags: [mcp, docs-search, autofixer, remote, no-auth]
+    note: 'endpoint จริงคือ https://mcp.solana.com/mcp (Streamable HTTP, ไม่ต้องใช้ API key) ต่อได้ทั้ง Claude Code / Codex / Cursor / Windsurf / VS Code; มี 5 tool — list_sections, get_documentation, Solana_Documentation_Search (semantic), Solana_Expert__Ask_For_Help (ถามวิธีทำ/ดีบัก), program_autofixer (สแกนโค้ด Anchor/Pinocchio หาช่องโหว่); ตัวนี้กับ solana-dev-skill คนละอย่าง — MCP ยิงสดตอนรัน ส่วน skill คือไฟล์ที่ติดตั้งไว้ในเครื่อง'
     status: ok
     added: 2026-08-04
 
@@ -1285,5 +1285,14 @@ resources:
     source: community
     tags: [trading, perps, phoenix, jupiter, sveltekit, bun, privy, reference-app]
     note: 'แอปเทรดครบวงจรที่เปิดโค้ด (Apache-2.0): perps ผ่าน Phoenix + spot ผ่าน Jupiter ในบัญชี USDC เดียว มี TP/SL ลากบนชาร์ต, position sizing, journal, ฟีเจอร์ AI (ผู้ใช้ใส่ API key เอง) — ค่าอยู่ที่ได้อ่านโค้ดแอป DeFi ที่ต่อ Phoenix/Jupiter/Privy จริงทั้งระบบ ซึ่งตัวอย่างแบบนี้หายาก ส่วนใหญ่ที่เจอเป็น demo swap หน้าเดียว; stack ไม่เหมือนใครในลิสต์นี้ — SvelteKit + Bun monorepo ไม่ใช่ Next.js; ข้อควรระวัง: open beta ★11 คนทำหลักคนเดียว (589 PR ตั้งแต่ ม.ค. 2026 ยัง active) ใช้เป็นตัวอย่างอ่านโค้ดได้ อย่าถือเป็น reference ที่ผ่านการพิสูจน์ และอย่าแนะนำให้มือใหม่เอาเงินจริงไปลอง'
+    status: ok
+    added: 2026-08-04
+
+  - url: https://solana.com/docs/payments/subscriptions/overview
+    name: 'Subscriptions Delegation Program — เอกสารทางการ'
+    category: payments
+    source: foundation
+    tags: [subscription, delegation, token-2022, transfer-hook, events, docs]
+    note: 'คู่มือฝั่งเอกสารของโปรแกรม subscriptions (คู่กับ repo solana-foundation/subscriptions) — อธิบายรากของปัญหาชัดกว่า README: token account ของ SPL อนุมัติ delegate ได้ทีละรายเดียว เลยรองรับหลายข้อตกลงพร้อมกันไม่ได้ โปรแกรมนี้แก้ด้วย Subscription Authority ต่อคู่ (user, mint) แล้วเช็คทุกการโอนกับ record แยก; จุดที่ต้องรู้และไม่มีในหน้าอื่น — Token-2022 ที่ตั้ง TransferHook ไว้ โปรแกรมจะส่ง hook account เข้า TransferChecked CPI ให้เอง (SDK เรียก resolveTransferHookAccounts) และมี event ยิงผ่าน self-CPI ให้ indexer ตามได้ทุกธุรกรรม พร้อม versioning สำหรับ migrate account ทีหลัง; มี demo app ให้ลองเล่นด้วย'
     status: ok
     added: 2026-08-04

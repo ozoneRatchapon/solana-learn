@@ -3,7 +3,7 @@
 > ไฟล์นี้ถูก generate จาก [data/resources.yml](data/resources.yml) — **อย่าแก้ตรงนี้**
 > แก้ที่ YAML แล้วรัน `./scripts/render.sh`
 
-รวม **146** รายการ · อัปเดต 2026-08-04
+รวม **147** รายการ · อัปเดต 2026-08-04
 
 หมายเหตุสถานะ: `blocked` = เว็บกัน bot ตอน curl (ลิงก์ยังใช้ได้), `unverified` = เช็คอัตโนมัติไม่ผ่าน ต้องดูด้วยตา
 
@@ -16,7 +16,7 @@
 - [Testing — LiteSVM, Mollusk, Surfpool](#testing--litesvm-mollusk-surfpool) — 5
 - [IDL & Codegen](#idl--codegen) — 4
 - [Tokens & NFT — SPL, Token-2022, Metaplex](#tokens--nft--spl-token-2022-metaplex) — 5
-- [Payments & Commerce](#payments--commerce) — 5
+- [Payments & Commerce](#payments--commerce) — 6
 - [Security & Audit](#security--audit) — 5
 - [AI / Agent Skills / MCP](#ai--agent-skills--mcp) — 15
 - [Infra & RPC providers](#infra--rpc-providers) — 7
@@ -223,6 +223,9 @@
 - [subscriptions (delegation / จ่ายรายรอบ on-chain)](https://github.com/solana-foundation/subscriptions) `official`
   โปรแกรมจ่ายเงินรายรอบบน SPL Token/Token-2022 — deploy mainnet แล้วจริง (De1egAFMkMWZSN5rYXRj9CAdheBamobVNubTsi9avR44 เช็คแล้ว executable) audit โดย Cantina หลายรอบ ล่าสุดปี 2026; กลไก: PDA 'Subscription Authority' เป็น delegate ตัวเดียวต่อคู่ user-mint แล้วให้ Delegation PDA อีกชั้นคุมว่าโอนได้เมื่อไหร่ เลยมีหลาย delegation พร้อมกันได้โดยไม่เสียความปลอดภัยแบบ approve ปกติ รองรับ fixed / recurring / subscription plan ปิดแล้วได้ rent คืน; น่าสนใจเป็นพิเศษเพราะ stack ตรงกับที่ repo นี้เชียร์ — Pinocchio + Codama + LiteSVM + client TS/Rust ใช้เป็นตัวอย่างโค้ด production ที่อ่านได้จริง
   <sub>subscription, delegation, token-2022, pinocchio, codama, litesvm, audited</sub>
+- [Subscriptions Delegation Program — เอกสารทางการ](https://solana.com/docs/payments/subscriptions/overview) `official`
+  คู่มือฝั่งเอกสารของโปรแกรม subscriptions (คู่กับ repo solana-foundation/subscriptions) — อธิบายรากของปัญหาชัดกว่า README: token account ของ SPL อนุมัติ delegate ได้ทีละรายเดียว เลยรองรับหลายข้อตกลงพร้อมกันไม่ได้ โปรแกรมนี้แก้ด้วย Subscription Authority ต่อคู่ (user, mint) แล้วเช็คทุกการโอนกับ record แยก; จุดที่ต้องรู้และไม่มีในหน้าอื่น — Token-2022 ที่ตั้ง TransferHook ไว้ โปรแกรมจะส่ง hook account เข้า TransferChecked CPI ให้เอง (SDK เรียก resolveTransferHookAccounts) และมี event ยิงผ่าน self-CPI ให้ indexer ตามได้ทุกธุรกรรม พร้อม versioning สำหรับ migrate account ทีหลัง; มี demo app ให้ลองเล่นด้วย
+  <sub>subscription, delegation, token-2022, transfer-hook, events, docs</sub>
 
 ## Security & Audit
 
@@ -251,8 +254,8 @@
   ติดตั้ง: npx skills add https://github.com/solana-foundation/solana-dev-skill
   <sub>skill, anchor, pinocchio, kit, testing, canonical</sub>
 - [Solana Developer MCP](https://mcp.solana.com/) `official`
-  semantic search เอกสาร + autofixer โปรแกรม Anchor/Pinocchio ต่อ Claude Code ได้
-  <sub>mcp, docs-search, autofixer</sub>
+  endpoint จริงคือ https://mcp.solana.com/mcp (Streamable HTTP, ไม่ต้องใช้ API key) ต่อได้ทั้ง Claude Code / Codex / Cursor / Windsurf / VS Code; มี 5 tool — list_sections, get_documentation, Solana_Documentation_Search (semantic), Solana_Expert__Ask_For_Help (ถามวิธีทำ/ดีบัก), program_autofixer (สแกนโค้ด Anchor/Pinocchio หาช่องโหว่); ตัวนี้กับ solana-dev-skill คนละอย่าง — MCP ยิงสดตอนรัน ส่วน skill คือไฟล์ที่ติดตั้งไว้ในเครื่อง
+  <sub>mcp, docs-search, autofixer, remote, no-auth</sub>
 - [awesome-solana-ai](https://github.com/solana-foundation/awesome-solana-ai) `official`
   ลิสต์ AI tooling ทั้งหมด — ที่ที่ควรส่ง PR ถ้าเราทำ skill เอง
   <sub>index, skills, agents, tools</sub>
