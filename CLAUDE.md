@@ -44,6 +44,8 @@
 - **`IFS=$'\t' read` ยุบ field ว่าง** เพราะ tab เป็น IFS whitespace → `render.sh` เลยใช้ `\x1f` (ตัวแปร `$SEP`) ถ้าจะเขียน script ใหม่ที่อ่าน field ซึ่งอาจว่าง ให้ใช้ `$SEP` อย่าใช้ tab
 - **`set -e` + `cmd | while ...; do [ cond ] && ...; done` ใน `$(...)`** — รอบสุดท้ายที่เงื่อนไขเป็นเท็จทำให้ทั้ง pipeline คืน exit 1 แล้ว script ตายเงียบๆ ใช้ `if/fi` แทน `&&`
 - **ไม่มี PyYAML ในเครื่อง** ใช้ `yq` (mikefarah v4) กับ `jq` เท่านั้น
+- **`add.sh` เคยทำ `resources.yml` พังทั้งไฟล์** เพราะเขียน note ลง double-quoted scalar โดยไม่ escape — พอ note มี `"` (เช่นตัวอย่างคำสั่ง jq) YAML ก็เจ๊ง แก้แล้วโดยเปลี่ยนไปใช้ single-quoted + `yesc()` ถ้าจะเขียน script ที่ append YAML เพิ่ม ใช้ท่าเดียวกัน (single-quote ต้อง escape แค่ `'` → `''`)
+- ทดสอบ script ที่เขียนลง YAML ได้โดยไม่แตะไฟล์จริง: `DATA=/tmp/copy.yml ./scripts/add.sh ...`
 - **เว็บที่ render ฝั่ง client จะได้หน้าเปล่า** ไม่ใช่ลิงก์เสีย — curl ได้ HTTP 200 แต่ไม่มีเนื้อ (`governance.solana.com` เป็นเคสตัวอย่าง) อย่าเขียนโน้ตจากหน้าเปล่าเด็ดขาด ทางออกคืออ่านต้นทางจริง:
 
   ```bash

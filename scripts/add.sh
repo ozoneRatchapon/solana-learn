@@ -12,6 +12,11 @@ set -euo pipefail
 source "$(dirname "${BASH_SOURCE[0]}")/lib.sh"
 need yq
 
+# escape ค่าที่จะไปอยู่ใน YAML — ใช้ single-quoted scalar เพราะต้อง escape แค่ ' ตัวเดียว
+# (double-quoted ต้อง escape ทั้ง " และ \ ซึ่งพลาดง่ายและเคยทำ resources.yml พังมาแล้ว
+#  ตอนใส่ note ที่มีตัวอย่างคำสั่ง jq)
+yesc() { printf '%s' "$1" | sed "s/'/''/g"; }
+
 url=""; name=""; cat_=""; src="community"; tags=""; note=""
 while getopts "u:n:c:s:t:m:" opt; do
   case $opt in
@@ -52,13 +57,13 @@ esac
 {
   echo ""
   echo "  - url: $url"
-  echo "    name: \"$name\""
+  printf "    name: '%s'\n" "$(yesc "$name")"
   echo "    category: $cat_"
   echo "    source: $src"
   if [ -n "$tags" ]; then
     echo "    tags: [$(printf '%s' "$tags" | sed 's/ *, */, /g')]"
   fi
-  [ -n "$note" ] && echo "    note: \"$note\""
+  if [ -n "$note" ]; then printf "    note: '%s'\n" "$(yesc "$note")"; fi
   echo "    status: $status"
   echo "    added: $(date +%F)"
 } >> "$DATA"

@@ -2,7 +2,8 @@
 # ฟังก์ชันร่วมของทุก script — source ไฟล์นี้ ไม่ต้องรันตรงๆ
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-DATA="$REPO_ROOT/data/resources.yml"
+# override ได้ด้วย env DATA=... เวลาจะทดสอบ script โดยไม่แตะไฟล์จริง
+DATA="${DATA:-$REPO_ROOT/data/resources.yml}"
 
 need() { command -v "$1" >/dev/null 2>&1 || { echo "ต้องมี '$1' ก่อน (brew install $1)" >&2; exit 1; }; }
 

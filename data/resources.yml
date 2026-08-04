@@ -1206,3 +1206,75 @@ resources:
     note: "Solana เป็น presenting sponsor ของ WSOP 2026 — ของจริงที่ใช้อ้างได้คือ buy-in ทัวร์นาเมนต์ผ่านแอป WSOP LIVE ด้วย SOL/USDC/USDT ยืนยันทันที ไม่มีค่าธรรมเนียมประมวลผล เป็นเคส consumer payments ระดับแบรนด์ mainstream ที่เล่าให้คนนอกวงคริปโตฟังรู้เรื่อง ใช้เปิดหัวตอนพูดเรื่อง payments ได้; ระวัง — เป็นหน้าแคมเปญ ไม่ใช่เอกสารเทคนิค งาน Showdown 4 ส.ค. 2026 และ Paradise ธ.ค. 2026 ผ่านไปแล้วน่าจะเน่า ให้รีวิวใหม่ต้นปี 2027"
     status: ok
     added: 2026-08-04
+
+  - url: https://solana.com/llms.txt
+    name: "solana.com llms.txt (ดัชนีเอกสารสำหรับ AI)"
+    category: ai-agent
+    source: foundation
+    tags: [llms-txt, markdown, context, agent, index]
+    note: "ดัชนี 514 หน้าเอกสารทางการพร้อมคำอธิบายบรรทัดเดียวต่อหน้า — ท่าที่ควรรู้และเช็คแล้วว่าใช้ได้จริง: เติม .md ท้าย URL ไหนก็ได้จะได้ markdown ดิบ (หรือส่ง header Accept: text/markdown ผลเท่ากัน) และมีดัชนีย่อยรายหมวด เช่น /docs/finance/llms.txt, /docs/payments/llms.txt ขนาดแค่ ~500 byte ใช้ตัวย่อยตอนทำงานเรื่องเดียวจะประหยัด context กว่าเยอะ; ตัวไฟล์เองบอกด้วยว่าโค้ดใน cookbook มาจากไฟล์ตัวอย่างที่เทสต์แล้ว ให้เชื่อมากกว่าเดาเอง"
+    status: ok
+    added: 2026-08-04
+
+  - url: https://solana.com/llms-full.txt
+    name: "solana.com llms-full.txt (เอกสารทั้งชุดไฟล์เดียว)"
+    category: ai-agent
+    source: foundation
+    tags: [llms-txt, corpus, offline, rag]
+    note: "เอกสารทั้งหมดรวมไฟล์เดียว 4.5 MB ~462,000 คำ — ใหญ่เกินกว่าจะโยนเข้า context ตรงๆ เหมาะกับ index ทำ RAG หรือ grep ออฟไลน์มากกว่า ถ้าจะให้ agent อ่านสดใช้ llms.txt ตัวดัชนีแล้วดึงเฉพาะหน้าที่ต้องการจะคุ้มกว่ามาก"
+    status: ok
+    added: 2026-08-04
+
+  - url: https://github.com/solana-foundation/solana-developer-platform
+    name: "solana-developer-platform (SDP repo)"
+    category: official
+    source: foundation
+    tags: [github, sdp, enterprise, typescript, monorepo]
+    note: "โค้ดหลังบ้านของ platform.solana.com — monorepo Node 22/TS/Postgres/Redis มี sdp-api (Cloud Run + OpenAPI), dashboard, docs; ตัวโปรเจกต์ประกาศเองว่ายัง pre-mainnet ยังไม่ผ่าน audit ห้ามเอาไปใช้กับเงินจริง และ self-host ยังทำไม่เสร็จ — ค่าที่แท้จริงตอนนี้คือใช้อ่านว่า Foundation ออกแบบ wallet/token issuance/compliance ฝั่ง enterprise ยังไง"
+    status: ok
+    added: 2026-08-04
+
+  - url: https://github.com/solana-foundation/subscriptions
+    name: "subscriptions (delegation / จ่ายรายรอบ on-chain)"
+    category: payments
+    source: foundation
+    tags: [subscription, delegation, token-2022, pinocchio, codama, litesvm, audited]
+    note: "โปรแกรมจ่ายเงินรายรอบบน SPL Token/Token-2022 — deploy mainnet แล้วจริง (De1egAFMkMWZSN5rYXRj9CAdheBamobVNubTsi9avR44 เช็คแล้ว executable) audit โดย Cantina หลายรอบ ล่าสุดปี 2026; กลไก: PDA 'Subscription Authority' เป็น delegate ตัวเดียวต่อคู่ user-mint แล้วให้ Delegation PDA อีกชั้นคุมว่าโอนได้เมื่อไหร่ เลยมีหลาย delegation พร้อมกันได้โดยไม่เสียความปลอดภัยแบบ approve ปกติ รองรับ fixed / recurring / subscription plan ปิดแล้วได้ rent คืน; น่าสนใจเป็นพิเศษเพราะ stack ตรงกับที่ repo นี้เชียร์ — Pinocchio + Codama + LiteSVM + client TS/Rust ใช้เป็นตัวอย่างโค้ด production ที่อ่านได้จริง"
+    status: ok
+    added: 2026-08-04
+
+  - url: https://github.com/orgs/solana-foundation/repositories
+    name: "Solana Foundation — repo ทั้งหมด (99 repo)"
+    category: official
+    source: foundation
+    tags: [github, index, browse, audit]
+    note: 'ต่างจากหน้า org ธรรมดาตรงเห็นครบทุก repo และเรียง/กรองได้ (?type=all&sort=updated) ใช้ตอนอยากรู้ว่า Foundation กำลังทำอะไรอยู่จริง ไม่ใช่แค่ที่ pin ไว้ — ของที่โผล่จากการไล่หน้านี้เช่น subscriptions, solana-keychain, rpc-latency-monitor, github-workflows ไม่มีใน curated list ที่ไหนเลย; ไล่บ่อยๆ ยิง API เร็วกว่า: curl -s "https://api.github.com/orgs/solana-foundation/repos?sort=pushed&per_page=30" | jq -r ".[] | \"\(.name) ★\(.stargazers_count) \(.pushed_at[0:10]) \(.description)\""'
+    status: ok
+    added: 2026-08-04
+
+  - url: https://github.com/orgs/anza-xyz/repositories
+    name: "Anza — repo ทั้งหมด (60 repo)"
+    category: official
+    source: anza
+    tags: [github, index, browse, agave, kit]
+    note: "ฝั่ง Anza เป็นคนทำ core: agave (validator), kit (JS SDK ที่มาแทน web3.js), solana-sdk (Rust), pinocchio, mollusk, jetstreamer (indexing 2.7M TPS+), llvm-project fork; เข้าหน้านี้เวลาจะเช็คว่าเครื่องมือ core ตัวไหนยังมีคนแตะอยู่ — ดูวันที่ push สำคัญกว่าดาว เพราะหลายตัวดาวน้อยแต่เป็นของจริงที่ใช้ใน production"
+    status: ok
+    added: 2026-08-04
+
+  - url: https://blog.triton.one/before-the-block-get-the-fastest-streams-on-solana/
+    name: "Triton — Riptide & Shred Streaming (ก่อนบล็อกจะเกิด)"
+    category: infra-rpc
+    source: vendor
+    tags: [grpc, geyser, shred, latency, mev, streaming]
+    note: "อธิบายชั้นข้อมูลที่เร็วกว่า RPC ปกติ: Riptide คือ endpoint gRPC ตัวใหม่ (Dragon's Mouth เดิม ราคาเท่าเดิม เปลี่ยนแค่ URL) เคลม P90 มาถึงก่อนเจ้าอื่น 81.8% · Shred Streaming คือดูดชิ้นข้อมูลดิบขนาดไม่เกิน 1,228 byte ตรงจาก 5 เมือง (NY/London/Amsterdam/Frankfurt/Tokyo) ร่วมกับ DoubleZero — ได้เห็น tx ก่อนบล็อกประกอบเสร็จ แต่ต้อง verify signature/กู้ packet/decode เองทั้งหมด; อ่านตัวนี้ถ้าจะสอนว่าทำไม arbitrage/oracle ถึงไม่ใช้ RPC ธรรมดา และเส้นแบ่ง shred กับ block คืออะไร"
+    status: ok
+    added: 2026-08-04
+
+  - url: https://github.com/orgs/rpcpool/repositories
+    name: "rpcpool / Triton One — repo ทั้งหมด (106 repo)"
+    category: infra-rpc
+    source: vendor
+    tags: [github, index, yellowstone, grpc, indexing, opensource]
+    note: "org GitHub ของ Triton One (คนละชื่อกับเว็บ เลยหาไม่เจอถ้าไม่รู้) — ตระกูล Yellowstone อยู่ที่นี่ทั้งหมดและเป็น open-source จริง: yellowstone-grpc (Dragon's Mouth ตัวจริง ดาว 988), yellowstone-vixen (toolkit parse โปรแกรม), yellowstone-faithful (ประวัติ Solana ทั้งเชนแบบ content-addressed), yellowstone-jet (ส่ง tx ผ่าน QUIC + SwQoS), yellowstone-thorofare (เบนช์มาร์ก Geyser gRPC); ของพวกนี้รันเองได้ ไม่ต้องซื้อบริการ เหมาะเป็นวัตถุดิบเวิร์กช็อป infra"
+    status: ok
+    added: 2026-08-04
