@@ -1278,3 +1278,12 @@ resources:
     note: "org GitHub ของ Triton One (คนละชื่อกับเว็บ เลยหาไม่เจอถ้าไม่รู้) — ตระกูล Yellowstone อยู่ที่นี่ทั้งหมดและเป็น open-source จริง: yellowstone-grpc (Dragon's Mouth ตัวจริง ดาว 988), yellowstone-vixen (toolkit parse โปรแกรม), yellowstone-faithful (ประวัติ Solana ทั้งเชนแบบ content-addressed), yellowstone-jet (ส่ง tx ผ่าน QUIC + SwQoS), yellowstone-thorofare (เบนช์มาร์ก Geyser gRPC); ของพวกนี้รันเองได้ ไม่ต้องซื้อบริการ เหมาะเป็นวัตถุดิบเวิร์กช็อป infra"
     status: ok
     added: 2026-08-04
+
+  - url: https://github.com/GuiBibeau/harness-trade
+    name: 'Harness — trading terminal open-source'
+    category: defi
+    source: community
+    tags: [trading, perps, phoenix, jupiter, sveltekit, bun, privy, reference-app]
+    note: 'แอปเทรดครบวงจรที่เปิดโค้ด (Apache-2.0): perps ผ่าน Phoenix + spot ผ่าน Jupiter ในบัญชี USDC เดียว มี TP/SL ลากบนชาร์ต, position sizing, journal, ฟีเจอร์ AI (ผู้ใช้ใส่ API key เอง) — ค่าอยู่ที่ได้อ่านโค้ดแอป DeFi ที่ต่อ Phoenix/Jupiter/Privy จริงทั้งระบบ ซึ่งตัวอย่างแบบนี้หายาก ส่วนใหญ่ที่เจอเป็น demo swap หน้าเดียว; stack ไม่เหมือนใครในลิสต์นี้ — SvelteKit + Bun monorepo ไม่ใช่ Next.js; ข้อควรระวัง: open beta ★11 คนทำหลักคนเดียว (589 PR ตั้งแต่ ม.ค. 2026 ยัง active) ใช้เป็นตัวอย่างอ่านโค้ดได้ อย่าถือเป็น reference ที่ผ่านการพิสูจน์ และอย่าแนะนำให้มือใหม่เอาเงินจริงไปลอง'
+    status: ok
+    added: 2026-08-04

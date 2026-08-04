@@ -3,7 +3,7 @@
 > ไฟล์นี้ถูก generate จาก [data/resources.yml](data/resources.yml) — **อย่าแก้ตรงนี้**
 > แก้ที่ YAML แล้วรัน `./scripts/render.sh`
 
-รวม **145** รายการ · อัปเดต 2026-08-04
+รวม **146** รายการ · อัปเดต 2026-08-04
 
 หมายเหตุสถานะ: `blocked` = เว็บกัน bot ตอน curl (ลิงก์ยังใช้ได้), `unverified` = เช็คอัตโนมัติไม่ผ่าน ต้องดูด้วยตา
 
@@ -21,7 +21,7 @@
 - [AI / Agent Skills / MCP](#ai--agent-skills--mcp) — 15
 - [Infra & RPC providers](#infra--rpc-providers) — 7
 - [Data & Analytics](#data--analytics) — 10
-- [DeFi & Ecosystem protocols](#defi--ecosystem-protocols) — 11
+- [DeFi & Ecosystem protocols](#defi--ecosystem-protocols) — 12
 - [Mobile](#mobile) — 2
 - [Protocol internals — Agave, Firedancer, network upgrades](#protocol-internals--agave-firedancer-network-upgrades) — 6
 - [Governance — SGP, SIMD, โหวตบนเชน](#governance--sgp-simd-โหวตบนเชน) — 8
@@ -353,6 +353,9 @@
 - [Light Protocol (ZK Compression)](https://www.lightprotocol.com/)
   token/PDA แบบไม่ต้องจ่าย rent — น่าสนสำหรับ airdrop/badge จำนวนมาก
   <sub>zk, compression, rent-free</sub>
+- [Harness — trading terminal open-source](https://github.com/GuiBibeau/harness-trade)
+  แอปเทรดครบวงจรที่เปิดโค้ด (Apache-2.0): perps ผ่าน Phoenix + spot ผ่าน Jupiter ในบัญชี USDC เดียว มี TP/SL ลากบนชาร์ต, position sizing, journal, ฟีเจอร์ AI (ผู้ใช้ใส่ API key เอง) — ค่าอยู่ที่ได้อ่านโค้ดแอป DeFi ที่ต่อ Phoenix/Jupiter/Privy จริงทั้งระบบ ซึ่งตัวอย่างแบบนี้หายาก ส่วนใหญ่ที่เจอเป็น demo swap หน้าเดียว; stack ไม่เหมือนใครในลิสต์นี้ — SvelteKit + Bun monorepo ไม่ใช่ Next.js; ข้อควรระวัง: open beta ★11 คนทำหลักคนเดียว (589 PR ตั้งแต่ ม.ค. 2026 ยัง active) ใช้เป็นตัวอย่างอ่านโค้ดได้ อย่าถือเป็น reference ที่ผ่านการพิสูจน์ และอย่าแนะนำให้มือใหม่เอาเงินจริงไปลอง
+  <sub>trading, perps, phoenix, jupiter, sveltekit, bun, privy, reference-app</sub>
 
 ## Mobile
 
