@@ -3,7 +3,7 @@
 > ไฟล์นี้ถูก generate จาก [data/resources.yml](data/resources.yml) — **อย่าแก้ตรงนี้**
 > แก้ที่ YAML แล้วรัน `./scripts/render.sh`
 
-รวม **167** รายการ · อัปเดต 2026-08-04
+รวม **169** รายการ · อัปเดต 2026-08-04
 
 หมายเหตุสถานะ: `blocked` = เว็บกัน bot ตอน curl (ลิงก์ยังใช้ได้), `unverified` = เช็คอัตโนมัติไม่ผ่าน ต้องดูด้วยตา
 
@@ -20,7 +20,7 @@
 - [Security & Audit](#security--audit) — 5
 - [AI / Agent Skills / MCP](#ai--agent-skills--mcp) — 15
 - [Infra & RPC providers](#infra--rpc-providers) — 8
-- [Data & Analytics](#data--analytics) — 12
+- [Data & Analytics](#data--analytics) — 14
 - [DeFi & Ecosystem protocols](#defi--ecosystem-protocols) — 12
 - [Mobile](#mobile) — 2
 - [Protocol internals — Agave, Firedancer, network upgrades](#protocol-internals--agave-firedancer-network-upgrades) — 7
@@ -377,6 +377,12 @@
 - [solana-data-aggregator (เครื่องยนต์หลัง solana.com/data)](https://github.com/solana-foundation/solana-data-aggregator) `official`
   Python + MIT — ตัวที่ประมวลผลตัวเลขให้หน้า solana.com/data ทั้งหมด เปิดโค้ดให้ดูว่านิยามของแต่ละ metric คำนวณมายังไงจริงๆ (เช่นนับ non-vote tx ยังไง) แทนที่จะเชื่อตัวเลขบนหน้าเว็บอย่างเดียว — มีประโยชน์ตอนต้องตอบคำถามว่า TPS ที่เห็นนับแบบไหน ซึ่งเถียงกันบ่อยมาก
   <sub>python, mit, pipeline, opensource, metrics</sub>
+- [RWA.xyz — หุ้น/ETF ที่ถูก tokenize](https://app.rwa.xyz/stocks) `vendor`
+  ทะเบียนหุ้นและ ETF ที่ออกเป็นโทเคน ดูข้ามเชนได้ในที่เดียว มี Solana อยู่ในนั้นเยอะ (Tesla xStock, Circle, Securitize) ตอนเช็ค 4 ส.ค. 2026 ทั้งตลาดมีมูลค่ากระจายอยู่ ~$2.28B จาก 3,315 โทเคน ผู้ถือ ~983K แพลตฟอร์มใหญ่สุดคือ Ondo / bStocks / xStocks; ใช้ตอบคำถามที่คนไทยถามบ่อยที่สุดข้อหนึ่งคือซื้อหุ้นสหรัฐบนเชนได้จริงไหมและใครออก — และใช้ cross-check กับตัวเลข tokenized equities ที่ Solana State รายงาน ถ้าสองที่ไม่ตรงแปลว่านิยามการนับต่างกัน ต้องดูก่อนเอาไปอ้าง; เป็นของ vendor ไม่ใช่ตัวเลขทางการ
+  <sub>rwa, tokenized-equity, xstocks, cross-chain, registry</sub>
+- [Blockworks — เทียบเชนแบบเคียงข้าง (Spot DEX)](https://blockworks.com/analytics/chain-comparison/chain-comparison-spot-dex) `vendor`
+  เทียบ 22 L1 กับ 12 L2 ในหน้าเดียว สลับมุมได้ระหว่าง Overview / Financials / Onchain Activity / Staking / Spot DEX / Lending / Vaults — ค่าอยู่ที่เวลาต้องตอบว่าทำไมต้อง Solana ไม่ใช่เชนอื่น การชี้ตัวเลขเทียบกันตรงๆ จากแหล่งที่เป็นกลางน่าเชื่อกว่าเอาตัวเลขฝั่ง Solana มาพูดเอง; Blockworks เป็นพาร์ตเนอร์ข้อมูลที่ solana.com/data อ้างถึงด้วย (Lightspeed) แต่หน้านี้เป็นมุมของ Blockworks เอง ไม่ใช่ของ Foundation
+  <sub>comparison, dex-volume, l1, l2, benchmark</sub>
 
 ## DeFi & Ecosystem protocols
 
