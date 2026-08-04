@@ -1012,7 +1012,7 @@ resources:
     category: protocol
     source: foundation
     tags: [alpenglow, consensus, roadmap]
-    note: TowerBFT → Alpenglow เป้า finality 150ms, mainnet ปลายปี 2026
+    note: 'TowerBFT → Alpenglow เป้า finality 150ms และเลิกใช้ vote transaction — โค้ดเสร็จอยู่ใน Agave 4.2 แล้วแต่ยังไม่เปิดใช้ รอเปิดใน 4.3 ราว ต.ค. 2026 (ยืนยันจากหน้า agave-4-2-release-overview 4 ส.ค. 2026)'
     status: ok
     added: 2026-08-04
 
@@ -1465,5 +1465,14 @@ resources:
     source: anza
     tags: [bounty, security, consensus, alpenglow, audit, deadline]
     note: 'เตือน: หน้าต่างส่งแค่ 5-19 ส.ค. 2026 เท่านั้น เงินรางวัลรวมสูงสุด 50,000 SOL; repo นี้ไม่มีโค้ด เป็นแค่ประตูรับ submission — ตัว Alpenglow จริงอยู่ใน agave เขาชี้จุดเริ่มไว้ 4 crate คือ votor (เครื่องโหวต), votor-messages (ชนิดของ vote/certificate), bls-sigverify, bls-cert-verify; เดิม Alpenglow ถูกกันออกจาก bug bounty ของ agave เพิ่งมาเข้าเกณฑ์รอบนี้ แปลว่าโค้ดส่วนนี้ยังผ่านสายตาคนนอกน้อยกว่าส่วนอื่น; ส่งผ่าน GitHub Security Advisory และห้ามเปิดเผยถึงจะเข้าเกณฑ์ — ควรกระจายข่าวในชุมชนทันทีเพราะปิดเร็ว'
+    status: ok
+    added: 2026-08-04
+
+  - url: https://solana.com/upgrades/agave-4-2-release-overview
+    name: 'Agave 4.2 — รวมสามอย่างที่กระทบ dev มากที่สุดปีนี้'
+    category: protocol
+    source: foundation
+    tags: [agave, rent, transaction-size, slot-time, simd, deadline-aug-2026]
+    note: 'เริ่มเปิด feature บน mainnet 17 ส.ค. 2026 ไม่มี breaking change แต่ของข้างในกระทบวิธีออกแบบแอปจริง สามตัว: (1) SIMD-0437 ลดค่า rent 90% ทยอยผ่าน 5 feature gate — SPL token account จาก ~$0.159 เหลือ ~$0.0159 แปลว่าธุรกิจออกค่าเปิดบัญชีให้ผู้ใช้ทั้งหมดเริ่มเป็นไปได้จริงในเชิงต้นทุน ต่อกับ fee-abstraction/Kora ในหมวด payments ได้พอดี (2) SIMD-0296 transaction v1 ขยายขนาดสูงสุด 1,232 -> 4,096 byte งานที่เคยยัดไม่ลง tx เดียวอย่าง ZK proof หรือ multisig ใหญ่ ทำแบบ atomic ได้แล้ว ต้อง opt-in เอง และ indexer ต้องรองรับ layout ใหม่ (3) SIMD-0525 ลด slot 400ms -> 200ms ทีละ 50ms สี่ครั้ง; Alpenglow โค้ดเสร็จใน 4.2 แล้วแต่ยังไม่เปิด รอ 4.3 ต.ค. 2026'
     status: ok
     added: 2026-08-04

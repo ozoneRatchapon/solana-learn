@@ -3,7 +3,7 @@
 > ไฟล์นี้ถูก generate จาก [data/resources.yml](data/resources.yml) — **อย่าแก้ตรงนี้**
 > แก้ที่ YAML แล้วรัน `./scripts/render.sh`
 
-รวม **166** รายการ · อัปเดต 2026-08-04
+รวม **167** รายการ · อัปเดต 2026-08-04
 
 หมายเหตุสถานะ: `blocked` = เว็บกัน bot ตอน curl (ลิงก์ยังใช้ได้), `unverified` = เช็คอัตโนมัติไม่ผ่าน ต้องดูด้วยตา
 
@@ -23,7 +23,7 @@
 - [Data & Analytics](#data--analytics) — 12
 - [DeFi & Ecosystem protocols](#defi--ecosystem-protocols) — 12
 - [Mobile](#mobile) — 2
-- [Protocol internals — Agave, Firedancer, network upgrades](#protocol-internals--agave-firedancer-network-upgrades) — 6
+- [Protocol internals — Agave, Firedancer, network upgrades](#protocol-internals--agave-firedancer-network-upgrades) — 7
 - [Governance — SGP, SIMD, โหวตบนเชน](#governance--sgp-simd-โหวตบนเชน) — 8
 - [Funding — grants, hackathon, bounty, jobs](#funding--grants-hackathon-bounty-jobs) — 12
 - [Thailand — ชุมชนไทย](#thailand--ชุมชนไทย) — 3
@@ -427,7 +427,7 @@
 - [Anza](https://www.anza.xyz/) `anza`
   <sub>core-dev, org</sub>
 - [Solana Network Upgrades (Alpenglow roadmap)](https://solana.com/news/solana-network-upgrades) `official`
-  TowerBFT → Alpenglow เป้า finality 150ms, mainnet ปลายปี 2026
+  TowerBFT → Alpenglow เป้า finality 150ms และเลิกใช้ vote transaction — โค้ดเสร็จอยู่ใน Agave 4.2 แล้วแต่ยังไม่เปิดใช้ รอเปิดใน 4.3 ราว ต.ค. 2026 (ยืนยันจากหน้า agave-4-2-release-overview 4 ส.ค. 2026)
   <sub>alpenglow, consensus, roadmap</sub>
 - [100M CU Blocks (SIMD-0286)](https://solana.com/upgrades/100m-cu-blocks) `official`
   block limit 60M→100M CU ขึ้น mainnet แล้ว epoch 1009 (29 ก.ค. 2026) — dev ทั่วไปไม่ต้องแก้อะไร แต่ที่คนเข้าใจผิดบ่อยคือ per-account write limit ยังเป็น 12M CU เท่าเดิม เพิ่มแค่พื้นที่ขนานไม่ได้ทำให้ tx เดี่ยวเร็วขึ้น; ใช้ตอบคำถามในคอมมูฯ ได้ตรงๆ
@@ -435,6 +435,9 @@
 - [Solana Network Upgrades (hub)](https://solana.com/upgrades) `official`
   หน้ารวม upgrade ทุกตัวพร้อมสถานะ (live / under development / เป้าไตรมาส) — จุดตั้งต้นที่ดีกว่าเก็บหน้าย่อยทีละอันเพราะไม่เน่าเวลามีของใหม่ ใช้เช็คก่อนตอบคำถามคอมมูฯ ว่าอะไรขึ้น mainnet แล้วจริง; ส.ค. 2026 มี 10 ตัว — live: 100M CU Blocks, Optimized Token Program, BLS Pubkey+VAT (อันนี้ validator ต้องลงมือ) · Q3 2026: Larger Tx Sizes, Reduced Slot Times · กำลังทำ: Alpenglow, Reduced Rent, XDP, Agave 4.2, New Crypto Schemes
   <sub>roadmap, upgrade, index, status</sub>
+- [Agave 4.2 — รวมสามอย่างที่กระทบ dev มากที่สุดปีนี้](https://solana.com/upgrades/agave-4-2-release-overview) `official`
+  เริ่มเปิด feature บน mainnet 17 ส.ค. 2026 ไม่มี breaking change แต่ของข้างในกระทบวิธีออกแบบแอปจริง สามตัว: (1) SIMD-0437 ลดค่า rent 90% ทยอยผ่าน 5 feature gate — SPL token account จาก ~$0.159 เหลือ ~$0.0159 แปลว่าธุรกิจออกค่าเปิดบัญชีให้ผู้ใช้ทั้งหมดเริ่มเป็นไปได้จริงในเชิงต้นทุน ต่อกับ fee-abstraction/Kora ในหมวด payments ได้พอดี (2) SIMD-0296 transaction v1 ขยายขนาดสูงสุด 1,232 -> 4,096 byte งานที่เคยยัดไม่ลง tx เดียวอย่าง ZK proof หรือ multisig ใหญ่ ทำแบบ atomic ได้แล้ว ต้อง opt-in เอง และ indexer ต้องรองรับ layout ใหม่ (3) SIMD-0525 ลด slot 400ms -> 200ms ทีละ 50ms สี่ครั้ง; Alpenglow โค้ดเสร็จใน 4.2 แล้วแต่ยังไม่เปิด รอ 4.3 ต.ค. 2026
+  <sub>agave, rent, transaction-size, slot-time, simd, deadline-aug-2026</sub>
 
 ## Governance — SGP, SIMD, โหวตบนเชน
 
