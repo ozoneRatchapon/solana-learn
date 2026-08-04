@@ -1561,3 +1561,12 @@ resources:
     note: 'ไดเรกทอรีนักพัฒนาที่วางเส้นทางไว้ตั้งแต่แฮกกาธอน ผ่านโปรแกรม Forge และ Hacker House ไปจนถึงระดมทุน — ค่าสำหรับคนไทยคือช่องหา cofounder และเข้ากลุ่ม builder ที่ไม่ต้องรอให้มีคนแนะนำ กรอกโปรไฟล์พร้อม proof of work และประเทศแล้วเข้าได้เลย ไม่มีเดดไลน์; ข้อควรบอกก่อนชวนใครสมัคร — ต้องล็อกอินด้วย Telegram และเชื่อมกระเป๋า ซึ่งเป็นการผูกตัวตนกับที่อยู่กระเป๋าในไดเรกทอรีสาธารณะ ควรใช้กระเป๋าที่ไม่ใช่ตัวหลักและบอกคนในชุมชนให้รู้ก่อนตัดสินใจ'
     status: ok
     added: 2026-08-04
+
+  - url: https://www.frontiertraders.com/
+    name: 'Frontier Traders — โปรแกรม incentive การเทรดของ Foundation'
+    category: defi
+    source: foundation
+    tags: [incentive, competition, leaderboard, trading, campaign, verified-wallet]
+    note: 'ยืนยันแล้วว่าเป็นของ Foundation จริง ไม่ใช่ของปลอม — ToS ของเว็บระบุเองว่า Solana Foundation เป็น Sponsor ของ onchain markets program ที่รันผ่าน trading.solana.com และ dig แล้วพบว่า trading.solana.com กับ www.frontiertraders.com ชี้ไป Vercel deployment เดียวกันเป๊ะ; แคมเปญเป็นการแข่งเทรด เงินรางวัลก้อนละ $25,000 แบ่งตาม leaderboard สองสาย volume กับ PnL นับเฉพาะกระเป๋าที่สมัครและยืนยันแล้ว ล่าสุดเปิดให้เคลม 31 ก.ค. 2026 หน้าต่าง 30 วัน (micron / sndk / bot) พาร์ตเนอร์ที่โชว์บนหน้าแรกมี Phoenix, Pyth, Helius, Backpack, Ondo, DoubleZero, Axiom, Pump.fun; ข้อควรคิดก่อนกระจายในชุมชน — นี่คือรางวัลจากการเทรด ไม่ใช่จากการสร้าง และ leaderboard แบบ PnL เร่งให้คนกล้าเสี่ยงมากขึ้นโดยธรรมชาติ ต่างจาก bounty หรือ grant ในหมวด funding ที่ยิ่งทำยิ่งได้ทักษะ; ต้องเชื่อมกระเป๋าและยืนยันตัวตนด้วย และ solana.com หน้าหลักที่เช็คแล้วไม่ได้ลิงก์มาที่นี่ คนทั่วไปจึงตรวจสอบความเป็นทางการเองได้ยาก'
+    status: ok
+    added: 2026-08-04

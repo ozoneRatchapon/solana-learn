@@ -3,7 +3,7 @@
 > ไฟล์นี้ถูก generate จาก [data/resources.yml](data/resources.yml) — **อย่าแก้ตรงนี้**
 > แก้ที่ YAML แล้วรัน `./scripts/render.sh`
 
-รวม **176** รายการ · อัปเดต 2026-08-04
+รวม **177** รายการ · อัปเดต 2026-08-04
 
 หมายเหตุสถานะ: `blocked` = เว็บกัน bot ตอน curl (ลิงก์ยังใช้ได้), `unverified` = เช็คอัตโนมัติไม่ผ่าน ต้องดูด้วยตา
 
@@ -21,7 +21,7 @@
 - [AI / Agent Skills / MCP](#ai--agent-skills--mcp) — 15
 - [Infra & RPC providers](#infra--rpc-providers) — 11
 - [Data & Analytics](#data--analytics) — 13
-- [DeFi & Ecosystem protocols](#defi--ecosystem-protocols) — 12
+- [DeFi & Ecosystem protocols](#defi--ecosystem-protocols) — 13
 - [Mobile](#mobile) — 2
 - [Protocol internals — Agave, Firedancer, network upgrades](#protocol-internals--agave-firedancer-network-upgrades) — 7
 - [Governance — SGP, SIMD, โหวตบนเชน](#governance--sgp-simd-โหวตบนเชน) — 8
@@ -434,6 +434,9 @@
 - [Harness — trading terminal open-source](https://github.com/GuiBibeau/harness-trade)
   แอปเทรดครบวงจรที่เปิดโค้ด (Apache-2.0): perps ผ่าน Phoenix + spot ผ่าน Jupiter ในบัญชี USDC เดียว มี TP/SL ลากบนชาร์ต, position sizing, journal, ฟีเจอร์ AI (ผู้ใช้ใส่ API key เอง) — ค่าอยู่ที่ได้อ่านโค้ดแอป DeFi ที่ต่อ Phoenix/Jupiter/Privy จริงทั้งระบบ ซึ่งตัวอย่างแบบนี้หายาก ส่วนใหญ่ที่เจอเป็น demo swap หน้าเดียว; stack ไม่เหมือนใครในลิสต์นี้ — SvelteKit + Bun monorepo ไม่ใช่ Next.js; ข้อควรระวัง: open beta ★11 คนทำหลักคนเดียว (589 PR ตั้งแต่ ม.ค. 2026 ยัง active) ใช้เป็นตัวอย่างอ่านโค้ดได้ อย่าถือเป็น reference ที่ผ่านการพิสูจน์ และอย่าแนะนำให้มือใหม่เอาเงินจริงไปลอง
   <sub>trading, perps, phoenix, jupiter, sveltekit, bun, privy, reference-app</sub>
+- [Frontier Traders — โปรแกรม incentive การเทรดของ Foundation](https://www.frontiertraders.com/) `official`
+  ยืนยันแล้วว่าเป็นของ Foundation จริง ไม่ใช่ของปลอม — ToS ของเว็บระบุเองว่า Solana Foundation เป็น Sponsor ของ onchain markets program ที่รันผ่าน trading.solana.com และ dig แล้วพบว่า trading.solana.com กับ www.frontiertraders.com ชี้ไป Vercel deployment เดียวกันเป๊ะ; แคมเปญเป็นการแข่งเทรด เงินรางวัลก้อนละ $25,000 แบ่งตาม leaderboard สองสาย volume กับ PnL นับเฉพาะกระเป๋าที่สมัครและยืนยันแล้ว ล่าสุดเปิดให้เคลม 31 ก.ค. 2026 หน้าต่าง 30 วัน (micron / sndk / bot) พาร์ตเนอร์ที่โชว์บนหน้าแรกมี Phoenix, Pyth, Helius, Backpack, Ondo, DoubleZero, Axiom, Pump.fun; ข้อควรคิดก่อนกระจายในชุมชน — นี่คือรางวัลจากการเทรด ไม่ใช่จากการสร้าง และ leaderboard แบบ PnL เร่งให้คนกล้าเสี่ยงมากขึ้นโดยธรรมชาติ ต่างจาก bounty หรือ grant ในหมวด funding ที่ยิ่งทำยิ่งได้ทักษะ; ต้องเชื่อมกระเป๋าและยืนยันตัวตนด้วย และ solana.com หน้าหลักที่เช็คแล้วไม่ได้ลิงก์มาที่นี่ คนทั่วไปจึงตรวจสอบความเป็นทางการเองได้ยาก
+  <sub>incentive, competition, leaderboard, trading, campaign, verified-wallet</sub>
 
 ## Mobile
 
