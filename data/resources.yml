@@ -157,7 +157,7 @@ resources:
     category: official
     source: foundation
     tags: [github, docs, contributable]
-    note: PR เข้าตรงนี้ได้ — ช่องทางหลักถ้าจะ contribute เนื้อหา/แปล
+    note: 'ARCHIVED — ตรวจ 4 ส.ค. 2026 ด้วย gh api ได้ archived=true, push ล่าสุด 24 ม.ค. 2025 เปิด PR ไม่ได้แล้ว เนื้อหาย้ายไปอยู่ solana-com เก็บไว้อ้างอิงประวัติเท่านั้น (โน้ตเดิมเขียนว่าเป็นช่องทาง contribute ซึ่งผิด)'
     status: ok
     added: 2026-08-04
 
@@ -313,6 +313,7 @@ resources:
     category: framework
     source: foundation
     tags: [anchor, github]
+    note: 'URL นี้ 301 ไป github.com/otter-sec/anchor แล้ว (crates.io ของ anchor-lang ก็ชี้ otter-sec) แต่ anchor-lang.com ยังลิงก์ solana-foundation อยู่ — คงไว้แบบนี้เพราะ 301 ยังพาไปถึง แต่ต้องรู้ว่าคนดูแลจริงเปลี่ยนแล้ว'
     status: ok
     added: 2026-08-04
 
@@ -598,12 +599,12 @@ resources:
     status: ok
     added: 2026-08-04
 
-  - url: https://docs.kora.network/
+  - url: https://solana.com/docs/tools/kora
     name: Kora (gasless/relayer)
     category: payments
-    source: community
-    tags: [gasless, relayer]
-    note: อยู่ในลิสต์ curated ของ Foundation แต่ตอนเช็คลิงก์ resolve ไม่ผ่าน — ต้องยืนยันซ้ำ
+    source: foundation
+    tags: [gasless, relayer, fee-payer, onboarding]
+    note: 'relayer ที่ทำให้ผู้ใช้ทำธุรกรรมได้โดยไม่ต้องมี SOL — อ่านคู่กับ fee-abstraction และ x402-facilitator ในหมวดเดียวกัน; แก้ URL 4 ส.ค. 2026: ของเดิมชี้ docs.kora.network ซึ่งตายแล้ว (TLS ล้ม) และโดเมน kora.network กลายเป็น parked domain ประกาศขาย — apex ตอบ 200 แต่เนื้อแค่ 114 byte redirect ไป GoDaddy อย่าเผลอใช้เป็นตัวสำรอง'
     status: unverified
     added: 2026-08-04
 
@@ -728,11 +729,12 @@ resources:
     status: ok
     added: 2026-08-04
 
-  - url: https://github.com/quiknode-labs/solana-anchor-claude-skill
-    name: QuickNode — Anchor Claude Skill
+  - url: https://github.com/quicknode/solana-finance-claude-plugin
+    name: QuickNode — Solana Finance Claude Plugin
     category: ai-agent
     source: vendor
-    tags: [skill, anchor, kit]
+    tags: [skill, plugin, finance, claude]
+    note: 'แก้ 4 ส.ค. 2026 — URL เดิม quiknode-labs/solana-anchor-claude-skill 301 มาที่นี่ และของเปลี่ยนไปแล้วจริงๆ ไม่ใช่แค่ย้ายบ้าน ชื่อเดิมในแคตตาล็อกจึงชี้ผิดของ'
     status: ok
     added: 2026-08-04
 
@@ -805,13 +807,6 @@ resources:
     status: blocked
     added: 2026-08-04
 
-  - url: https://flipsidecrypto.xyz/
-    name: Flipside Crypto
-    category: data-analytics
-    source: vendor
-    tags: [sql, historical]
-    status: ok
-    added: 2026-08-04
 
   - url: https://defillama.com/chain/Solana
     name: DefiLlama — Solana
@@ -1212,7 +1207,7 @@ resources:
     category: ai-agent
     source: foundation
     tags: [llms-txt, markdown, context, agent, index]
-    note: "ดัชนี 514 หน้าเอกสารทางการพร้อมคำอธิบายบรรทัดเดียวต่อหน้า — ท่าที่ควรรู้และเช็คแล้วว่าใช้ได้จริง: เติม .md ท้าย URL ไหนก็ได้จะได้ markdown ดิบ (หรือส่ง header Accept: text/markdown ผลเท่ากัน) และมีดัชนีย่อยรายหมวด เช่น /docs/finance/llms.txt, /docs/payments/llms.txt ขนาดแค่ ~500 byte ใช้ตัวย่อยตอนทำงานเรื่องเดียวจะประหยัด context กว่าเยอะ; ตัวไฟล์เองบอกด้วยว่าโค้ดใน cookbook มาจากไฟล์ตัวอย่างที่เทสต์แล้ว ให้เชื่อมากกว่าเดาเอง"
+    note: "ดัชนี 514 หน้าเอกสารทางการพร้อมคำอธิบายบรรทัดเดียวต่อหน้า — ท่าที่ควรรู้และเช็คแล้วว่าใช้ได้จริง: เติม .md ท้าย URL ไหนก็ได้จะได้ markdown ดิบ (หรือส่ง header Accept: text/markdown ผลเท่ากัน) และมีดัชนีย่อยรายหมวด ขนาดต่างกันมากตามหมวด (วัดเอง 4 ส.ค. 2026: finance 471 byte, defi 1.4 KB, payments 5.5 KB, rpc 13.5 KB) ใช้ตัวย่อยตอนทำงานเรื่องเดียวจะประหยัด context กว่าดัชนีเต็ม 93 KB มาก; ตัวไฟล์เองบอกด้วยว่าโค้ดใน cookbook มาจากไฟล์ตัวอย่างที่เทสต์แล้ว ให้เชื่อมากกว่าเดาเอง"
     status: ok
     added: 2026-08-04
 
@@ -1383,7 +1378,7 @@ resources:
     category: payments
     source: foundation
     tags: [production, checklist, rpc, priority-fee, retry, security]
-    note: 'ครอบ RPC infra, การทำให้ tx ลงบล็อกจริง, ระดับ confirmation, จัดการ error, gasless, security แล้วปิดท้ายด้วยเช็คลิสต์ 15 ข้อก่อนขึ้น mainnet (RPC สำรอง, priority fee แบบไดนามิก, retry ตอน blockhash หมดอายุ, ยืนยัน mint ว่าไม่ใช่ของ devnet, ไม่มี key ใน frontend, load test) — เอาไปใช้เป็นแบบฟอร์มรีวิวโปรเจกต์ในชุมชนได้เลย ตัวนี้คุ้มที่สุดในหมวดนี้'
+    note: 'ครอบ RPC infra, การทำให้ tx ลงบล็อกจริง, ระดับ confirmation, จัดการ error, gasless, security แล้วปิดท้ายด้วยเช็คลิสต์ 14 ข้อก่อนขึ้น mainnet (นับ checkbox จริงแล้ว) (RPC สำรอง, priority fee แบบไดนามิก, retry ตอน blockhash หมดอายุ, ยืนยัน mint ว่าไม่ใช่ของ devnet, ไม่มี key ใน frontend, load test) — เอาไปใช้เป็นแบบฟอร์มรีวิวโปรเจกต์ในชุมชนได้เลย ตัวนี้คุ้มที่สุดในหมวดนี้'
     status: ok
     added: 2026-08-04
 
@@ -1510,5 +1505,23 @@ resources:
     source: vendor
     tags: [indexer, clickhouse, rust, opensource]
     note: 'โค้ดของ Superbank — Rust อยู่ใต้ org solana-rpc ไม่ใช่ rpcpool อย่างที่เดา (หาไม่เจอถ้าไล่จาก org ของ Triton) ★49 ยัง active ส.ค. 2026; อ่านคู่กับบทความ self-hosting ในหมวดเดียวกัน ตัวบทความบอกว่าทำไมและต้องเตรียมอะไร ส่วน repo บอกว่าโครงสร้างจริงเป็นยังไง'
+    status: ok
+    added: 2026-08-04
+
+  - url: https://www.solanapolicyinstitute.org/
+    name: 'Solana Policy Institute'
+    category: official
+    source: community
+    tags: [policy, regulation, nonprofit, advocacy, legal]
+    note: 'องค์กรไม่แสวงกำไร ไม่ฝักใฝ่พรรค ทำหน้าที่อธิบายเครือข่ายกระจายศูนย์ให้ผู้ออกกฎหมายเข้าใจ — ทำงาน 6 เรื่อง: stablecoin, Project Open, การคุ้มครองนักพัฒนา, การเปิดให้คนทั่วไปเข้าถึงการลงทุน, ความชัดเจนเรื่องภาษีจาก staking/mining และกฎหมายโครงสร้างตลาด; มีคลังเอกสารกฎหมาย (amicus brief, จดหมายร่วม) และห้องข่าวที่ตาม CLARITY Act อยู่; ค่าที่แท้จริงสำหรับงานไทยคือใช้เป็นแม่แบบว่าเวลาคุยกับหน่วยงานกำกับควรวางกรอบเรื่องยังไง โดยเฉพาะประเด็นการคุ้มครองนักพัฒนา (เขียนโค้ดโอเพนซอร์สไม่ควรถูกตีความเป็นตัวกลาง) ที่ตรงกับความกังวลของ dev ไทย; ระวัง เป็นมุมนโยบายสหรัฐ เอามาใช้ตรงๆ กับกฎไทยไม่ได้ และเว็บไม่ได้ระบุความสัมพันธ์กับ Solana Foundation ชัดเจน'
+    status: ok
+    added: 2026-08-04
+
+  - url: https://github.com/solana-foundation/solana-dev-skill/blob/main/skills/solana-dev/references/compatibility-matrix.md
+    name: 'Compatibility Matrix (ของ Foundation)'
+    category: framework
+    source: foundation
+    tags: [version, anchor, toolchain, compatibility, matrix]
+    note: 'ตารางความเข้ากันได้ทางการ 15 KB ครอบ Anchor 0.29 ถึง 1.1.x, Solana CLI 1.16-4.1, Platform Tools, GLIBC รายดิสโทร, และเวอร์ชัน litesvm ฝั่ง Rust/node — น่าอายที่ repo นี้เพิ่งเพิ่มวันนี้ทั้งที่เป็นวัตถุดิบหลักของงานตารางเวอร์ชันที่ตั้งเป็นเป้าไว้เอง; สิ่งที่ตารางนี้ไม่มีและเป็นช่องที่เหลือให้ทำจริงคือแกน @solana/kit และ web3.js v3 กับการยืนยันบน macOS (ของเขาอิง Debian)'
     status: ok
     added: 2026-08-04

@@ -3,15 +3,15 @@
 > ไฟล์นี้ถูก generate จาก [data/resources.yml](data/resources.yml) — **อย่าแก้ตรงนี้**
 > แก้ที่ YAML แล้วรัน `./scripts/render.sh`
 
-รวม **171** รายการ · อัปเดต 2026-08-04
+รวม **172** รายการ · อัปเดต 2026-08-04
 
 หมายเหตุสถานะ: `blocked` = เว็บกัน bot ตอน curl (ลิงก์ยังใช้ได้), `unverified` = เช็คอัตโนมัติไม่ผ่าน ต้องดูด้วยตา
 
 ## สารบัญ
 
-- [Official — Foundation & Anza (source of truth ตัวจริง)](#official--foundation--anza-source-of-truth-ตัวจริง) — 16
+- [Official — Foundation & Anza (source of truth ตัวจริง)](#official--foundation--anza-source-of-truth-ตัวจริง) — 17
 - [Learning — คอร์ส, bootcamp, tutorial](#learning--คอร์ส-bootcamp-tutorial) — 13
-- [Program Frameworks — Anchor / Pinocchio / native](#program-frameworks--anchor--pinocchio--native) — 11
+- [Program Frameworks — Anchor / Pinocchio / native](#program-frameworks--anchor--pinocchio--native) — 12
 - [Client SDK — Kit, web3.js, scaffolding](#client-sdk--kit-web3js-scaffolding) — 10
 - [Testing — LiteSVM, Mollusk, Surfpool](#testing--litesvm-mollusk-surfpool) — 5
 - [IDL & Codegen](#idl--codegen) — 4
@@ -20,7 +20,7 @@
 - [Security & Audit](#security--audit) — 5
 - [AI / Agent Skills / MCP](#ai--agent-skills--mcp) — 15
 - [Infra & RPC providers](#infra--rpc-providers) — 10
-- [Data & Analytics](#data--analytics) — 14
+- [Data & Analytics](#data--analytics) — 13
 - [DeFi & Ecosystem protocols](#defi--ecosystem-protocols) — 12
 - [Mobile](#mobile) — 2
 - [Protocol internals — Agave, Firedancer, network upgrades](#protocol-internals--agave-firedancer-network-upgrades) — 7
@@ -56,7 +56,7 @@
 - [Solana Foundation GitHub](https://github.com/solana-foundation) `official`
   <sub>github, org</sub>
 - [developer-content (repo ของ docs ทั้งหมด)](https://github.com/solana-foundation/developer-content) `official`
-  PR เข้าตรงนี้ได้ — ช่องทางหลักถ้าจะ contribute เนื้อหา/แปล
+  ARCHIVED — ตรวจ 4 ส.ค. 2026 ด้วย gh api ได้ archived=true, push ล่าสุด 24 ม.ค. 2025 เปิด PR ไม่ได้แล้ว เนื้อหาย้ายไปอยู่ solana-com เก็บไว้อ้างอิงประวัติเท่านั้น (โน้ตเดิมเขียนว่าเป็นช่องทาง contribute ซึ่งผิด)
   <sub>github, docs, contributable</sub>
 - [solana-com (เว็บ solana.com)](https://github.com/solana-foundation/solana-com) `official`
   มี i18n อยู่ในนี้ — จุดเข้าถ้าจะดันภาษาไทย
@@ -72,6 +72,9 @@
 - [Anza — repo ทั้งหมด (60 repo)](https://github.com/orgs/anza-xyz/repositories) `anza`
   ฝั่ง Anza เป็นคนทำ core: agave (validator), kit (JS SDK ที่มาแทน web3.js), solana-sdk (Rust), pinocchio, mollusk, jetstreamer (indexing 2.7M TPS+), llvm-project fork; เข้าหน้านี้เวลาจะเช็คว่าเครื่องมือ core ตัวไหนยังมีคนแตะอยู่ — ดูวันที่ push สำคัญกว่าดาว เพราะหลายตัวดาวน้อยแต่เป็นของจริงที่ใช้ใน production
   <sub>github, index, browse, agave, kit</sub>
+- [Solana Policy Institute](https://www.solanapolicyinstitute.org/)
+  องค์กรไม่แสวงกำไร ไม่ฝักใฝ่พรรค ทำหน้าที่อธิบายเครือข่ายกระจายศูนย์ให้ผู้ออกกฎหมายเข้าใจ — ทำงาน 6 เรื่อง: stablecoin, Project Open, การคุ้มครองนักพัฒนา, การเปิดให้คนทั่วไปเข้าถึงการลงทุน, ความชัดเจนเรื่องภาษีจาก staking/mining และกฎหมายโครงสร้างตลาด; มีคลังเอกสารกฎหมาย (amicus brief, จดหมายร่วม) และห้องข่าวที่ตาม CLARITY Act อยู่; ค่าที่แท้จริงสำหรับงานไทยคือใช้เป็นแม่แบบว่าเวลาคุยกับหน่วยงานกำกับควรวางกรอบเรื่องยังไง โดยเฉพาะประเด็นการคุ้มครองนักพัฒนา (เขียนโค้ดโอเพนซอร์สไม่ควรถูกตีความเป็นตัวกลาง) ที่ตรงกับความกังวลของ dev ไทย; ระวัง เป็นมุมนโยบายสหรัฐ เอามาใช้ตรงๆ กับกฎไทยไม่ได้ และเว็บไม่ได้ระบุความสัมพันธ์กับ Solana Foundation ชัดเจน
+  <sub>policy, regulation, nonprofit, advocacy, legal</sub>
 
 ## Learning — คอร์ส, bootcamp, tutorial
 
@@ -119,6 +122,7 @@
   ปัจจุบัน Anchor 1.0 แล้ว (เครื่องคุณ = anchor-cli 1.0.2)
   <sub>anchor, docs, canonical</sub>
 - [Anchor Repository](https://github.com/solana-foundation/anchor) `official`
+  URL นี้ 301 ไป github.com/otter-sec/anchor แล้ว (crates.io ของ anchor-lang ก็ชี้ otter-sec) แต่ anchor-lang.com ยังลิงก์ solana-foundation อยู่ — คงไว้แบบนี้เพราะ 301 ยังพาไปถึง แต่ต้องรู้ว่าคนดูแลจริงเปลี่ยนแล้ว
   <sub>anchor, github</sub>
 - [Anchor Version Manager (AVM)](https://www.anchor-lang.com/docs/avm) `official`
   <sub>anchor, versioning</sub>
@@ -136,6 +140,9 @@
   <sub>optimization, cu</sub>
 - [sBPF Assembly SDK](https://github.com/blueshift-gg/sbpf)
   <sub>sbpf, assembly, advanced</sub>
+- [Compatibility Matrix (ของ Foundation)](https://github.com/solana-foundation/solana-dev-skill/blob/main/skills/solana-dev/references/compatibility-matrix.md) `official`
+  ตารางความเข้ากันได้ทางการ 15 KB ครอบ Anchor 0.29 ถึง 1.1.x, Solana CLI 1.16-4.1, Platform Tools, GLIBC รายดิสโทร, และเวอร์ชัน litesvm ฝั่ง Rust/node — น่าอายที่ repo นี้เพิ่งเพิ่มวันนี้ทั้งที่เป็นวัตถุดิบหลักของงานตารางเวอร์ชันที่ตั้งเป็นเป้าไว้เอง; สิ่งที่ตารางนี้ไม่มีและเป็นช่องที่เหลือให้ทำจริงคือแกน @solana/kit และ web3.js v3 กับการยืนยันบน macOS (ของเขาอิง Debian)
+  <sub>version, anchor, toolchain, compatibility, matrix</sub>
 
 ## Client SDK — Kit, web3.js, scaffolding
 
@@ -214,9 +221,9 @@
   <sub>payment, qr</sub>
 - [Payments docs](https://solana.com/docs/payments) `official`
   <sub>payment, checkout</sub>
-- [Kora (gasless/relayer)](https://docs.kora.network/) `unverified`
-  อยู่ในลิสต์ curated ของ Foundation แต่ตอนเช็คลิงก์ resolve ไม่ผ่าน — ต้องยืนยันซ้ำ
-  <sub>gasless, relayer</sub>
+- [Kora (gasless/relayer)](https://solana.com/docs/tools/kora) `official` `unverified`
+  relayer ที่ทำให้ผู้ใช้ทำธุรกรรมได้โดยไม่ต้องมี SOL — อ่านคู่กับ fee-abstraction และ x402-facilitator ในหมวดเดียวกัน; แก้ URL 4 ส.ค. 2026: ของเดิมชี้ docs.kora.network ซึ่งตายแล้ว (TLS ล้ม) และโดเมน kora.network กลายเป็น parked domain ประกาศขาย — apex ตอบ 200 แต่เนื้อแค่ 114 byte redirect ไป GoDaddy อย่าเผลอใช้เป็นตัวสำรอง
+  <sub>gasless, relayer, fee-payer, onboarding</sub>
 - [Solana × WSOP (case study การใช้งานจริง)](https://solana.com/wsop) `official`
   Solana เป็น presenting sponsor ของ WSOP 2026 — ของจริงที่ใช้อ้างได้คือ buy-in ทัวร์นาเมนต์ผ่านแอป WSOP LIVE ด้วย SOL/USDC/USDT ยืนยันทันที ไม่มีค่าธรรมเนียมประมวลผล เป็นเคส consumer payments ระดับแบรนด์ mainstream ที่เล่าให้คนนอกวงคริปโตฟังรู้เรื่อง ใช้เปิดหัวตอนพูดเรื่อง payments ได้; ระวัง — เป็นหน้าแคมเปญ ไม่ใช่เอกสารเทคนิค งาน Showdown 4 ส.ค. 2026 และ Paradise ธ.ค. 2026 ผ่านไปแล้วน่าจะเน่า ให้รีวิวใหม่ต้นปี 2027
   <sub>adoption, case-study, consumer, usdc, mainstream</sub>
@@ -254,7 +261,7 @@
   ยัดหลาย instruction ใน transaction เดียวเพื่อจ่ายหลายปลายทางพร้อมกัน มีโค้ดไล่ตั้งแต่หา token account จนตรวจยอด และมีหัวข้อ transaction planning ตอนจำนวนเกินขนาด tx; ใช้ได้จริงกับงานแจกรางวัล quest / จ่ายค่าตอบแทนชุมชนเป็นรอบ
   <sub>batch, airdrop, transaction-planning, payroll</sub>
 - [Production Readiness — เช็คลิสต์ก่อนขึ้น mainnet](https://solana.com/docs/payments/production-readiness) `official`
-  ครอบ RPC infra, การทำให้ tx ลงบล็อกจริง, ระดับ confirmation, จัดการ error, gasless, security แล้วปิดท้ายด้วยเช็คลิสต์ 15 ข้อก่อนขึ้น mainnet (RPC สำรอง, priority fee แบบไดนามิก, retry ตอน blockhash หมดอายุ, ยืนยัน mint ว่าไม่ใช่ของ devnet, ไม่มี key ใน frontend, load test) — เอาไปใช้เป็นแบบฟอร์มรีวิวโปรเจกต์ในชุมชนได้เลย ตัวนี้คุ้มที่สุดในหมวดนี้
+  ครอบ RPC infra, การทำให้ tx ลงบล็อกจริง, ระดับ confirmation, จัดการ error, gasless, security แล้วปิดท้ายด้วยเช็คลิสต์ 14 ข้อก่อนขึ้น mainnet (นับ checkbox จริงแล้ว) (RPC สำรอง, priority fee แบบไดนามิก, retry ตอน blockhash หมดอายุ, ยืนยัน mint ว่าไม่ใช่ของ devnet, ไม่มี key ใน frontend, load test) — เอาไปใช้เป็นแบบฟอร์มรีวิวโปรเจกต์ในชุมชนได้เลย ตัวนี้คุ้มที่สุดในหมวดนี้
   <sub>production, checklist, rpc, priority-fee, retry, security</sub>
 - [Payments Developer Tools (รวมของฝั่ง vendor)](https://solana.com/docs/payments/developer-tools) `official`
   ลิสต์เครื่องมือฝั่งที่สาม แยกเป็น CLI / library&SDK / faucet devnet / infra / auth / AI tools / program dev — ใช้เป็นแหล่งหา resource ต่อ และเป็นที่มาของชื่อแพ็กเกจตระกูล @solana-commerce/* ที่โผล่ในไกด์อื่น
@@ -311,12 +318,13 @@
   <sub>claude-code, config, template</sub>
 - [Helius core-ai skills](https://github.com/helius-labs/core-ai) `vendor`
   <sub>skill, rpc, das, svm-internals</sub>
-- [QuickNode — Anchor Claude Skill](https://github.com/quiknode-labs/solana-anchor-claude-skill) `vendor`
-  <sub>skill, anchor, kit</sub>
+- [QuickNode — Solana Finance Claude Plugin](https://github.com/quicknode/solana-finance-claude-plugin) `vendor`
+  แก้ 4 ส.ค. 2026 — URL เดิม quiknode-labs/solana-anchor-claude-skill 301 มาที่นี่ และของเปลี่ยนไปแล้วจริงๆ ไม่ใช่แค่ย้ายบ้าน ชื่อเดิมในแคตตาล็อกจึงชี้ผิดของ
+  <sub>skill, plugin, finance, claude</sub>
 - [Orquestra (IDL → REST + MCP)](https://github.com/berkayoztunc/orquestra)
   <sub>idl, rest-api, mcp</sub>
 - [solana.com llms.txt (ดัชนีเอกสารสำหรับ AI)](https://solana.com/llms.txt) `official`
-  ดัชนี 514 หน้าเอกสารทางการพร้อมคำอธิบายบรรทัดเดียวต่อหน้า — ท่าที่ควรรู้และเช็คแล้วว่าใช้ได้จริง: เติม .md ท้าย URL ไหนก็ได้จะได้ markdown ดิบ (หรือส่ง header Accept: text/markdown ผลเท่ากัน) และมีดัชนีย่อยรายหมวด เช่น /docs/finance/llms.txt, /docs/payments/llms.txt ขนาดแค่ ~500 byte ใช้ตัวย่อยตอนทำงานเรื่องเดียวจะประหยัด context กว่าเยอะ; ตัวไฟล์เองบอกด้วยว่าโค้ดใน cookbook มาจากไฟล์ตัวอย่างที่เทสต์แล้ว ให้เชื่อมากกว่าเดาเอง
+  ดัชนี 514 หน้าเอกสารทางการพร้อมคำอธิบายบรรทัดเดียวต่อหน้า — ท่าที่ควรรู้และเช็คแล้วว่าใช้ได้จริง: เติม .md ท้าย URL ไหนก็ได้จะได้ markdown ดิบ (หรือส่ง header Accept: text/markdown ผลเท่ากัน) และมีดัชนีย่อยรายหมวด ขนาดต่างกันมากตามหมวด (วัดเอง 4 ส.ค. 2026: finance 471 byte, defi 1.4 KB, payments 5.5 KB, rpc 13.5 KB) ใช้ตัวย่อยตอนทำงานเรื่องเดียวจะประหยัด context กว่าดัชนีเต็ม 93 KB มาก; ตัวไฟล์เองบอกด้วยว่าโค้ดใน cookbook มาจากไฟล์ตัวอย่างที่เทสต์แล้ว ให้เชื่อมากกว่าเดาเอง
   <sub>llms-txt, markdown, context, agent, index</sub>
 - [solana.com llms-full.txt (เอกสารทั้งชุดไฟล์เดียว)](https://solana.com/llms-full.txt) `official`
   เอกสารทั้งหมดรวมไฟล์เดียว 4.5 MB ~462,000 คำ — ใหญ่เกินกว่าจะโยนเข้า context ตรงๆ เหมาะกับ index ทำ RAG หรือ grep ออฟไลน์มากกว่า ถ้าจะให้ agent อ่านสดใช้ llms.txt ตัวดัชนีแล้วดึงเฉพาะหน้าที่ต้องการจะคุ้มกว่ามาก
@@ -361,8 +369,6 @@
 - [Dune Analytics](https://dune.com/) `vendor` `blocked`
   fork dashboard คนอื่นได้ ประหยัดเวลามาก
   <sub>sql, dashboard, fork</sub>
-- [Flipside Crypto](https://flipsidecrypto.xyz/) `vendor`
-  <sub>sql, historical</sub>
 - [DefiLlama — Solana](https://defillama.com/chain/Solana) `vendor` `blocked`
   <sub>tvl, defi</sub>
 - [Solana Compass](https://solanacompass.com/)
