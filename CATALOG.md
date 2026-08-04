@@ -3,7 +3,7 @@
 > ไฟล์นี้ถูก generate จาก [data/resources.yml](data/resources.yml) — **อย่าแก้ตรงนี้**
 > แก้ที่ YAML แล้วรัน `./scripts/render.sh`
 
-รวม **174** รายการ · อัปเดต 2026-08-04
+รวม **176** รายการ · อัปเดต 2026-08-04
 
 หมายเหตุสถานะ: `blocked` = เว็บกัน bot ตอน curl (ลิงก์ยังใช้ได้), `unverified` = เช็คอัตโนมัติไม่ผ่าน ต้องดูด้วยตา
 
@@ -19,13 +19,13 @@
 - [Payments & Commerce](#payments--commerce) — 20
 - [Security & Audit](#security--audit) — 5
 - [AI / Agent Skills / MCP](#ai--agent-skills--mcp) — 15
-- [Infra & RPC providers](#infra--rpc-providers) — 10
+- [Infra & RPC providers](#infra--rpc-providers) — 11
 - [Data & Analytics](#data--analytics) — 13
 - [DeFi & Ecosystem protocols](#defi--ecosystem-protocols) — 12
 - [Mobile](#mobile) — 2
 - [Protocol internals — Agave, Firedancer, network upgrades](#protocol-internals--agave-firedancer-network-upgrades) — 7
 - [Governance — SGP, SIMD, โหวตบนเชน](#governance--sgp-simd-โหวตบนเชน) — 8
-- [Funding — grants, hackathon, bounty, jobs](#funding--grants-hackathon-bounty-jobs) — 12
+- [Funding — grants, hackathon, bounty, jobs](#funding--grants-hackathon-bounty-jobs) — 13
 - [Thailand — ชุมชนไทย](#thailand--ชุมชนไทย) — 3
 
 ## Official — Foundation & Anza (source of truth ตัวจริง)
@@ -364,6 +364,9 @@
 - [superbank (repo)](https://github.com/solana-rpc/superbank) `vendor`
   โค้ดของ Superbank — Rust อยู่ใต้ org solana-rpc ไม่ใช่ rpcpool อย่างที่เดา (หาไม่เจอถ้าไล่จาก org ของ Triton) ★49 ยัง active ส.ค. 2026; อ่านคู่กับบทความ self-hosting ในหมวดเดียวกัน ตัวบทความบอกว่าทำไมและต้องเตรียมอะไร ส่วน repo บอกว่าโครงสร้างจริงเป็นยังไง
   <sub>indexer, clickhouse, rust, opensource</sub>
+- [MagicBlock — real-time engine (Ephemeral Rollups)](https://www.magicblock.xyz/) `vendor`
+  แก้ปัญหาที่ Solana ยังทำไม่ได้ดีคือ latency ระดับต่ำกว่า slot — ใช้ Ephemeral Rollup ดึง account ออกมารันในเครื่องเร็วชั่วคราวแล้วค่อย settle กลับ เคลม block time 1ms และ end-to-end ต่ำกว่า 50ms รวมกับ TEE บน Intel TDX สำหรับงานที่ต้องปิดข้อมูล; เป้าหมายคือเกมหลายผู้เล่น เทรดความถี่สูง และงาน real-time ที่เดิมทำบนเชนไม่ไหว; ของจริงเปิดโค้ดหมดที่ org magicblock-labs (82 repo) ตัวหลักคือ magicblock-validator, delegation-program (ประตูเข้า rollup), magicblock-engine-examples และ hydra (crank แบบ permissionless) ทุกตัวยัง active ส.ค. 2026; ระวัง หน้าเว็บไม่ระบุสถานะ mainnet ชัด ต้องเช็คก่อนแนะนำใครเอาไปใช้จริง
+  <sub>ephemeral-rollup, latency, tee, gaming, realtime, delegation</sub>
 
 ## Data & Analytics
 
@@ -520,6 +523,9 @@
 - [Alpenglow Bug Bounty — 50,000 SOL (5-19 ส.ค. 2026)](https://github.com/anza-xyz/alpenglow) `anza`
   เตือน: หน้าต่างส่งแค่ 5-19 ส.ค. 2026 เท่านั้น เงินรางวัลรวมสูงสุด 50,000 SOL; repo นี้ไม่มีโค้ด เป็นแค่ประตูรับ submission — ตัว Alpenglow จริงอยู่ใน agave เขาชี้จุดเริ่มไว้ 4 crate คือ votor (เครื่องโหวต), votor-messages (ชนิดของ vote/certificate), bls-sigverify, bls-cert-verify; เดิม Alpenglow ถูกกันออกจาก bug bounty ของ agave เพิ่งมาเข้าเกณฑ์รอบนี้ แปลว่าโค้ดส่วนนี้ยังผ่านสายตาคนนอกน้อยกว่าส่วนอื่น; ส่งผ่าน GitHub Security Advisory และห้ามเปิดเผยถึงจะเข้าเกณฑ์ — ควรกระจายข่าวในชุมชนทันทีเพราะปิดเร็ว
   <sub>bounty, security, consensus, alpenglow, audit, deadline</sub>
+- [MagicBlock Builders — ไดเรกทอรีนักพัฒนา + เส้นทางสู่ทุน](https://build.magicblock.app/builders) `vendor`
+  ไดเรกทอรีนักพัฒนาที่วางเส้นทางไว้ตั้งแต่แฮกกาธอน ผ่านโปรแกรม Forge และ Hacker House ไปจนถึงระดมทุน — ค่าสำหรับคนไทยคือช่องหา cofounder และเข้ากลุ่ม builder ที่ไม่ต้องรอให้มีคนแนะนำ กรอกโปรไฟล์พร้อม proof of work และประเทศแล้วเข้าได้เลย ไม่มีเดดไลน์; ข้อควรบอกก่อนชวนใครสมัคร — ต้องล็อกอินด้วย Telegram และเชื่อมกระเป๋า ซึ่งเป็นการผูกตัวตนกับที่อยู่กระเป๋าในไดเรกทอรีสาธารณะ ควรใช้กระเป๋าที่ไม่ใช่ตัวหลักและบอกคนในชุมชนให้รู้ก่อนตัดสินใจ
+  <sub>directory, cofounder, hackathon, forge, hacker-house, community</sub>
 
 ## Thailand — ชุมชนไทย
 

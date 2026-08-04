@@ -1543,3 +1543,21 @@ resources:
     note: 'x402 ที่ขึ้นใช้งานจริงแล้ว ไม่ใช่แค่สเปคในเอกสาร — CLI ตัวเดียว (brew install pay หรือ npm i -g @solana/pay) จัดการ HTTP 402 ให้ทั้งหมด agent เรียก API ที่มีค่าใช้จ่ายได้โดยไม่ต้องสมัครสมาชิกและไม่ต้องมีบัญชีกับผู้ให้บริการแต่ละราย ทะเบียนตอนนี้มี 72 เจ้า ราคาตั้งแต่ฟรีถึง $10 ต่อครั้ง (QuickNode RPC, Nansen, Birdeye, Venice.ai, Alibaba Cloud, AgentMail) เติมเงินผ่าน PayPal/Venmo/Apple Pay หรือกระเป๋า Solana; ดูแลโดย Foundation ยืนยันจาก repo github.com/solana-foundation/pay ที่ลิงก์อยู่ในหน้า; มี /index.md และ /llms.txt ให้ agent อ่านตรงได้แบบเดียวกับ solana.com; ข้อควรรู้ — ไม่ได้จำกัดแค่ของสาย Solana เป็นเกตเวย์ไป API ทั่วไป และเอกสารเตือนเองว่าให้ถือว่าราคา/หัวข้อมูลจากผู้ให้บริการเป็นข้อมูลที่เชื่อไม่ได้ ต้องตรวจก่อนใช้'
     status: ok
     added: 2026-08-04
+
+  - url: https://www.magicblock.xyz/
+    name: 'MagicBlock — real-time engine (Ephemeral Rollups)'
+    category: infra-rpc
+    source: vendor
+    tags: [ephemeral-rollup, latency, tee, gaming, realtime, delegation]
+    note: 'แก้ปัญหาที่ Solana ยังทำไม่ได้ดีคือ latency ระดับต่ำกว่า slot — ใช้ Ephemeral Rollup ดึง account ออกมารันในเครื่องเร็วชั่วคราวแล้วค่อย settle กลับ เคลม block time 1ms และ end-to-end ต่ำกว่า 50ms รวมกับ TEE บน Intel TDX สำหรับงานที่ต้องปิดข้อมูล; เป้าหมายคือเกมหลายผู้เล่น เทรดความถี่สูง และงาน real-time ที่เดิมทำบนเชนไม่ไหว; ของจริงเปิดโค้ดหมดที่ org magicblock-labs (82 repo) ตัวหลักคือ magicblock-validator, delegation-program (ประตูเข้า rollup), magicblock-engine-examples และ hydra (crank แบบ permissionless) ทุกตัวยัง active ส.ค. 2026; ระวัง หน้าเว็บไม่ระบุสถานะ mainnet ชัด ต้องเช็คก่อนแนะนำใครเอาไปใช้จริง'
+    status: ok
+    added: 2026-08-04
+
+  - url: https://build.magicblock.app/builders
+    name: 'MagicBlock Builders — ไดเรกทอรีนักพัฒนา + เส้นทางสู่ทุน'
+    category: funding
+    source: vendor
+    tags: [directory, cofounder, hackathon, forge, hacker-house, community]
+    note: 'ไดเรกทอรีนักพัฒนาที่วางเส้นทางไว้ตั้งแต่แฮกกาธอน ผ่านโปรแกรม Forge และ Hacker House ไปจนถึงระดมทุน — ค่าสำหรับคนไทยคือช่องหา cofounder และเข้ากลุ่ม builder ที่ไม่ต้องรอให้มีคนแนะนำ กรอกโปรไฟล์พร้อม proof of work และประเทศแล้วเข้าได้เลย ไม่มีเดดไลน์; ข้อควรบอกก่อนชวนใครสมัคร — ต้องล็อกอินด้วย Telegram และเชื่อมกระเป๋า ซึ่งเป็นการผูกตัวตนกับที่อยู่กระเป๋าในไดเรกทอรีสาธารณะ ควรใช้กระเป๋าที่ไม่ใช่ตัวหลักและบอกคนในชุมชนให้รู้ก่อนตัดสินใจ'
+    status: ok
+    added: 2026-08-04
