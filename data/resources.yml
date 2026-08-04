@@ -27,7 +27,8 @@ categories:
   data-analytics: "Data & Analytics"
   defi: "DeFi & Ecosystem protocols"
   mobile: "Mobile"
-  protocol: "Protocol internals — Agave, Firedancer, SIMD"
+  protocol: "Protocol internals — Agave, Firedancer, network upgrades"
+  governance: "Governance — SGP, SIMD, โหวตบนเชน"
   funding: "Funding — grants, hackathon, bounty, jobs"
   thailand: "Thailand — ชุมชนไทย"
 
@@ -965,7 +966,7 @@ resources:
   # ---------------------------------------------------------------- protocol
   - url: https://github.com/solana-foundation/solana-improvement-documents
     name: SIMD — Solana Improvement Documents
-    category: protocol
+    category: governance
     source: foundation
     tags: [governance, spec, proposal]
     note: อยากรู้ว่า protocol จะเปลี่ยนอะไร อ่านที่นี่ก่อนข่าว
@@ -974,7 +975,7 @@ resources:
 
   - url: https://simd.mixy.one/
     name: SIMD Mirror (อ่านง่ายกว่า)
-    category: protocol
+    category: governance
     source: community
     tags: [simd, browse]
     status: ok
@@ -1113,5 +1114,86 @@ resources:
     category: thailand
     source: thailand
     tags: [maintainer]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://solana.com/data
+    name: "Solana Network Data (first-party)"
+    category: data-analytics
+    source: foundation
+    tags: [network-stats, dashboard, official-numbers]
+    note: "ตัวเลขเครือข่ายทางการ (tx, fee, CU, fee payer, slot) — ใช้อ้างอิงในสไลด์/คอนเทนต์ได้โดยไม่ต้องแก้ตัวเลขเอง แต่ refresh วันละ 2 รอบและ lag 1 วัน ไม่ใช่ realtime ถ้าต้องสดใช้ explorer/Dune แทน; หน้านี้ยังลิงก์ไป Allium / Tokens.xyz / Lightspeed / Tx Sender Metrics ด้วย"
+    status: ok
+    added: 2026-08-04
+
+  - url: https://solana.com/upgrades/100m-cu-blocks
+    name: "100M CU Blocks (SIMD-0286)"
+    category: protocol
+    source: foundation
+    tags: [simd, compute-unit, block-limit, mainnet-live]
+    note: "block limit 60M→100M CU ขึ้น mainnet แล้ว epoch 1009 (29 ก.ค. 2026) — dev ทั่วไปไม่ต้องแก้อะไร แต่ที่คนเข้าใจผิดบ่อยคือ per-account write limit ยังเป็น 12M CU เท่าเดิม เพิ่มแค่พื้นที่ขนานไม่ได้ทำให้ tx เดี่ยวเร็วขึ้น; ใช้ตอบคำถามในคอมมูฯ ได้ตรงๆ"
+    status: ok
+    added: 2026-08-04
+
+  - url: https://governance.solana.com/proposal/AGHDQ6gjRFJPoyEcHuc4X7sbxJwyJfeKTb3UrGFzFNZD
+    name: "SGP-0003: Resource and Inclusion Fee (โหวตบนเชน)"
+    category: governance
+    source: foundation
+    tags: [sgp, governance, fee, simd-0553, economics]
+    note: "ข้อเสนอรื้อโครงสร้าง base fee: inclusion fee คงที่ 2,500 lamport/tx เข้า leader 100% + resource fee ตาม requested cost unit เผา 100% (ramp 1/10→1/4→1/2 lamport/CU) priority fee ไม่เปลี่ยน สเปคเทคนิคอยู่ที่ SIMD-0553 โหวตนี้เป็นแค่ mandate ไม่ได้เปิด feature gate — ประเด็นที่ต้องบอกคนไทย: ค่า fee จะผูกกับ CU ที่ 'ขอ' ไม่ใช่ที่ 'ใช้' การใส่ compute budget เผื่อๆ จะเริ่มมีราคา สอน request CU ให้แม่นตั้งแต่ตอนนี้; หน้านี้ render ฝั่ง client — curl/WebFetch ได้หน้าเปล่า ต้องเปิดเบราว์เซอร์หรืออ่าน account บนเชนเอง"
+    status: ok
+    added: 2026-08-04
+
+  - url: https://solana.com/upgrades
+    name: "Solana Network Upgrades (hub)"
+    category: protocol
+    source: foundation
+    tags: [roadmap, upgrade, index, status]
+    note: "หน้ารวม upgrade ทุกตัวพร้อมสถานะ (live / under development / เป้าไตรมาส) — จุดตั้งต้นที่ดีกว่าเก็บหน้าย่อยทีละอันเพราะไม่เน่าเวลามีของใหม่ ใช้เช็คก่อนตอบคำถามคอมมูฯ ว่าอะไรขึ้น mainnet แล้วจริง; ส.ค. 2026 มี 10 ตัว — live: 100M CU Blocks, Optimized Token Program, BLS Pubkey+VAT (อันนี้ validator ต้องลงมือ) · Q3 2026: Larger Tx Sizes, Reduced Slot Times · กำลังทำ: Alpenglow, Reduced Rent, XDP, Agave 4.2, New Crypto Schemes"
+    status: ok
+    added: 2026-08-04
+
+  - url: https://governance.solana.com/
+    name: "Solana Validator Governance (portal)"
+    category: governance
+    source: foundation
+    tags: [sgp, voting, portal, stake-weighted]
+    note: "หน้าโหวตจริง ดู proposal ที่เปิดอยู่/ผลโหวต/top voter — เป็น SPA อ่านผ่าน curl ไม่ได้ ต้องเปิดเบราว์เซอร์ ข้อมูลดิบอยู่บนเชนใต้ program govYkyQ3ePtGULAtY6V75qjWE8UH4vCUVQ1W4HdCAZU"
+    status: ok
+    added: 2026-08-04
+
+  - url: https://docs.governance.solana.com/
+    name: "Solana Governance Docs"
+    category: governance
+    source: foundation
+    tags: [sgp, ncn, svmgov, process, cli]
+    note: "อธิบายกลไกจริง: NCN สร้าง merkle snapshot ของ stake → operator โหวต hash จนได้ consensus → validator เปิด proposal → ได้ support 15% ของ cluster ถึงเปิดโหวต → delegator override เสียงของ validator ตัวเองได้ด้วย stake account proof; มี program ID / CLI args / error code ครบ อ่านตัวนี้ก่อนถ้าจะสอนเรื่อง governance"
+    status: ok
+    added: 2026-08-04
+
+  - url: https://github.com/solana-foundation/solana-governance-proposals
+    name: "SGP — Solana Governance Proposals (repo)"
+    category: governance
+    source: foundation
+    tags: [sgp, markdown, template, lifecycle]
+    note: "ตัว SGP เป็น markdown ทั้งหมด — อ่านง่ายกว่า portal มากและ curl ได้ ต่างจาก SIMD ตรง SGP ตอบ 'ควรทำไหม' (โหวตด้วย stake) SIMD ตอบ 'ทำยังไง' (รีวิวเชิงเทคนิค); ผ่านต้องได้ 2 ใน 3 ไม่มี quorum ขั้นต่ำ lifecycle Draft→Support→Voting→Accepted→Implementation→Activation ราว 11 epoch มี template ให้ด้วย"
+    status: ok
+    added: 2026-08-04
+
+  - url: https://github.com/solana-foundation/solana-governance
+    name: "solana-governance (svmgov tooling)"
+    category: governance
+    source: foundation
+    tags: [svmgov, anchor, cli, rust, ncn]
+    note: "โค้ดทั้งระบบ: โปรแกรม svmgov (Anchor), CLI ภาษา Rust สำหรับเปิด proposal/โหวตจาก terminal, NCN module, frontend Next.js — เป็นตัวอย่าง production Anchor + merkle proof ที่อ่านได้จริง ใช้เป็นวัตถุดิบสอนได้"
+    status: ok
+    added: 2026-08-04
+
+  - url: https://forum.solana.com/c/gov/11
+    name: "Solana Forum — Governance"
+    category: governance
+    source: foundation
+    tags: [forum, discussion, pre-chain, simd]
+    note: "ที่ถกกันก่อนขึ้นเชน เธรดใหญ่ๆ อยู่ที่นี่ (SIMD-0326 Alpenglow 117 reply, priority fee เข้า validator เต็ม 76 reply) — อยากรู้ 'ทำไม' เบื้องหลังโหวตต้องอ่านที่นี่ ไม่ใช่ตัว proposal"
     status: ok
     added: 2026-08-04

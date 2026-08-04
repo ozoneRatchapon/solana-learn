@@ -3,7 +3,7 @@
 > ไฟล์นี้ถูก generate จาก [data/resources.yml](data/resources.yml) — **อย่าแก้ตรงนี้**
 > แก้ที่ YAML แล้วรัน `./scripts/render.sh`
 
-รวม **127** รายการ · อัปเดต 2026-08-04
+รวม **136** รายการ · อัปเดต 2026-08-04
 
 หมายเหตุสถานะ: `blocked` = เว็บกัน bot ตอน curl (ลิงก์ยังใช้ได้), `unverified` = เช็คอัตโนมัติไม่ผ่าน ต้องดูด้วยตา
 
@@ -20,10 +20,11 @@
 - [Security & Audit](#security--audit) — 5
 - [AI / Agent Skills / MCP](#ai--agent-skills--mcp) — 13
 - [Infra & RPC providers](#infra--rpc-providers) — 5
-- [Data & Analytics](#data--analytics) — 9
+- [Data & Analytics](#data--analytics) — 10
 - [DeFi & Ecosystem protocols](#defi--ecosystem-protocols) — 11
 - [Mobile](#mobile) — 2
-- [Protocol internals — Agave, Firedancer, SIMD](#protocol-internals--agave-firedancer-simd) — 6
+- [Protocol internals — Agave, Firedancer, network upgrades](#protocol-internals--agave-firedancer-network-upgrades) — 6
+- [Governance — SGP, SIMD, โหวตบนเชน](#governance--sgp-simd-โหวตบนเชน) — 8
 - [Funding — grants, hackathon, bounty, jobs](#funding--grants-hackathon-bounty-jobs) — 9
 - [Thailand — ชุมชนไทย](#thailand--ชุมชนไทย) — 3
 
@@ -295,6 +296,9 @@
   <sub>token, price, dex</sub>
 - [Step Finance](https://www.step.finance/) `vendor`
   <sub>portfolio, dashboard</sub>
+- [Solana Network Data (first-party)](https://solana.com/data) `official`
+  ตัวเลขเครือข่ายทางการ (tx, fee, CU, fee payer, slot) — ใช้อ้างอิงในสไลด์/คอนเทนต์ได้โดยไม่ต้องแก้ตัวเลขเอง แต่ refresh วันละ 2 รอบและ lag 1 วัน ไม่ใช่ realtime ถ้าต้องสดใช้ explorer/Dune แทน; หน้านี้ยังลิงก์ไป Allium / Tokens.xyz / Lightspeed / Tx Sender Metrics ด้วย
+  <sub>network-stats, dashboard, official-numbers</sub>
 
 ## DeFi & Ecosystem protocols
 
@@ -331,13 +335,8 @@
   dApp Store คิดค่าธรรมเนียม 0% + มี builder grant
   <sub>mobile-stack, dapp-store, sample-apps</sub>
 
-## Protocol internals — Agave, Firedancer, SIMD
+## Protocol internals — Agave, Firedancer, network upgrades
 
-- [SIMD — Solana Improvement Documents](https://github.com/solana-foundation/solana-improvement-documents) `official`
-  อยากรู้ว่า protocol จะเปลี่ยนอะไร อ่านที่นี่ก่อนข่าว
-  <sub>governance, spec, proposal</sub>
-- [SIMD Mirror (อ่านง่ายกว่า)](https://simd.mixy.one/)
-  <sub>simd, browse</sub>
 - [Agave (validator client)](https://github.com/anza-xyz/agave) `anza`
   ปี 2026 ปล่อยรุ่นทุก ~6 สัปดาห์ (v4.x)
   <sub>validator, client</sub>
@@ -349,6 +348,38 @@
 - [Solana Network Upgrades (Alpenglow roadmap)](https://solana.com/news/solana-network-upgrades) `official`
   TowerBFT → Alpenglow เป้า finality 150ms, mainnet ปลายปี 2026
   <sub>alpenglow, consensus, roadmap</sub>
+- [100M CU Blocks (SIMD-0286)](https://solana.com/upgrades/100m-cu-blocks) `official`
+  block limit 60M→100M CU ขึ้น mainnet แล้ว epoch 1009 (29 ก.ค. 2026) — dev ทั่วไปไม่ต้องแก้อะไร แต่ที่คนเข้าใจผิดบ่อยคือ per-account write limit ยังเป็น 12M CU เท่าเดิม เพิ่มแค่พื้นที่ขนานไม่ได้ทำให้ tx เดี่ยวเร็วขึ้น; ใช้ตอบคำถามในคอมมูฯ ได้ตรงๆ
+  <sub>simd, compute-unit, block-limit, mainnet-live</sub>
+- [Solana Network Upgrades (hub)](https://solana.com/upgrades) `official`
+  หน้ารวม upgrade ทุกตัวพร้อมสถานะ (live / under development / เป้าไตรมาส) — จุดตั้งต้นที่ดีกว่าเก็บหน้าย่อยทีละอันเพราะไม่เน่าเวลามีของใหม่ ใช้เช็คก่อนตอบคำถามคอมมูฯ ว่าอะไรขึ้น mainnet แล้วจริง; ส.ค. 2026 มี 10 ตัว — live: 100M CU Blocks, Optimized Token Program, BLS Pubkey+VAT (อันนี้ validator ต้องลงมือ) · Q3 2026: Larger Tx Sizes, Reduced Slot Times · กำลังทำ: Alpenglow, Reduced Rent, XDP, Agave 4.2, New Crypto Schemes
+  <sub>roadmap, upgrade, index, status</sub>
+
+## Governance — SGP, SIMD, โหวตบนเชน
+
+- [SIMD — Solana Improvement Documents](https://github.com/solana-foundation/solana-improvement-documents) `official`
+  อยากรู้ว่า protocol จะเปลี่ยนอะไร อ่านที่นี่ก่อนข่าว
+  <sub>governance, spec, proposal</sub>
+- [SIMD Mirror (อ่านง่ายกว่า)](https://simd.mixy.one/)
+  <sub>simd, browse</sub>
+- [SGP-0003: Resource and Inclusion Fee (โหวตบนเชน)](https://governance.solana.com/proposal/AGHDQ6gjRFJPoyEcHuc4X7sbxJwyJfeKTb3UrGFzFNZD) `official`
+  ข้อเสนอรื้อโครงสร้าง base fee: inclusion fee คงที่ 2,500 lamport/tx เข้า leader 100% + resource fee ตาม requested cost unit เผา 100% (ramp 1/10→1/4→1/2 lamport/CU) priority fee ไม่เปลี่ยน สเปคเทคนิคอยู่ที่ SIMD-0553 โหวตนี้เป็นแค่ mandate ไม่ได้เปิด feature gate — ประเด็นที่ต้องบอกคนไทย: ค่า fee จะผูกกับ CU ที่ 'ขอ' ไม่ใช่ที่ 'ใช้' การใส่ compute budget เผื่อๆ จะเริ่มมีราคา สอน request CU ให้แม่นตั้งแต่ตอนนี้; หน้านี้ render ฝั่ง client — curl/WebFetch ได้หน้าเปล่า ต้องเปิดเบราว์เซอร์หรืออ่าน account บนเชนเอง
+  <sub>sgp, governance, fee, simd-0553, economics</sub>
+- [Solana Validator Governance (portal)](https://governance.solana.com/) `official`
+  หน้าโหวตจริง ดู proposal ที่เปิดอยู่/ผลโหวต/top voter — เป็น SPA อ่านผ่าน curl ไม่ได้ ต้องเปิดเบราว์เซอร์ ข้อมูลดิบอยู่บนเชนใต้ program govYkyQ3ePtGULAtY6V75qjWE8UH4vCUVQ1W4HdCAZU
+  <sub>sgp, voting, portal, stake-weighted</sub>
+- [Solana Governance Docs](https://docs.governance.solana.com/) `official`
+  อธิบายกลไกจริง: NCN สร้าง merkle snapshot ของ stake → operator โหวต hash จนได้ consensus → validator เปิด proposal → ได้ support 15% ของ cluster ถึงเปิดโหวต → delegator override เสียงของ validator ตัวเองได้ด้วย stake account proof; มี program ID / CLI args / error code ครบ อ่านตัวนี้ก่อนถ้าจะสอนเรื่อง governance
+  <sub>sgp, ncn, svmgov, process, cli</sub>
+- [SGP — Solana Governance Proposals (repo)](https://github.com/solana-foundation/solana-governance-proposals) `official`
+  ตัว SGP เป็น markdown ทั้งหมด — อ่านง่ายกว่า portal มากและ curl ได้ ต่างจาก SIMD ตรง SGP ตอบ 'ควรทำไหม' (โหวตด้วย stake) SIMD ตอบ 'ทำยังไง' (รีวิวเชิงเทคนิค); ผ่านต้องได้ 2 ใน 3 ไม่มี quorum ขั้นต่ำ lifecycle Draft→Support→Voting→Accepted→Implementation→Activation ราว 11 epoch มี template ให้ด้วย
+  <sub>sgp, markdown, template, lifecycle</sub>
+- [solana-governance (svmgov tooling)](https://github.com/solana-foundation/solana-governance) `official`
+  โค้ดทั้งระบบ: โปรแกรม svmgov (Anchor), CLI ภาษา Rust สำหรับเปิด proposal/โหวตจาก terminal, NCN module, frontend Next.js — เป็นตัวอย่าง production Anchor + merkle proof ที่อ่านได้จริง ใช้เป็นวัตถุดิบสอนได้
+  <sub>svmgov, anchor, cli, rust, ncn</sub>
+- [Solana Forum — Governance](https://forum.solana.com/c/gov/11) `official`
+  ที่ถกกันก่อนขึ้นเชน เธรดใหญ่ๆ อยู่ที่นี่ (SIMD-0326 Alpenglow 117 reply, priority fee เข้า validator เต็ม 76 reply) — อยากรู้ 'ทำไม' เบื้องหลังโหวตต้องอ่านที่นี่ ไม่ใช่ตัว proposal
+  <sub>forum, discussion, pre-chain, simd</sub>
 
 ## Funding — grants, hackathon, bounty, jobs
 
