@@ -44,6 +44,17 @@
 - **`IFS=$'\t' read` ยุบ field ว่าง** เพราะ tab เป็น IFS whitespace → `render.sh` เลยใช้ `\x1f` (ตัวแปร `$SEP`) ถ้าจะเขียน script ใหม่ที่อ่าน field ซึ่งอาจว่าง ให้ใช้ `$SEP` อย่าใช้ tab
 - **`set -e` + `cmd | while ...; do [ cond ] && ...; done` ใน `$(...)`** — รอบสุดท้ายที่เงื่อนไขเป็นเท็จทำให้ทั้ง pipeline คืน exit 1 แล้ว script ตายเงียบๆ ใช้ `if/fi` แทน `&&`
 - **ไม่มี PyYAML ในเครื่อง** ใช้ `yq` (mikefarah v4) กับ `jq` เท่านั้น
+- **เว็บที่ render ฝั่ง client จะได้หน้าเปล่า** ไม่ใช่ลิงก์เสีย — curl ได้ HTTP 200 แต่ไม่มีเนื้อ (`governance.solana.com` เป็นเคสตัวอย่าง) อย่าเขียนโน้ตจากหน้าเปล่าเด็ดขาด ทางออกคืออ่านต้นทางจริง:
+
+  ```bash
+  # เนื้อ proposal อยู่บนเชน ไม่ได้อยู่ใน HTML — owner: govYkyQ3ePtGULAtY6V75qjWE8UH4vCUVQ1W4HdCAZU
+  curl -s https://api.mainnet-beta.solana.com -X POST -H 'Content-Type: application/json' \
+    -d '{"jsonrpc":"2.0","id":1,"method":"getAccountInfo","params":["<PROPOSAL_ID>",{"encoding":"base64"}]}' \
+    | jq -r '.result.value.data[0]' | base64 -d | strings -n 4 | head
+  ```
+
+  ได้ชื่อ SGP + ลิงก์ markdown ที่ pin commit SHA ไว้ แล้วค่อย curl ตัว markdown มาอ่าน
+  ท่าทั่วไปเวลาเจอ SPA: `grep -o '/_next/static/chunks/[a-f0-9]*\.js' page.html` → โหลด chunk มา grep หา endpoint ที่มันยิง
 
 ## สไตล์เนื้อหา
 
