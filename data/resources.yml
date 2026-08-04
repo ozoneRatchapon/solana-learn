@@ -1,0 +1,1117 @@
+# Solana Learn — Resource Catalog (SOURCE OF TRUTH)
+#
+# ทุกอย่างใน CATALOG.md generate มาจากไฟล์นี้ อย่าแก้ CATALOG.md ตรงๆ
+#
+# schema ต่อ 1 entry:
+#   url:      canonical URL (required, unique หลัง normalize)
+#   name:     ชื่อที่มนุษย์อ่านรู้เรื่อง (required)
+#   category: ต้องตรงกับ key ใน categories ด้านล่าง (required)
+#   source:   foundation | anza | community | vendor | thailand
+#   tags:     [list] สำหรับ filter
+#   note:     ทำไมถึงอยู่ในลิสต์ / ใช้ตอนไหน
+#   status:   ok | blocked | dead | unverified   (scripts/linkcheck.sh อัปเดตให้)
+#   added:    YYYY-MM-DD
+
+categories:
+  official: "Official — Foundation & Anza (source of truth ตัวจริง)"
+  learning: "Learning — คอร์ส, bootcamp, tutorial"
+  framework: "Program Frameworks — Anchor / Pinocchio / native"
+  client-sdk: "Client SDK — Kit, web3.js, scaffolding"
+  testing: "Testing — LiteSVM, Mollusk, Surfpool"
+  codegen: "IDL & Codegen"
+  tokens-nft: "Tokens & NFT — SPL, Token-2022, Metaplex"
+  payments: "Payments & Commerce"
+  security: "Security & Audit"
+  ai-agent: "AI / Agent Skills / MCP"
+  infra-rpc: "Infra & RPC providers"
+  data-analytics: "Data & Analytics"
+  defi: "DeFi & Ecosystem protocols"
+  mobile: "Mobile"
+  protocol: "Protocol internals — Agave, Firedancer, SIMD"
+  funding: "Funding — grants, hackathon, bounty, jobs"
+  thailand: "Thailand — ชุมชนไทย"
+
+resources:
+  # ---------------------------------------------------------------- official
+  - url: https://solana.com/docs
+    name: Solana Documentation
+    category: official
+    source: foundation
+    tags: [docs, core, rpc, canonical]
+    note: จุดเริ่มต้นทุกอย่าง ปี 2026 rebuild ใหม่ code sample ผ่าน CI ทุกตัว
+    status: ok
+    added: 2026-08-04
+
+  - url: https://solana.com/developers
+    name: Solana Developers Portal
+    category: official
+    source: foundation
+    tags: [hub, index]
+    note: หน้ารวม guides / cookbook / courses / bootcamp / templates
+    status: ok
+    added: 2026-08-04
+
+  - url: https://solana.com/developers/guides
+    name: Solana Developer Guides
+    category: official
+    source: foundation
+    tags: [guides, howto]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://solana.com/developers/cookbook
+    name: Solana Cookbook (official)
+    category: official
+    source: foundation
+    tags: [snippets, recipes]
+    note: recipe สั้นๆ ต่อ task — ต่างจาก solanacookbook.com ของเดิมที่เป็น community
+    status: ok
+    added: 2026-08-04
+
+  - url: https://solana.com/developers/courses
+    name: Solana Courses
+    category: learning
+    source: foundation
+    tags: [course, structured]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://solana.com/developers/bootcamp
+    name: Solana Developer Bootcamp
+    category: learning
+    source: foundation
+    tags: [bootcamp, video]
+    note: foundations → program patterns → fullstack → production
+    status: ok
+    added: 2026-08-04
+
+  - url: https://solana.com/developers/templates
+    name: Solana Templates
+    category: client-sdk
+    source: foundation
+    tags: [scaffold, starter]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://solana.com/docs/rpc
+    name: Solana RPC API Reference
+    category: official
+    source: foundation
+    tags: [rpc, api, reference]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://solana.com/docs/tools
+    name: Solana Tools & Infrastructure Docs
+    category: official
+    source: foundation
+    tags: [tooling]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://platform.solana.com
+    name: Solana Developer Platform (SDP)
+    category: official
+    source: foundation
+    tags: [api, enterprise, fintech, new-2026]
+    note: platform API-first สำหรับ enterprise/สถาบันการเงิน ออกปี 2026 — ของใหม่ ยังมีคนใช้น้อย
+    status: ok
+    added: 2026-08-04
+
+  - url: https://platform.solana.com/docs
+    name: Solana Developer Platform Docs
+    category: official
+    source: foundation
+    tags: [api, docs]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://solana.com/news
+    name: Solana Media / Changelog
+    category: official
+    source: foundation
+    tags: [news, changelog]
+    note: Solana Changelog ออกทุก ~2 สัปดาห์ ใช้ track ว่าอะไรเปลี่ยน
+    status: ok
+    added: 2026-08-04
+
+  - url: https://explorer.solana.com/
+    name: Solana Explorer (first-party)
+    category: data-analytics
+    source: foundation
+    tags: [explorer]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://github.com/solana-foundation
+    name: Solana Foundation GitHub
+    category: official
+    source: foundation
+    tags: [github, org]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://github.com/solana-foundation/developer-content
+    name: developer-content (repo ของ docs ทั้งหมด)
+    category: official
+    source: foundation
+    tags: [github, docs, contributable]
+    note: PR เข้าตรงนี้ได้ — ช่องทางหลักถ้าจะ contribute เนื้อหา/แปล
+    status: ok
+    added: 2026-08-04
+
+  - url: https://github.com/solana-foundation/solana-com
+    name: solana-com (เว็บ solana.com)
+    category: official
+    source: foundation
+    tags: [github, website, i18n]
+    note: มี i18n อยู่ในนี้ — จุดเข้าถ้าจะดันภาษาไทย
+    status: ok
+    added: 2026-08-04
+
+  - url: https://github.com/solana-foundation/solana-bootcamp-2026
+    name: solana-bootcamp-2026
+    category: learning
+    source: foundation
+    tags: [github, bootcamp, curriculum]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://solana.com/validated
+    name: Validated (podcast)
+    category: official
+    source: foundation
+    tags: [podcast]
+    status: ok
+    added: 2026-08-04
+
+  # ---------------------------------------------------------------- learning
+  - url: https://learn.blueshift.gg/
+    name: Blueshift
+    category: learning
+    source: community
+    tags: [course, free, anchor, rust, typescript, challenges]
+    note: Foundation แนะนำเอง — คอร์สฟรี open-source มี challenge ให้ทำจริง
+    status: ok
+    added: 2026-08-04
+
+  - url: https://github.com/blueshift-gg
+    name: Blueshift GitHub
+    category: learning
+    source: community
+    tags: [github, course-content]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://blueshift.gg/research/
+    name: Blueshift Research
+    category: learning
+    source: community
+    tags: [research, ecosystem]
+    note: เขียนเรื่อง sunrising web3.js / ทิศทาง TS ecosystem ได้ดี
+    status: ok
+    added: 2026-08-04
+
+  - url: https://solanacookbook.com/
+    name: Solana Cookbook (community, รุ่นเก่า)
+    category: learning
+    source: community
+    tags: [snippets, legacy]
+    note: ยังมีของดี แต่หลายตัวอย่างเป็น web3.js v1 — เช็ควันที่ก่อนใช้
+    status: ok
+    added: 2026-08-04
+
+  - url: https://turbin3.org/
+    name: Turbin3
+    category: learning
+    source: community
+    tags: [cohort, intensive, rust, anchor]
+    note: cohort เข้มข้น มี live code review + mentor 2,000+ dev ผ่านมาแล้ว
+    status: ok
+    added: 2026-08-04
+
+  - url: https://turbin3.org/institute
+    name: Turbin3 Institute (free training)
+    category: learning
+    source: community
+    tags: [free, training]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://www.risein.com/programs/solana-bootcamp
+    name: Rise In — Solana Bootcamp
+    category: learning
+    source: community
+    tags: [bootcamp]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://www.rareskills.io/solana-tutorial
+    name: RareSkills — Ethereum to Solana
+    category: learning
+    source: community
+    tags: [evm-migration, tutorial]
+    note: ดีมากถ้ากลุ่มเป้าหมายเป็น dev สาย EVM
+    status: ok
+    added: 2026-08-04
+
+  - url: https://www.hackquest.io/
+    name: HackQuest — Solana learning track
+    category: learning
+    source: community
+    tags: [interactive]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://github.com/Ackee-Blockchain/Solana-Auditors-Bootcamp
+    name: Ackee — Solana Auditors Bootcamp
+    category: security
+    source: community
+    tags: [audit, free, certificate]
+    note: ฟรี + มี cert สาย security โดยเฉพาะ
+    status: ok
+    added: 2026-08-04
+
+  - url: https://ackee.xyz/school-of-solana
+    name: Ackee — School of Solana
+    category: learning
+    source: community
+    tags: [course, certificate]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://github.com/solana-developers/program-examples
+    name: solana-developers/program-examples
+    category: framework
+    source: foundation
+    tags: [examples, anchor, native]
+    note: ตัวอย่าง program แยกตาม pattern — วัตถุดิบชั้นดีสำหรับทำ quest
+    status: ok
+    added: 2026-08-04
+
+  - url: https://github.com/quicknode/solana-program-examples
+    name: QuickNode — solana-program-examples
+    category: framework
+    source: vendor
+    tags: [examples, tested]
+    status: ok
+    added: 2026-08-04
+
+  # --------------------------------------------------------------- framework
+  - url: https://www.anchor-lang.com/
+    name: Anchor Documentation
+    category: framework
+    source: foundation
+    tags: [anchor, docs, canonical]
+    note: ปัจจุบัน Anchor 1.0 แล้ว (เครื่องคุณ = anchor-cli 1.0.2)
+    status: ok
+    added: 2026-08-04
+
+  - url: https://github.com/solana-foundation/anchor
+    name: Anchor Repository
+    category: framework
+    source: foundation
+    tags: [anchor, github]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://www.anchor-lang.com/docs/avm
+    name: Anchor Version Manager (AVM)
+    category: framework
+    source: foundation
+    tags: [anchor, versioning]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://github.com/solana-foundation/solana-dev-skill/blob/main/skills/solana-dev/references/anchor/migrating-v0.32-to-v1.md
+    name: Anchor v0.32 → v1 Migration Guide
+    category: framework
+    source: foundation
+    tags: [anchor, migration, breaking-change]
+    note: สำคัญมาก — tutorial เก่าเกือบทั้งหมดยังเป็น 0.3x
+    status: ok
+    added: 2026-08-04
+
+  - url: https://github.com/anza-xyz/pinocchio
+    name: Pinocchio
+    category: framework
+    source: anza
+    tags: [pinocchio, zero-copy, performance]
+    note: zero-dependency zero-copy ลด CU ได้ 88–95% เทียบ Anchor
+    status: ok
+    added: 2026-08-04
+
+  - url: https://github.com/vict0rcarvalh0/pinocchio-guide
+    name: Pinocchio Guide
+    category: framework
+    source: community
+    tags: [pinocchio, tutorial]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://www.helius.dev/blog/pinocchio
+    name: Helius — How to Build with Pinocchio
+    category: framework
+    source: vendor
+    tags: [pinocchio, article]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://github.com/Laugharne/solana_optimized_programs
+    name: Solana Optimized Programs
+    category: framework
+    source: community
+    tags: [optimization, cu]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://github.com/blueshift-gg/sbpf
+    name: sBPF Assembly SDK
+    category: framework
+    source: community
+    tags: [sbpf, assembly, advanced]
+    status: ok
+    added: 2026-08-04
+
+  # -------------------------------------------------------------- client-sdk
+  - url: https://www.solanakit.com/
+    name: Solana Kit Docs
+    category: client-sdk
+    source: anza
+    tags: [kit, typescript, canonical]
+    note: SDK มาตรฐานปัจจุบัน — tree-shakable zero-dependency แทน web3.js v1
+    status: ok
+    added: 2026-08-04
+
+  - url: https://github.com/anza-xyz/kit
+    name: "@solana/kit repository"
+    category: client-sdk
+    source: anza
+    tags: [kit, github]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://github.com/anza-xyz/kit-plugins
+    name: Kit Plugins
+    category: client-sdk
+    source: anza
+    tags: [kit, plugins]
+    note: rpc, signer, wallet, litesvm, instruction-plan
+    status: ok
+    added: 2026-08-04
+
+  - url: https://solana.com/docs/clients/official/javascript
+    name: JavaScript/TypeScript client docs (Kit + client + React hooks)
+    category: client-sdk
+    source: foundation
+    tags: [kit, docs, react]
+    note: "URL ที่ curated list ของ Foundation ระบุไว้ (/docs/clients/kit) ตาย 404 — อันนี้คือของจริง ครอบคลุม @solana/kit, @solana/client และ React hooks"
+    status: ok
+    added: 2026-08-04
+
+  - url: https://solana.com/docs/clients/official/rust
+    name: Rust client docs
+    category: client-sdk
+    source: foundation
+    tags: [rust, client]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://github.com/solana-foundation/solana-web3.js/tree/v3.x
+    name: "@solana/web3.js v3.x"
+    category: client-sdk
+    source: foundation
+    tags: [web3js, v3]
+    note: v3 = API แบบคลาสสิกแต่รันบนไส้ใน Kit — v1 อยู่ maintenance (security fix เท่านั้น)
+    status: ok
+    added: 2026-08-04
+
+  - url: https://github.com/solana-foundation/solana-web3.js/blob/v3.x/docs/web3js-v1-to-v3-migration.md
+    name: web3.js v1 → v3 Migration Guide
+    category: client-sdk
+    source: foundation
+    tags: [migration, web3js]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://blueshift.gg/research/sunrising-web3js-reuniting-solanas-typescript-ecosystem
+    name: "Sunrising web3.js — ทำไม TS ecosystem ถึงกลับมารวมกัน"
+    category: client-sdk
+    source: community
+    tags: [context, article]
+    note: อ่านตัวนี้ก่อนตัดสินใจว่าโปรเจกต์จะใช้ Kit หรือ web3.js v3
+    status: ok
+    added: 2026-08-04
+
+  - url: https://github.com/solana-developers/create-solana-dapp
+    name: create-solana-dapp
+    category: client-sdk
+    source: foundation
+    tags: [scaffold, cli]
+    status: ok
+    added: 2026-08-04
+
+  # ----------------------------------------------------------------- testing
+  - url: https://solana.com/docs/tools/surfpool/
+    name: Surfpool Docs
+    category: testing
+    source: foundation
+    tags: [surfpool, mainnet-fork, cheatcodes]
+    note: fork mainnet ได้ + cheatcode — เหมาะกับ workshop ที่ไม่อยากรอ airdrop
+    status: ok
+    added: 2026-08-04
+
+  - url: https://github.com/solana-foundation/surfpool
+    name: Surfpool Repository
+    category: testing
+    source: foundation
+    tags: [surfpool, github]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://github.com/LiteSVM/litesvm
+    name: LiteSVM
+    category: testing
+    source: community
+    tags: [litesvm, fast-test]
+    note: เร็วกว่า solana-test-validator หลายเท่า มีทั้ง crate และ npm
+    status: ok
+    added: 2026-08-04
+
+  - url: https://solana.com/docs/tools/litesvm
+    name: LiteSVM Docs
+    category: testing
+    source: foundation
+    tags: [litesvm, docs]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://github.com/anza-xyz/mollusk
+    name: Mollusk
+    category: testing
+    source: anza
+    tags: [mollusk, unit-test, cu-benchmark]
+    note: ทดสอบระดับ instruction + วัด CU ได้
+    status: ok
+    added: 2026-08-04
+
+  # ----------------------------------------------------------------- codegen
+  - url: https://github.com/codama-idl/codama
+    name: Codama
+    category: codegen
+    source: community
+    tags: [idl, codegen, canonical]
+    note: gen client จาก IDL — มาตรฐานปัจจุบันของสาย Kit
+    status: ok
+    added: 2026-08-04
+
+  - url: https://solana.com/docs/programs/codama/clients
+    name: Codama — Generating Clients (docs)
+    category: codegen
+    source: foundation
+    tags: [idl, codegen]
+    note: "URL ที่ curated list ของ Foundation ระบุไว้ (/docs/programs/codama-generating-clients) ตาย 404 — อันนี้คือของจริง"
+    status: ok
+    added: 2026-08-04
+
+  - url: https://solana.com/developers/guides/advanced/idls
+    name: IDLs — Interface Definition Language (guide)
+    category: codegen
+    source: foundation
+    tags: [idl, concept]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://github.com/metaplex-foundation/shank
+    name: Shank (Metaplex)
+    category: codegen
+    source: community
+    tags: [idl, native-program]
+    note: ดึง IDL จาก native program ที่ไม่ได้ใช้ Anchor
+    status: ok
+    added: 2026-08-04
+
+  # -------------------------------------------------------------- tokens-nft
+  - url: https://spl.solana.com/token
+    name: SPL Token Documentation
+    category: tokens-nft
+    source: foundation
+    tags: [spl, token]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://spl.solana.com/token-2022
+    name: Token-2022 Documentation
+    category: tokens-nft
+    source: foundation
+    tags: [token-2022, extensions]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://solana.com/docs/tokenization
+    name: Tokenized Assets (docs)
+    category: tokens-nft
+    source: foundation
+    tags: [rwa, tokenization]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://solana.com/docs/tokenization/quickstart
+    name: Token-2022 Launch Quickstart
+    category: tokens-nft
+    source: foundation
+    tags: [token-2022, quickstart]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://developers.metaplex.com/
+    name: Metaplex Developer Docs
+    category: tokens-nft
+    source: community
+    tags: [nft, core, bubblegum, candy-machine, umi]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://github.com/metaplex-foundation/skill
+    name: Metaplex Agent Skill (official)
+    category: ai-agent
+    source: community
+    tags: [skill, nft, mplx-cli]
+    status: ok
+    added: 2026-08-04
+
+  # ---------------------------------------------------------------- payments
+  - url: https://docs.solanapay.com/
+    name: Solana Pay
+    category: payments
+    source: foundation
+    tags: [payment, qr]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://solana.com/docs/payments
+    name: Payments docs
+    category: payments
+    source: foundation
+    tags: [payment, checkout]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://docs.kora.network/
+    name: Kora (gasless/relayer)
+    category: payments
+    source: community
+    tags: [gasless, relayer]
+    note: อยู่ในลิสต์ curated ของ Foundation แต่ตอนเช็คลิงก์ resolve ไม่ผ่าน — ต้องยืนยันซ้ำ
+    status: unverified
+    added: 2026-08-04
+
+  # ---------------------------------------------------------------- security
+  - url: https://learn.blueshift.gg/en/courses/program-security
+    name: Blueshift — Program Security Course
+    category: security
+    source: community
+    tags: [security, course, free]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://github.com/solana-foundation/solana-dev-skill/blob/main/skills/solana-dev/references/security.md
+    name: Solana Dev Skill — Security Checklist
+    category: security
+    source: foundation
+    tags: [checklist, signer, account-validation]
+    note: checklist สั้นๆ ที่ใช้รีวิว PR ได้จริง
+    status: ok
+    added: 2026-08-04
+
+  - url: https://tridentarena.xyz
+    name: Trident Arena (AI security scan)
+    category: security
+    source: community
+    tags: [ai, audit, scanner]
+    note: จากทีม School of Solana — scan หา logic flaw เฉพาะทาง Solana
+    status: ok
+    added: 2026-08-04
+
+  - url: https://neodyme.io/en/blog/
+    name: Neodyme Blog
+    category: security
+    source: community
+    tags: [audit, writeup, exploit]
+    status: ok
+    added: 2026-08-04
+
+  # ---------------------------------------------------------------- ai-agent
+  - url: https://solana.com/skills
+    name: Solana Agent Skills (หน้ารวม)
+    category: ai-agent
+    source: foundation
+    tags: [skill, claude-code, index, new-2026]
+    note: 11 skill ทางการ + community อีก 30+ ตัว
+    status: ok
+    added: 2026-08-04
+
+  - url: https://github.com/solana-foundation/solana-dev-skill
+    name: solana-dev-skill (official)
+    category: ai-agent
+    source: foundation
+    tags: [skill, anchor, pinocchio, kit, testing, canonical]
+    note: "ติดตั้ง: npx skills add https://github.com/solana-foundation/solana-dev-skill"
+    status: ok
+    added: 2026-08-04
+
+  - url: https://mcp.solana.com/
+    name: Solana Developer MCP
+    category: ai-agent
+    source: foundation
+    tags: [mcp, docs-search, autofixer]
+    note: semantic search เอกสาร + autofixer โปรแกรม Anchor/Pinocchio ต่อ Claude Code ได้
+    status: ok
+    added: 2026-08-04
+
+  - url: https://github.com/solana-foundation/awesome-solana-ai
+    name: awesome-solana-ai
+    category: ai-agent
+    source: foundation
+    tags: [index, skills, agents, tools]
+    note: ลิสต์ AI tooling ทั้งหมด — ที่ที่ควรส่ง PR ถ้าเราทำ skill เอง
+    status: ok
+    added: 2026-08-04
+
+  - url: https://agentskills.io/specification
+    name: Agent Skills Specification
+    category: ai-agent
+    source: community
+    tags: [spec, standard]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://www.skills.sh/
+    name: skills.sh (discovery + installer)
+    category: ai-agent
+    source: community
+    tags: [registry, installer]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://github.com/sendaifun/solana-agent-kit
+    name: Solana Agent Kit
+    category: ai-agent
+    source: community
+    tags: [agent, 30-protocols, langchain]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://github.com/sendaifun/skills
+    name: SendAI Skills (DeFi/infra skill รวม)
+    category: ai-agent
+    source: community
+    tags: [skills, defi, jupiter, raydium, kamino]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://github.com/solanabr/solana-ai-kit
+    name: solana-ai-kit (CLAUDE.md/agents/hooks)
+    category: ai-agent
+    source: community
+    tags: [claude-code, config, template]
+    note: ชุด config Claude Code สำหรับ Solana — เทียบกับของเราแล้วหยิบของดีมาใช้ได้
+    status: ok
+    added: 2026-08-04
+
+  - url: https://github.com/helius-labs/core-ai
+    name: Helius core-ai skills
+    category: ai-agent
+    source: vendor
+    tags: [skill, rpc, das, svm-internals]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://github.com/quiknode-labs/solana-anchor-claude-skill
+    name: QuickNode — Anchor Claude Skill
+    category: ai-agent
+    source: vendor
+    tags: [skill, anchor, kit]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://github.com/berkayoztunc/orquestra
+    name: Orquestra (IDL → REST + MCP)
+    category: ai-agent
+    source: community
+    tags: [idl, rest-api, mcp]
+    status: ok
+    added: 2026-08-04
+
+  # --------------------------------------------------------------- infra-rpc
+  - url: https://www.helius.dev/
+    name: Helius
+    category: infra-rpc
+    source: vendor
+    tags: [rpc, das, webhook, laserstream]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://www.helius.dev/blog
+    name: Helius Blog
+    category: infra-rpc
+    source: vendor
+    tags: [article, deep-dive]
+    note: คุณภาพบทความสูงสุดในสาย Solana internals — ใช้เป็นวัตถุดิบสอนได้เลย
+    status: ok
+    added: 2026-08-04
+
+  - url: https://www.quicknode.com/guides/solana-development
+    name: QuickNode Solana Guides
+    category: infra-rpc
+    source: vendor
+    tags: [guides, rpc]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://triton.one/
+    name: Triton One
+    category: infra-rpc
+    source: vendor
+    tags: [rpc, yellowstone-grpc]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://docs.chainstack.com/docs/solana-tooling
+    name: Chainstack — Solana tooling overview
+    category: infra-rpc
+    source: vendor
+    tags: [overview, tooling]
+    status: ok
+    added: 2026-08-04
+
+  # ---------------------------------------------------------- data-analytics
+  - url: https://solscan.io/
+    name: Solscan
+    category: data-analytics
+    source: vendor
+    tags: [explorer, retail]
+    note: 403 ตอน curl = กัน bot ไม่ใช่ลิงก์ตาย
+    status: blocked
+    added: 2026-08-04
+
+  - url: https://dune.com/
+    name: Dune Analytics
+    category: data-analytics
+    source: vendor
+    tags: [sql, dashboard, fork]
+    note: fork dashboard คนอื่นได้ ประหยัดเวลามาก
+    status: blocked
+    added: 2026-08-04
+
+  - url: https://flipsidecrypto.xyz/
+    name: Flipside Crypto
+    category: data-analytics
+    source: vendor
+    tags: [sql, historical]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://defillama.com/chain/Solana
+    name: DefiLlama — Solana
+    category: data-analytics
+    source: vendor
+    tags: [tvl, defi]
+    status: blocked
+    added: 2026-08-04
+
+  - url: https://solanacompass.com/
+    name: Solana Compass
+    category: data-analytics
+    source: community
+    tags: [projects, metrics, podcast-transcript]
+    note: มี transcript พอดแคสต์ให้ค้นด้วย — วัตถุดิบทำ content ดี
+    status: ok
+    added: 2026-08-04
+
+  - url: https://www.helius.dev/blog/solana-data-tools
+    name: "Helius — Analyzing Solana On-chain Data: Tools & Dashboards"
+    category: data-analytics
+    source: vendor
+    tags: [overview, comparison]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://birdeye.so/
+    name: Birdeye
+    category: data-analytics
+    source: vendor
+    tags: [token, price, dex]
+    status: blocked
+    added: 2026-08-04
+
+  - url: https://www.step.finance/
+    name: Step Finance
+    category: data-analytics
+    source: vendor
+    tags: [portfolio, dashboard]
+    status: ok
+    added: 2026-08-04
+
+  # -------------------------------------------------------------------- defi
+  - url: https://jup.ag/
+    name: Jupiter
+    category: defi
+    source: community
+    tags: [dex-aggregator, swap, perps]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://raydium.io/
+    name: Raydium
+    category: defi
+    source: community
+    tags: [amm, clmm, launchlab]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://www.orca.so/
+    name: Orca (Whirlpools)
+    category: defi
+    source: community
+    tags: [clmm, amm]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://app.kamino.finance/
+    name: Kamino Finance
+    category: defi
+    source: community
+    tags: [lending, leverage, liquidity]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://www.drift.trade/
+    name: Drift Protocol
+    category: defi
+    source: community
+    tags: [perps, spot]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://www.meteora.ag/
+    name: Meteora
+    category: defi
+    source: community
+    tags: [dlmm, vault, launch]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://pyth.network/
+    name: Pyth Network
+    category: defi
+    source: community
+    tags: [oracle, price-feed]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://switchboard.xyz/
+    name: Switchboard
+    category: defi
+    source: community
+    tags: [oracle, vrf, on-demand]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://squads.so/
+    name: Squads Protocol
+    category: defi
+    source: community
+    tags: [multisig, treasury, smart-account]
+    note: เกี่ยวตรงกับ treasury/vault ของ Genesis
+    status: ok
+    added: 2026-08-04
+
+  - url: https://www.jito.network/
+    name: Jito
+    category: defi
+    source: community
+    tags: [mev, lst, bundle]
+    status: blocked
+    added: 2026-08-04
+
+  - url: https://www.lightprotocol.com/
+    name: Light Protocol (ZK Compression)
+    category: defi
+    source: community
+    tags: [zk, compression, rent-free]
+    note: token/PDA แบบไม่ต้องจ่าย rent — น่าสนสำหรับ airdrop/badge จำนวนมาก
+    status: ok
+    added: 2026-08-04
+
+  # ------------------------------------------------------------------ mobile
+  - url: https://solanamobile.com/
+    name: Solana Mobile
+    category: mobile
+    source: community
+    tags: [seeker, hardware]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://docs.solanamobile.com/
+    name: Solana Mobile Docs
+    category: mobile
+    source: community
+    tags: [mobile-stack, dapp-store, sample-apps]
+    note: dApp Store คิดค่าธรรมเนียม 0% + มี builder grant
+    status: ok
+    added: 2026-08-04
+
+  # ---------------------------------------------------------------- protocol
+  - url: https://github.com/solana-foundation/solana-improvement-documents
+    name: SIMD — Solana Improvement Documents
+    category: protocol
+    source: foundation
+    tags: [governance, spec, proposal]
+    note: อยากรู้ว่า protocol จะเปลี่ยนอะไร อ่านที่นี่ก่อนข่าว
+    status: ok
+    added: 2026-08-04
+
+  - url: https://simd.mixy.one/
+    name: SIMD Mirror (อ่านง่ายกว่า)
+    category: protocol
+    source: community
+    tags: [simd, browse]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://github.com/anza-xyz/agave
+    name: Agave (validator client)
+    category: protocol
+    source: anza
+    tags: [validator, client]
+    note: ปี 2026 ปล่อยรุ่นทุก ~6 สัปดาห์ (v4.x)
+    status: ok
+    added: 2026-08-04
+
+  - url: https://github.com/firedancer-io/firedancer
+    name: Firedancer
+    category: protocol
+    source: community
+    tags: [validator, client-diversity, c]
+    note: กินสัดส่วน stake บน mainnet ราว 14% (กลางปี 2026)
+    status: ok
+    added: 2026-08-04
+
+  - url: https://www.anza.xyz/
+    name: Anza
+    category: protocol
+    source: anza
+    tags: [core-dev, org]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://solana.com/news/solana-network-upgrades
+    name: Solana Network Upgrades (Alpenglow roadmap)
+    category: protocol
+    source: foundation
+    tags: [alpenglow, consensus, roadmap]
+    note: TowerBFT → Alpenglow เป้า finality 150ms, mainnet ปลายปี 2026
+    status: ok
+    added: 2026-08-04
+
+  # ----------------------------------------------------------------- funding
+  - url: https://colosseum.com/
+    name: Colosseum
+    category: funding
+    source: community
+    tags: [hackathon, accelerator, vc]
+    note: hackathon + accelerator 6 สัปดาห์ + venture fund $60M
+    status: ok
+    added: 2026-08-04
+
+  - url: https://colosseum.com/hackathon
+    name: Colosseum Hackathon
+    category: funding
+    source: community
+    tags: [hackathon]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://blog.colosseum.com/
+    name: Colosseum Codex (blog)
+    category: funding
+    source: community
+    tags: [announcement, blog]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://superteam.fun/
+    name: Superteam
+    category: funding
+    source: community
+    tags: [talent-network, community]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://earn.superteam.fun/
+    name: Superteam Earn (bounty)
+    category: funding
+    source: community
+    tags: [bounty, grant, freelance]
+    note: ทางเข้าที่ต่ำที่สุดสำหรับคนไทยจะได้เงินก้อนแรกจาก ecosystem
+    status: ok
+    added: 2026-08-04
+
+  - url: https://talent.superteam.fun/
+    name: Superteam Talent (หางาน)
+    category: funding
+    source: community
+    tags: [jobs]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://superteam.fun/hackathon
+    name: Superteam × Solana Hackathon Hub
+    category: funding
+    source: community
+    tags: [hackathon, hub]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://solana.org/grants
+    name: Solana Foundation Grants
+    category: funding
+    source: foundation
+    tags: [grant]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://luma.com/superteam
+    name: Superteam Events Calendar
+    category: funding
+    source: community
+    tags: [events]
+    status: ok
+    added: 2026-08-04
+
+  # ---------------------------------------------------------------- thailand
+  - url: https://luma.com/SuperteamTH
+    name: Superteam Thailand — Events Calendar
+    category: thailand
+    source: thailand
+    tags: [events, luma]
+    status: ok
+    added: 2026-08-04
+
+  - url: https://discord.gg/PGbUgNmsns
+    name: Solana Thailand Genesis — Discord
+    category: thailand
+    source: thailand
+    tags: [discord, community]
+    note: ทางเข้าหลักของชุมชน (rank Spectator → Challenger → Builder → Job Hunter)
+    status: ok
+    added: 2026-08-04
+
+  - url: https://github.com/ozoneRatchapon
+    name: "ozoneRatchapon (King Crab — Community Operator)"
+    category: thailand
+    source: thailand
+    tags: [maintainer]
+    status: ok
+    added: 2026-08-04
