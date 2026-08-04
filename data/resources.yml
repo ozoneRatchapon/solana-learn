@@ -1197,3 +1197,12 @@ resources:
     note: "ที่ถกกันก่อนขึ้นเชน เธรดใหญ่ๆ อยู่ที่นี่ (SIMD-0326 Alpenglow 117 reply, priority fee เข้า validator เต็ม 76 reply) — อยากรู้ 'ทำไม' เบื้องหลังโหวตต้องอ่านที่นี่ ไม่ใช่ตัว proposal"
     status: ok
     added: 2026-08-04
+
+  - url: https://solana.com/wsop
+    name: "Solana × WSOP (case study การใช้งานจริง)"
+    category: payments
+    source: foundation
+    tags: [adoption, case-study, consumer, usdc, mainstream]
+    note: "Solana เป็น presenting sponsor ของ WSOP 2026 — ของจริงที่ใช้อ้างได้คือ buy-in ทัวร์นาเมนต์ผ่านแอป WSOP LIVE ด้วย SOL/USDC/USDT ยืนยันทันที ไม่มีค่าธรรมเนียมประมวลผล เป็นเคส consumer payments ระดับแบรนด์ mainstream ที่เล่าให้คนนอกวงคริปโตฟังรู้เรื่อง ใช้เปิดหัวตอนพูดเรื่อง payments ได้; ระวัง — เป็นหน้าแคมเปญ ไม่ใช่เอกสารเทคนิค งาน Showdown 4 ส.ค. 2026 และ Paradise ธ.ค. 2026 ผ่านไปแล้วน่าจะเน่า ให้รีวิวใหม่ต้นปี 2027"
+    status: ok
+    added: 2026-08-04

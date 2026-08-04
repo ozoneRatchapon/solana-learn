@@ -3,7 +3,7 @@
 > ไฟล์นี้ถูก generate จาก [data/resources.yml](data/resources.yml) — **อย่าแก้ตรงนี้**
 > แก้ที่ YAML แล้วรัน `./scripts/render.sh`
 
-รวม **136** รายการ · อัปเดต 2026-08-04
+รวม **137** รายการ · อัปเดต 2026-08-04
 
 หมายเหตุสถานะ: `blocked` = เว็บกัน bot ตอน curl (ลิงก์ยังใช้ได้), `unverified` = เช็คอัตโนมัติไม่ผ่าน ต้องดูด้วยตา
 
@@ -16,7 +16,7 @@
 - [Testing — LiteSVM, Mollusk, Surfpool](#testing--litesvm-mollusk-surfpool) — 5
 - [IDL & Codegen](#idl--codegen) — 4
 - [Tokens & NFT — SPL, Token-2022, Metaplex](#tokens--nft--spl-token-2022-metaplex) — 5
-- [Payments & Commerce](#payments--commerce) — 3
+- [Payments & Commerce](#payments--commerce) — 4
 - [Security & Audit](#security--audit) — 5
 - [AI / Agent Skills / MCP](#ai--agent-skills--mcp) — 13
 - [Infra & RPC providers](#infra--rpc-providers) — 5
@@ -208,6 +208,9 @@
 - [Kora (gasless/relayer)](https://docs.kora.network/) `unverified`
   อยู่ในลิสต์ curated ของ Foundation แต่ตอนเช็คลิงก์ resolve ไม่ผ่าน — ต้องยืนยันซ้ำ
   <sub>gasless, relayer</sub>
+- [Solana × WSOP (case study การใช้งานจริง)](https://solana.com/wsop) `official`
+  Solana เป็น presenting sponsor ของ WSOP 2026 — ของจริงที่ใช้อ้างได้คือ buy-in ทัวร์นาเมนต์ผ่านแอป WSOP LIVE ด้วย SOL/USDC/USDT ยืนยันทันที ไม่มีค่าธรรมเนียมประมวลผล เป็นเคส consumer payments ระดับแบรนด์ mainstream ที่เล่าให้คนนอกวงคริปโตฟังรู้เรื่อง ใช้เปิดหัวตอนพูดเรื่อง payments ได้; ระวัง — เป็นหน้าแคมเปญ ไม่ใช่เอกสารเทคนิค งาน Showdown 4 ส.ค. 2026 และ Paradise ธ.ค. 2026 ผ่านไปแล้วน่าจะเน่า ให้รีวิวใหม่ต้นปี 2027
+  <sub>adoption, case-study, consumer, usdc, mainstream</sub>
 
 ## Security & Audit
 
