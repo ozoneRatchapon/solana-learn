@@ -1570,3 +1570,21 @@ resources:
     note: 'ยืนยันแล้วว่าเป็นของ Foundation จริง ไม่ใช่ของปลอม — ToS ของเว็บระบุเองว่า Solana Foundation เป็น Sponsor ของ onchain markets program ที่รันผ่าน trading.solana.com และ dig แล้วพบว่า trading.solana.com กับ www.frontiertraders.com ชี้ไป Vercel deployment เดียวกันเป๊ะ; แคมเปญเป็นการแข่งเทรด เงินรางวัลก้อนละ $25,000 แบ่งตาม leaderboard สองสาย volume กับ PnL นับเฉพาะกระเป๋าที่สมัครและยืนยันแล้ว ล่าสุดเปิดให้เคลม 31 ก.ค. 2026 หน้าต่าง 30 วัน (micron / sndk / bot) พาร์ตเนอร์ที่โชว์บนหน้าแรกมี Phoenix, Pyth, Helius, Backpack, Ondo, DoubleZero, Axiom, Pump.fun; ข้อควรคิดก่อนกระจายในชุมชน — นี่คือรางวัลจากการเทรด ไม่ใช่จากการสร้าง และ leaderboard แบบ PnL เร่งให้คนกล้าเสี่ยงมากขึ้นโดยธรรมชาติ ต่างจาก bounty หรือ grant ในหมวด funding ที่ยิ่งทำยิ่งได้ทักษะ; ต้องเชื่อมกระเป๋าและยืนยันตัวตนด้วย และ solana.com หน้าหลักที่เช็คแล้วไม่ได้ลิงก์มาที่นี่ คนทั่วไปจึงตรวจสอบความเป็นทางการเองได้ยาก'
     status: ok
     added: 2026-08-04
+
+  - url: https://collectorcrypt.com/
+    name: 'Collector Crypt — การ์ดสะสมจริงบนเชน'
+    category: tokens-nft
+    source: vendor
+    tags: [rwa, longtail, collectibles, vault, gacha, redeem]
+    note: 'ตัวอย่างที่ชัดที่สุดของ RWA สาย longtail บน Solana — เอาการ์ด Pokemon/กีฬาจริงเข้าตู้เซฟแล้ว mint เป็น NFT ถอนกลับเป็นของจริงได้ตลอด ต้องผ่านการเกรดจาก PSA/BGS/CGC ก่อน เก็บในคลังควบคุมอุณหภูมิของ PWCC/ALT พร้อมประกัน; ตัวเลข มิ.ย. 2026 ปริมาณซื้อขายสะสม ~$1.3B รายได้โปรโตคอลสะสม >$64M และ พ.ค. 2026 มีการ์ดในตู้เกิน 130,000 ใบ ค่าธรรมเนียมผู้ขาย 2% (แพลตฟอร์ม 1% + royalty 1%) จุดที่ดังคือ Gacha Machine ที่จำลองการเปิดซองแบบสุ่ม; ค่าสำหรับเราคือใช้เป็นเคสสอนว่า tokenization ที่มีของจริงหนุนหลังหน้าตาเป็นยังไง จับต้องได้กว่าอธิบาย RWA ด้วยพันธบัตร และคนไทยที่เล่นการ์ดมีเยอะ เข้าใจได้ทันทีโดยไม่ต้องอธิบายคริปโตก่อน'
+    status: ok
+    added: 2026-08-04
+
+  - url: https://beezie.com/
+    name: 'Beezie — ของสะสมและสินค้าหรูบนเชน'
+    category: tokens-nft
+    source: vendor
+    tags: [rwa, longtail, collectibles, luxury, vault, multichain]
+    note: 'ตลาดของสะสมที่ tokenize การ์ดที่ผ่านการเกรด สินค้า sealed รองเท้า และเพิ่งเปิดหมวดสินค้าหรู — ขึ้น Solana ไตรมาส 2 ปี 2026 (เดิมอยู่ Flow แล้วไป Base ทำปริมาณได้ $100M) เก็บของในคลังระดับสถาบัน ถอนของจริงได้ทั่วโลก ผ่านการเกรดจาก PSA/BGS/CGC เหมือนกัน; ตัวเลขที่ประกาศเอง รายได้ประจำต่อปี >$142M, claw pull 540,000+ ครั้ง, ซื้อคืนทันที 530,000+ ครั้ง อัตราซื้อคืนราว 90%; หมายเหตุ beezie.io 301 ไป beezie.com แล้ว และตัวเลขทั้งหมดเป็นของบริษัทเอง ยังไม่มีแหล่งกลางยืนยัน ต่างจาก Collector Crypt ที่มีข้อมูลบนเชนให้ตรวจ'
+    status: blocked
+    added: 2026-08-04

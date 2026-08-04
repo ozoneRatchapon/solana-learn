@@ -3,7 +3,7 @@
 > ไฟล์นี้ถูก generate จาก [data/resources.yml](data/resources.yml) — **อย่าแก้ตรงนี้**
 > แก้ที่ YAML แล้วรัน `./scripts/render.sh`
 
-รวม **177** รายการ · อัปเดต 2026-08-04
+รวม **179** รายการ · อัปเดต 2026-08-04
 
 หมายเหตุสถานะ: `blocked` = เว็บกัน bot ตอน curl (ลิงก์ยังใช้ได้), `unverified` = เช็คอัตโนมัติไม่ผ่าน ต้องดูด้วยตา
 
@@ -15,7 +15,7 @@
 - [Client SDK — Kit, web3.js, scaffolding](#client-sdk--kit-web3js-scaffolding) — 10
 - [Testing — LiteSVM, Mollusk, Surfpool](#testing--litesvm-mollusk-surfpool) — 5
 - [IDL & Codegen](#idl--codegen) — 4
-- [Tokens & NFT — SPL, Token-2022, Metaplex](#tokens--nft--spl-token-2022-metaplex) — 5
+- [Tokens & NFT — SPL, Token-2022, Metaplex](#tokens--nft--spl-token-2022-metaplex) — 7
 - [Payments & Commerce](#payments--commerce) — 20
 - [Security & Audit](#security--audit) — 5
 - [AI / Agent Skills / MCP](#ai--agent-skills--mcp) — 15
@@ -217,6 +217,12 @@
   <sub>token-2022, quickstart</sub>
 - [Metaplex Developer Docs](https://developers.metaplex.com/)
   <sub>nft, core, bubblegum, candy-machine, umi</sub>
+- [Collector Crypt — การ์ดสะสมจริงบนเชน](https://collectorcrypt.com/) `vendor`
+  ตัวอย่างที่ชัดที่สุดของ RWA สาย longtail บน Solana — เอาการ์ด Pokemon/กีฬาจริงเข้าตู้เซฟแล้ว mint เป็น NFT ถอนกลับเป็นของจริงได้ตลอด ต้องผ่านการเกรดจาก PSA/BGS/CGC ก่อน เก็บในคลังควบคุมอุณหภูมิของ PWCC/ALT พร้อมประกัน; ตัวเลข มิ.ย. 2026 ปริมาณซื้อขายสะสม ~$1.3B รายได้โปรโตคอลสะสม >$64M และ พ.ค. 2026 มีการ์ดในตู้เกิน 130,000 ใบ ค่าธรรมเนียมผู้ขาย 2% (แพลตฟอร์ม 1% + royalty 1%) จุดที่ดังคือ Gacha Machine ที่จำลองการเปิดซองแบบสุ่ม; ค่าสำหรับเราคือใช้เป็นเคสสอนว่า tokenization ที่มีของจริงหนุนหลังหน้าตาเป็นยังไง จับต้องได้กว่าอธิบาย RWA ด้วยพันธบัตร และคนไทยที่เล่นการ์ดมีเยอะ เข้าใจได้ทันทีโดยไม่ต้องอธิบายคริปโตก่อน
+  <sub>rwa, longtail, collectibles, vault, gacha, redeem</sub>
+- [Beezie — ของสะสมและสินค้าหรูบนเชน](https://beezie.com/) `vendor` `blocked`
+  ตลาดของสะสมที่ tokenize การ์ดที่ผ่านการเกรด สินค้า sealed รองเท้า และเพิ่งเปิดหมวดสินค้าหรู — ขึ้น Solana ไตรมาส 2 ปี 2026 (เดิมอยู่ Flow แล้วไป Base ทำปริมาณได้ $100M) เก็บของในคลังระดับสถาบัน ถอนของจริงได้ทั่วโลก ผ่านการเกรดจาก PSA/BGS/CGC เหมือนกัน; ตัวเลขที่ประกาศเอง รายได้ประจำต่อปี >$142M, claw pull 540,000+ ครั้ง, ซื้อคืนทันที 530,000+ ครั้ง อัตราซื้อคืนราว 90%; หมายเหตุ beezie.io 301 ไป beezie.com แล้ว และตัวเลขทั้งหมดเป็นของบริษัทเอง ยังไม่มีแหล่งกลางยืนยัน ต่างจาก Collector Crypt ที่มีข้อมูลบนเชนให้ตรวจ
+  <sub>rwa, longtail, collectibles, luxury, vault, multichain</sub>
 
 ## Payments & Commerce
 
