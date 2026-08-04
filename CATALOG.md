@@ -3,7 +3,7 @@
 > ไฟล์นี้ถูก generate จาก [data/resources.yml](data/resources.yml) — **อย่าแก้ตรงนี้**
 > แก้ที่ YAML แล้วรัน `./scripts/render.sh`
 
-รวม **147** รายการ · อัปเดต 2026-08-04
+รวม **160** รายการ · อัปเดต 2026-08-04
 
 หมายเหตุสถานะ: `blocked` = เว็บกัน bot ตอน curl (ลิงก์ยังใช้ได้), `unverified` = เช็คอัตโนมัติไม่ผ่าน ต้องดูด้วยตา
 
@@ -16,7 +16,7 @@
 - [Testing — LiteSVM, Mollusk, Surfpool](#testing--litesvm-mollusk-surfpool) — 5
 - [IDL & Codegen](#idl--codegen) — 4
 - [Tokens & NFT — SPL, Token-2022, Metaplex](#tokens--nft--spl-token-2022-metaplex) — 5
-- [Payments & Commerce](#payments--commerce) — 6
+- [Payments & Commerce](#payments--commerce) — 19
 - [Security & Audit](#security--audit) — 5
 - [AI / Agent Skills / MCP](#ai--agent-skills--mcp) — 15
 - [Infra & RPC providers](#infra--rpc-providers) — 7
@@ -226,6 +226,45 @@
 - [Subscriptions Delegation Program — เอกสารทางการ](https://solana.com/docs/payments/subscriptions/overview) `official`
   คู่มือฝั่งเอกสารของโปรแกรม subscriptions (คู่กับ repo solana-foundation/subscriptions) — อธิบายรากของปัญหาชัดกว่า README: token account ของ SPL อนุมัติ delegate ได้ทีละรายเดียว เลยรองรับหลายข้อตกลงพร้อมกันไม่ได้ โปรแกรมนี้แก้ด้วย Subscription Authority ต่อคู่ (user, mint) แล้วเช็คทุกการโอนกับ record แยก; จุดที่ต้องรู้และไม่มีในหน้าอื่น — Token-2022 ที่ตั้ง TransferHook ไว้ โปรแกรมจะส่ง hook account เข้า TransferChecked CPI ให้เอง (SDK เรียก resolveTransferHookAccounts) และมี event ยิงผ่าน self-CPI ให้ indexer ตามได้ทุกธุรกรรม พร้อม versioning สำหรับ migrate account ทีหลัง; มี demo app ให้ลองเล่นด้วย
   <sub>subscription, delegation, token-2022, transfer-hook, events, docs</sub>
+- [Agentic Payments / x402 (หน้าหลัก)](https://solana.com/docs/payments/agentic-payments) `official`
+  จุดตั้งต้นของ x402 — ให้ AI agent จ่ายเงินเองเพื่อเรียก API/ทรัพยากร โดยรื้อ HTTP 402 Payment Required ที่ค้างมาตั้งแต่ยุคแรกของเว็บมาใช้จริง อ่านหน้านี้ก่อนแล้วค่อยไป intro-to-x402 ที่ลงมือทำ
+  <sub>x402, agent, api, micropayment</sub>
+- [How to get started with x402 on Solana](https://solana.com/docs/payments/agentic-payments/intro-to-x402) `official`
+  ไกด์ยาว ~29 KB ระดับ beginner ที่พาสร้าง flow 402 จริง — server ตัวตรวจเงินขั้นต่ำ + client ที่จ่ายแล้วเข้าถึง endpoint ได้ มีตารางว่า SDK ตัวไหนรองรับ Solana บ้างและตัวอย่างแบบ native; ตัวนี้เอาไปทำเวิร์กช็อปได้เลยเพราะจบในไฟล์เดียว
+  <sub>x402, guide, beginner, http-402, sdk</sub>
+- [x402 + Kora — เดโมจ่ายค่า API แบบไม่มีค่าแก๊ส](https://solana.com/docs/payments/agentic-payments/x402-facilitator) `official`
+  ต่อ x402 เข้ากับ Kora (relayer แบบ gasless) — ผู้เรียก API จ่ายเป็น token ได้โดยไม่ต้องมี SOL ในกระเป๋าเลย มีสถาปัตยกรรม + setup + โค้ดครบ; สำคัญกับบริบทไทยตรงที่ตัดปัญหา "ต้องไปหา SOL มาก่อนถึงจะเริ่มได้" ซึ่งเป็นกำแพงแรกที่คนใหม่เจอเสมอ
+  <sub>x402, kora, gasless, relayer, demo</sub>
+- [Indexing — เฝ้าธุรกรรมระดับ production](https://solana.com/docs/payments/accept-payments/indexing) `official`
+  อธิบายว่าทำไม polling RPC ถึงไม่พอเวลามีปริมาณเยอะ และต่างกันยังไงระหว่างข้อมูลดิบกับ parsed แล้วพาไปที่ Geyser/Yellowstone gRPC พร้อมลิสต์ผู้ให้บริการ endpoint (Triton / Helius / QuickNode) — อ่านคู่กับ entry ของ Triton ในหมวด infra-rpc จะเห็นภาพครบทั้งฝั่งแนวคิดและฝั่งของจริง
+  <sub>indexing, geyser, yellowstone, grpc, monitoring</sub>
+- [Verification Tools — ตรวจว่าเงินเข้าจริงและกระทบยอด](https://solana.com/docs/payments/accept-payments/verification-tools) `official`
+  ท่าตรวจเงินเข้าตั้งแต่เช็ค balance, เฝ้า transfer, ไล่ประวัติธุรกรรม จนถึงกระทบยอดกับ order ด้วย memo และมีหัวข้อ protections ด้วย — ชิ้นที่ร้านค้าจริงต้องใช้แต่ tutorial ส่วนใหญ่ข้ามไป (สอนแค่ส่งเงินออกแล้วจบ)
+  <sub>verification, memo, reconcile, balance</sub>
+- [Spend Permissions — มอบสิทธิ์ใช้เงินแบบมีเพดาน](https://solana.com/docs/payments/advanced-payments/spend-permissions) `official`
+  ไกด์ ~31 KB เรื่อง delegate token: อนุมัติ/เพิกถอน/โอนในฐานะ delegate/เช็คสถานะ พร้อมหัวข้อความปลอดภัย — ของเด็ดคือตารางเทียบ delegation กับ custody เต็มรูปแบบ (ใครถือเหรียญ / เพดานความเสียหาย / เพิกถอนได้เองไหม) ใช้ตอบคำถามคลาสสิกว่า "ให้สิทธิ์แอปแล้วมันเชิดเงินหนีได้ไหม" ได้ตรงจุด
+  <sub>delegation, approve, revoke, custody, security</sub>
+- [Deferred Execution — เซ็นตอนนี้ ส่งทีหลัง (durable nonce)](https://solana.com/docs/payments/advanced-payments/deferred-execution) `official`
+  ใช้ durable nonce เพื่อให้ transaction ที่เซ็นแล้วไม่หมดอายุตาม blockhash — รองรับ flow อนุมัติหลายชั้น งาน treasury และการเซ็นแบบออฟไลน์ มีโค้ดไล่ทีละขั้นตั้งแต่สร้าง nonce account; durable nonce เป็นเรื่องที่คนเข้าใจผิดบ่อยมากและแทบไม่มีสอนเป็นภาษาไทย
+  <sub>durable-nonce, offline-signing, treasury, approval-flow</sub>
+- [Fee Abstraction — ให้คนอื่นจ่ายค่าแก๊สแทน](https://solana.com/docs/payments/send-payments/payment-processing/fee-abstraction) `official`
+  อธิบายกลไก fee payer แยกจากผู้ส่ง แล้วต่อยอดเป็นระดับ scale ด้วย Kora — ผู้ใช้ทำธุรกรรมได้โดยไม่ต้องมี SOL; นี่คือคำตอบของปัญหา onboarding ที่เจอทุกงานอีเวนต์ (คนมีแต่ USDC/ไม่มี SOL เลยติดตั้งแต่ก้าวแรก)
+  <sub>gasless, sponsor, fee-payer, kora, onboarding</sub>
+- [Batch Payments — จ่ายหลายคนใน tx เดียว](https://solana.com/docs/payments/send-payments/payment-processing/batch-payments) `official`
+  ยัดหลาย instruction ใน transaction เดียวเพื่อจ่ายหลายปลายทางพร้อมกัน มีโค้ดไล่ตั้งแต่หา token account จนตรวจยอด และมีหัวข้อ transaction planning ตอนจำนวนเกินขนาด tx; ใช้ได้จริงกับงานแจกรางวัล quest / จ่ายค่าตอบแทนชุมชนเป็นรอบ
+  <sub>batch, airdrop, transaction-planning, payroll</sub>
+- [Production Readiness — เช็คลิสต์ก่อนขึ้น mainnet](https://solana.com/docs/payments/production-readiness) `official`
+  ครอบ RPC infra, การทำให้ tx ลงบล็อกจริง, ระดับ confirmation, จัดการ error, gasless, security แล้วปิดท้ายด้วยเช็คลิสต์ 15 ข้อก่อนขึ้น mainnet (RPC สำรอง, priority fee แบบไดนามิก, retry ตอน blockhash หมดอายุ, ยืนยัน mint ว่าไม่ใช่ของ devnet, ไม่มี key ใน frontend, load test) — เอาไปใช้เป็นแบบฟอร์มรีวิวโปรเจกต์ในชุมชนได้เลย ตัวนี้คุ้มที่สุดในหมวดนี้
+  <sub>production, checklist, rpc, priority-fee, retry, security</sub>
+- [Payments Developer Tools (รวมของฝั่ง vendor)](https://solana.com/docs/payments/developer-tools) `official`
+  ลิสต์เครื่องมือฝั่งที่สาม แยกเป็น CLI / library&SDK / faucet devnet / infra / auth / AI tools / program dev — ใช้เป็นแหล่งหา resource ต่อ และเป็นที่มาของชื่อแพ็กเกจตระกูล @solana-commerce/* ที่โผล่ในไกด์อื่น
+  <sub>index, tools, sdk, faucet, auth</sub>
+- [Quickstart — รับเงินก้อนแรกใน 5 นาที](https://solana.com/docs/payments/quickstart) `official`
+  สั้นมาก (~2.7 KB) ติดตั้ง @solana-commerce/kit แล้ววางปุ่มลง React ก็รับ stablecoin ได้เลย มีให้ลองในเบราว์เซอร์ก่อน — เหมาะเป็นบทเปิดเวิร์กช็อปที่สุดเพราะเห็นผลไวและไม่ต้องเขียนโปรแกรมบนเชนเลย
+  <sub>quickstart, react, commerce-kit, workshop</sub>
+- [Payment Button (React component สำเร็จรูป)](https://solana.com/docs/payments/accept-payments/payment-button) `official`
+  รายละเอียด API ของปุ่มจาก @solana-commerce/kit — โหมดการจ่าย, config, event callback, ทำ trigger เองได้; ระวัง เอกสารเตือนเองว่า Commerce Kit ยังเป็น beta API เปลี่ยนได้ก่อนออกตัวจริง อย่าเพิ่งเอาไปสอนว่าเป็นมาตรฐาน
+  <sub>react, component, commerce-kit, beta</sub>
 
 ## Security & Audit
 
