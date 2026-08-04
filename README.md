@@ -11,6 +11,7 @@
 | [CATALOG.md](CATALOG.md) | รายการทั้งหมดจัดกลุ่มแล้ว (generate ห้ามแก้มือ) |
 | [OPPORTUNITIES.md](OPPORTUNITIES.md) | วิเคราะห์: สร้างอะไรได้บ้างจาก resource ที่มี |
 | [scripts/](scripts/) | check / add / render / linkcheck |
+| [CLAUDE.md](CLAUDE.md) | บริบทสำหรับ Claude Code — กฎเหล็ก, workflow, กับดักที่เคยเจอ |
 
 ตอนนี้: **127 รายการ · 17 หมวด · ลิงก์ตาย 0**
 
