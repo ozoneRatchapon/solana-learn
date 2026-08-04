@@ -3,7 +3,7 @@
 > ไฟล์นี้ถูก generate จาก [data/resources.yml](data/resources.yml) — **อย่าแก้ตรงนี้**
 > แก้ที่ YAML แล้วรัน `./scripts/render.sh`
 
-รวม **169** รายการ · อัปเดต 2026-08-04
+รวม **171** รายการ · อัปเดต 2026-08-04
 
 หมายเหตุสถานะ: `blocked` = เว็บกัน bot ตอน curl (ลิงก์ยังใช้ได้), `unverified` = เช็คอัตโนมัติไม่ผ่าน ต้องดูด้วยตา
 
@@ -19,7 +19,7 @@
 - [Payments & Commerce](#payments--commerce) — 19
 - [Security & Audit](#security--audit) — 5
 - [AI / Agent Skills / MCP](#ai--agent-skills--mcp) — 15
-- [Infra & RPC providers](#infra--rpc-providers) — 8
+- [Infra & RPC providers](#infra--rpc-providers) — 10
 - [Data & Analytics](#data--analytics) — 14
 - [DeFi & Ecosystem protocols](#defi--ecosystem-protocols) — 12
 - [Mobile](#mobile) — 2
@@ -344,6 +344,12 @@
 - [rpc-latency-monitor (วัด latency ผู้ให้บริการ RPC)](https://github.com/solana-foundation/rpc-latency-monitor) `official`
   Rust + Apache-2.0 วัด latency ของผู้ให้บริการ RPC แบบ read-only หลายภูมิภาค ส่งออกเป็น Prometheus metrics — จุดขายคือความเป็นกลาง ไม่ใช่เบนช์มาร์กที่ vendor ทำเอง รันเองได้เพื่อวัดจากไทยโดยเฉพาะ ซึ่งตัวเลขจากสิงคโปร์/ญี่ปุ่นที่ vendor โชว์มักไม่ตรงกับที่คนไทยเจอจริง
   <sub>rust, prometheus, benchmark, neutral, self-host</sub>
+- [Superbank — รัน indexer ประวัติ Solana เองทั้งเชน](https://blog.triton.one/self-hosting-superbank/) `vendor`
+  คู่มือรัน Superbank เอง — indexer ที่ดูดทั้ง ledger ลง ClickHouse แล้วเปิดเป็น JSON-RPC ที่เข้ากันได้กับ Solana แปลว่าเปลี่ยน endpoint แล้วโค้ดเดิมใช้ได้เลย ไม่มี rate limit; ประกอบ 3 ส่วน (ClickHouse / ingestor / superbank-rpc) คุยกันผ่าน HTTP แยกเครื่องได้ ต้องมี ClickHouse 26.x, Rust 1.80+, ป้อนข้อมูลจาก Dragon Mouth gRPC หรือ Fumarole แล้ว backfill ย้อนหลังจาก public RPC; ข้อควรรู้ก่อนตื่นเต้น — ขอ RAM อย่างน้อย 32 GB และแนะนำ 64 GB+ สำหรับ production ไม่ใช่ของที่รันบนโน้ตบุ๊กในเวิร์กช็อปได้; เหตุผลที่ควรรันเองคือคุมได้ว่าจะ index อะไร มีข้อกำหนดเรื่องที่เก็บข้อมูลในประเทศ หรือ query เยอะจนคิดเป็นรายครั้งแล้วไม่คุ้ม — ประเด็น data residency สำคัญกับงานที่ต้องคุยกับหน่วยงานกำกับไทย
+  <sub>indexer, clickhouse, self-host, json-rpc, data-residency, rust</sub>
+- [superbank (repo)](https://github.com/solana-rpc/superbank) `vendor`
+  โค้ดของ Superbank — Rust อยู่ใต้ org solana-rpc ไม่ใช่ rpcpool อย่างที่เดา (หาไม่เจอถ้าไล่จาก org ของ Triton) ★49 ยัง active ส.ค. 2026; อ่านคู่กับบทความ self-hosting ในหมวดเดียวกัน ตัวบทความบอกว่าทำไมและต้องเตรียมอะไร ส่วน repo บอกว่าโครงสร้างจริงเป็นยังไง
+  <sub>indexer, clickhouse, rust, opensource</sub>
 
 ## Data & Analytics
 

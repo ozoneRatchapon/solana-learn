@@ -1494,3 +1494,21 @@ resources:
     note: 'เทียบ 22 L1 กับ 12 L2 ในหน้าเดียว สลับมุมได้ระหว่าง Overview / Financials / Onchain Activity / Staking / Spot DEX / Lending / Vaults — ค่าอยู่ที่เวลาต้องตอบว่าทำไมต้อง Solana ไม่ใช่เชนอื่น การชี้ตัวเลขเทียบกันตรงๆ จากแหล่งที่เป็นกลางน่าเชื่อกว่าเอาตัวเลขฝั่ง Solana มาพูดเอง; Blockworks เป็นพาร์ตเนอร์ข้อมูลที่ solana.com/data อ้างถึงด้วย (Lightspeed) แต่หน้านี้เป็นมุมของ Blockworks เอง ไม่ใช่ของ Foundation'
     status: ok
     added: 2026-08-04
+
+  - url: https://blog.triton.one/self-hosting-superbank/
+    name: 'Superbank — รัน indexer ประวัติ Solana เองทั้งเชน'
+    category: infra-rpc
+    source: vendor
+    tags: [indexer, clickhouse, self-host, json-rpc, data-residency, rust]
+    note: 'คู่มือรัน Superbank เอง — indexer ที่ดูดทั้ง ledger ลง ClickHouse แล้วเปิดเป็น JSON-RPC ที่เข้ากันได้กับ Solana แปลว่าเปลี่ยน endpoint แล้วโค้ดเดิมใช้ได้เลย ไม่มี rate limit; ประกอบ 3 ส่วน (ClickHouse / ingestor / superbank-rpc) คุยกันผ่าน HTTP แยกเครื่องได้ ต้องมี ClickHouse 26.x, Rust 1.80+, ป้อนข้อมูลจาก Dragon Mouth gRPC หรือ Fumarole แล้ว backfill ย้อนหลังจาก public RPC; ข้อควรรู้ก่อนตื่นเต้น — ขอ RAM อย่างน้อย 32 GB และแนะนำ 64 GB+ สำหรับ production ไม่ใช่ของที่รันบนโน้ตบุ๊กในเวิร์กช็อปได้; เหตุผลที่ควรรันเองคือคุมได้ว่าจะ index อะไร มีข้อกำหนดเรื่องที่เก็บข้อมูลในประเทศ หรือ query เยอะจนคิดเป็นรายครั้งแล้วไม่คุ้ม — ประเด็น data residency สำคัญกับงานที่ต้องคุยกับหน่วยงานกำกับไทย'
+    status: ok
+    added: 2026-08-04
+
+  - url: https://github.com/solana-rpc/superbank
+    name: 'superbank (repo)'
+    category: infra-rpc
+    source: vendor
+    tags: [indexer, clickhouse, rust, opensource]
+    note: 'โค้ดของ Superbank — Rust อยู่ใต้ org solana-rpc ไม่ใช่ rpcpool อย่างที่เดา (หาไม่เจอถ้าไล่จาก org ของ Triton) ★49 ยัง active ส.ค. 2026; อ่านคู่กับบทความ self-hosting ในหมวดเดียวกัน ตัวบทความบอกว่าทำไมและต้องเตรียมอะไร ส่วน repo บอกว่าโครงสร้างจริงเป็นยังไง'
+    status: ok
+    added: 2026-08-04
