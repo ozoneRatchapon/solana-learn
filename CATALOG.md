@@ -3,7 +3,7 @@
 > ไฟล์นี้ถูก generate จาก [data/resources.yml](data/resources.yml) — **อย่าแก้ตรงนี้**
 > แก้ที่ YAML แล้วรัน `./scripts/render.sh`
 
-รวม **173** รายการ · อัปเดต 2026-08-04
+รวม **174** รายการ · อัปเดต 2026-08-04
 
 หมายเหตุสถานะ: `blocked` = เว็บกัน bot ตอน curl (ลิงก์ยังใช้ได้), `unverified` = เช็คอัตโนมัติไม่ผ่าน ต้องดูด้วยตา
 
@@ -16,7 +16,7 @@
 - [Testing — LiteSVM, Mollusk, Surfpool](#testing--litesvm-mollusk-surfpool) — 5
 - [IDL & Codegen](#idl--codegen) — 4
 - [Tokens & NFT — SPL, Token-2022, Metaplex](#tokens--nft--spl-token-2022-metaplex) — 5
-- [Payments & Commerce](#payments--commerce) — 19
+- [Payments & Commerce](#payments--commerce) — 20
 - [Security & Audit](#security--audit) — 5
 - [AI / Agent Skills / MCP](#ai--agent-skills--mcp) — 15
 - [Infra & RPC providers](#infra--rpc-providers) — 10
@@ -275,6 +275,9 @@
 - [Payment Button (React component สำเร็จรูป)](https://solana.com/docs/payments/accept-payments/payment-button) `official`
   รายละเอียด API ของปุ่มจาก @solana-commerce/kit — โหมดการจ่าย, config, event callback, ทำ trigger เองได้; ระวัง เอกสารเตือนเองว่า Commerce Kit ยังเป็น beta API เปลี่ยนได้ก่อนออกตัวจริง อย่าเพิ่งเอาไปสอนว่าเป็นมาตรฐาน
   <sub>react, component, commerce-kit, beta</sub>
+- [pay.sh — จ่ายค่า API ต่อครั้งโดยไม่ต้องสมัคร](https://pay.sh/) `official`
+  x402 ที่ขึ้นใช้งานจริงแล้ว ไม่ใช่แค่สเปคในเอกสาร — CLI ตัวเดียว (brew install pay หรือ npm i -g @solana/pay) จัดการ HTTP 402 ให้ทั้งหมด agent เรียก API ที่มีค่าใช้จ่ายได้โดยไม่ต้องสมัครสมาชิกและไม่ต้องมีบัญชีกับผู้ให้บริการแต่ละราย ทะเบียนตอนนี้มี 72 เจ้า ราคาตั้งแต่ฟรีถึง $10 ต่อครั้ง (QuickNode RPC, Nansen, Birdeye, Venice.ai, Alibaba Cloud, AgentMail) เติมเงินผ่าน PayPal/Venmo/Apple Pay หรือกระเป๋า Solana; ดูแลโดย Foundation ยืนยันจาก repo github.com/solana-foundation/pay ที่ลิงก์อยู่ในหน้า; มี /index.md และ /llms.txt ให้ agent อ่านตรงได้แบบเดียวกับ solana.com; ข้อควรรู้ — ไม่ได้จำกัดแค่ของสาย Solana เป็นเกตเวย์ไป API ทั่วไป และเอกสารเตือนเองว่าให้ถือว่าราคา/หัวข้อมูลจากผู้ให้บริการเป็นข้อมูลที่เชื่อไม่ได้ ต้องตรวจก่อนใช้
+  <sub>x402, agent, cli, pay-per-call, mcp, registry</sub>
 
 ## Security & Audit
 
