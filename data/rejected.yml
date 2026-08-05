@@ -17,4 +17,87 @@
 #
 # เพิ่มด้วย: ./scripts/reject.sh -u <url> -r "<เหตุผล>" [-b <url ที่ดีกว่า>]
 
-rejected: []
+rejected:
+
+  - url: https://github.com/anza-xyz/agave/pull/14016
+    reason: 'PR ที่ merge แล้วเป็นข่าว ไม่ใช่ resource ที่เปิดกลับมาอ่านซ้ำได้ — เนื้อหา (cost model รวม would_fit กับ add_transaction_cost เป็น try_add รอบเดียว เร็วขึ้น ~21% กับ tx ที่แย่ง account) อยู่ใน changelog ของ Agave อยู่แล้ว ถ้าจะเก็บเรื่อง cost model ให้เก็บหน้า upgrades ที่สรุปเป็นภาพรวมแทน'
+    superseded_by: https://solana.com/upgrades
+    checked: 2026-08-05
+
+  - url: https://github.com/katopz/katgpt-rs
+    reason: 'ไม่เกี่ยวกับ Solana เลย เป็น neuro-symbolic micro-Transformer เขียนด้วย Rust (ML ล้วน) ตรวจแล้วเจ้าของมี repo Solana แค่ 2 ตัวจาก 416 และเก่าตั้งแต่ปี 2022 — ถ้าจะเก็บคนไทยที่เก่งต้องตั้งเกณฑ์หมวด thailand ก่อน ไม่ใช่ยัดงานที่ไม่เกี่ยวเข้ามา'
+    checked: 2026-08-05
+
+  - url: https://world.xyz/docs
+    reason: 'เอกสารอยู่หลัง login (docs.world.xyz redirect ไป /login) ใช้อ้างอิงสาธารณะไม่ได้ และทีมประกาศ 8 ก.ค. 2026 ว่าย้าย prediction market จาก Solana ไป Robinhood Chain หลังเปิดตัวบน Solana ได้ 7 วัน — เก็บเข้าแคตตาล็อก Solana จะทำให้เข้าใจผิด'
+    checked: 2026-08-05
+
+  - url: https://www.frontiertraders.com/announcements/claims-open-micron-sandisk-robostrategy
+    reason: 'หน้าประกาศที่มีอายุ หน้าต่างเคลมปิด 30 วันหลัง 31 ก.ค. 2026 — เก็บหน้า root ของโปรแกรมแทนเพราะไม่เน่า'
+    superseded_by: https://www.frontiertraders.com/
+    checked: 2026-08-05
+
+  - url: https://solana.com/docs/payments/accept-payments
+    reason: 'หน้า index ที่สรุปซ้ำกับหน้าแม่ /docs/payments ซึ่งเก็บไว้แล้ว ไม่มีเนื้อเพิ่มที่ต้องอ่านแยก'
+    superseded_by: https://solana.com/docs/payments
+    checked: 2026-08-05
+
+  - url: https://solana.com/docs/payments/send-payments
+    reason: 'หน้า index ที่สรุปซ้ำกับหน้าแม่ /docs/payments ซึ่งเก็บไว้แล้ว ไม่มีเนื้อเพิ่มที่ต้องอ่านแยก'
+    superseded_by: https://solana.com/docs/payments
+    checked: 2026-08-05
+
+  - url: https://solana.com/docs/payments/how-payments-work
+    reason: 'หน้า index ที่สรุปซ้ำกับหน้าแม่ /docs/payments ซึ่งเก็บไว้แล้ว ไม่มีเนื้อเพิ่มที่ต้องอ่านแยก'
+    superseded_by: https://solana.com/docs/payments
+    checked: 2026-08-05
+
+  - url: https://solana.com/docs/payments/interacting-with-solana
+    reason: 'หน้า index ที่สรุปซ้ำกับหน้าแม่ /docs/payments ซึ่งเก็บไว้แล้ว ไม่มีเนื้อเพิ่มที่ต้องอ่านแยก'
+    superseded_by: https://solana.com/docs/payments
+    checked: 2026-08-05
+
+  - url: https://solana.com/docs/payments/send-payments/basic-payment
+    reason: 'หน้าสั้นระดับ snippet เดียว หน้าแม่ send-payments กับ cookbook ครอบเนื้อหาเดียวกันแล้ว เก็บแยกจะทำให้แคตตาล็อกบวมโดยไม่เพิ่มข้อมูล'
+    superseded_by: https://solana.com/developers/cookbook
+    checked: 2026-08-05
+
+  - url: https://solana.com/docs/payments/send-payments/payment-with-memo
+    reason: 'หน้าสั้นระดับ snippet เดียว หน้าแม่ send-payments กับ cookbook ครอบเนื้อหาเดียวกันแล้ว เก็บแยกจะทำให้แคตตาล็อกบวมโดยไม่เพิ่มข้อมูล'
+    superseded_by: https://solana.com/developers/cookbook
+    checked: 2026-08-05
+
+  - url: https://solana.com/docs/payments/send-payments/verify-address
+    reason: 'หน้าสั้นระดับ snippet เดียว หน้าแม่ send-payments กับ cookbook ครอบเนื้อหาเดียวกันแล้ว เก็บแยกจะทำให้แคตตาล็อกบวมโดยไม่เพิ่มข้อมูล'
+    superseded_by: https://solana.com/developers/cookbook
+    checked: 2026-08-05
+
+  - url: https://solana.com/docs/payments/subscriptions/create-subscription-authority
+    reason: 'ไกด์ย่อยรายคำสั่งของโปรแกรม subscriptions — หน้า overview ที่เก็บไว้แล้วอธิบายกลไกครบและลิงก์ต่อไปหน้าพวกนี้เอง เก็บทั้ง 6 หน้าจะได้แคตตาล็อกที่ยาวขึ้นแต่ไม่ได้ช่วยตัดสินใจอะไรเพิ่ม'
+    superseded_by: https://solana.com/docs/payments/subscriptions/overview
+    checked: 2026-08-05
+
+  - url: https://solana.com/docs/payments/subscriptions/close-subscription-authority
+    reason: 'ไกด์ย่อยรายคำสั่งของโปรแกรม subscriptions — หน้า overview ที่เก็บไว้แล้วอธิบายกลไกครบและลิงก์ต่อไปหน้าพวกนี้เอง เก็บทั้ง 6 หน้าจะได้แคตตาล็อกที่ยาวขึ้นแต่ไม่ได้ช่วยตัดสินใจอะไรเพิ่ม'
+    superseded_by: https://solana.com/docs/payments/subscriptions/overview
+    checked: 2026-08-05
+
+  - url: https://solana.com/docs/payments/subscriptions/fixed-delegation
+    reason: 'ไกด์ย่อยรายคำสั่งของโปรแกรม subscriptions — หน้า overview ที่เก็บไว้แล้วอธิบายกลไกครบและลิงก์ต่อไปหน้าพวกนี้เอง เก็บทั้ง 6 หน้าจะได้แคตตาล็อกที่ยาวขึ้นแต่ไม่ได้ช่วยตัดสินใจอะไรเพิ่ม'
+    superseded_by: https://solana.com/docs/payments/subscriptions/overview
+    checked: 2026-08-05
+
+  - url: https://solana.com/docs/payments/subscriptions/recurring-delegation
+    reason: 'ไกด์ย่อยรายคำสั่งของโปรแกรม subscriptions — หน้า overview ที่เก็บไว้แล้วอธิบายกลไกครบและลิงก์ต่อไปหน้าพวกนี้เอง เก็บทั้ง 6 หน้าจะได้แคตตาล็อกที่ยาวขึ้นแต่ไม่ได้ช่วยตัดสินใจอะไรเพิ่ม'
+    superseded_by: https://solana.com/docs/payments/subscriptions/overview
+    checked: 2026-08-05
+
+  - url: https://solana.com/docs/payments/subscriptions/subscription-plan
+    reason: 'ไกด์ย่อยรายคำสั่งของโปรแกรม subscriptions — หน้า overview ที่เก็บไว้แล้วอธิบายกลไกครบและลิงก์ต่อไปหน้าพวกนี้เอง เก็บทั้ง 6 หน้าจะได้แคตตาล็อกที่ยาวขึ้นแต่ไม่ได้ช่วยตัดสินใจอะไรเพิ่ม'
+    superseded_by: https://solana.com/docs/payments/subscriptions/overview
+    checked: 2026-08-05
+
+  - url: https://solana.com/docs/payments/subscriptions/revoke-abandoned
+    reason: 'ไกด์ย่อยรายคำสั่งของโปรแกรม subscriptions — หน้า overview ที่เก็บไว้แล้วอธิบายกลไกครบและลิงก์ต่อไปหน้าพวกนี้เอง เก็บทั้ง 6 หน้าจะได้แคตตาล็อกที่ยาวขึ้นแต่ไม่ได้ช่วยตัดสินใจอะไรเพิ่ม'
+    superseded_by: https://solana.com/docs/payments/subscriptions/overview
+    checked: 2026-08-05
