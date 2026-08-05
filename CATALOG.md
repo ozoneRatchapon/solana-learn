@@ -3,7 +3,7 @@
 > ไฟล์นี้ถูก generate จาก [data/resources.yml](data/resources.yml) — **อย่าแก้ตรงนี้**
 > แก้ที่ YAML แล้วรัน `./scripts/render.sh`
 
-รวม **195** รายการ · ข้อมูลล่าสุด 2026-08-05
+รวม **196** รายการ · ข้อมูลล่าสุด 2026-08-05
 
 หมายเหตุสถานะ: `blocked` = เว็บกัน bot ตอน curl (ลิงก์ยังใช้ได้), `unverified` = เช็คอัตโนมัติไม่ผ่าน ต้องดูด้วยตา
 
@@ -19,7 +19,7 @@
 - [Payments & Commerce](#payments--commerce) — 22
 - [Security & Audit](#security--audit) — 5
 - [AI / Agent Skills / MCP](#ai--agent-skills--mcp) — 19
-- [Infra & RPC providers](#infra--rpc-providers) — 11
+- [Infra & RPC providers](#infra--rpc-providers) — 12
 - [Data & Analytics](#data--analytics) — 13
 - [DeFi & Ecosystem protocols](#defi--ecosystem-protocols) — 13
 - [Mobile](#mobile) — 2
@@ -439,8 +439,11 @@
   โค้ดของ Superbank — Rust อยู่ใต้ org solana-rpc ไม่ใช่ rpcpool อย่างที่เดา (หาไม่เจอถ้าไล่จาก org ของ Triton) ★49 ยัง active ส.ค. 2026; อ่านคู่กับบทความ self-hosting ในหมวดเดียวกัน ตัวบทความบอกว่าทำไมและต้องเตรียมอะไร ส่วน repo บอกว่าโครงสร้างจริงเป็นยังไง
   <sub>indexer, clickhouse, rust, opensource</sub>
 - [MagicBlock — real-time engine (Ephemeral Rollups)](https://www.magicblock.xyz/) `vendor`
-  แก้ปัญหาที่ Solana ยังทำไม่ได้ดีคือ latency ระดับต่ำกว่า slot — ใช้ Ephemeral Rollup ดึง account ออกมารันในเครื่องเร็วชั่วคราวแล้วค่อย settle กลับ เคลม block time 1ms และ end-to-end ต่ำกว่า 50ms รวมกับ TEE บน Intel TDX สำหรับงานที่ต้องปิดข้อมูล; เป้าหมายคือเกมหลายผู้เล่น เทรดความถี่สูง และงาน real-time ที่เดิมทำบนเชนไม่ไหว; ของจริงเปิดโค้ดหมดที่ org magicblock-labs (82 repo) ตัวหลักคือ magicblock-validator, delegation-program (ประตูเข้า rollup), magicblock-engine-examples และ hydra (crank แบบ permissionless) ทุกตัวยัง active ส.ค. 2026; ระวัง หน้าเว็บไม่ระบุสถานะ mainnet ชัด ต้องเช็คก่อนแนะนำใครเอาไปใช้จริง
+  แก้ปัญหาที่ Solana ยังทำไม่ได้ดีคือ latency ต่ำกว่าระดับ slot — ใช้ Ephemeral Rollup ดึง account ออกมารันในรันไทม์แยกชั่วคราวแล้ว settle กลับ เคลม block time 1ms และ end-to-end ต่ำกว่า 50ms รวมกับ TEE บน Intel TDX สำหรับงานที่ต้องปิดข้อมูล เป้าคือเกมหลายผู้เล่น เทรดความถี่สูง และงาน real-time; เปิดโค้ดที่ org magicblock-labs (82 repo) ตัวหลักคือ magicblock-validator, delegation-program, magicblock-engine-examples, hydra; **อัปเดต 5 ส.ค. 2026 — คำถามที่เคยค้างว่าขึ้น mainnet หรือยัง ตอบได้แล้วว่าขึ้นจริง** ยิง RPC ตรวจ Delegation Program (DELeGGv...) และ Ephemeral SPL Token (SPLxh1...) ได้ executable=true บน mainnet ทั้งคู่; เอกสารอยู่ docs.magicblock.gg ซึ่งมี llms.txt กับ skill.md ให้ agent อ่านตรงได้
   <sub>ephemeral-rollup, latency, tee, gaming, realtime, delegation</sub>
+- [MagicBlock Docs — เริ่มที่ทำไมต้องใช้](https://docs.magicblock.gg/pages/get-started/introduction/why-magicblock) `vendor`
+  เอกสารทางการของ MagicBlock — **มีชั้นที่เครื่องอ่านได้ครบทั้งสามแบบ** เติม .md ท้าย URL ได้ทุกหน้า, llms.txt เป็นดัชนีเอกสารทั้งชุด และ skill.md ที่ติดตั้งเข้า agent ได้ (agent skill ตัวที่สี่ที่เก็บในวันเดียว ต่อจาก MCP ทางการ, Superteam, Colosseum Copilot); ของที่แพลตฟอร์มมีจริงตาม skill.md — Ephemeral Rollup (SVM runtime แยกที่รันเร็วและไม่เก็บค่าธรรมเนียม), Private ER ที่ใช้ TEE, Ephemeral SPL Token, Solana VRF สำหรับสุ่มที่ตรวจสอบได้, Magic Router, Session Key และ price oracle · SDK คือ @magicblock-labs/ephemeral-rollups-sdk (Rust/Anchor + TS) มี CLI ephemeral-validator ไว้เทสในเครื่อง; **ตรวจ program ID บนเชนแล้วทั้งสองตัว executable จริงบน mainnet** — Delegation Program DELeGGvXpWV2fqJUhqcF5ZSYMS4JTLjteaAMARRSaeSh และ Ephemeral SPL Token SPLxh1LVZzEkX99H6rqYizhytLWPZVV296zyYDPagv2 ซึ่งตอบคำถามที่ค้างไว้ตอนเก็บ magicblock.xyz ว่าขึ้น mainnet แล้วหรือยัง
+  <sub>docs, ephemeral-rollup, llms-txt, skill-md, vrf, tee</sub>
 
 ## Data & Analytics
 

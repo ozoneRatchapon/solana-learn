@@ -1634,7 +1634,7 @@ resources:
     category: infra-rpc
     source: vendor
     tags: [ephemeral-rollup, latency, tee, gaming, realtime, delegation]
-    note: 'แก้ปัญหาที่ Solana ยังทำไม่ได้ดีคือ latency ระดับต่ำกว่า slot — ใช้ Ephemeral Rollup ดึง account ออกมารันในเครื่องเร็วชั่วคราวแล้วค่อย settle กลับ เคลม block time 1ms และ end-to-end ต่ำกว่า 50ms รวมกับ TEE บน Intel TDX สำหรับงานที่ต้องปิดข้อมูล; เป้าหมายคือเกมหลายผู้เล่น เทรดความถี่สูง และงาน real-time ที่เดิมทำบนเชนไม่ไหว; ของจริงเปิดโค้ดหมดที่ org magicblock-labs (82 repo) ตัวหลักคือ magicblock-validator, delegation-program (ประตูเข้า rollup), magicblock-engine-examples และ hydra (crank แบบ permissionless) ทุกตัวยัง active ส.ค. 2026; ระวัง หน้าเว็บไม่ระบุสถานะ mainnet ชัด ต้องเช็คก่อนแนะนำใครเอาไปใช้จริง'
+    note: 'แก้ปัญหาที่ Solana ยังทำไม่ได้ดีคือ latency ต่ำกว่าระดับ slot — ใช้ Ephemeral Rollup ดึง account ออกมารันในรันไทม์แยกชั่วคราวแล้ว settle กลับ เคลม block time 1ms และ end-to-end ต่ำกว่า 50ms รวมกับ TEE บน Intel TDX สำหรับงานที่ต้องปิดข้อมูล เป้าคือเกมหลายผู้เล่น เทรดความถี่สูง และงาน real-time; เปิดโค้ดที่ org magicblock-labs (82 repo) ตัวหลักคือ magicblock-validator, delegation-program, magicblock-engine-examples, hydra; **อัปเดต 5 ส.ค. 2026 — คำถามที่เคยค้างว่าขึ้น mainnet หรือยัง ตอบได้แล้วว่าขึ้นจริง** ยิง RPC ตรวจ Delegation Program (DELeGGv...) และ Ephemeral SPL Token (SPLxh1...) ได้ executable=true บน mainnet ทั้งคู่; เอกสารอยู่ docs.magicblock.gg ซึ่งมี llms.txt กับ skill.md ให้ agent อ่านตรงได้'
     status: ok
     added: 2026-08-04
 
@@ -1815,5 +1815,14 @@ resources:
     source: vendor
     tags: [realtime-data, agent, market-intelligence, sponsor]
     note: 'โครงสร้างข้อมูลเรียลไทม์สำหรับ AI ที่ทำงานกับตลาดการเงิน นิยามตัวเองว่าเป็น "ระบบประสาทที่ส่งข้อมูลที่ถูกต้องไปถึงคนตัดสินใจในจังหวะที่ถูก" ตัวสแตกชื่อ Iris; **เกี่ยวกับเราตรงจังหวะ** — สปอนเซอร์เครดิต 4,500 USDC ให้คนที่สร้างบน Iris ในงาน Solana Blitz v7 ที่กำลังแข่งอยู่ ระบุว่าจำนวนจำกัดมาก่อนได้ก่อน; ยังไม่ได้ตรวจว่าเครดิตนั้นได้มายังไงเพราะลิงก์เป็น t.co ที่ curl ตามต่อไม่ได้ ต้องเปิดเบราว์เซอร์ — เก็บไว้เพราะเป็นตัวอย่างของชั้นข้อมูลที่ agent สายเทรดต้องพึ่ง ซึ่งเป็นช่องว่างที่แคตตาล็อกยังบาง'
+    status: ok
+    added: 2026-08-05
+
+  - url: https://docs.magicblock.gg/pages/get-started/introduction/why-magicblock
+    name: 'MagicBlock Docs — เริ่มที่ทำไมต้องใช้'
+    category: infra-rpc
+    source: vendor
+    tags: [docs, ephemeral-rollup, llms-txt, skill-md, vrf, tee]
+    note: 'เอกสารทางการของ MagicBlock — **มีชั้นที่เครื่องอ่านได้ครบทั้งสามแบบ** เติม .md ท้าย URL ได้ทุกหน้า, llms.txt เป็นดัชนีเอกสารทั้งชุด และ skill.md ที่ติดตั้งเข้า agent ได้ (agent skill ตัวที่สี่ที่เก็บในวันเดียว ต่อจาก MCP ทางการ, Superteam, Colosseum Copilot); ของที่แพลตฟอร์มมีจริงตาม skill.md — Ephemeral Rollup (SVM runtime แยกที่รันเร็วและไม่เก็บค่าธรรมเนียม), Private ER ที่ใช้ TEE, Ephemeral SPL Token, Solana VRF สำหรับสุ่มที่ตรวจสอบได้, Magic Router, Session Key และ price oracle · SDK คือ @magicblock-labs/ephemeral-rollups-sdk (Rust/Anchor + TS) มี CLI ephemeral-validator ไว้เทสในเครื่อง; **ตรวจ program ID บนเชนแล้วทั้งสองตัว executable จริงบน mainnet** — Delegation Program DELeGGvXpWV2fqJUhqcF5ZSYMS4JTLjteaAMARRSaeSh และ Ephemeral SPL Token SPLxh1LVZzEkX99H6rqYizhytLWPZVV296zyYDPagv2 ซึ่งตอบคำถามที่ค้างไว้ตอนเก็บ magicblock.xyz ว่าขึ้น mainnet แล้วหรือยัง'
     status: ok
     added: 2026-08-05
