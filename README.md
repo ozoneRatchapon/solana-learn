@@ -104,7 +104,7 @@ CI รันตัวนี้ทุก push — ตัวเลขใน README
 `web/index.html` เป็น**ไฟล์เดียวจบ** ไม่มี dependency ภายนอกสักตัว — คัดลอกไปไหนก็เปิดได้
 AirDrop / แนบอีเมล / ใส่ USB ก็ยังทำงานเหมือนเดิม และเปิดได้แม้ไม่มีเน็ต
 
-อยากได้ URL แต่ยังไม่อยากให้คนอื่นเห็น ใช้ Cloudflare Pages:
+**ขึ้นเว็บแล้วที่ https://solana-learn.pages.dev** — deploy ด้วย Cloudflare Pages:
 
 ```bash
 ./scripts/deploy-cf.sh          # ตรวจอย่างเดียว บอกว่าจะทำอะไร

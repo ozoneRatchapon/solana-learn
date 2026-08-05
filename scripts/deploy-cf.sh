@@ -60,6 +60,17 @@ MSG
 fi
 wr whoami 2>/dev/null | grep -iE 'account|email' | head -3
 
+# wrangler ไม่สร้างโปรเจกต์ให้อัตโนมัติตอน deploy (เจอตอน deploy ครั้งแรก
+# ได้ error "The Pages project does not exist" แล้วมันชวนไปใช้ Workers แทน)
+if ! wr pages project list 2>/dev/null | grep -q "$PROJECT"; then
+  echo "▸ ยังไม่มีโปรเจกต์ '$PROJECT' — สร้างให้ก่อน"
+  if [ "$GO" = "1" ]; then
+    wr pages project create "$PROJECT" --production-branch main || exit 1
+  else
+    echo "  (จะสร้างตอนสั่ง --go)"
+  fi
+fi
+
 if [ "$GO" != "1" ]; then
   cat <<MSG
 
