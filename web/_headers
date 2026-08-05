@@ -1,9 +1,29 @@
-# บังคับ charset ที่ระดับ header ด้วย — ชั้นที่สองต่อจาก <meta charset> ในไฟล์
+# บังคับ charset ที่ระดับ header — ชั้นที่สองต่อจาก <meta charset> ในไฟล์
 #
 # Workers static assets ส่ง `content-type: text/html` เฉยๆ ไม่ต่อ charset
 # ถ้าไฟล์ไม่ประกาศเอง เบราว์เซอร์จะเดา encoding แล้วภาษาไทยเพี้ยนทั้งหน้า
 # ตอนนี้ประกาศทั้งสองที่ พังพร้อมกันทั้งคู่ถึงจะเห็นอาการ
+
 /*
-  Content-Type: text/html; charset=utf-8
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
+
+/
+  Content-Type: text/html; charset=utf-8
+
+/index.html
+  Content-Type: text/html; charset=utf-8
+
+# ชั้นสำหรับ agent — ต้องระบุ charset ไม่งั้นภาษาไทยเพี้ยนเหมือนกัน
+# และเปิด CORS เพราะจุดประสงค์คือให้เครื่องอื่นดึงไปใช้
+/*.md
+  Content-Type: text/markdown; charset=utf-8
+  Access-Control-Allow-Origin: *
+
+/*.json
+  Content-Type: application/json; charset=utf-8
+  Access-Control-Allow-Origin: *
+
+/llms.txt
+  Content-Type: text/plain; charset=utf-8
+  Access-Control-Allow-Origin: *

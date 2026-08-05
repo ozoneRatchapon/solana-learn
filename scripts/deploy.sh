@@ -40,6 +40,9 @@ echo "▸ สร้างหน้าเว็บใหม่จาก YAML"
 rm -rf "$DIST"; mkdir -p "$DIST"
 cp "$REPO_ROOT/web/index.html" "$DIST/index.html"
 cp "$REPO_ROOT/web/_headers" "$DIST/_headers"
+
+echo "▸ สร้างชั้นที่ agent อ่านได้"
+"$REPO_ROOT/scripts/render-agent.sh" || exit 1
 echo "▸ dist: $(du -h "$DIST/index.html" | cut -f1) ไฟล์เดียว ไม่มี dependency ภายนอก"
 
 if ! wr whoami >/dev/null 2>&1; then
@@ -54,4 +57,22 @@ if [ "$GO" != "1" ]; then
   exit 0
 fi
 
-wr deploy
+# deploy สองรอบโดยตั้งใจ — เจอมาแล้วว่ารอบแรก wrangler บอก "Uploaded 1 of 1 asset"
+# แต่ยังเสิร์ฟไฟล์เก่าอยู่ ต้องสั่งซ้ำถึงติด แล้วค่อยดึงหน้าจริงมาเทียบว่าตรงกันไหม
+wr deploy || exit 1
+sleep 3
+wr deploy >/dev/null 2>&1
+
+echo "▸ ตรวจว่าที่เสิร์ฟจริงตรงกับที่ build"
+sleep 4
+url="https://solana-learn.solana-thailand.workers.dev"
+tmp="$(mktemp)"; trap 'rm -f "$tmp"' EXIT
+for i in 1 2 3; do
+  curl -s -L --max-time 25 "$url/?cb=$i$$" -o "$tmp"
+  if cmp -s "$tmp" "$DIST/index.html"; then
+    printf '  \033[32m✓\033[0m ตรงกันทุกไบต์ — %s\n' "$url"; exit 0
+  fi
+  sleep 6
+done
+printf '  \033[31m✗\033[0m ที่เสิร์ฟยังไม่ตรงกับที่ build — ลองรันซ้ำอีกครั้ง\n' >&2
+exit 1

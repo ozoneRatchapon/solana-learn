@@ -183,6 +183,20 @@ input[type="search"]:focus-visible, button:focus-visible, a:focus-visible {
                   background: var(--surface-2); border: 1px solid var(--line-soft);
                   padding: .18rem .42rem; border-radius: 2px; color: var(--ink-2); }
 .recipe .uses a:hover { border-color: var(--accent); color: var(--accent); }
+.fld { font-size: .84rem; color: var(--ink-2); }
+.fld b { color: var(--ink); font-weight: 560; margin-right: .3rem; }
+.fld.warn { border-left: 2px solid var(--warn); padding-left: .7rem; }
+
+/* ── แถบลิงก์ไปเอกสารเต็มและชั้นที่ agent อ่านได้ ───────── */
+.docbar { display: flex; gap: .4rem; flex-wrap: wrap; margin-top: 1.4rem; }
+.docbar a { font-family: var(--mono); font-size: .72rem; text-decoration: none;
+            background: var(--surface); border: 1px solid var(--line); color: var(--ink-2);
+            padding: .35rem .6rem; border-radius: 2px; }
+.docbar a:hover { border-color: var(--accent); color: var(--accent); }
+.docbar a .k { color: var(--ink-3); }
+.docbar a:hover .k { color: var(--accent); }
+kbd { font-family: var(--mono); font-size: .72rem; border: 1px solid var(--line);
+      border-bottom-width: 2px; border-radius: 3px; padding: .05rem .3rem; color: var(--ink-3); }
 
 /* ── สองคอลัมน์ ────────────────────────────────────────── */
 .split { display: grid; grid-template-columns: 1fr; gap: 2.5rem; }
@@ -244,6 +258,16 @@ footer { margin-top: 3.5rem; border-top: 1px solid var(--line); padding-top: 1.2
     </div>
 
     <div class="counters" id="counters"></div>
+
+    <nav class="docbar" aria-label="เอกสารเต็มและชั้นสำหรับเครื่องอ่าน">
+      <a href="catalog.md">catalog.md <span class="k">แคตตาล็อกเต็ม</span></a>
+      <a href="radar.md">radar.md <span class="k">โอกาส + verdict</span></a>
+      <a href="recipes.md">recipes.md <span class="k">สูตร</span></a>
+      <a href="graph.md">graph.md <span class="k">ใครทำอะไร</span></a>
+      <a href="opportunities.md">opportunities.md <span class="k">วิเคราะห์</span></a>
+      <a href="llms.txt">llms.txt <span class="k">สำหรับ AI</span></a>
+      <a href="data.json">data.json <span class="k">ข้อมูลดิบ</span></a>
+    </nav>
   </header>
 
   <section id="urgent">
@@ -294,7 +318,7 @@ footer { margin-top: 3.5rem; border-top: 1px solid var(--line); padding-top: 1.2
     <div class="sec-head">
       <span class="eyebrow">แคตตาล็อก</span>
       <h2>ค้นทั้งหมด</h2>
-      <span class="note">ค้นจากชื่อ โน้ต แท็ก และหมวด</span>
+      <span class="note">ค้นจากชื่อ โน้ต แท็ก และหมวด · กด <kbd>/</kbd> เพื่อไปที่ช่องค้น · ลิงก์ผลค้นแชร์ได้</span>
     </div>
     <div class="tools">
       <input type="search" id="q" placeholder="พิมพ์เพื่อค้น เช่น kora, rent, oracle, เวิร์กช็อป" aria-label="ค้นแคตตาล็อก">
@@ -389,6 +413,7 @@ $("opps").innerHTML = DATA.opportunities.filter(o => o.closes === "rolling")
         <span class="chip mute">${esc(o.kind)}</span>
       </div>
       <div class="rw">${esc(o.reward)}</div>
+      ${o.fit ? `<div class="fld"><b>ใครเหมาะ</b> ${esc(o.fit)}</div>` : ""}
       <div class="vd"><b>verdict</b> — ${esc(o.verdict)}</div>
     </div>`;
   }).join("");
@@ -430,6 +455,8 @@ $("recipes").innerHTML = DATA.recipes.map(r => `
     </div>
     <ul>${(r.constraints || []).map(c => `<li>${esc(c)}</li>`).join("")}</ul>
     <div class="uses">${(r.uses || []).map(u => `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(lookup(u))}</a>`).join("")}</div>
+    ${r.approach ? `<div class="fld"><b>ประกอบยังไง</b> ${esc(r.approach)}</div>` : ""}
+    ${r.watch_out ? `<div class="fld warn"><b>จุดที่จะพลาด</b> ${esc(r.watch_out)}</div>` : ""}
   </div>
 `).join("");
 
@@ -463,13 +490,34 @@ function render() {
     </div>
   `).join("") : `<div class="empty">ไม่เจอ — ลองคำอื่น</div>`;
 }
-$("q").addEventListener("input", render);
+/* แชร์ผลค้นได้ — ?q=kora เปิดมาแล้วเห็นผลเดียวกันเลย
+   ไม่งั้นเวลาจะบอกใครว่า "หาคำนี้สิ" ต้องพิมพ์บอกเป็นขั้นตอน */
+const params = new URLSearchParams(location.search);
+if (params.get("q")) $("q").value = params.get("q");
+if (params.get("cat")) activeCat = params.get("cat");
+
+function syncURL() {
+  const p = new URLSearchParams();
+  if ($("q").value.trim()) p.set("q", $("q").value.trim());
+  if (activeCat) p.set("cat", activeCat);
+  const qs = p.toString();
+  history.replaceState(null, "", qs ? "?" + qs : location.pathname);
+}
+$("q").addEventListener("input", () => { render(); syncURL(); });
+/* กด / เพื่อกระโดดไปช่องค้น — เป็นเครื่องมือ ไม่ใช่บทความ ควรใช้ด้วยคีย์บอร์ดได้ */
+addEventListener("keydown", (e) => {
+  if (e.key === "/" && document.activeElement !== $("q")) { e.preventDefault(); $("q").focus(); }
+  if (e.key === "Escape" && document.activeElement === $("q")) { $("q").value = ""; render(); syncURL(); }
+});
 $("cats").addEventListener("click", (e) => {
   const b = e.target.closest(".cat"); if (!b) return;
   activeCat = b.dataset.cat || null;
   [...$("cats").children].forEach(c => c.setAttribute("aria-pressed", String(c === b)));
-  render();
+  render(); syncURL();
 });
+/* ตั้งสถานะปุ่มหมวดให้ตรงกับ ?cat= ที่มากับ URL */
+[...$("cats").children].forEach(c =>
+  c.setAttribute("aria-pressed", String((c.dataset.cat || null) === activeCat)));
 render();
 
 /* ── ทะเบียนที่ปฏิเสธ ──────────────────────────────────── */

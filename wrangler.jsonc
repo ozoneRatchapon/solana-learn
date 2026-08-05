@@ -16,8 +16,11 @@
 
   "assets": {
     "directory": "./web/dist",
-    // หน้าเดียวจบ — path ไหนก็ส่ง index.html ให้ ดีกว่าโยน 404 ใส่คนที่พิมพ์ URL เกินมา
-    "not_found_handling": "single-page-application"
+    // เคยตั้งเป็น single-page-application ให้ path ไหนก็คืน index.html
+    // แต่พอมีชั้นสำหรับ agent (llms.txt, data.json, *.md) มันกลายเป็นอันตราย —
+    // ขอไฟล์ที่ไม่มีแล้วได้ 200 พร้อม HTML ไปแกะต่อ แทนที่จะรู้ว่าไม่มี
+    // เว็บนี้ทั้งเว็บตั้งอยู่บนความตรวจสอบได้ 404 ที่ซื่อสัตย์จึงถูกกว่า
+    "not_found_handling": "none"
   },
 
   "observability": {

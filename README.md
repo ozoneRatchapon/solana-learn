@@ -106,6 +106,17 @@ AirDrop / แนบอีเมล / ใส่ USB ก็ยังทำงา�
 
 **ขึ้นเว็บแล้วที่ https://solana-learn.solana-thailand.workers.dev**
 
+ชั้นที่ AI agent อ่านได้ (static ทั้งหมด ไม่มีค่าใช้จ่ายเพิ่ม):
+
+| path | คืออะไร |
+|---|---|
+| [`/llms.txt`](https://solana-learn.solana-thailand.workers.dev/llms.txt) | ดัชนีตามธรรมเนียมที่ solana.com กับ pay.sh ใช้ — เริ่มที่นี่ |
+| [`/report.md`](https://solana-learn.solana-thailand.workers.dev/report.md) | สรุปสั้น ~11 KB ตัวเลข เดดไลน์ โอกาสที่ลงมือได้ |
+| [`/data.json`](https://solana-learn.solana-thailand.workers.dev/data.json) | ข้อมูลดิบทั้งหมดไฟล์เดียว |
+| `/catalog.md` `/radar.md` `/recipes.md` `/graph.md` | เอกสารเต็มแต่ละชั้น |
+
+ทุกไฟล์เปิด CORS และระบุ charset — และ path ที่ไม่มีจริงตอบ **404** ไม่ใช่ 200 พร้อม HTML
+
 ```bash
 ./scripts/deploy.sh          # ตรวจ 4 ชั้น + render + dry-run
 ./scripts/deploy.sh --go     # ขึ้นจริง
