@@ -1,0 +1,34 @@
+name: audit
+
+# ตรวจทุก push/PR ว่า repo ยังพูดความจริง — ข้อมูลครบ, เอกสารไม่ค้าง,
+# CATALOG.md ตรงกับ YAML (กันลืมรัน render.sh ซึ่งตอนนี้กันด้วยวินัยอย่างเดียว)
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: ติดตั้ง yq (mikefarah v4)
+        run: |
+          sudo wget -qO /usr/local/bin/yq \
+            https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
+          sudo chmod +x /usr/local/bin/yq
+          yq --version
+
+      - name: audit
+        run: ./scripts/audit.sh
+
+      # audit.sh รัน render.sh ระหว่างเช็ค ถ้าไฟล์เปลี่ยนแปลว่ามีคนลืม commit ผลของ render
+      - name: CATALOG.md ต้องถูก commit มาแล้ว
+        run: |
+          if ! git diff --quiet CATALOG.md; then
+            echo "::error::CATALOG.md ไม่ตรงกับ data/resources.yml — รัน ./scripts/render.sh แล้ว commit ด้วย"
+            git diff --stat CATALOG.md
+            exit 1
+          fi

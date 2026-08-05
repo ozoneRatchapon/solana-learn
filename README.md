@@ -13,7 +13,9 @@
 | [scripts/](scripts/) | check / add / render / linkcheck |
 | [CLAUDE.md](CLAUDE.md) | บริบทสำหรับ Claude Code — กฎเหล็ก, workflow, กับดักที่เคยเจอ |
 
-ตอนนี้: **127 รายการ · 17 หมวด · ลิงก์ตาย 0**
+ตอนนี้: **180 รายการ · 18 หมวด · ลิงก์ตาย 0**
+
+> ตัวเลขบรรทัดบนถูกตรวจโดย `./scripts/audit.sh` — ถ้าไม่ตรงกับ YAML แล้ว CI จะไม่ผ่าน
 
 ---
 
@@ -78,11 +80,11 @@ pbpaste | ./scripts/check.sh          # copy ลิสต์ลิงก์ม�
 
 `source` สำคัญกว่าที่คิด — เวลาข้อมูลขัดกัน ให้เชื่อ `foundation`/`anza` ก่อนเสมอ
 
-## 17 หมวด
+## 18 หมวด
 
 `official` · `learning` · `framework` · `client-sdk` · `testing` · `codegen` ·
 `tokens-nft` · `payments` · `security` · `ai-agent` · `infra-rpc` ·
-`data-analytics` · `defi` · `mobile` · `protocol` · `funding` · `thailand`
+`data-analytics` · `defi` · `mobile` · `protocol` · `governance` · `funding` · `thailand`
 
 จะเพิ่มหมวดใหม่ — เพิ่ม key ใน `categories:` ของ [data/resources.yml](data/resources.yml) แล้ว `render.sh` จัดให้เอง
 

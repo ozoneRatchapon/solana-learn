@@ -9,6 +9,7 @@ need yq
 OUT="$REPO_ROOT/CATALOG.md"
 SEP=$'\x1f'   # unit separator — ปลอดภัยกว่า tab เพราะ bash read ไม่ยุบ field ว่าง
 total="$(yq -r '.resources | length' "$DATA")"
+last_added="$(yq -r '[.resources[].added] | sort | .[-1]' "$DATA")"
 
 {
   echo "# Solana Resource Catalog"
@@ -16,7 +17,10 @@ total="$(yq -r '.resources | length' "$DATA")"
   echo "> ไฟล์นี้ถูก generate จาก [data/resources.yml](data/resources.yml) — **อย่าแก้ตรงนี้**"
   echo "> แก้ที่ YAML แล้วรัน \`./scripts/render.sh\`"
   echo
-  echo "รวม **$total** รายการ · อัปเดต $(date +%F)"
+  # ใช้วันที่ล่าสุดใน "ข้อมูล" ไม่ใช่ $(date) — ไม่งั้น render ทุกครั้งได้ diff
+  # ทั้งที่เนื้อหาไม่เปลี่ยน ทำให้ git log อ่านไม่ออกว่าอะไรเปลี่ยนจริง
+  # และ audit.sh เทียบ CATALOG กับ YAML ไม่ได้
+  echo "รวม **$total** รายการ · ข้อมูลล่าสุด $last_added"
   echo
   echo "หมายเหตุสถานะ: \`blocked\` = เว็บกัน bot ตอน curl (ลิงก์ยังใช้ได้), \`unverified\` = เช็คอัตโนมัติไม่ผ่าน ต้องดูด้วยตา"
   echo

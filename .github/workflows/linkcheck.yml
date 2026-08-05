@@ -1,0 +1,71 @@
+name: linkcheck
+
+# จุดขายที่ OPPORTUNITIES.md §1.1 ประกาศไว้เอง:
+#   "awesome-list ทั่วไปไม่มีใครเช็คลิงก์ ของเรามี CI เช็ค — ข้อแตกต่างเดียวนี้พอแล้ว"
+# ไฟล์นี้คือข้อแตกต่างนั้น ถ้าลบไฟล์นี้ repo ก็กลายเป็น awesome-list ธรรมดา
+#
+# เปิด PR แทนที่จะ push ตรง เพราะ `blocked` (เว็บกัน bot) กับ `dead` (ตายจริง)
+# แยกกันด้วยตาคนเท่านั้น — บาง 403 คือ Cloudflare บาง 403 คือย้ายบ้านแล้ว
+on:
+  schedule:
+    - cron: "0 2 * * 1"        # จันทร์ 02:00 UTC = 09:00 ไทย
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  linkcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: ติดตั้ง yq
+        run: |
+          sudo wget -qO /usr/local/bin/yq \
+            https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
+          sudo chmod +x /usr/local/bin/yq
+
+      - name: ยิงเช็คทุกลิงก์ + เขียน status กลับ
+        run: ./scripts/linkcheck.sh --fix
+
+      - name: render ใหม่
+        run: ./scripts/render.sh
+
+      - name: สรุปสิ่งที่เปลี่ยน
+        id: diff
+        run: |
+          if git diff --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "ไม่มี status ไหนเปลี่ยน"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            {
+              echo 'body<<EOF'
+              echo "รายงานอัตโนมัติจาก \`linkcheck.sh --fix\` — **ตรวจด้วยตาก่อน merge**"
+              echo
+              echo "\`blocked\` = เว็บกัน bot ตอน curl ลิงก์ยังใช้ได้ (Solscan/Dune/DefiLlama/Birdeye/Jito อยู่กลุ่มนี้)"
+              echo "\`dead\` = 404/410 ต้องหา URL ใหม่หรือถอดออก — **อย่า merge ทั้งก้อนโดยไม่ดู**"
+              echo
+              echo '```'
+              git diff --stat
+              echo '```'
+              echo
+              echo "สถานะหลังเช็ค:"
+              echo '```'
+              yq -r '.resources[].status' data/resources.yml | sort | uniq -c
+              echo '```'
+              echo EOF
+            } >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: เปิด PR
+        if: steps.diff.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: linkcheck/auto
+          title: "linkcheck: status ของลิงก์เปลี่ยน"
+          body: ${{ steps.diff.outputs.body }}
+          commit-message: "chore(linkcheck): update link status"
+          delete-branch: true
