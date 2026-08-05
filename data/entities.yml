@@ -256,6 +256,92 @@ entities:
     reach: RWA สาย longtail ที่มีตัวเลขบนเชนให้ตรวจ — เคสสอน tokenization ที่คนไทยเข้าใจทันที
     confirmed: 2026-08-05
 
+  # ─────────────────────────────── DeFi
+  - id: jupiter
+    name: Jupiter
+    kind: org
+    evidence: https://jup.ag/
+    reach: aggregator ที่แทบทุกแอปเรียกใช้ — เอกสารนักพัฒนาอยู่คนละโดเมนที่ developers.jup.ag ซึ่งหาไม่เจอถ้าไม่รู้
+    confirmed: 2026-08-05
+
+  - id: raydium
+    name: Raydium
+    kind: org
+    evidence: https://raydium.io/
+    reach: AMM ที่มี 6 โปรแกรมบนเชนแยกกัน — ต้องรู้ว่าจะ integrate ตัวไหนก่อนเริ่ม ไม่ใช่มีตัวเดียว
+    confirmed: 2026-08-05
+
+  - id: orca
+    name: Orca
+    kind: org
+    evidence: https://www.orca.so/
+    reach: Whirlpools (CLMM) เปิดตั้งแต่ 2021 ยังไม่เคยโดน exploit — ใช้เป็นเคสอ้างอิงเรื่องความปลอดภัยระยะยาว
+    confirmed: 2026-08-05
+
+  - id: kamino
+    name: Kamino Finance
+    kind: org
+    evidence: https://app.kamino.finance/
+    reach: lending/vault ที่ของฝั่งนักพัฒนาครบสุดในหมวด (REST + TS SDK + Rust crate ที่ CPI ได้ + CLI)
+    confirmed: 2026-08-05
+
+  - id: drift
+    name: Drift Protocol
+    kind: org
+    evidence: https://www.drift.trade/
+    reach: perps ที่เปิดโค้ดและผ่าน audit หลายเจ้า — ใช้เป็นตัวอย่างว่าโปรโตคอลที่โปร่งใสหน้าตาเป็นยังไง
+    confirmed: 2026-08-05
+
+  - id: meteora
+    name: Meteora
+    kind: org
+    evidence: https://www.meteora.ag/
+    reach: DLMM แบบแบ่ง bin ซึ่งต่างจาก CLMM เจ้าอื่น — เกี่ยวเวลาต้องอธิบายว่าทำไมสภาพคล่องแต่ละเจ้าไม่เหมือนกัน
+    confirmed: 2026-08-05
+
+  # ─────────────────────────────── oracle & infra ฝั่งการเงิน
+  - id: pyth
+    name: Pyth Network
+    kind: org
+    evidence: https://pyth.network/
+    reach: oracle แบบ first-party สถาบันส่งราคาเข้าเอง — เลือกใช้เมื่ออยากได้ feed สำเร็จรูปที่มีอยู่แล้ว
+    confirmed: 2026-08-05
+
+  - id: switchboard
+    name: Switchboard
+    kind: org
+    evidence: https://switchboard.xyz/
+    reach: oracle แบบ on-demand กำหนด data source เองได้โดยไม่ต้องรออนุมัติ — เลือกใช้เมื่อ feed ที่ต้องการยังไม่มีใครทำ
+    confirmed: 2026-08-05
+
+  - id: squads
+    name: Squads Protocol
+    kind: org
+    evidence: https://squads.so/
+    reach: multisig และ smart account — เกี่ยวตรงกับ treasury ของ Genesis และเป็นมาตรฐานที่ใช้คุม upgrade authority ของโปรแกรม
+    confirmed: 2026-08-05
+
+  - id: jito
+    name: Jito
+    kind: org
+    evidence: https://jito.network/
+    reach: ส่งธุรกรรมให้ลงเร็ว, Bundles กัน MEV, Shredstream — ของสำหรับคนเขียน bot เอกสารอยู่ docs.jito.wtf
+    confirmed: 2026-08-05
+
+  - id: light-protocol
+    name: Light Protocol (ZK Compression)
+    kind: org
+    evidence: https://www.lightprotocol.com/
+    reach: token/PDA แบบไม่ต้องจ่าย rent — เกี่ยวกับ badge/airdrop จำนวนมาก แต่ Agave 4.2 ลด rent 90% แล้ว เหตุผลด้านต้นทุนอ่อนลง
+    confirmed: 2026-08-05
+
+  - id: solana-mobile
+    name: Solana Mobile
+    kind: org
+    evidence: https://solanamobile.com/
+    reach: เครื่อง Seeker และ dApp Store — สายที่แคตตาล็อกยังบางที่สุด (2 รายการ) ถ้าจะเอาจริงต้องเริ่มที่นี่
+    confirmed: 2026-08-05
+
 relations:
   - { from: anza, type: maintains, to: agave, evidence: https://github.com/anza-xyz/agave }
   - { from: otter-sec, type: maintains, to: anchor, evidence: https://github.com/solana-foundation/anchor }
@@ -276,3 +362,6 @@ relations:
   - { from: solana-thailand-genesis, type: partners, to: superteam-thailand, evidence: https://luma.com/SuperteamTH }
   - { from: magicblock, type: powers, to: agave, evidence: https://www.magicblock.xyz/ }
   - { from: solana-foundation, type: maintains, to: solana-forum, evidence: https://forum.solana.com/c/gov/11 }
+  # audit — เขียนได้เพราะหน้าเว็บของ Drift ระบุผู้ตรวจไว้เอง
+  - { from: otter-sec, type: audited, to: drift, evidence: https://www.drift.trade/ }
+  - { from: neodyme, type: audited, to: drift, evidence: https://www.drift.trade/ }

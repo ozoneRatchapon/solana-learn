@@ -3,7 +3,7 @@
 > ไฟล์นี้ถูก generate จาก [data/entities.yml](data/entities.yml) — **อย่าแก้ตรงนี้**
 > แก้ YAML แล้วรัน `./scripts/render-graph.sh`
 
-**27** หน่วยงาน · **19** ความสัมพันธ์ · อัปเดต 2026-08-05
+**39** หน่วยงาน · **21** ความสัมพันธ์ · อัปเดต 2026-08-05
 
 ตอบคำถามที่ [CATALOG.md](CATALOG.md) ไม่ตอบ — ไม่ใช่ "ของอยู่ที่ไหน" แต่คือ **ใครทำ ใครดูแล ใครจ่ายเงิน ใครตรวจ**
 
@@ -41,6 +41,18 @@ graph LR
   solana-forum(("Solana Forum (หมวด governance)"))
   solana-policy-institute["Solana Policy Institute"]
   collector-crypt["Collector Crypt"]
+  jupiter["Jupiter"]
+  raydium["Raydium"]
+  orca["Orca"]
+  kamino["Kamino Finance"]
+  drift["Drift Protocol"]
+  meteora["Meteora"]
+  pyth["Pyth Network"]
+  switchboard["Switchboard"]
+  squads["Squads Protocol"]
+  jito["Jito"]
+  light-protocol["Light Protocol (ZK Compression)"]
+  solana-mobile["Solana Mobile"]
   anza -->|maintains| agave
   otter-sec -->|maintains| anchor
   solana-foundation -->|maintains| svmgov
@@ -60,11 +72,13 @@ graph LR
   solana-thailand-genesis -->|partners| superteam-thailand
   magicblock -->|powers| agave
   solana-foundation -->|maintains| solana-forum
+  otter-sec -->|audited| drift
+  neodyme -->|audited| drift
 ```
 
 รูปทรง: สี่เหลี่ยม = องค์กร · วงกลม = ชุมชน · หกเหลี่ยม = โปรแกรม/client
 
-## องค์กร / บริษัท / มูลนิธิ (15)
+## องค์กร / บริษัท / มูลนิธิ (27)
 
 | ชื่อ | ติดต่อเรื่องอะไรได้ | ยืนยันเมื่อ |
 |---|---|---|
@@ -83,6 +97,18 @@ graph LR
 | [Colosseum](https://colosseum.com/) | แฮกกาธอน + accelerator + กองทุน — Eternal เปิดตลอดปี ไม่ต้องรอรอบ | 2026-08-05 |
 | [Solana Policy Institute](https://www.solanapolicyinstitute.org/) | องค์กรนโยบาย — ใช้เป็นแม่แบบกรอบการคุยกับหน่วยงานกำกับ โดยเฉพาะประเด็นคุ้มครองนักพัฒนา | 2026-08-05 |
 | [Collector Crypt](https://collectorcrypt.com/) | RWA สาย longtail ที่มีตัวเลขบนเชนให้ตรวจ — เคสสอน tokenization ที่คนไทยเข้าใจทันที | 2026-08-05 |
+| [Jupiter](https://jup.ag/) | aggregator ที่แทบทุกแอปเรียกใช้ — เอกสารนักพัฒนาอยู่คนละโดเมนที่ developers.jup.ag ซึ่งหาไม่เจอถ้าไม่รู้ | 2026-08-05 |
+| [Raydium](https://raydium.io/) | AMM ที่มี 6 โปรแกรมบนเชนแยกกัน — ต้องรู้ว่าจะ integrate ตัวไหนก่อนเริ่ม ไม่ใช่มีตัวเดียว | 2026-08-05 |
+| [Orca](https://www.orca.so/) | Whirlpools (CLMM) เปิดตั้งแต่ 2021 ยังไม่เคยโดน exploit — ใช้เป็นเคสอ้างอิงเรื่องความปลอดภัยระยะยาว | 2026-08-05 |
+| [Kamino Finance](https://app.kamino.finance/) | lending/vault ที่ของฝั่งนักพัฒนาครบสุดในหมวด (REST + TS SDK + Rust crate ที่ CPI ได้ + CLI) | 2026-08-05 |
+| [Drift Protocol](https://www.drift.trade/) | perps ที่เปิดโค้ดและผ่าน audit หลายเจ้า — ใช้เป็นตัวอย่างว่าโปรโตคอลที่โปร่งใสหน้าตาเป็นยังไง | 2026-08-05 |
+| [Meteora](https://www.meteora.ag/) | DLMM แบบแบ่ง bin ซึ่งต่างจาก CLMM เจ้าอื่น — เกี่ยวเวลาต้องอธิบายว่าทำไมสภาพคล่องแต่ละเจ้าไม่เหมือนกัน | 2026-08-05 |
+| [Pyth Network](https://pyth.network/) | oracle แบบ first-party สถาบันส่งราคาเข้าเอง — เลือกใช้เมื่ออยากได้ feed สำเร็จรูปที่มีอยู่แล้ว | 2026-08-05 |
+| [Switchboard](https://switchboard.xyz/) | oracle แบบ on-demand กำหนด data source เองได้โดยไม่ต้องรออนุมัติ — เลือกใช้เมื่อ feed ที่ต้องการยังไม่มีใครทำ | 2026-08-05 |
+| [Squads Protocol](https://squads.so/) | multisig และ smart account — เกี่ยวตรงกับ treasury ของ Genesis และเป็นมาตรฐานที่ใช้คุม upgrade authority ของโปรแกรม | 2026-08-05 |
+| [Jito](https://jito.network/) | ส่งธุรกรรมให้ลงเร็ว, Bundles กัน MEV, Shredstream — ของสำหรับคนเขียน bot เอกสารอยู่ docs.jito.wtf | 2026-08-05 |
+| [Light Protocol (ZK Compression)](https://www.lightprotocol.com/) | token/PDA แบบไม่ต้องจ่าย rent — เกี่ยวกับ badge/airdrop จำนวนมาก แต่ Agave 4.2 ลด rent 90% แล้ว เหตุผลด้านต้นทุนอ่อนลง | 2026-08-05 |
+| [Solana Mobile](https://solanamobile.com/) | เครื่อง Seeker และ dApp Store — สายที่แคตตาล็อกยังบางที่สุด (2 รายการ) ถ้าจะเอาจริงต้องเริ่มที่นี่ | 2026-08-05 |
 
 ## ชุมชน / เครือข่ายคน (4)
 
@@ -134,6 +160,8 @@ graph LR
 | `solana-thailand-genesis` | ร่วมมือกัน | `superteam-thailand` | [ที่มา](https://luma.com/SuperteamTH) |
 | `magicblock` | เป็นโครงสร้างพื้นฐานให้ | `agave` | [ที่มา](https://www.magicblock.xyz/) |
 | `solana-foundation` | ดูแลพัฒนา | `solana-forum` | [ที่มา](https://forum.solana.com/c/gov/11) |
+| `otter-sec` | ตรวจความปลอดภัยให้ | `drift` | [ที่มา](https://www.drift.trade/) |
+| `neodyme` | ตรวจความปลอดภัยให้ | `drift` | [ที่มา](https://www.drift.trade/) |
 
 ---
 
