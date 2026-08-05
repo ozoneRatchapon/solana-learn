@@ -3,7 +3,7 @@
 > ไฟล์นี้ถูก generate จาก [data/resources.yml](data/resources.yml) — **อย่าแก้ตรงนี้**
 > แก้ที่ YAML แล้วรัน `./scripts/render.sh`
 
-รวม **192** รายการ · ข้อมูลล่าสุด 2026-08-05
+รวม **193** รายการ · ข้อมูลล่าสุด 2026-08-05
 
 หมายเหตุสถานะ: `blocked` = เว็บกัน bot ตอน curl (ลิงก์ยังใช้ได้), `unverified` = เช็คอัตโนมัติไม่ผ่าน ต้องดูด้วยตา
 
@@ -25,7 +25,7 @@
 - [Mobile](#mobile) — 2
 - [Protocol internals — Agave, Firedancer, network upgrades](#protocol-internals--agave-firedancer-network-upgrades) — 7
 - [Governance — SGP, SIMD, โหวตบนเชน](#governance--sgp-simd-โหวตบนเชน) — 9
-- [Green software — พลังงาน คาร์บอน ประสิทธิภาพ](#green-software--พลังงาน-คาร์บอน-ประสิทธิภาพ) — 3
+- [Green software — พลังงาน คาร์บอน ประสิทธิภาพ](#green-software--พลังงาน-คาร์บอน-ประสิทธิภาพ) — 4
 - [Funding — grants, hackathon, bounty, jobs](#funding--grants-hackathon-bounty-jobs) — 16
 - [Thailand — ชุมชนไทย](#thailand--ชุมชนไทย) — 4
 
@@ -597,6 +597,9 @@
 - [ประกาศวัดคาร์บอนแบบเรียลไทม์ (บทความต้นทาง)](https://solana.com/news/announcing-real-time-emissions-measurement-on-the-solana-blockchain) `official`
   บทความที่อธิบายว่าวัดคาร์บอนยังไง — ฝังซอฟต์แวร์ลงบนโหนดโดยตรงร่วมกับ Trycarbonara ไม่ใช่ประมาณจากข้อมูลบนเชนอย่างเดียว ครอบทั้งพลังงานที่ใช้ การปล่อยของโหนด RPC คาร์บอนของ validator รายตัว และ embodied emission จากการผลิตและขนส่งฮาร์ดแวร์ Solana เคลมว่าเป็นเชนสัญญาอัจฉริยะรายใหญ่รายแรกที่วัดแบบเรียลไทม์; **เก็บตัวบทความไม่ใช่หน้าแท็ก** เพราะหน้าแท็ก energy-use-reports ตอบ 200 แต่ไม่มีโพสต์เรื่องพลังงานเลย (บันทึกไว้ใน rejected.yml แล้ว) — ตัวนี้คือที่ที่วิธีวัดถูกอธิบายไว้จริงและใช้อ้างอิงได้
   <sub>carbon, emission, trycarbonara, announcement, methodology</sub>
+- [Cambridge CBNSI — ดัชนีพลังงานเชน (มุมที่ขัดกับที่ Solana เล่า)](https://ccaf.io/cbnsi/ethereum)
+  ดัชนีของ Cambridge Centre for Alternative Finance (Judge Business School) วัดพลังงานเชนด้วยวิธีเดียวกันทุกเชน — วัดกำลังไฟที่ปลั๊กจริงของโหนด คูณจำนวนโหนดที่นับได้ แล้วเทียบข้ามเครือข่าย; **เก็บเพราะมันขัดกับเรื่องเล่าที่ฝั่ง Solana ใช้ ไม่ใช่ทั้งที่ขัด** — ตัวเลขที่มักถูกอ้างคือ Solana ใช้ 0.1 Wh ต่อธุรกรรม เทียบ Ethereum 35 Wh ซึ่งดูดีมาก แต่ Cambridge วัดต่อมูลค่าตลาดแล้วได้ว่า Solana ใช้ไฟรวมสูงสุด ~13.48 GWh/ปี และเข้มข้น ~283 kWh ต่อมูลค่าล้านดอลลาร์ ขณะที่ Ethereum ~7.87 GWh/ปี และ ~33 kWh **คือ Solana เข้มข้นกว่าราว 8.5 เท่า**; ทั้งสองตัวเลขถูกในวิธีวัดของตัวเอง — ต่อธุรกรรมกับต่อมูลค่าตอบคนละคำถาม **ถ้าจะพูดเรื่องพลังงานในที่สาธารณะต้องรู้ทั้งสองด้าน** ไม่งั้นโดนยกอันนี้มาค้านแล้วตอบไม่ได้
+  <sub>research, cambridge, comparison, methodology, counter-evidence</sub>
 
 ## Funding — grants, hackathon, bounty, jobs
 
@@ -637,7 +640,7 @@
   เตือน: หน้าต่างส่งแค่ 5-19 ส.ค. 2026 เท่านั้น เงินรางวัลรวมสูงสุด 50,000 SOL; repo นี้ไม่มีโค้ด เป็นแค่ประตูรับ submission — ตัว Alpenglow จริงอยู่ใน agave เขาชี้จุดเริ่มไว้ 4 crate คือ votor (เครื่องโหวต), votor-messages (ชนิดของ vote/certificate), bls-sigverify, bls-cert-verify; เดิม Alpenglow ถูกกันออกจาก bug bounty ของ agave เพิ่งมาเข้าเกณฑ์รอบนี้ แปลว่าโค้ดส่วนนี้ยังผ่านสายตาคนนอกน้อยกว่าส่วนอื่น; ส่งผ่าน GitHub Security Advisory และห้ามเปิดเผยถึงจะเข้าเกณฑ์ — ควรกระจายข่าวในชุมชนทันทีเพราะปิดเร็ว
   <sub>bounty, security, consensus, alpenglow, audit, deadline</sub>
 - [MagicBlock Builders — ไดเรกทอรีนักพัฒนา + เส้นทางสู่ทุน](https://build.magicblock.app/builders) `vendor`
-  ไดเรกทอรีนักพัฒนาที่วางเส้นทางไว้ตั้งแต่แฮกกาธอน ผ่านโปรแกรม Forge และ Hacker House ไปจนถึงระดมทุน — ค่าสำหรับคนไทยคือช่องหา cofounder และเข้ากลุ่ม builder ที่ไม่ต้องรอให้มีคนแนะนำ กรอกโปรไฟล์พร้อม proof of work และประเทศแล้วเข้าได้เลย ไม่มีเดดไลน์; ข้อควรบอกก่อนชวนใครสมัคร — ต้องล็อกอินด้วย Telegram และเชื่อมกระเป๋า ซึ่งเป็นการผูกตัวตนกับที่อยู่กระเป๋าในไดเรกทอรีสาธารณะ ควรใช้กระเป๋าที่ไม่ใช่ตัวหลักและบอกคนในชุมชนให้รู้ก่อนตัดสินใจ
+  ไดเรกทอรีนักพัฒนาที่วางเส้นทางเป็น 3 ขั้น — **Blitz Hackathon** (สร้าง MVP) → **Forge** → **Hacker House** แล้วจึงไประดมทุน ค่าสำหรับคนไทยคือช่องหา cofounder และเข้ากลุ่ม builder ที่ไม่ต้องรอให้ใครแนะนำ กรอกโปรไฟล์พร้อม proof of work และประเทศแล้วเข้าได้เลย; **ตรวจ 5 ส.ค. 2026 ยังไม่มี event ไหนเปิดรับ** ("No open events to submit to right now") ต้องเช็คก่อนชวนใครลง อย่าเพิ่งบอกว่ามีแฮกกาธอนให้ลง; ข้อควรบอกก่อนชวนสมัคร — ต้องล็อกอินด้วย Telegram และเชื่อมกระเป๋า ซึ่งเป็นการผูกตัวตนกับที่อยู่กระเป๋าในไดเรกทอรีสาธารณะ ควรใช้กระเป๋าที่ไม่ใช่ตัวหลัก
   <sub>directory, cofounder, hackathon, forge, hacker-house, community</sub>
 - [Colosseum Eternal — ไม่ต้องรอแฮกกาธอนรอบหน้า](https://colosseum.com/eternal)
   การแข่งแบบเปิดตลอดปีคั่นระหว่างแฮกกาธอนสองรอบ — กดนาฬิกาเองแล้วมีเวลา 4 สัปดาห์ส่งผลิตภัณฑ์ ระหว่างทางต้องส่งอัปเดตวิดีโอ 1 นาทีทุกสัปดาห์ ผู้ชนะได้ $250,000 pre-seed พร้อมเข้า accelerator 8 สัปดาห์แบบผสมออนไลน์และเจอตัว มี mentor ตัวต่อตัว และมี Eternal Award มอบปีละสองครั้ง; กรรมการไม่ใช่แค่ทีม Colosseum แต่มีผู้ก่อตั้งตัวจริงของ Helius, Jito, Tensor, Squads, Kamino, Drift, Phantom, Sphere ร่วมตัดสิน; ตัวนี้ตอบคำถามค้างใน OPPORTUNITIES.md Tier 3 ที่ว่าแฮกกาธอนรอบหน้าเมื่อไหร่ — คำตอบคือไม่ต้องรอ เริ่มเมื่อไหร่ก็ได้ ซึ่งเปลี่ยนข้อนั้นจากสมมติฐานเป็นของที่ลงมือได้จริง; หมายเหตุ คำตอบใน FAQ เป็น accordion ที่ไม่อยู่ใน HTML ต้องกดดูในเบราว์เซอร์ curl ได้แค่หัวข้อคำถาม
