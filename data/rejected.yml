@@ -111,7 +111,3 @@ rejected:
     superseded_by: https://solana.com/news/announcing-real-time-emissions-measurement-on-the-solana-blockchain
     checked: 2026-08-05
 
-  - url: https://build.magicblock.app/?event=10&stage=blitz
-    reason: 'deep link ไปยัง stage "Blitz Hackathon" ของ MagicBlock ซึ่งตอนตรวจ 5 ส.ค. 2026 ขึ้นว่า "No open events to submit to right now" — ไม่มีวันที่ รางวัล หรือกติกาให้เก็บ และ URL ผูกกับ event id ที่จะเปลี่ยน; หน้า /builders ที่เก็บไว้แล้วครอบเส้นทางทั้งหมด (Blitz → Forge → Hacker House) และไม่เน่าตามรอบ'
-    superseded_by: https://build.magicblock.app/builders
-    checked: 2026-08-05
