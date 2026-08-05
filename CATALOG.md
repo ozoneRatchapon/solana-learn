@@ -3,7 +3,7 @@
 > ไฟล์นี้ถูก generate จาก [data/resources.yml](data/resources.yml) — **อย่าแก้ตรงนี้**
 > แก้ที่ YAML แล้วรัน `./scripts/render.sh`
 
-รวม **182** รายการ · ข้อมูลล่าสุด 2026-08-05
+รวม **183** รายการ · ข้อมูลล่าสุด 2026-08-05
 
 หมายเหตุสถานะ: `blocked` = เว็บกัน bot ตอน curl (ลิงก์ยังใช้ได้), `unverified` = เช็คอัตโนมัติไม่ผ่าน ต้องดูด้วยตา
 
@@ -18,7 +18,7 @@
 - [Tokens & NFT — SPL, Token-2022, Metaplex](#tokens--nft--spl-token-2022-metaplex) — 7
 - [Payments & Commerce](#payments--commerce) — 20
 - [Security & Audit](#security--audit) — 5
-- [AI / Agent Skills / MCP](#ai--agent-skills--mcp) — 15
+- [AI / Agent Skills / MCP](#ai--agent-skills--mcp) — 16
 - [Infra & RPC providers](#infra--rpc-providers) — 11
 - [Data & Analytics](#data--analytics) — 13
 - [DeFi & Ecosystem protocols](#defi--ecosystem-protocols) — 13
@@ -386,6 +386,9 @@
 - [solana.com llms-full.txt (เอกสารทั้งชุดไฟล์เดียว)](https://solana.com/llms-full.txt) `official`
   เอกสารทั้งหมดรวมไฟล์เดียว 4.5 MB ~462,000 คำ — ใหญ่เกินกว่าจะโยนเข้า context ตรงๆ เหมาะกับ index ทำ RAG หรือ grep ออฟไลน์มากกว่า ถ้าจะให้ agent อ่านสดใช้ llms.txt ตัวดัชนีแล้วดึงเฉพาะหน้าที่ต้องการจะคุ้มกว่ามาก
   <sub>llms-txt, corpus, offline, rag</sub>
+- [Superteam Earn สำหรับ AI agent](https://superteam.fun/earn/agents)
+  Earn เปิดให้ agent ทำงานรับเงินได้จริง มี skill ทางการที่ superteam.fun/skill.md (v0.5.1) กับ heartbeat.md (v0.2.0) — flow คือ POST /api/agents ตั้งชื่อ agent แล้วได้ apiKey กับ claimCode กลับมา จากนั้นดึงงานที่ agent ทำได้จาก /api/agents/listings/live (กรอง type=bounty|project|hackathon และ deadline ได้) ส่งงานผ่าน /api/agents/submissions/create แล้ว **ให้มนุษย์ถือ claimCode ไปรับเงิน** เพราะ agent รับเงินเองไม่ได้; จำกัด 60 submission/ชั่วโมง และงานประเภท project บังคับใส่ Telegram ของมนุษย์; นี่คือคำตอบของช่องที่ค้างในเรดาร์ว่าทำไมนับ bounty ไม่ได้ — มี API อยู่จริงแต่ต้องลงทะเบียนก่อน ไม่ได้เปิดสาธารณะ (ยิงเปล่าๆ ได้ 401); และเป็นตัวอย่างรูปธรรมของสิ่งที่ OPPORTUNITIES 2.1 อยากทำ คือเผยแพร่ skill ให้ agent อ่านเอง
+  <sub>agent, api, skill-md, bounty, autonomous, earn</sub>
 
 ## Infra & RPC providers
 

@@ -1699,3 +1699,12 @@ resources:
     note: 'หน้าทางการที่รวมแฮกกาธอนทุกรอบ มีรายชื่อผู้ชนะและสปอนเซอร์ย้อนหลัง — ค่าที่แท้จริงคือใช้ไล่ดูว่าโปรเจกต์แบบไหนชนะจริง ก่อนจะโค้ชทีมไทยว่าควรทำอะไร ซึ่งมีน้ำหนักกว่าเดาจากกติกา; ตัวสมัครและกติกาจริงอยู่ที่ Colosseum หน้านี้เป็นชั้นแนะนำ'
     status: ok
     added: 2026-08-05
+
+  - url: https://superteam.fun/earn/agents
+    name: 'Superteam Earn สำหรับ AI agent'
+    category: ai-agent
+    source: community
+    tags: [agent, api, skill-md, bounty, autonomous, earn]
+    note: 'Earn เปิดให้ agent ทำงานรับเงินได้จริง มี skill ทางการที่ superteam.fun/skill.md (v0.5.1) กับ heartbeat.md (v0.2.0) — flow คือ POST /api/agents ตั้งชื่อ agent แล้วได้ apiKey กับ claimCode กลับมา จากนั้นดึงงานที่ agent ทำได้จาก /api/agents/listings/live (กรอง type=bounty|project|hackathon และ deadline ได้) ส่งงานผ่าน /api/agents/submissions/create แล้ว **ให้มนุษย์ถือ claimCode ไปรับเงิน** เพราะ agent รับเงินเองไม่ได้; จำกัด 60 submission/ชั่วโมง และงานประเภท project บังคับใส่ Telegram ของมนุษย์; นี่คือคำตอบของช่องที่ค้างในเรดาร์ว่าทำไมนับ bounty ไม่ได้ — มี API อยู่จริงแต่ต้องลงทะเบียนก่อน ไม่ได้เปิดสาธารณะ (ยิงเปล่าๆ ได้ 401); และเป็นตัวอย่างรูปธรรมของสิ่งที่ OPPORTUNITIES 2.1 อยากทำ คือเผยแพร่ skill ให้ agent อ่านเอง'
+    status: ok
+    added: 2026-08-05
