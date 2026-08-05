@@ -90,14 +90,17 @@ probe_one() {
   fi
 
   # ── 4. มีทางที่ดีกว่าไหม ──────────────────────────────────────────
+  # เทียบด้วย cmp อย่างเดียวไม่พอ — เว็บอย่าง x.com คืน SPA shell ให้ทุก path
+  # แต่ละครั้งมี nonce/timestamp ต่างกัน cmp เลยบอกว่า "ต่างจากหน้าหลัก" ทั้งที่เป็นของเดียวกัน
+  # (เจอ false positive นี้ตอนใช้ครั้งที่สอง) ตัวชี้ขาดคือ content-type ต้องไม่ใช่ html
   local found=""
   for alt in "${url%/}.md" "$base/llms.txt" "$base/skill.md" "$base/index.md"; do
-    local ac asz
-    read -r ac asz < <(curl -s --compressed -A "$UA_BROWSER" -o "$TMP/alt" \
-        -w '%{http_code} %{size_download}\n' -L --max-time 15 "$alt" 2>/dev/null) || continue
-    if [ "$ac" = "200" ] && [ "${asz:-0}" -gt 200 ]; then
-      # ต้องต่างจากหน้าหลักจริง ไม่ใช่ SPA fallback ที่คืน index เดิม
-      if ! cmp -s "$TMP/alt" "$raw"; then found="$found $alt"; fi
+    local ac asz act
+    read -r ac asz act < <(curl -s --compressed -A "$UA_BROWSER" -o "$TMP/alt" \
+        -w '%{http_code} %{size_download} %{content_type}\n' -L --max-time 15 "$alt" 2>/dev/null) || continue
+    case "$act" in *html*) continue ;; esac
+    if [ "$ac" = "200" ] && [ "${asz:-0}" -gt 200 ] && ! cmp -s "$TMP/alt" "$raw"; then
+      found="$found $alt"
     fi
   done
   if [ -n "$found" ]; then

@@ -3,7 +3,7 @@
 > ไฟล์นี้ถูก generate จาก [data/resources.yml](data/resources.yml) — **อย่าแก้ตรงนี้**
 > แก้ที่ YAML แล้วรัน `./scripts/render.sh`
 
-รวม **194** รายการ · ข้อมูลล่าสุด 2026-08-05
+รวม **195** รายการ · ข้อมูลล่าสุด 2026-08-05
 
 หมายเหตุสถานะ: `blocked` = เว็บกัน bot ตอน curl (ลิงก์ยังใช้ได้), `unverified` = เช็คอัตโนมัติไม่ผ่าน ต้องดูด้วยตา
 
@@ -18,7 +18,7 @@
 - [Tokens & NFT — SPL, Token-2022, Metaplex](#tokens--nft--spl-token-2022-metaplex) — 7
 - [Payments & Commerce](#payments--commerce) — 22
 - [Security & Audit](#security--audit) — 5
-- [AI / Agent Skills / MCP](#ai--agent-skills--mcp) — 18
+- [AI / Agent Skills / MCP](#ai--agent-skills--mcp) — 19
 - [Infra & RPC providers](#infra--rpc-providers) — 11
 - [Data & Analytics](#data--analytics) — 13
 - [DeFi & Ecosystem protocols](#defi--ecosystem-protocols) — 13
@@ -402,6 +402,9 @@
 - [Solana Agent Registry (ตัวตนและชื่อเสียงของ agent บนเชน)](https://solana.com/agent-registry) `official`
   โปรโตคอลบนเชนที่ให้ AI agent มีตัวตนที่ยืนยันได้ ชื่อเสียงที่พกติดตัวไปได้ และโครงสร้างความน่าเชื่อถือ — ทำงานบน Solana และคุยกับมาตรฐาน ERC-8004 ฝั่ง Ethereum ได้ ลงทะเบียนครั้งละราว 0.009 SOL (~$0.81); ต่อกับสิ่งที่เก็บมาทั้งวันโดยตรง — Superteam Earn ให้ agent ทำงานได้แต่ต้องมีมนุษย์เคลมเงิน pay.sh ให้ agent จ่ายเงินได้ **ตัวนี้คือชั้นที่ตอบว่าแล้วจะเชื่อ agent ตัวไหนได้** ซึ่งเป็นคำถามที่เกิดขึ้นทันทีเมื่อ agent เริ่มถือเงินและรับงาน; มีสเปคกับ quickstart บน GitHub
   <sub>agent, identity, reputation, erc-8004, onchain, registry</sub>
+- [Elfa AI / Iris — ข้อมูลเรียลไทม์สำหรับ agent สายการเงิน](https://elfa.ai) `vendor`
+  โครงสร้างข้อมูลเรียลไทม์สำหรับ AI ที่ทำงานกับตลาดการเงิน นิยามตัวเองว่าเป็น "ระบบประสาทที่ส่งข้อมูลที่ถูกต้องไปถึงคนตัดสินใจในจังหวะที่ถูก" ตัวสแตกชื่อ Iris; **เกี่ยวกับเราตรงจังหวะ** — สปอนเซอร์เครดิต 4,500 USDC ให้คนที่สร้างบน Iris ในงาน Solana Blitz v7 ที่กำลังแข่งอยู่ ระบุว่าจำนวนจำกัดมาก่อนได้ก่อน; ยังไม่ได้ตรวจว่าเครดิตนั้นได้มายังไงเพราะลิงก์เป็น t.co ที่ curl ตามต่อไม่ได้ ต้องเปิดเบราว์เซอร์ — เก็บไว้เพราะเป็นตัวอย่างของชั้นข้อมูลที่ agent สายเทรดต้องพึ่ง ซึ่งเป็นช่องว่างที่แคตตาล็อกยังบาง
+  <sub>realtime-data, agent, market-intelligence, sponsor</sub>
 
 ## Infra & RPC providers
 

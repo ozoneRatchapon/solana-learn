@@ -1808,3 +1808,12 @@ resources:
     note: 'รายการโจทย์ที่ MagicBlock อยากให้มีคนทำ 12 ข้อ แต่ละข้อบอกหมวด คำโปรย และ **ระดับความยาก weekend / grind / moonshot** ซึ่งช่วยจับคู่กับเวลาที่มีจริงได้โดยไม่ต้องเดา — weekend มี 4 ข้อ (Live Auction House, Pay-Per-Second Streaming, Token-Gated Live Spaces, Reaction Battle Royale) · grind 5 ข้อ (Real-Time Onchain Poker, Multiplayer Physics Arena, Live-Event Prediction Markets, Agent-vs-Agent Arena, Private Sealed-Bid Auctions) · moonshot 3 ข้อ (Tick-Based Strategy Game, Sub-Second Order Book, DePIN Micro-Settlement Rail); **ค่าที่แท้จริงคือแก้ปัญหา "ไม่รู้จะทำอะไร" ซึ่งเป็นด่านแรกของทุกแฮกกาธอน**; หน้าเว็บ render ฝั่ง client (อ่านได้ 278 จาก 25,204 byte) ข้อมูลจริงอยู่ที่ /api/rfps เป็น JSON เปิด ไม่ต้องล็อกอิน; **ข้อควรระวังเรื่องตัวเลข — 11 จาก 12 ข้อขึ้น buildCount = 6 เท่ากันเป๊ะ เพราะ API ตัดรายการที่ 6 ไม่ใช่ว่ามีคนทำ 6 ทีมพอดี** ตัวเลขจริงคือ "อย่างน้อย 6" ส่วน DePIN Micro-Settlement Rail มี 3 ซึ่งเป็นเลขจริงเพราะต่ำกว่าเพดาน รวม project id ไม่ซ้ำกัน 55 ตัว'
     status: ok
     added: 2026-08-05
+
+  - url: https://elfa.ai
+    name: 'Elfa AI / Iris — ข้อมูลเรียลไทม์สำหรับ agent สายการเงิน'
+    category: ai-agent
+    source: vendor
+    tags: [realtime-data, agent, market-intelligence, sponsor]
+    note: 'โครงสร้างข้อมูลเรียลไทม์สำหรับ AI ที่ทำงานกับตลาดการเงิน นิยามตัวเองว่าเป็น "ระบบประสาทที่ส่งข้อมูลที่ถูกต้องไปถึงคนตัดสินใจในจังหวะที่ถูก" ตัวสแตกชื่อ Iris; **เกี่ยวกับเราตรงจังหวะ** — สปอนเซอร์เครดิต 4,500 USDC ให้คนที่สร้างบน Iris ในงาน Solana Blitz v7 ที่กำลังแข่งอยู่ ระบุว่าจำนวนจำกัดมาก่อนได้ก่อน; ยังไม่ได้ตรวจว่าเครดิตนั้นได้มายังไงเพราะลิงก์เป็น t.co ที่ curl ตามต่อไม่ได้ ต้องเปิดเบราว์เซอร์ — เก็บไว้เพราะเป็นตัวอย่างของชั้นข้อมูลที่ agent สายเทรดต้องพึ่ง ซึ่งเป็นช่องว่างที่แคตตาล็อกยังบาง'
+    status: ok
+    added: 2026-08-05

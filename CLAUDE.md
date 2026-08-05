@@ -158,6 +158,14 @@ cargo run -p slcat -- audit      # เท่ากับ audit.sh ชั้น 1
 
   ได้ชื่อ SGP + ลิงก์ markdown ที่ pin commit SHA ไว้ แล้วค่อย curl ตัว markdown มาอ่าน
   ท่าทั่วไปเวลาเจอ SPA: `grep -o '/_next/static/chunks/[a-f0-9]*\.js' page.html` → โหลด chunk มา grep หา endpoint ที่มันยิง
+- **X/Twitter อ่านเนื้อทวีตได้จาก `og:description`** — หน้าเป็น SPA ล้วนแต่ meta tag มีข้อความเต็ม
+  `curl --compressed -A "<browser UA>" <url>` แล้ว grep `property="og:description"` ได้เลย
+  แต่ลิงก์ `t.co` ในทวีต **ตามต่อด้วย curl ไม่ได้** (คืน 200 ชี้กลับตัวเอง) ต้องเปิดเบราว์เซอร์
+- **probe.sh เคย false positive กับ x.com** — มันคืน SPA shell ให้ทุก path รวมทั้ง `.md` `llms.txt`
+  แต่ละครั้ง nonce ต่างกัน `cmp` เลยบอกว่า "ต่างจากหน้าหลัก" ทั้งที่เป็นของเดียวกัน
+  **แก้โดยเช็ค `content-type` ต้องไม่ใช่ html** ก่อนจะนับว่าเป็นชั้นที่เครื่องอ่านได้
+  บทเรียนกว้างกว่านั้น: เครื่องมือที่สร้างมาตรวจของอื่น ก็ต้องถูกตรวจเหมือนกัน
+
 ### ก่อนเขียนโน้ตจากหน้าเว็บ ให้ probe ก่อน
 
 ```bash
