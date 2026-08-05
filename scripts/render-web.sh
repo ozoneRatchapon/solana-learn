@@ -57,8 +57,31 @@ if marker not in tpl:
 
 # </script> ในข้อมูลจะปิด block ก่อนเวลา ต้อง escape
 blob = json.dumps(data, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+tpl = tpl.replace(marker, blob)
+
+# ── ห่อด้วยโครง HTML เต็ม ───────────────────────────────────────────────
+# template เขียนแบบไม่มี doctype/head/body เพราะเดิมตั้งใจให้ตัวโฮสต์ห่อให้
+# พอมาเสิร์ฟเอง ไฟล์เลยไม่มี <meta charset> และ Workers ก็ส่ง content-type
+# แบบไม่มี charset ต่อท้าย → เบราว์เซอร์เดา encoding เอง แล้วภาษาไทยเพี้ยนทั้งหน้า
+# (Pages เติม charset=utf-8 ให้เอง เลยไม่เห็นอาการตอนอยู่บน Pages)
+split_at = tpl.find('<div class="wrap">')
+if split_at < 0:
+    sys.exit('template ไม่มี <div class="wrap"> — หาจุดแบ่ง head/body ไม่ได้')
+head, body = tpl[:split_at], tpl[split_at:]
+
+page = (
+    '<!doctype html>\n<html lang="th">\n<head>\n'
+    '<meta charset="utf-8">\n'
+    '<meta name="viewport" content="width=device-width, initial-scale=1">\n'
+    '<meta name="color-scheme" content="light dark">\n'
+    '<meta name="description" content="แคตตาล็อก resource Solana ภาษาไทย '
+    'ที่ทุกรายการมีเหตุผลกำกับว่าใช้ตอนไหน ตรวจด้วยเครื่องทุก push">\n'
+    + head +
+    '</head>\n<body>\n' + body + '\n</body>\n</html>\n'
+)
+
 with io.open(out_path, "w", encoding="utf-8") as f:
-    f.write(tpl.replace(marker, blob))
+    f.write(page)
 
 print(f"เขียน {out_path} แล้ว "
       f"({len(data['resources'])} resource · {len(data['entities'])} entity · "

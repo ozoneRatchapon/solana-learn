@@ -39,6 +39,7 @@ echo "▸ สร้างหน้าเว็บใหม่จาก YAML"
 
 rm -rf "$DIST"; mkdir -p "$DIST"
 cp "$REPO_ROOT/web/index.html" "$DIST/index.html"
+cp "$REPO_ROOT/web/_headers" "$DIST/_headers"
 echo "▸ dist: $(du -h "$DIST/index.html" | cut -f1) ไฟล์เดียว ไม่มี dependency ภายนอก"
 
 if ! wr whoami >/dev/null 2>&1; then

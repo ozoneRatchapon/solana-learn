@@ -1,0 +1,9 @@
+# บังคับ charset ที่ระดับ header ด้วย — ชั้นที่สองต่อจาก <meta charset> ในไฟล์
+#
+# Workers static assets ส่ง `content-type: text/html` เฉยๆ ไม่ต่อ charset
+# ถ้าไฟล์ไม่ประกาศเอง เบราว์เซอร์จะเดา encoding แล้วภาษาไทยเพี้ยนทั้งหน้า
+# ตอนนี้ประกาศทั้งสองที่ พังพร้อมกันทั้งคู่ถึงจะเห็นอาการ
+/*
+  Content-Type: text/html; charset=utf-8
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
