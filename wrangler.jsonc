@@ -1,0 +1,26 @@
+{
+  // ตั้งค่า deploy ของหน้าเว็บ — อยู่ใน git โดยตั้งใจ
+  //
+  // เหตุผลที่ย้ายจาก Pages มา Workers:
+  // ตอนเลือก Pages เลือกเพราะมันมี toggle เดียวปิดเว็บไม่ให้คนนอกเห็นตอนยังไม่พร้อม
+  // พอตัดสินใจเปิดสาธารณะแล้ว เหตุผลนั้นก็หายไป และ Workers ได้เปรียบตรงที่
+  // **ไฟล์นี้อยู่ใน repo** — การตั้งค่า deploy จึงถูก diff และรีวิวได้เหมือนของอื่นทั้งหมด
+  // ส่วน Pages เก็บการตั้งค่าไว้ในแดชบอร์ด ซึ่งไม่มีตัวตรวจตัวไหนใน repo นี้มองเห็น
+  //
+  // ค่าใช้จ่าย: request ของ static asset ฟรีทั้ง Workers และ Pages — ย้ายแล้วไม่มีส่วนต่าง
+  //
+  // ไม่มี "main" เพราะไม่มีโค้ดฝั่งเซิร์ฟเวอร์เลย เป็นไฟล์ static ล้วน
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "solana-learn",
+  "compatibility_date": "2026-08-05",
+
+  "assets": {
+    "directory": "./web/dist",
+    // หน้าเดียวจบ — path ไหนก็ส่ง index.html ให้ ดีกว่าโยน 404 ใส่คนที่พิมพ์ URL เกินมา
+    "not_found_handling": "single-page-application"
+  },
+
+  "observability": {
+    "enabled": true
+  }
+}

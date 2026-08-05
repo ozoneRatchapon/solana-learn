@@ -104,17 +104,20 @@ CI รันตัวนี้ทุก push — ตัวเลขใน README
 `web/index.html` เป็น**ไฟล์เดียวจบ** ไม่มี dependency ภายนอกสักตัว — คัดลอกไปไหนก็เปิดได้
 AirDrop / แนบอีเมล / ใส่ USB ก็ยังทำงานเหมือนเดิม และเปิดได้แม้ไม่มีเน็ต
 
-**ขึ้นเว็บแล้วที่ https://solana-learn.pages.dev** — deploy ด้วย Cloudflare Pages:
+**ขึ้นเว็บแล้วที่ https://solana-learn.solana-thailand.workers.dev**
 
 ```bash
-./scripts/deploy-cf.sh          # ตรวจอย่างเดียว บอกว่าจะทำอะไร
-./scripts/deploy-cf.sh --go     # ขึ้นเป็น preview แล้วปิดด้วย Access ได้
+./scripts/deploy.sh          # ตรวจ 4 ชั้น + render + dry-run
+./scripts/deploy.sh --go     # ขึ้นจริง
 ```
 
-**GitHub Pages ทำเว็บส่วนตัวบนแพลนฟรีไม่ได้** ขึ้นแล้วทุกคนเห็น — Cloudflare ปิดด้วย
-Access ได้ (ฟรีถึง 50 ผู้ใช้) นั่นคือเหตุผลเดียวที่เลือกตัวนี้ ส่วน
-[.github/workflows/pages.yml](.github/workflows/pages.yml) เก็บไว้เป็นทางเลือกสำรอง
-ปิดอยู่โดยตั้งใจ
+ตั้งค่าอยู่ใน [wrangler.jsonc](wrangler.jsonc) ซึ่งอยู่ใน git — ต่างจาก Pages ที่เก็บไว้ในแดชบอร์ด
+ที่ไม่มีตัวตรวจตัวไหนใน repo นี้มองเห็น · deploy จะไม่ยอมขึ้นถ้า audit / radar / recipe / entity
+ตัวใดตัวหนึ่งไม่ผ่าน
+
+การนับถอยหลังบนหน้าเว็บคำนวณจาก**วันที่ของเครื่องคนเปิด** ไม่ใช่วันที่ deploy
+เปิดพรุ่งนี้ตัวเลขก็ยังถูกโดยไม่ต้อง deploy ใหม่ ส่วนป้ายมุมขวาบนบอกว่าข้อมูลเก่ากี่วัน
+และเปลี่ยนเป็นสีเตือนเมื่อเกิน 30 วัน
 
 ## เช็คลิงก์เน่า
 

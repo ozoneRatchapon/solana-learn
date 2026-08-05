@@ -222,7 +222,7 @@ footer { margin-top: 3.5rem; border-top: 1px solid var(--line); padding-top: 1.2
     <div class="sec-head">
       <span class="eyebrow">นับถอยหลัง</span>
       <h2>ของที่มีเดดไลน์</h2>
-      <span class="note">ปิดแล้วยังตอบ HTTP 200 อยู่ — ตัวเช็คลิงก์จับไม่ได้ ต้องเทียบวันที่</span>
+      <span class="note">นับจากวันนี้ของเครื่องคุณ ไม่ใช่วันที่ deploy — เปิดพรุ่งนี้ตัวเลขก็ยังถูก</span>
     </div>
     <div class="deadlines" id="deadlines"></div>
   </section>
@@ -296,8 +296,14 @@ const DATA = /*__DATA__*/{};
 
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const today = DATA.meta.generated;
-const daysTo = (d) => Math.round((Date.parse(d + "T00:00:00Z") - Date.parse(today + "T00:00:00Z")) / 86400000);
+/* วันที่ build ใช้บอกว่า "ข้อมูลเก่าแค่ไหน" เท่านั้น
+   ส่วนการนับถอยหลังต้องอิงวันนี้ของคนเปิด ไม่งั้นตัวเลขจะค้างที่วันที่ deploy
+   แล้วผิดเงียบๆ ทุกวันจนกว่าจะมีคน deploy ใหม่ ซึ่งเป็นความผิดพลาดที่แย่ที่สุด
+   สำหรับสิ่งที่เรียกตัวเองว่านาฬิกานับถอยหลัง */
+const built = DATA.meta.generated;
+const nowISO = new Date().toISOString().slice(0, 10);
+const daysTo = (d) => Math.round((Date.parse(d + "T00:00:00Z") - Date.parse(nowISO + "T00:00:00Z")) / 86400000);
+const staleDays = Math.max(0, Math.round((Date.parse(nowISO) - Date.parse(built)) / 86400000));
 
 /* ── ตัวเลขรวม ─────────────────────────────────────────── */
 const counters = [
@@ -310,7 +316,10 @@ const counters = [
 $("counters").innerHTML = counters.map(c => `
   <div class="counter"><span class="n">${c.n}</span><span class="k">${esc(c.k)}</span><span class="d">${esc(c.d)}</span></div>
 `).join("");
-$("stamp").textContent = "ยืนยัน " + today;
+$("stamp").textContent = staleDays === 0 ? "ข้อมูลวันนี้"
+  : staleDays === 1 ? "ข้อมูลเมื่อวาน"
+  : "ข้อมูล " + built + " (" + staleDays + " วันก่อน)";
+if (staleDays > 30) $("stamp").style.cssText = "color:var(--warn);border-color:var(--warn)";
 $("foot-stats").textContent =
   `${DATA.resources.length} resource · ${DATA.entities.length} entity · ${DATA.opportunities.length} opportunity · ${DATA.recipes.length} recipe · ${DATA.rejected.length} rejected`;
 
