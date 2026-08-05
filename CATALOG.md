@@ -414,25 +414,34 @@
 ## DeFi & Ecosystem protocols
 
 - [Jupiter](https://jup.ag/)
+  aggregator หา route ข้าม DEX ให้เอง ไม่ต้องต่อทีละเจ้า — เอกสารนักพัฒนาอยู่คนละโดเมนที่ developers.jup.ag: Ultra API (gasless, ไม่ต้องมี RPC เอง, คุม slippage ให้) กับ Metis routing ที่เลือกใช้เมื่อต้องการ CPI หรือประกอบ instruction เอง
   <sub>dex-aggregator, swap, perps</sub>
 - [Raydium](https://raydium.io/)
+  มี 6 on-chain program แยกกัน: AMM v4 (hybrid + OpenBook), CPMM (constant product รองรับ Token-2022 — เอกสารแนะนำตัวนี้สำหรับ pool ใหม่), CLMM (concentrated), Farm/Staking, LaunchLab (bonding curve), Perps (beta ผ่าน Orderly) — docs.raydium.io มี TS SDK + REST + Anchor IDL + Rust CPI pattern + MCP server
   <sub>amm, clmm, launchlab</sub>
 - [Orca (Whirlpools)](https://www.orca.so/)
+  Whirlpools คือ CLMM ของ Orca — SDK @orca-so/whirlpools-sdk ครอบ swap/liquidity/pool management ในตัวเดียว หน้านี้เป็นหน้าฝั่ง LP เอกสารนักพัฒนาอยู่ docs.orca.so เปิดตั้งแต่ 2021 ยังไม่เคยโดน exploit
   <sub>clmm, amm</sub>
 - [Kamino Finance](https://app.kamino.finance/)
+  lending + vault ที่จุดต่างอยู่ที่ curator — สร้าง isolated market แล้วตั้ง risk parameter/allocation cap เองได้ ไม่ใช่ค่าที่โปรโตคอลกำหนดมาให้ ของฝั่งนักพัฒนาครบกว่าเจ้าอื่นในหมวดนี้: REST API + TS SDK + Rust crate (CPI ได้) + CLI
   <sub>lending, leverage, liquidity</sub>
 - [Drift Protocol](https://www.drift.trade/)
+  perps 40+ ตลาด leverage ถึง 101x บน SOL/BTC/ETH — จุดขายฝั่งเทคนิคคือ gasless + top-of-block execution มี SDK ทั้ง Python และ TypeScript โค้ดเปิด audit โดย Trail of Bits / OtterSec / Neodyme
   <sub>perps, spot</sub>
 - [Meteora](https://www.meteora.ag/)
+  DLMM คือของที่ต่างจากเจ้าอื่น — concentrated liquidity แบบแบ่งเป็น discrete bin ไม่ใช่ช่วงต่อเนื่อง ทำให้ swap ภายใน bin เดียวไม่มี slippage และรองรับ limit order on-chain ค่าธรรมเนียมปรับตาม volatility เอง มี DAMM v2 กับ Dynamic Bonding Curve ด้วย SDK ทั้ง TS/Rust + REST
   <sub>dlmm, vault, launch</sub>
 - [Pyth Network](https://pyth.network/)
+  oracle แบบ first-party — สถาบัน 120+ เจ้า (Jane Street, Wintermute, Revolut, Flow Traders) ส่งราคาเข้าเครือข่ายเอง ไม่ผ่าน node ตัวกลางที่ไปดึงจาก API สาธารณะ ครอบคลุม 3,000+ feed บน 114 เชน เลือกใช้เมื่ออยากได้ feed ที่มีให้อยู่แล้ว
   <sub>oracle, price-feed</sub>
 - [Switchboard](https://switchboard.xyz/)
+  oracle แบบ on-demand — สร้าง feed ตอนที่ต้องใช้ ไม่ได้ stream ตลอดเวลา จึงถูกและ latency ต่ำกว่า กำหนด data source เองได้ทั้ง on-chain/off-chain โดยไม่ต้องรออนุมัติ ประมวลผลใน TEE ต่างจาก Pyth ตรงที่ Pyth ให้ feed สำเร็จรูป ส่วนตัวนี้ให้สร้างเอง
   <sub>oracle, vrf, on-demand</sub>
 - [Squads Protocol](https://squads.so/)
   เกี่ยวตรงกับ treasury/vault ของ Genesis
   <sub>multisig, treasury, smart-account</sub>
 - [Jito](https://www.jito.network/) `blocked`
+  ของสำหรับคนเขียน bot/trading 3 อย่าง: ส่ง transaction ให้ลงเร็ว, Bundles (กัน MEV + revert protection + atomic ข้ามหลาย transaction), Shredstream (รับ shred latency ต่ำ) — docs.jito.wtf หน้าเดียวกันไม่ได้พูดถึง JitoSOL หรือ block engine อย่าเหมารวม
   <sub>mev, lst, bundle</sub>
 - [Light Protocol (ZK Compression)](https://www.lightprotocol.com/)
   token/PDA แบบไม่ต้องจ่าย rent — น่าสนสำหรับ airdrop/badge จำนวนมาก

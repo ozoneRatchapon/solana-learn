@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # เพิ่ม resource ใหม่เข้า data/resources.yml (ต่อท้ายไฟล์ — render.sh จัดกลุ่มให้เอง)
 #
-#   ./scripts/add.sh -u <url> -n <ชื่อ> -c <หมวด> [-s source] [-t "tag1,tag2"] [-m "โน้ต"]
+#   ./scripts/add.sh -u <url> -n <ชื่อ> -c <หมวด> -m "<โน้ต>" [-s source] [-t "tag1,tag2"]
 #
 # ตัวอย่าง:
 #   ./scripts/add.sh -u https://example.com -n "Example" -c learning -s community -t "course,free" -m "ทำไมถึงเก็บ"
@@ -31,7 +31,17 @@ while getopts "u:n:c:s:t:m:" opt; do
 done
 
 [ -z "$url" ] || [ -z "$name" ] || [ -z "$cat_" ] && {
-  echo "ต้องมี -u <url> -n <ชื่อ> -c <หมวด>" >&2; exit 1; }
+  echo "ต้องมี -u <url> -n <ชื่อ> -c <หมวด> -m \"<โน้ต>\"" >&2; exit 1; }
+
+# note บังคับ — CLAUDE.md: "ทุก entry ต้องมีเหตุผลว่าทำไมถึงเก็บ"
+# entry ที่มีแค่ชื่อกับลิงก์ไม่ได้ให้อะไรเกินกว่าการค้น Google 10 วินาที
+# ซึ่งคือสิ่งเดียวที่ทำให้แคตตาล็อกนี้ต่างจาก awesome-list ทั่วไป
+[ -z "$note" ] && {
+  echo "ต้องมี -m \"<โน้ต>\" — เขียนว่าใช้ตอนไหน / ต่างจากตัวอื่นยังไง" >&2
+  echo "\"ดีมาก\" ไม่นับ ถ้ายังเขียนไม่ได้แปลว่ายังไม่ได้อ่านจริง" >&2
+  exit 1; }
+[ "${#note}" -lt 20 ] && {
+  echo "โน้ตสั้นเกินไป (${#note} ตัวอักษร) — อย่างน้อย 20" >&2; exit 1; }
 
 # หมวดต้องมีจริง
 if ! yq -e ".categories | has(\"$cat_\")" "$DATA" >/dev/null 2>&1; then
