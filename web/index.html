@@ -201,8 +201,27 @@ input[type="search"]:focus-visible, button:focus-visible, a:focus-visible {
 .rejects { display: grid; gap: 1px; background: var(--line-soft); border: 1px solid var(--line-soft);
            max-height: 22rem; overflow-y: auto; }
 .rej { background: var(--surface); padding: .65rem .9rem; }
-.rej .u { font-family: var(--mono); font-size: .72rem; color: var(--ink-3); word-break: break-all; }
+.rej .u { font-family: var(--mono); font-size: .72rem; color: var(--ink-3); word-break: break-all;
+          text-decoration: none; display: block; }
+.rej .u:hover { color: var(--accent); }
 .rej .r { font-size: .83rem; color: var(--ink-2); }
+.rej .sub { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--line); }
+.rej .sub:hover { border-bottom-color: var(--accent); }
+
+/* ── รายชื่อหน่วยงาน กดไปหาหลักฐานได้ ─────────────────── */
+.ent-group { display: flex; flex-wrap: wrap; gap: .3rem; align-items: baseline; margin-bottom: .7rem; }
+.ent-head { font-family: var(--mono); font-size: .72rem; color: var(--ink-3);
+            width: 100%; letter-spacing: .06em; }
+.ent-head .c { color: var(--accent); }
+.ent { font-size: .78rem; text-decoration: none; background: var(--surface);
+       border: 1px solid var(--line-soft); padding: .2rem .45rem; border-radius: 2px; color: var(--ink-2); }
+.ent:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ── ลิงก์ในแถบเดดไลน์และโอกาส ─────────────────────────── */
+.dl a.nm, .opp a.nm { text-decoration: none; border-bottom: 1px solid var(--line); }
+.dl a.nm:hover, .opp a.nm:hover { color: var(--accent); border-bottom-color: var(--accent); }
+footer a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--line); }
+footer a:hover { border-bottom-color: var(--accent); }
 
 footer { margin-top: 3.5rem; border-top: 1px solid var(--line); padding-top: 1.2rem;
          font-size: .82rem; color: var(--ink-3); display: grid; gap: .35rem; }
@@ -295,7 +314,15 @@ footer { margin-top: 3.5rem; border-top: 1px solid var(--line); padding-top: 1.2
   </section>
 
   <footer>
-    <div>generate จาก YAML ด้วย <span class="mono">scripts/render-web.sh</span> — หน้านี้ไม่ใช่ source of truth</div>
+    <div>
+      generate จาก YAML ด้วย <span class="mono">scripts/render-web.sh</span> — หน้านี้ไม่ใช่ source of truth
+      · ของจริงอยู่ที่ <a href="https://github.com/ozoneRatchapon/solana-learn" target="_blank" rel="noopener">github.com/ozoneRatchapon/solana-learn</a>
+    </div>
+    <div>
+      เจอลิงก์ที่ควรเก็บ หรือเจอของที่เปลี่ยนไปแล้ว —
+      <a href="https://github.com/ozoneRatchapon/solana-learn/issues/new/choose" target="_blank" rel="noopener">เปิด issue ได้เลย</a>
+      ไม่ต้องติดตั้งอะไร
+    </div>
     <div id="foot-stats" class="mono"></div>
   </footer>
 </div>
@@ -340,7 +367,7 @@ $("deadlines").innerHTML = dated.length ? dated.map(o => `
   <div class="dl ${o.left <= 7 ? "soon" : ""}">
     <div class="cd"><b>${o.left < 0 ? "—" : o.left}</b><span>${o.left < 0 ? "ปิดแล้ว" : "วัน"}</span></div>
     <div>
-      <div class="nm">${esc(o.name)}</div>
+      <a class="nm" href="${esc(o.url)}" target="_blank" rel="noopener">${esc(o.name)}</a>
       <div class="rw">${esc(o.reward)}</div>
     </div>
     <div class="date">${esc(o.closes)}</div>
@@ -357,7 +384,7 @@ $("opps").innerHTML = DATA.opportunities.filter(o => o.closes === "rolling")
     const [cls, label] = chipFor(o.status);
     return `<div class="opp">
       <div class="opp-top">
-        <span class="nm">${esc(o.name)}</span>
+        <a class="nm" href="${esc(o.url)}" target="_blank" rel="noopener">${esc(o.name)}</a>
         <span class="chip ${cls}">${label}</span>
         <span class="chip mute">${esc(o.kind)}</span>
       </div>
@@ -377,15 +404,19 @@ $("bars").innerHTML = catRows.map(([k, v]) => `
     <span class="v">${v}</span></div>
 `).join("");
 
-const byKind = {};
-DATA.entities.forEach(e => byKind[e.kind] = (byKind[e.kind] || 0) + 1);
-const kindRows = Object.entries(byKind).sort((a, b) => b[1] - a[1]);
-const maxKind = kindRows[0][1];
-$("kinds").innerHTML = kindRows.map(([k, v]) => `
-  <div class="bar"><span class="t">${esc(k)}</span>
-    <span class="track"><span class="fill" style="width:${(v / maxKind * 100).toFixed(1)}%"></span></span>
-    <span class="v">${v}</span></div>
-`).join("");
+/* เดิมส่วนนี้เป็นแค่แท่งนับจำนวนต่อชนิด ซึ่งบอกอะไรไม่ได้เลยนอกจากขนาด
+   ทำเป็นรายชื่อที่กดไปหาหลักฐานได้แทน — evidence ทุกตัวถูกบังคับแล้วว่าต้องมีในแคตตาล็อกจริง
+   จุดทั้งหมดของกราฟคือตรวจสอบได้ ถ้ากดไปดูไม่ได้ก็เสียจุดนั้นไป */
+const kindLabel = { org: "องค์กร", community: "ชุมชน", program: "โปรแกรม", product: "เครื่องมือ" };
+$("kinds").innerHTML = ["org", "community", "program", "product"].map(k => {
+  const list = DATA.entities.filter(e => e.kind === k);
+  if (!list.length) return "";
+  return `<div class="ent-group">
+    <div class="ent-head">${esc(kindLabel[k] || k)} <span class="c">${list.length}</span></div>
+    ${list.map(e => `<a class="ent" href="${esc(e.evidence)}" target="_blank" rel="noopener"
+        title="${esc(e.reach)}">${esc(e.name)}</a>`).join("")}
+  </div>`;
+}).join("");
 
 /* ── สูตร ──────────────────────────────────────────────── */
 const nameByUrl = {};
@@ -442,10 +473,13 @@ $("cats").addEventListener("click", (e) => {
 render();
 
 /* ── ทะเบียนที่ปฏิเสธ ──────────────────────────────────── */
+/* ลิงก์ที่ปฏิเสธก็ต้องกดได้ — คนอ่านต้องตรวจเองได้ว่าเหตุผลที่ให้ไว้ยังจริงอยู่ไหม
+   ไม่งั้นทะเบียนนี้ก็เป็นแค่คำกล่าวอ้างที่ตรวจสอบไม่ได้ ซึ่งขัดกับเหตุผลที่มันมีอยู่ */
 $("rejects").innerHTML = DATA.rejected.map(r => `
   <div class="rej">
-    <div class="u">${esc(r.url)}</div>
+    <a class="u" href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.url)}</a>
     <div class="r">${esc(r.reason)}</div>
+    ${r.superseded_by ? `<div class="r">ใช้แทน → <a class="sub" href="${esc(r.superseded_by)}" target="_blank" rel="noopener">${esc(lookup(r.superseded_by))}</a></div>` : ""}
   </div>
 `).join("");
 </script>
