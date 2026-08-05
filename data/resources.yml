@@ -184,6 +184,7 @@ resources:
     category: learning
     source: foundation
     tags: [github, bootcamp, curriculum]
+    note: 'โปรเจกต์จริง 8 ตัว (voting, escrow, private transfers, stablecoin, stableswap, x402, RWA, prediction market) — ตรวจโค้ดแล้ว 5 ส.ค. 2026: ใช้ anchor-lang 1.0.0-rc.2 + @anchor-lang/core 1.0 คือของปัจจุบัน ไม่ใช่ 0.3x แบบ tutorial ส่วนใหญ่บนเน็ต'
     status: ok
     added: 2026-08-04
 
@@ -306,6 +307,7 @@ resources:
     category: framework
     source: vendor
     tags: [examples, tested]
+    note: 'ตัวอย่าง program สาย Anchor อีกชุด ใช้เสริมกับของ solana-developers ที่เป็นตัวหลัก — repo ยัง active (push ล่าสุด 4 ส.ค. 2026)'
     status: ok
     added: 2026-08-04
 
@@ -359,6 +361,7 @@ resources:
     category: framework
     source: community
     tags: [pinocchio, tutorial]
+    note: 'คู่มือ Pinocchio จากชุมชน — ระวัง: repo ไม่ถูกแตะตั้งแต่ 27 ม.ค. 2026 ขณะที่ตัว Pinocchio เองยังพัฒนาต่อ เทียบกับ repo ทางการก่อนเชื่อรายละเอียด API'
     status: ok
     added: 2026-08-04
 
@@ -401,6 +404,7 @@ resources:
     category: client-sdk
     source: anza
     tags: [kit, github]
+    note: 'โค้ดต้นทางของ Kit ที่ Anza ดูแลเอง — อ่านคู่กับ solanakit.com ที่เป็นเอกสาร ใช้ repo นี้เวลาต้องดู source / issue / changelog จริง'
     status: ok
     added: 2026-08-04
 
@@ -461,6 +465,7 @@ resources:
     category: client-sdk
     source: foundation
     tags: [scaffold, cli]
+    note: 'scaffold โปรเจกต์ตั้งต้นแบบเลือก template ได้ — ตัว template ย้ายไปอยู่ solana-foundation/templates แล้ว repo นี้ active มาก (push 5 ส.ค. 2026)'
     status: ok
     added: 2026-08-04
 

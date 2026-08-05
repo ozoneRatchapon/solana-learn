@@ -87,6 +87,7 @@
   foundations → program patterns → fullstack → production
   <sub>bootcamp, video</sub>
 - [solana-bootcamp-2026](https://github.com/solana-foundation/solana-bootcamp-2026) `official`
+  โปรเจกต์จริง 8 ตัว (voting, escrow, private transfers, stablecoin, stableswap, x402, RWA, prediction market) — ตรวจโค้ดแล้ว 5 ส.ค. 2026: ใช้ anchor-lang 1.0.0-rc.2 + @anchor-lang/core 1.0 คือของปัจจุบัน ไม่ใช่ 0.3x แบบ tutorial ส่วนใหญ่บนเน็ต
   <sub>github, bootcamp, curriculum</sub>
 - [Blueshift](https://learn.blueshift.gg/)
   Foundation แนะนำเอง — คอร์สฟรี open-source มี challenge ให้ทำจริง
@@ -122,6 +123,7 @@
   ตัวอย่าง program แยกตาม pattern — วัตถุดิบชั้นดีสำหรับทำ quest
   <sub>examples, anchor, native</sub>
 - [QuickNode — solana-program-examples](https://github.com/quicknode/solana-program-examples) `vendor`
+  ตัวอย่าง program สาย Anchor อีกชุด ใช้เสริมกับของ solana-developers ที่เป็นตัวหลัก — repo ยัง active (push ล่าสุด 4 ส.ค. 2026)
   <sub>examples, tested</sub>
 - [Anchor Documentation](https://www.anchor-lang.com/) `official`
   ปัจจุบัน Anchor 1.0 แล้ว (เครื่องคุณ = anchor-cli 1.0.2)
@@ -138,6 +140,7 @@
   zero-dependency zero-copy ลด CU ได้ 88–95% เทียบ Anchor
   <sub>pinocchio, zero-copy, performance</sub>
 - [Pinocchio Guide](https://github.com/vict0rcarvalh0/pinocchio-guide)
+  คู่มือ Pinocchio จากชุมชน — ระวัง: repo ไม่ถูกแตะตั้งแต่ 27 ม.ค. 2026 ขณะที่ตัว Pinocchio เองยังพัฒนาต่อ เทียบกับ repo ทางการก่อนเชื่อรายละเอียด API
   <sub>pinocchio, tutorial</sub>
 - [Helius — How to Build with Pinocchio](https://www.helius.dev/blog/pinocchio) `vendor`
   <sub>pinocchio, article</sub>
@@ -157,6 +160,7 @@
   SDK มาตรฐานปัจจุบัน — tree-shakable zero-dependency แทน web3.js v1
   <sub>kit, typescript, canonical</sub>
 - [@solana/kit repository](https://github.com/anza-xyz/kit) `anza`
+  โค้ดต้นทางของ Kit ที่ Anza ดูแลเอง — อ่านคู่กับ solanakit.com ที่เป็นเอกสาร ใช้ repo นี้เวลาต้องดู source / issue / changelog จริง
   <sub>kit, github</sub>
 - [Kit Plugins](https://github.com/anza-xyz/kit-plugins) `anza`
   rpc, signer, wallet, litesvm, instruction-plan
@@ -175,6 +179,7 @@
   อ่านตัวนี้ก่อนตัดสินใจว่าโปรเจกต์จะใช้ Kit หรือ web3.js v3
   <sub>context, article</sub>
 - [create-solana-dapp](https://github.com/solana-developers/create-solana-dapp) `official`
+  scaffold โปรเจกต์ตั้งต้นแบบเลือก template ได้ — ตัว template ย้ายไปอยู่ solana-foundation/templates แล้ว repo นี้ active มาก (push 5 ส.ค. 2026)
   <sub>scaffold, cli</sub>
 
 ## Testing — LiteSVM, Mollusk, Surfpool
