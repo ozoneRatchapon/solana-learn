@@ -64,15 +64,35 @@ sleep 3
 wr deploy >/dev/null 2>&1
 
 echo "▸ ตรวจว่าที่เสิร์ฟจริงตรงกับที่ build"
+# ตรวจทุกไฟล์ ไม่ใช่แค่ index.html — เคยเกือบพลาดเพราะ report.md กับ data.json
+# เป็นชั้นที่ agent อ่าน ถ้าค้างเก่าจะไม่มีอะไรจับได้เลย และมันจะโกหกเงียบๆ
 sleep 4
 url="https://solana-learn.solana-thailand.workers.dev"
 tmp="$(mktemp)"; trap 'rm -f "$tmp"' EXIT
+
+check_all() {
+  local f name bad=0
+  for f in "$DIST"/*; do
+    name="$(basename "$f")"
+    case "$name" in _headers) continue ;; esac   # ไม่ได้เสิร์ฟเป็นไฟล์
+    curl -s -L --max-time 30 "$url/$name?cb=$RANDOM$$" -o "$tmp" 2>/dev/null
+    if cmp -s "$tmp" "$f"; then
+      printf '    \033[32m✓\033[0m %s\n' "$name"
+    else
+      printf '    \033[33m!\033[0m %s ยังไม่ตรง\n' "$name"; bad=1
+    fi
+  done
+  # หน้าแรกต้องตรงกับ index.html ด้วย
+  curl -s -L --max-time 30 "$url/?cb=$RANDOM$$" -o "$tmp" 2>/dev/null
+  cmp -s "$tmp" "$DIST/index.html" || { printf '    \033[33m!\033[0m / ยังไม่ตรง\n'; bad=1; }
+  return $bad
+}
+
 for i in 1 2 3; do
-  curl -s -L --max-time 25 "$url/?cb=$i$$" -o "$tmp"
-  if cmp -s "$tmp" "$DIST/index.html"; then
-    printf '  \033[32m✓\033[0m ตรงกันทุกไบต์ — %s\n' "$url"; exit 0
+  if check_all; then
+    printf '  \033[32m✓\033[0m ทุกไฟล์ตรงกับที่ build — %s\n' "$url"; exit 0
   fi
-  sleep 6
+  printf '  รอ propagate แล้วตรวจใหม่ (%s/3)\n' "$i"; sleep 8
 done
-printf '  \033[31m✗\033[0m ที่เสิร์ฟยังไม่ตรงกับที่ build — ลองรันซ้ำอีกครั้ง\n' >&2
+printf '  \033[31m✗\033[0m ยังมีไฟล์ที่เสิร์ฟไม่ตรงกับที่ build — รันซ้ำอีกครั้ง\n' >&2
 exit 1
