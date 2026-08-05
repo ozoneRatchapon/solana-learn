@@ -4,3 +4,5 @@ data/resources.yml.tmp
 
 # Rust
 /target
+
+# web/index.html เป็นไฟล์ generate — แต่ commit ไว้เพราะเป็นสิ่งที่เอาไป deploy

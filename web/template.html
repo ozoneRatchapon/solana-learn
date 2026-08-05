@@ -1,0 +1,433 @@
+<title>solana-learn — แผงควบคุม</title>
+<style>
+/* ─────────────────────────────────────────────────────────────
+   โทเคน — neutral เอียงไปทาง cyan เล็กน้อยให้เข้ากับ accent
+   accent (teal) ใช้กับโครงสร้างเท่านั้น ห้ามใช้แทนสีบอกสถานะ
+   ───────────────────────────────────────────────────────────── */
+:root {
+  --ground:      #E9EDEE;
+  --surface:     #FFFFFF;
+  --surface-2:   #F3F6F6;
+  --line:        #CBD5D6;
+  --line-soft:   #DFE6E6;
+  --ink:         #161F22;
+  --ink-2:       #4A5C60;
+  --ink-3:       #7A8C90;
+  --accent:      #0E7C86;
+  --accent-soft: #D5EBED;
+  --ok:          #2E7D4F;
+  --ok-soft:     #DCEEE3;
+  --warn:        #9A6410;
+  --warn-soft:   #F6E9D2;
+  --crit:        #A93F52;
+  --crit-soft:   #F6DFE3;
+  --mute-soft:   #E4E9EA;
+
+  --sans: "IBM Plex Sans Thai", "Noto Sans Thai", -apple-system, BlinkMacSystemFont,
+          "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, "Cascadia Mono", Consolas, monospace;
+
+  --pad: clamp(1rem, 3.5vw, 2.75rem);
+  --maxw: 1180px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ground:      #0C1113;
+    --surface:     #141B1D;
+    --surface-2:   #1A2325;
+    --line:        #2C393C;
+    --line-soft:   #232E31;
+    --ink:         #DEE7E8;
+    --ink-2:       #9DB0B3;
+    --ink-3:       #6C7E82;
+    --accent:      #3EC0CB;
+    --accent-soft: #12363A;
+    --ok:          #64C48D;
+    --ok-soft:     #16311F;
+    --warn:        #DCA84C;
+    --warn-soft:   #33260F;
+    --crit:        #E8899A;
+    --crit-soft:   #38181F;
+    --mute-soft:   #202A2C;
+  }
+}
+:root[data-theme="dark"] {
+  --ground:#0C1113; --surface:#141B1D; --surface-2:#1A2325; --line:#2C393C;
+  --line-soft:#232E31; --ink:#DEE7E8; --ink-2:#9DB0B3; --ink-3:#6C7E82;
+  --accent:#3EC0CB; --accent-soft:#12363A; --ok:#64C48D; --ok-soft:#16311F;
+  --warn:#DCA84C; --warn-soft:#33260F; --crit:#E8899A; --crit-soft:#38181F; --mute-soft:#202A2C;
+}
+:root[data-theme="light"] {
+  --ground:#E9EDEE; --surface:#FFFFFF; --surface-2:#F3F6F6; --line:#CBD5D6;
+  --line-soft:#DFE6E6; --ink:#161F22; --ink-2:#4A5C60; --ink-3:#7A8C90;
+  --accent:#0E7C86; --accent-soft:#D5EBED; --ok:#2E7D4F; --ok-soft:#DCEEE3;
+  --warn:#9A6410; --warn-soft:#F6E9D2; --crit:#A93F52; --crit-soft:#F6DFE3; --mute-soft:#E4E9EA;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--ground); color: var(--ink);
+  font-family: var(--sans); font-size: 15px; line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: var(--pad); }
+a { color: inherit; }
+h1, h2, h3 { text-wrap: balance; margin: 0; font-weight: 620; letter-spacing: -0.015em; }
+.mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+
+/* ── หัวเรื่อง ─────────────────────────────────────────── */
+header { border-bottom: 1px solid var(--line); }
+.masthead { display: flex; flex-wrap: wrap; gap: 1.25rem; align-items: baseline; justify-content: space-between; }
+h1 { font-size: clamp(1.6rem, 4vw, 2.35rem); line-height: 1.15; }
+h1 .dim { color: var(--ink-3); font-weight: 400; }
+.tagline { color: var(--ink-2); max-width: 62ch; margin-top: .6rem; }
+.stamp {
+  font-family: var(--mono); font-size: .72rem; letter-spacing: .09em; text-transform: uppercase;
+  color: var(--accent); border: 1px solid var(--accent); border-radius: 2px;
+  padding: .3rem .55rem; white-space: nowrap;
+}
+
+/* ── แถวตัวเลข ─────────────────────────────────────────── */
+.counters { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1px;
+            background: var(--line-soft); border: 1px solid var(--line-soft); margin-top: 1.9rem; }
+.counter { background: var(--surface); padding: 1rem 1.1rem; display: flex; flex-direction: column; gap: .15rem; }
+.counter .n { font-family: var(--mono); font-variant-numeric: tabular-nums;
+              font-size: 1.9rem; line-height: 1.05; font-weight: 500; }
+.counter .k { font-size: .78rem; color: var(--ink-2); }
+.counter .d { font-size: .72rem; color: var(--ink-3); }
+
+/* ── ส่วนต่างๆ ─────────────────────────────────────────── */
+section { padding-top: 2.75rem; }
+.sec-head { display: flex; align-items: baseline; gap: .8rem; flex-wrap: wrap;
+            border-bottom: 1px solid var(--line); padding-bottom: .55rem; margin-bottom: 1.25rem; }
+.sec-head h2 { font-size: 1.12rem; }
+.sec-head .note { color: var(--ink-3); font-size: .84rem; }
+.eyebrow { font-family: var(--mono); font-size: .7rem; letter-spacing: .14em; text-transform: uppercase;
+           color: var(--accent); }
+
+/* ── เดดไลน์ ───────────────────────────────────────────── */
+.deadlines { display: grid; gap: .6rem; }
+.dl { display: grid; grid-template-columns: 5.2rem 1fr auto; gap: 1rem; align-items: center;
+      background: var(--surface); border: 1px solid var(--line-soft); border-left: 3px solid var(--warn);
+      padding: .85rem 1rem; }
+.dl.soon { border-left-color: var(--crit); }
+.dl .cd { font-family: var(--mono); font-variant-numeric: tabular-nums; text-align: right; }
+.dl .cd b { display: block; font-size: 1.55rem; line-height: 1; font-weight: 500; }
+.dl .cd span { font-size: .7rem; color: var(--ink-3); letter-spacing: .05em; }
+.dl .nm { font-weight: 560; }
+.dl .rw { font-size: .84rem; color: var(--ink-2); }
+.dl .date { font-family: var(--mono); font-size: .78rem; color: var(--ink-3); white-space: nowrap; }
+
+/* ── ชิปสถานะ ──────────────────────────────────────────── */
+.chip { font-family: var(--mono); font-size: .68rem; letter-spacing: .05em; padding: .16rem .45rem;
+        border-radius: 2px; white-space: nowrap; display: inline-block; }
+.chip.ok   { background: var(--ok-soft);   color: var(--ok); }
+.chip.warn { background: var(--warn-soft); color: var(--warn); }
+.chip.crit { background: var(--crit-soft); color: var(--crit); }
+.chip.mute { background: var(--mute-soft); color: var(--ink-3); }
+.chip.acc  { background: var(--accent-soft); color: var(--accent); }
+
+/* ── โอกาส ─────────────────────────────────────────────── */
+.opps { display: grid; gap: 1px; background: var(--line-soft); border: 1px solid var(--line-soft); }
+.opp { background: var(--surface); padding: .95rem 1.1rem; display: grid; gap: .45rem; }
+.opp-top { display: flex; gap: .7rem; align-items: baseline; flex-wrap: wrap; }
+.opp-top .nm { font-weight: 560; }
+.opp .rw { font-size: .84rem; color: var(--ink-2); }
+.opp .vd { font-size: .86rem; color: var(--ink-2); border-left: 2px solid var(--line);
+           padding-left: .75rem; }
+.opp .vd b { color: var(--ink); font-weight: 560; }
+
+/* ── ตัวสำรวจแคตตาล็อก ─────────────────────────────────── */
+.tools { display: flex; gap: .6rem; flex-wrap: wrap; align-items: center; margin-bottom: 1rem; }
+input[type="search"] {
+  flex: 1 1 240px; min-width: 0; font: inherit; font-size: .92rem; color: var(--ink);
+  background: var(--surface); border: 1px solid var(--line); padding: .5rem .7rem; border-radius: 2px;
+}
+input[type="search"]:focus-visible, button:focus-visible, a:focus-visible {
+  outline: 2px solid var(--accent); outline-offset: 2px;
+}
+.cats { display: flex; gap: .3rem; flex-wrap: wrap; }
+.cat {
+  font-family: var(--mono); font-size: .72rem; padding: .3rem .5rem; cursor: pointer;
+  background: var(--surface); color: var(--ink-2); border: 1px solid var(--line-soft); border-radius: 2px;
+}
+.cat[aria-pressed="true"] { background: var(--accent); color: var(--surface); border-color: var(--accent); }
+.cat .c { color: var(--ink-3); }
+.cat[aria-pressed="true"] .c { color: var(--surface); opacity: .75; }
+
+.rows { border: 1px solid var(--line-soft); background: var(--line-soft);
+        display: grid; gap: 1px; max-height: 30rem; overflow-y: auto; }
+.row { background: var(--surface); padding: .7rem .9rem; display: grid; gap: .28rem; }
+.row-top { display: flex; gap: .55rem; align-items: baseline; flex-wrap: wrap; }
+.row a.nm { font-weight: 560; text-decoration: none; border-bottom: 1px solid var(--line); }
+.row a.nm:hover { border-bottom-color: var(--accent); color: var(--accent); }
+.row .note { font-size: .84rem; color: var(--ink-2); }
+.row .meta { font-family: var(--mono); font-size: .7rem; color: var(--ink-3); }
+.count-line { font-family: var(--mono); font-size: .76rem; color: var(--ink-3); margin-top: .55rem; }
+.empty { background: var(--surface); padding: 2rem; text-align: center; color: var(--ink-3); }
+
+/* ── สูตร ──────────────────────────────────────────────── */
+.recipes { display: grid; gap: 1px; background: var(--line-soft); border: 1px solid var(--line-soft); }
+.recipe { background: var(--surface); padding: 1rem 1.1rem; display: grid; gap: .55rem; }
+.recipe h3 { font-size: .97rem; }
+.recipe ul { margin: 0; padding-left: 1.1rem; font-size: .85rem; color: var(--ink-2); }
+.recipe .uses { display: flex; gap: .3rem; flex-wrap: wrap; }
+.recipe .uses a { font-family: var(--mono); font-size: .7rem; text-decoration: none;
+                  background: var(--surface-2); border: 1px solid var(--line-soft);
+                  padding: .18rem .42rem; border-radius: 2px; color: var(--ink-2); }
+.recipe .uses a:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ── สองคอลัมน์ ────────────────────────────────────────── */
+.split { display: grid; grid-template-columns: 1fr; gap: 2.5rem; }
+@media (min-width: 860px) { .split { grid-template-columns: 1.05fr .95fr; } }
+
+/* ── แท่งหมวด ──────────────────────────────────────────── */
+.bars { display: grid; gap: .38rem; }
+.bar { display: grid; grid-template-columns: 8.5rem 1fr 2.2rem; gap: .6rem; align-items: center; font-size: .82rem; }
+.bar .t { color: var(--ink-2); font-family: var(--mono); font-size: .74rem;
+          overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bar .track { background: var(--line-soft); height: .55rem; }
+.bar .fill { background: var(--accent); height: 100%; }
+.bar .v { font-family: var(--mono); font-variant-numeric: tabular-nums; text-align: right; color: var(--ink-3); }
+
+/* ── ปฏิเสธ ────────────────────────────────────────────── */
+.rejects { display: grid; gap: 1px; background: var(--line-soft); border: 1px solid var(--line-soft);
+           max-height: 22rem; overflow-y: auto; }
+.rej { background: var(--surface); padding: .65rem .9rem; }
+.rej .u { font-family: var(--mono); font-size: .72rem; color: var(--ink-3); word-break: break-all; }
+.rej .r { font-size: .83rem; color: var(--ink-2); }
+
+footer { margin-top: 3.5rem; border-top: 1px solid var(--line); padding-top: 1.2rem;
+         font-size: .82rem; color: var(--ink-3); display: grid; gap: .35rem; }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="masthead">
+      <div>
+        <h1>solana-learn <span class="dim">— แผงควบคุม</span></h1>
+        <p class="tagline">
+          แคตตาล็อก resource Solana ภาษาไทย ที่ทุกรายการมีเหตุผลกำกับว่าใช้ตอนไหน
+          เก็บทั้งของที่เอาและของที่ดูแล้วไม่เอา ตรวจด้วยเครื่องทุก push
+        </p>
+      </div>
+      <div class="stamp" id="stamp">ตรวจแล้ว</div>
+    </div>
+
+    <div class="counters" id="counters"></div>
+  </header>
+
+  <section id="urgent">
+    <div class="sec-head">
+      <span class="eyebrow">นับถอยหลัง</span>
+      <h2>ของที่มีเดดไลน์</h2>
+      <span class="note">ปิดแล้วยังตอบ HTTP 200 อยู่ — ตัวเช็คลิงก์จับไม่ได้ ต้องเทียบวันที่</span>
+    </div>
+    <div class="deadlines" id="deadlines"></div>
+  </section>
+
+  <section>
+    <div class="split">
+      <div>
+        <div class="sec-head">
+          <span class="eyebrow">โอกาส</span>
+          <h2>เปิดตลอด</h2>
+          <span class="note">verdict = ทำได้จริงไหม ไม่ใช่กำลังใจ</span>
+        </div>
+        <div class="opps" id="opps"></div>
+      </div>
+      <div>
+        <div class="sec-head">
+          <span class="eyebrow">การกระจาย</span>
+          <h2>หมวดไหนหนา หมวดไหนบาง</h2>
+        </div>
+        <div class="bars" id="bars"></div>
+        <div class="sec-head" style="margin-top:2.2rem">
+          <span class="eyebrow">ระบบนิเวศ</span>
+          <h2>ใครทำอะไร</h2>
+          <span class="note">ไม่มีข้อมูลรายบุคคล กันไว้ที่ schema</span>
+        </div>
+        <div class="bars" id="kinds"></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">สูตร</span>
+      <h2>โจทย์นี้หยิบอะไรมาต่อกัน</h2>
+      <span class="note">ข้อจำกัดคือส่วนที่ทำให้สูตรมีค่า ไม่ใช่ขั้นตอน</span>
+    </div>
+    <div class="recipes" id="recipes"></div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">แคตตาล็อก</span>
+      <h2>ค้นทั้งหมด</h2>
+      <span class="note">ค้นจากชื่อ โน้ต แท็ก และหมวด</span>
+    </div>
+    <div class="tools">
+      <input type="search" id="q" placeholder="พิมพ์เพื่อค้น เช่น kora, rent, oracle, เวิร์กช็อป" aria-label="ค้นแคตตาล็อก">
+    </div>
+    <div class="cats" id="cats"></div>
+    <div class="count-line" id="countline"></div>
+    <div class="rows" id="rows"></div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">ทะเบียนที่ปฏิเสธ</span>
+      <h2>ดูแล้วไม่เอา เพราะอะไร</h2>
+      <span class="note">ฝั่งที่ awesome-list ทั่วโลกไม่เก็บ ทั้งที่มีต้นทุนเท่ากัน</span>
+    </div>
+    <div class="rejects" id="rejects"></div>
+  </section>
+
+  <footer>
+    <div>generate จาก YAML ด้วย <span class="mono">scripts/render-web.sh</span> — หน้านี้ไม่ใช่ source of truth</div>
+    <div id="foot-stats" class="mono"></div>
+  </footer>
+</div>
+
+<script>
+const DATA = /*__DATA__*/{};
+
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const today = DATA.meta.generated;
+const daysTo = (d) => Math.round((Date.parse(d + "T00:00:00Z") - Date.parse(today + "T00:00:00Z")) / 86400000);
+
+/* ── ตัวเลขรวม ─────────────────────────────────────────── */
+const counters = [
+  { n: DATA.resources.length,    k: "resource",    d: DATA.meta.categories + " หมวด · ลิงก์ตาย 0" },
+  { n: DATA.entities.length,     k: "หน่วยงาน",     d: DATA.relations.length + " ความสัมพันธ์" },
+  { n: DATA.opportunities.length,k: "โอกาสเปิดอยู่", d: DATA.opportunities.filter(o => o.status === "ready").length + " ตัวลงมือได้เลย" },
+  { n: DATA.recipes.length,      k: "สูตร",         d: DATA.recipes.filter(r => r.status === "proven").length + " ตัวเคยทำจริง" },
+  { n: DATA.rejected.length,     k: "ปฏิเสธไว้",     d: "พร้อมเหตุผลทุกตัว" },
+];
+$("counters").innerHTML = counters.map(c => `
+  <div class="counter"><span class="n">${c.n}</span><span class="k">${esc(c.k)}</span><span class="d">${esc(c.d)}</span></div>
+`).join("");
+$("stamp").textContent = "ยืนยัน " + today;
+$("foot-stats").textContent =
+  `${DATA.resources.length} resource · ${DATA.entities.length} entity · ${DATA.opportunities.length} opportunity · ${DATA.recipes.length} recipe · ${DATA.rejected.length} rejected`;
+
+/* ── เดดไลน์ ───────────────────────────────────────────── */
+const dated = DATA.opportunities.filter(o => o.closes !== "rolling")
+  .map(o => ({ ...o, left: daysTo(o.closes) }))
+  .sort((a, b) => a.left - b.left);
+$("deadlines").innerHTML = dated.length ? dated.map(o => `
+  <div class="dl ${o.left <= 7 ? "soon" : ""}">
+    <div class="cd"><b>${o.left < 0 ? "—" : o.left}</b><span>${o.left < 0 ? "ปิดแล้ว" : "วัน"}</span></div>
+    <div>
+      <div class="nm">${esc(o.name)}</div>
+      <div class="rw">${esc(o.reward)}</div>
+    </div>
+    <div class="date">${esc(o.closes)}</div>
+  </div>
+`).join("") : `<div class="empty">ตอนนี้ไม่มีรายการที่มีเดดไลน์</div>`;
+
+/* ── โอกาสแบบเปิดตลอด ──────────────────────────────────── */
+const chipFor = (s) => s === "ready" ? ["ok", "ลงมือได้"]
+                     : s === "unproven" ? ["warn", "ต้องพิสูจน์ก่อน"]
+                     : ["mute", "รอจังหวะ"];
+$("opps").innerHTML = DATA.opportunities.filter(o => o.closes === "rolling")
+  .sort((a, b) => (a.status === "ready" ? 0 : 1) - (b.status === "ready" ? 0 : 1))
+  .map(o => {
+    const [cls, label] = chipFor(o.status);
+    return `<div class="opp">
+      <div class="opp-top">
+        <span class="nm">${esc(o.name)}</span>
+        <span class="chip ${cls}">${label}</span>
+        <span class="chip mute">${esc(o.kind)}</span>
+      </div>
+      <div class="rw">${esc(o.reward)}</div>
+      <div class="vd"><b>verdict</b> — ${esc(o.verdict)}</div>
+    </div>`;
+  }).join("");
+
+/* ── แท่งหมวด ──────────────────────────────────────────── */
+const byCat = {};
+DATA.resources.forEach(r => byCat[r.category] = (byCat[r.category] || 0) + 1);
+const catRows = Object.entries(byCat).sort((a, b) => b[1] - a[1]);
+const maxCat = catRows[0][1];
+$("bars").innerHTML = catRows.map(([k, v]) => `
+  <div class="bar"><span class="t" title="${esc(k)}">${esc(k)}</span>
+    <span class="track"><span class="fill" style="width:${(v / maxCat * 100).toFixed(1)}%"></span></span>
+    <span class="v">${v}</span></div>
+`).join("");
+
+const byKind = {};
+DATA.entities.forEach(e => byKind[e.kind] = (byKind[e.kind] || 0) + 1);
+const kindRows = Object.entries(byKind).sort((a, b) => b[1] - a[1]);
+const maxKind = kindRows[0][1];
+$("kinds").innerHTML = kindRows.map(([k, v]) => `
+  <div class="bar"><span class="t">${esc(k)}</span>
+    <span class="track"><span class="fill" style="width:${(v / maxKind * 100).toFixed(1)}%"></span></span>
+    <span class="v">${v}</span></div>
+`).join("");
+
+/* ── สูตร ──────────────────────────────────────────────── */
+const nameByUrl = {};
+DATA.resources.forEach(r => nameByUrl[r.url.toLowerCase().replace(/\/+$/, "")] = r.name);
+const lookup = (u) => nameByUrl[String(u).toLowerCase().replace(/\/+$/, "")] || u;
+$("recipes").innerHTML = DATA.recipes.map(r => `
+  <div class="recipe">
+    <div class="opp-top">
+      <h3>${esc(r.problem)}</h3>
+      <span class="chip ${r.status === "proven" ? "ok" : "acc"}">${r.status === "proven" ? "เคยทำจริง" : "ยังไม่เคยรันทั้งชุด"}</span>
+    </div>
+    <ul>${(r.constraints || []).map(c => `<li>${esc(c)}</li>`).join("")}</ul>
+    <div class="uses">${(r.uses || []).map(u => `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(lookup(u))}</a>`).join("")}</div>
+  </div>
+`).join("");
+
+/* ── ตัวสำรวจแคตตาล็อก ─────────────────────────────────── */
+let activeCat = null;
+$("cats").innerHTML = [["ทั้งหมด", null, DATA.resources.length]]
+  .concat(catRows.map(([k, v]) => [k, k, v]))
+  .map(([label, val, n]) =>
+    `<button class="cat" data-cat="${val === null ? "" : esc(val)}" aria-pressed="${val === null}">${esc(label)} <span class="c">${n}</span></button>`
+  ).join("");
+
+function render() {
+  const q = $("q").value.trim().toLowerCase();
+  const hits = DATA.resources.filter(r => {
+    if (activeCat && r.category !== activeCat) return false;
+    if (!q) return true;
+    return (r.name + " " + (r.note || "") + " " + (r.tags || []).join(" ") + " " + r.category + " " + r.url)
+      .toLowerCase().includes(q);
+  });
+  $("countline").textContent = `แสดง ${hits.length} จาก ${DATA.resources.length} รายการ`;
+  $("rows").innerHTML = hits.length ? hits.map(r => `
+    <div class="row">
+      <div class="row-top">
+        <a class="nm" href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.name)}</a>
+        <span class="chip ${r.source === "foundation" || r.source === "anza" ? "acc" : "mute"}">${esc(r.source)}</span>
+        ${r.status === "blocked" ? '<span class="chip warn">กัน bot</span>' : ""}
+        ${r.deprecated ? '<span class="chip crit">เลิกใช้แล้ว</span>' : ""}
+      </div>
+      ${r.note ? `<div class="note">${esc(r.note)}</div>` : ""}
+      <div class="meta">${esc(r.category)}${(r.tags || []).length ? " · " + esc((r.tags || []).join(", ")) : ""}</div>
+    </div>
+  `).join("") : `<div class="empty">ไม่เจอ — ลองคำอื่น</div>`;
+}
+$("q").addEventListener("input", render);
+$("cats").addEventListener("click", (e) => {
+  const b = e.target.closest(".cat"); if (!b) return;
+  activeCat = b.dataset.cat || null;
+  [...$("cats").children].forEach(c => c.setAttribute("aria-pressed", String(c === b)));
+  render();
+});
+render();
+
+/* ── ทะเบียนที่ปฏิเสธ ──────────────────────────────────── */
+$("rejects").innerHTML = DATA.rejected.map(r => `
+  <div class="rej">
+    <div class="u">${esc(r.url)}</div>
+    <div class="r">${esc(r.reason)}</div>
+  </div>
+`).join("");
+</script>
