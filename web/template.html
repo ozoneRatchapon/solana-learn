@@ -163,6 +163,14 @@ input[type="search"]:focus-visible, button:focus-visible, a:focus-visible {
 .row a.nm:hover { border-bottom-color: var(--accent); color: var(--accent); }
 .row .note { font-size: .84rem; color: var(--ink-2); }
 .row .meta { font-family: var(--mono); font-size: .7rem; color: var(--ink-3); }
+.cross { display: flex; gap: .35rem; flex-wrap: wrap; align-items: center; margin: .2rem 0 .7rem; }
+.cross:empty { margin: 0; }
+.xlabel { font-family: var(--mono); font-size: .68rem; color: var(--ink-3); letter-spacing: .06em; }
+.xhit { font-size: .76rem; text-decoration: none; background: var(--accent-soft); color: var(--accent);
+        border: 1px solid transparent; padding: .18rem .45rem; border-radius: 2px;
+        max-width: 34ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.xhit:hover { border-color: var(--accent); }
+.xhit .k { font-family: var(--mono); font-size: .64rem; opacity: .7; margin-right: .25rem; }
 .count-line { font-family: var(--mono); font-size: .76rem; color: var(--ink-3); margin-top: .55rem; }
 .empty { background: var(--surface); padding: 2rem; text-align: center; color: var(--ink-3); }
 
@@ -296,7 +304,7 @@ footer { margin-top: 3.5rem; border-top: 1px solid var(--line); padding-top: 1.2
     </div>
   </section>
 
-  <section>
+  <section id="recipes-sec">
     <div class="sec-head">
       <span class="eyebrow">สูตร</span>
       <h2>โจทย์นี้หยิบอะไรมาต่อกัน</h2>
@@ -315,6 +323,7 @@ footer { margin-top: 3.5rem; border-top: 1px solid var(--line); padding-top: 1.2
       <input type="search" id="q" placeholder="พิมพ์เพื่อค้น เช่น kora, rent, oracle, เวิร์กช็อป" aria-label="ค้นแคตตาล็อก">
     </div>
     <div class="cats" id="cats"></div>
+    <div class="cross" id="cross"></div>
     <div class="count-line" id="countline"></div>
     <div class="rows" id="rows"></div>
   </section>
@@ -468,6 +477,31 @@ function render() {
       .toLowerCase().includes(q);
   });
   $("countline").textContent = `แสดง ${hits.length} จาก ${DATA.resources.length} รายการ`;
+
+  /* ค้นข้ามชั้น — พิมพ์ "kora" แล้วควรรู้ด้วยว่ามีสูตรที่ใช้ Kora อยู่
+     ไม่งั้นชั้นอื่นที่อุตส่าห์ทำไว้ก็ไม่มีใครเจอ */
+  const cross = [];
+  if (q) {
+    const has = (t) => String(t || "").toLowerCase().includes(q);
+    DATA.recipes.forEach(r => {
+      if (has(r.problem) || has(r.approach) || (r.uses || []).some(has) || (r.constraints || []).some(has))
+        cross.push(["สูตร", r.problem, "#recipes-sec"]);
+    });
+    DATA.opportunities.forEach(o => {
+      if (has(o.name) || has(o.verdict) || has(o.fit)) cross.push(["โอกาส", o.name, o.url]);
+    });
+    DATA.entities.forEach(e => {
+      if (has(e.name) || has(e.reach)) cross.push(["หน่วยงาน", e.name, e.evidence]);
+    });
+    DATA.rejected.forEach(r => {
+      if (has(r.url) || has(r.reason)) cross.push(["เคยไม่เอา", r.url.replace(/^https?:\/\//, ""), r.url]);
+    });
+  }
+  $("cross").innerHTML = cross.length
+    ? `<span class="xlabel">เจอที่อื่นในหน้านี้</span>` + cross.slice(0, 8).map(([k, label, href]) =>
+        `<a class="xhit" href="${esc(href)}"${href.startsWith("#") ? "" : ' target="_blank" rel="noopener"'}><span class="k">${k}</span> ${esc(label)}</a>`
+      ).join("") + (cross.length > 8 ? `<span class="xlabel">และอีก ${cross.length - 8}</span>` : "")
+    : "";
   $("rows").innerHTML = hits.length ? hits.map(r => `
     <div class="row">
       <div class="row-top">
@@ -477,6 +511,9 @@ function render() {
         ${r.deprecated ? '<span class="chip crit">เลิกใช้แล้ว</span>' : ""}
       </div>
       ${r.note ? `<div class="note">${esc(r.note)}</div>` : ""}
+      ${r.deprecated ? `<div class="fld warn"><b>ทำไมถึงเลิกใช้</b> ${esc(r.deprecated.reason || "")}${
+        r.deprecated.superseded_by ? ` · ใช้แทน → <a class="sub" href="${esc(r.deprecated.superseded_by)}" target="_blank" rel="noopener">${esc(lookup(r.deprecated.superseded_by))}</a>` : ""
+      }</div>` : ""}
       <div class="meta">${esc(r.category)}${(r.tags || []).length ? " · " + esc((r.tags || []).join(", ")) : ""}</div>
     </div>
   `).join("") : `<div class="empty">ไม่เจอ — ลองคำอื่น</div>`;
