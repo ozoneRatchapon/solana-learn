@@ -90,6 +90,11 @@
   `while` ที่อยู่ใน pipeline entry สุดท้ายของหมวดสุดท้ายไม่มี tags → pipeline คืน 1 → `set -e` ฆ่า script
   **bash 3.2 บน macOS ไม่แสดงอาการ bash 5.x บน ubuntu-latest แสดง** — เขียน script ที่นี่แล้วทดสอบแค่บนเครื่องไม่พอ
 - **ไม่มี PyYAML ในเครื่อง** ใช้ `yq` (mikefarah v4) กับ `jq` เท่านั้น
+- **`sed` range ที่คร่อมอักษรไทย เช่น `[^a-z0-9ก-๙ -]` — BSD sed (macOS) รับ แต่ GNU sed (CI) ตอบ
+  `Invalid collation character` แล้วตาย** เจอตอน CI รันครั้งแรก `render.sh` พังทั้งที่รันบนเครื่องผ่าน
+  และ `LC_ALL=C` ก็ reproduce ไม่ได้ เพราะ BSD sed ไม่สนใจ locale ตรงนี้
+  **ทางแก้: เปลี่ยนจาก "เก็บเฉพาะอักษรที่ระบุ" เป็น "ลบเครื่องหมายวรรคตอนที่ระบุ"** — ไม่มี range ก็ไม่มี collation
+  ให้ตีความ กฎกว้างกว่านั้น: **อย่าใช้ range ของอักขระ non-ASCII ใน bracket expression เลย**
 - **`add.sh` เคยทำ `resources.yml` พังทั้งไฟล์** เพราะเขียน note ลง double-quoted scalar โดยไม่ escape — พอ note มี `"` (เช่นตัวอย่างคำสั่ง jq) YAML ก็เจ๊ง แก้แล้วโดยเปลี่ยนไปใช้ single-quoted + `yesc()` ถ้าจะเขียน script ที่ append YAML เพิ่ม ใช้ท่าเดียวกัน (single-quote ต้อง escape แค่ `'` → `''`)
 - ทดสอบ script ที่เขียนลง YAML ได้โดยไม่แตะไฟล์จริง: `DATA=/tmp/copy.yml ./scripts/add.sh ...` (`REJECTED=` ก็ override ได้เหมือนกัน)
 - **`yq -i` เขียนไฟล์ใหม่ทั้งไฟล์ → บรรทัดว่างระหว่าง entry หายหมด** (ลองแล้ว 1599 → 1427 บรรทัด) comment หัวไฟล์รอด แต่ไฟล์อ่านยากขึ้นมาก และ `resources.yml` เป็นไฟล์ที่คนแก้ด้วยมือด้วย **อย่าใช้ `yq -i` กับไฟล์ข้อมูล** ให้ใช้ awk แก้เฉพาะบรรทัดแบบที่ `linkcheck.sh --fix` และ `setnote.sh` ทำ

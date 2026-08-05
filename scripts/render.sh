@@ -31,7 +31,12 @@ last_added="$(yq -r '[.resources[].added] | sort | .[-1]' "$DATA")"
   | while IFS=$'\t' read -r key label; do
       n="$(yq -r "[.resources[] | select(.category == \"$key\")] | length" "$DATA")"
       if [ "$n" = "0" ]; then continue; fi
-      anchor="$(printf '%s' "$label" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9ก-๙ -]//g; s/ /-/g')"
+      # ห้ามใช้ range ที่คร่อมอักษรไทย (เช่น [^a-z0-9ก-๙ -]) — BSD sed รับ แต่ GNU sed
+      # ตอบ "Invalid collation character" แล้วตายทันที (CI แดงครั้งแรกเพราะบรรทัดนี้)
+      # เลี่ยงด้วยการ "ลบเครื่องหมายวรรคตอนที่ระบุ" แทน "เก็บเฉพาะอักษรที่ระบุ"
+      # ไม่มี range = ไม่มี collation ให้ตีความ ได้ anchor เท่าเดิมทั้ง 18 หมวด (ตรวจแล้ว)
+      anchor="$(printf '%s' "$label" | tr '[:upper:]' '[:lower:]' \
+        | sed -e 's/[][!"#$%&'"'"'()*+,./:;<=>?@\^`{|}~]//g' -e 's/—//g' -e 's/ /-/g')"
       echo "- [$label](#$anchor) — $n"
     done
   echo
