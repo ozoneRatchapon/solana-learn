@@ -1826,3 +1826,12 @@ resources:
     note: 'เอกสารทางการของ MagicBlock — **มีชั้นที่เครื่องอ่านได้ครบทั้งสามแบบ** เติม .md ท้าย URL ได้ทุกหน้า, llms.txt เป็นดัชนีเอกสารทั้งชุด และ skill.md ที่ติดตั้งเข้า agent ได้ (agent skill ตัวที่สี่ที่เก็บในวันเดียว ต่อจาก MCP ทางการ, Superteam, Colosseum Copilot); ของที่แพลตฟอร์มมีจริงตาม skill.md — Ephemeral Rollup (SVM runtime แยกที่รันเร็วและไม่เก็บค่าธรรมเนียม), Private ER ที่ใช้ TEE, Ephemeral SPL Token, Solana VRF สำหรับสุ่มที่ตรวจสอบได้, Magic Router, Session Key และ price oracle · SDK คือ @magicblock-labs/ephemeral-rollups-sdk (Rust/Anchor + TS) มี CLI ephemeral-validator ไว้เทสในเครื่อง; **ตรวจ program ID บนเชนแล้วทั้งสองตัว executable จริงบน mainnet** — Delegation Program DELeGGvXpWV2fqJUhqcF5ZSYMS4JTLjteaAMARRSaeSh และ Ephemeral SPL Token SPLxh1LVZzEkX99H6rqYizhytLWPZVV296zyYDPagv2 ซึ่งตอบคำถามที่ค้างไว้ตอนเก็บ magicblock.xyz ว่าขึ้น mainnet แล้วหรือยัง'
     status: ok
     added: 2026-08-05
+
+  - url: https://solana.com/developers/bootcamp/solana-crashcourse
+    name: 'Solana Crashcourse — เส้นทางสั้นก่อนลง bootcamp เต็ม'
+    category: learning
+    source: foundation
+    tags: [course, quickstart, video, roadmap, beginner]
+    note: 'คอร์สสั้นทางการที่เพิ่งเพิ่มเข้ามาใน bootcamp — เน้นเส้นทางสั้นที่สุดจาก "ยังไม่รู้อะไรเลย" ไปถึง "มีแอปที่ deploy แล้ว" ครอบ 3 อย่าง: roadmap ของนักพัฒนา Solana, ตั้งสภาพแวดล้อมในเครื่องให้ใช้งานได้ และ build-deploy รอบแรก; **ต่างจาก bootcamp เต็ม 4 โมดูลตรงที่ตั้งใจให้เบา** เอกสารเขียนเองว่าให้กลับไป bootcamp เมื่ออยากได้เส้นทางที่ลึกกว่า — เหมาะเป็นตัวส่งให้คนไทยที่ถามว่า "เริ่มยังไง" แล้วยังไม่พร้อมทุ่มเวลากับ bootcamp; หมายเหตุ หน้ายังใหม่ ตัวเอกสารเขียนเองว่า "more lessons can be added here as they finish editing" แปลว่ายังไม่ครบ ควรเช็คก่อนวางเป็นหลักสูตรจริง'
+    status: ok
+    added: 2026-08-05

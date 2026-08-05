@@ -3,14 +3,14 @@
 > ไฟล์นี้ถูก generate จาก [data/resources.yml](data/resources.yml) — **อย่าแก้ตรงนี้**
 > แก้ที่ YAML แล้วรัน `./scripts/render.sh`
 
-รวม **196** รายการ · ข้อมูลล่าสุด 2026-08-05
+รวม **197** รายการ · ข้อมูลล่าสุด 2026-08-05
 
 หมายเหตุสถานะ: `blocked` = เว็บกัน bot ตอน curl (ลิงก์ยังใช้ได้), `unverified` = เช็คอัตโนมัติไม่ผ่าน ต้องดูด้วยตา
 
 ## สารบัญ
 
 - [Official — Foundation & Anza (source of truth ตัวจริง)](#official--foundation--anza-source-of-truth-ตัวจริง) — 18
-- [Learning — คอร์ส, bootcamp, tutorial](#learning--คอร์ส-bootcamp-tutorial) — 13
+- [Learning — คอร์ส, bootcamp, tutorial](#learning--คอร์ส-bootcamp-tutorial) — 14
 - [Program Frameworks — Anchor / Pinocchio / native](#program-frameworks--anchor--pinocchio--native) — 12
 - [Client SDK — Kit, web3.js, scaffolding](#client-sdk--kit-web3js-scaffolding) — 10
 - [Testing — LiteSVM, Mollusk, Surfpool](#testing--litesvm-mollusk-surfpool) — 5
@@ -129,6 +129,9 @@
 - [Ackee — School of Solana](https://ackee.xyz/school-of-solana)
   คอร์สฟรีที่มีใบรับรอง สอน Rust ควบ Solana มี lecture, Solana Handbook และเกณฑ์รับใบรับรองเขียนไว้ชัด — ต่างจากคอร์สอื่นในหมวดตรงมีเส้นจบที่วัดได้ เหมาะกับคนที่ต้องการหลักฐานเอาไปสมัครงาน ไม่ใช่แค่ความรู้
   <sub>course, certificate</sub>
+- [Solana Crashcourse — เส้นทางสั้นก่อนลง bootcamp เต็ม](https://solana.com/developers/bootcamp/solana-crashcourse) `official`
+  คอร์สสั้นทางการที่เพิ่งเพิ่มเข้ามาใน bootcamp — เน้นเส้นทางสั้นที่สุดจาก "ยังไม่รู้อะไรเลย" ไปถึง "มีแอปที่ deploy แล้ว" ครอบ 3 อย่าง: roadmap ของนักพัฒนา Solana, ตั้งสภาพแวดล้อมในเครื่องให้ใช้งานได้ และ build-deploy รอบแรก; **ต่างจาก bootcamp เต็ม 4 โมดูลตรงที่ตั้งใจให้เบา** เอกสารเขียนเองว่าให้กลับไป bootcamp เมื่ออยากได้เส้นทางที่ลึกกว่า — เหมาะเป็นตัวส่งให้คนไทยที่ถามว่า "เริ่มยังไง" แล้วยังไม่พร้อมทุ่มเวลากับ bootcamp; หมายเหตุ หน้ายังใหม่ ตัวเอกสารเขียนเองว่า "more lessons can be added here as they finish editing" แปลว่ายังไม่ครบ ควรเช็คก่อนวางเป็นหลักสูตรจริง
+  <sub>course, quickstart, video, roadmap, beginner</sub>
 
 ## Program Frameworks — Anchor / Pinocchio / native
 

@@ -49,12 +49,27 @@ probe_one() {
   # ── 1. ตอบอะไรกลับมา ──────────────────────────────────────────────
   local code eff ctype raw
   raw="$TMP/raw.html"
+  : > "$raw"   # ต้องมีไฟล์เสมอ — curl ที่ล้มไม่สร้างไฟล์ให้ แล้วขั้นถัดไปพัง
   read -r code eff ctype < <(
     curl -s --compressed -A "$UA_BROWSER" -L --max-time 25 \
       -o "$raw" -w '%{http_code} %{url_effective} %{content_type}\n' "$url" 2>/dev/null
-  ) || { c_bad "ยิงไม่ได้เลย"; return 1; }
+  ) || true
+  code="${code:-000}"
 
-  local bytes; bytes="$(wc -c < "$raw" | tr -d ' ')"
+  local bytes; bytes="$(wc -c < "$raw" 2>/dev/null | tr -d " ")"; bytes="${bytes:-0}"
+
+  # ยิงไม่ติดเลย = ยังไม่รู้อะไรทั้งนั้น ห้ามรายงานต่อเหมือนได้ข้อมูลมาแล้ว
+  if [ "$code" = "000" ] || [ "$bytes" -eq 0 ]; then
+    c_bad "ยิงไม่ติด (http=$code, $bytes bytes) — อาจ timeout, TLS ล้ม, หรือโดนบล็อก"
+    local plain
+    plain="$(curl -s --compressed -o /dev/null -w '%{http_code}' -L --max-time 20 "$url" 2>/dev/null)"
+    if [ "${plain:-000}" != "000" ]; then
+      c_warn "แต่ยิงแบบไม่ใส่ User-Agent ได้ $plain — เซิร์ฟเวอร์ไม่ชอบ UA ที่ใช้ ลองซ้ำหรือเปลี่ยน UA"
+    fi
+    printf '  \033[1mสรุป\033[0m \033[31mยังไม่รู้อะไรเลย\033[0m — ต้องยิงใหม่ก่อนสรุปใดๆ\n'
+    return 1
+  fi
+
   c_ok "http=$code · $bytes bytes · ${ctype:-ไม่ระบุ}"
 
   if [ "$(norm "$eff")" != "$(norm "$url")" ]; then
@@ -77,7 +92,7 @@ probe_one() {
   # ── 3. เนื้อจริงมีแค่ไหน — จุดที่พลาดบ่อยที่สุด ────────────────────
   local text tlen ratio
   text="$(text_of "$raw")"; tlen="${#text}"
-  ratio=$(( bytes > 0 ? tlen * 100 / bytes : 0 ))
+  ratio=0; [ "$bytes" -gt 0 ] && ratio=$(( tlen * 100 / bytes ))
   if [ "$tlen" -lt 400 ]; then
     c_bad "ข้อความที่อ่านได้มีแค่ $tlen ตัวอักษร ($ratio% ของไฟล์) — **เนื้อหาไม่ได้อยู่ใน HTML**"
     c_dim "แทบแน่นอนว่า render ฝั่ง client · สิ่งที่เห็นตอนนี้ไม่ใช่สิ่งที่คนเห็นในเบราว์เซอร์"
