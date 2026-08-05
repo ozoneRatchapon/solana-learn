@@ -3,7 +3,7 @@
 > ไฟล์นี้ถูก generate จาก [data/resources.yml](data/resources.yml) — **อย่าแก้ตรงนี้**
 > แก้ที่ YAML แล้วรัน `./scripts/render.sh`
 
-รวม **179** รายการ · อัปเดต 2026-08-04
+รวม **180** รายการ · อัปเดต 2026-08-05
 
 หมายเหตุสถานะ: `blocked` = เว็บกัน bot ตอน curl (ลิงก์ยังใช้ได้), `unverified` = เช็คอัตโนมัติไม่ผ่าน ต้องดูด้วยตา
 
@@ -25,7 +25,7 @@
 - [Mobile](#mobile) — 2
 - [Protocol internals — Agave, Firedancer, network upgrades](#protocol-internals--agave-firedancer-network-upgrades) — 7
 - [Governance — SGP, SIMD, โหวตบนเชน](#governance--sgp-simd-โหวตบนเชน) — 8
-- [Funding — grants, hackathon, bounty, jobs](#funding--grants-hackathon-bounty-jobs) — 13
+- [Funding — grants, hackathon, bounty, jobs](#funding--grants-hackathon-bounty-jobs) — 14
 - [Thailand — ชุมชนไทย](#thailand--ชุมชนไทย) — 3
 
 ## Official — Foundation & Anza (source of truth ตัวจริง)
@@ -535,6 +535,9 @@
 - [MagicBlock Builders — ไดเรกทอรีนักพัฒนา + เส้นทางสู่ทุน](https://build.magicblock.app/builders) `vendor`
   ไดเรกทอรีนักพัฒนาที่วางเส้นทางไว้ตั้งแต่แฮกกาธอน ผ่านโปรแกรม Forge และ Hacker House ไปจนถึงระดมทุน — ค่าสำหรับคนไทยคือช่องหา cofounder และเข้ากลุ่ม builder ที่ไม่ต้องรอให้มีคนแนะนำ กรอกโปรไฟล์พร้อม proof of work และประเทศแล้วเข้าได้เลย ไม่มีเดดไลน์; ข้อควรบอกก่อนชวนใครสมัคร — ต้องล็อกอินด้วย Telegram และเชื่อมกระเป๋า ซึ่งเป็นการผูกตัวตนกับที่อยู่กระเป๋าในไดเรกทอรีสาธารณะ ควรใช้กระเป๋าที่ไม่ใช่ตัวหลักและบอกคนในชุมชนให้รู้ก่อนตัดสินใจ
   <sub>directory, cofounder, hackathon, forge, hacker-house, community</sub>
+- [Colosseum Eternal — ไม่ต้องรอแฮกกาธอนรอบหน้า](https://colosseum.com/eternal)
+  การแข่งแบบเปิดตลอดปีคั่นระหว่างแฮกกาธอนสองรอบ — กดนาฬิกาเองแล้วมีเวลา 4 สัปดาห์ส่งผลิตภัณฑ์ ระหว่างทางต้องส่งอัปเดตวิดีโอ 1 นาทีทุกสัปดาห์ ผู้ชนะได้ $250,000 pre-seed พร้อมเข้า accelerator 8 สัปดาห์แบบผสมออนไลน์และเจอตัว มี mentor ตัวต่อตัว และมี Eternal Award มอบปีละสองครั้ง; กรรมการไม่ใช่แค่ทีม Colosseum แต่มีผู้ก่อตั้งตัวจริงของ Helius, Jito, Tensor, Squads, Kamino, Drift, Phantom, Sphere ร่วมตัดสิน; ตัวนี้ตอบคำถามค้างใน OPPORTUNITIES.md Tier 3 ที่ว่าแฮกกาธอนรอบหน้าเมื่อไหร่ — คำตอบคือไม่ต้องรอ เริ่มเมื่อไหร่ก็ได้ ซึ่งเปลี่ยนข้อนั้นจากสมมติฐานเป็นของที่ลงมือได้จริง; หมายเหตุ คำตอบใน FAQ เป็น accordion ที่ไม่อยู่ใน HTML ต้องกดดูในเบราว์เซอร์ curl ได้แค่หัวข้อคำถาม
+  <sub>accelerator, pre-seed, continuous, sprint, deadline-self-start</sub>
 
 ## Thailand — ชุมชนไทย
 
