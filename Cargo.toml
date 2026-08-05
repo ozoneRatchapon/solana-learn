@@ -1,0 +1,5 @@
+# workspace สำหรับเครื่องมือของ repo นี้ — ตัวแคตตาล็อกเองเป็น YAML + Markdown
+# ไม่ใช่โปรเจกต์ Rust เครื่องมืออยู่ใน tools/ เพื่อไม่ให้สับสนว่าอะไรคือผลิตภัณฑ์
+[workspace]
+resolver = "2"
+members = ["tools/slcat"]

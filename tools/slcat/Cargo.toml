@@ -1,0 +1,10 @@
+[package]
+name = "slcat"
+version = "0.1.0"
+edition = "2021"
+description = "เครื่องมือของ solana-learn — อ่าน/ตรวจ data/resources.yml"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_yaml = "0.9"
+clap = { version = "4", features = ["derive"] }

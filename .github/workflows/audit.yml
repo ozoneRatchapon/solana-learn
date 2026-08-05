@@ -24,6 +24,13 @@ jobs:
       - name: audit
         run: ./scripts/audit.sh
 
+      # gate ของการย้ายมา Rust — สองตัวต้องเห็นข้อมูลตรงกัน ตราบใดที่ยังมีทั้งคู่
+      # (ตัวใหม่ที่ "น่าจะเหมือนเดิม" คือวิธีทำข้อมูลพังที่เนียนที่สุด)
+      - name: cargo test
+        run: cargo test --workspace --locked
+      - name: slcat ต้องเห็นตรงกับ audit.sh
+        run: ./scripts/gate_slcat.sh
+
       # audit.sh รัน render.sh ระหว่างเช็ค ถ้าไฟล์เปลี่ยนแปลว่ามีคนลืม commit ผลของ render
       - name: CATALOG.md ต้องถูก commit มาแล้ว
         run: |

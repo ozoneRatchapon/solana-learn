@@ -143,7 +143,7 @@ if [ "$nonote" -gt 0 ]; then
       n="$(yq -r "[.resources[]|select(.category==\"$c\" and .note==null)]|length" "$DATA")"
       if [ "$n" != "0" ]; then printf '%s %s %s\n' "$((n*100/t))" "$c" "$n/$t"; fi
     fi
-  done | sort -rn | head -3 | awk '{printf "%s(%s %s%%) ", $2, $3, $1}')"
+  done | sort -k1,1rn -k2,2 | head -3 | awk '{printf "%s(%s %s%%) ", $2, $3, $1}')"
   [ -n "$worst" ] && warn "หมวดที่ขาดหนักสุด: $worst"
 fi
 
