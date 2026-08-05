@@ -1,0 +1,100 @@
+name: เสนอ resource / Suggest a resource
+description: เจอของดีที่ยังไม่มีในแคตตาล็อก — ไม่ต้องติดตั้งอะไร แค่กรอกฟอร์ม
+title: "resource: "
+labels: ["resource"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ฟอร์มนี้ถามตรงกับ field ที่ต้องใส่ในแคตตาล็อกพอดี เพื่อให้เอาไปรัน `add.sh` ต่อได้เลย
+
+        เช็คก่อนได้ว่าซ้ำไหม: `./scripts/check.sh <url>` — หรือปล่อยให้เราเช็คให้ก็ได้
+
+        *This form maps 1:1 onto the catalogue fields. English is fine.*
+
+  - type: input
+    id: url
+    attributes:
+      label: URL
+      placeholder: https://...
+    validations:
+      required: true
+
+  - type: input
+    id: name
+    attributes:
+      label: ชื่อที่มนุษย์อ่านรู้เรื่อง / Human-readable name
+      placeholder: Solana Documentation
+    validations:
+      required: true
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: หมวด / Category
+      options:
+        - official
+        - learning
+        - framework
+        - client-sdk
+        - testing
+        - codegen
+        - tokens-nft
+        - payments
+        - security
+        - ai-agent
+        - infra-rpc
+        - data-analytics
+        - defi
+        - mobile
+        - protocol
+        - governance
+        - funding
+        - thailand
+        - "ไม่แน่ใจ / not sure"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: source
+    attributes:
+      label: ใครทำ / Who maintains it
+      options:
+        - foundation
+        - anza
+        - community
+        - vendor
+        - thailand
+    validations:
+      required: true
+
+  - type: textarea
+    id: note
+    attributes:
+      label: ใช้ตอนไหน / ต่างจากตัวอื่นยังไง
+      description: |
+        **ข้อนี้สำคัญที่สุดและเป็นเหตุผลเดียวที่แคตตาล็อกนี้ต่างจาก awesome-list**
+
+        "ดีมาก" หรือ "มีประโยชน์" ไม่นับ — ถ้ายังเขียนไม่ได้แปลว่ายังไม่ได้อ่านจริง
+        เขียนว่าหยิบมาใช้ตอนไหน และต่างจากตัวที่ทำเรื่องคล้ายกันยังไง
+
+        *Say when you would reach for it and how it differs from similar entries —
+        not what it is. Minimum 20 characters, but a useful note is longer.*
+      placeholder: |
+        เช่น: อธิบายเรื่อง commitment level ละเอียดกว่าหน้าอื่น ซึ่งเป็นจุดที่คนทำระบบจ่ายเงินพลาดบ่อย
+    validations:
+      required: true
+
+  - type: input
+    id: tags
+    attributes:
+      label: tag (คั่นด้วยจุลภาค) / Tags, comma separated
+      placeholder: rpc, api, reference
+
+  - type: checkboxes
+    id: checked
+    attributes:
+      label: ยืนยัน
+      options:
+        - label: เปิดลิงก์ดูเองแล้ว ไม่ได้เขียนจากความจำ / I opened the link myself
+          required: true

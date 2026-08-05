@@ -1,5 +1,22 @@
 # solana-learn
 
+<!-- english -->
+**In English:** a curated Solana resource catalogue, maintained in Thai for the
+Solana Thailand community. Every entry carries a note explaining *when you would
+reach for it and how it differs from its neighbours* — that note is the point of
+the repo, and it is why the entries are in Thai. Decisions to **reject** a
+resource are recorded too, with reasons, so the same link is not re-evaluated
+every few months. A separate [ecosystem map](GRAPH.md) records who builds,
+maintains, funds and audits what.
+
+Everything is generated from YAML and checked in CI: link health, note coverage,
+whether the docs still match the data. Scripts and structure are MIT licensed and
+reusable for any language or ecosystem — see [CONTRIBUTING.md](CONTRIBUTING.md).
+Issues and PRs in English are welcome.
+<!-- /english -->
+
+---
+
 > คลังรวม resource Solana ทั้งหมดไว้ที่เดียว + วิเคราะห์ว่าจากของที่มีอยู่ เราสร้างอะไรได้บ้าง
 
 ไม่ใช่คอร์ส ไม่ใช่ tutorial — เป็น **แคตตาล็อกที่ค้นได้ กันซ้ำได้ และเช็คลิงก์เน่าเองได้**

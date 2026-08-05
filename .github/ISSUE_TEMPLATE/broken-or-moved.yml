@@ -1,0 +1,47 @@
+name: ลิงก์เน่า / ของเปลี่ยนไปแล้ว
+description: ลิงก์ตาย ย้ายที่ หรือตอบ 200 แต่ของข้างในไม่ใช่ของเดิมแล้ว
+title: "rot: "
+labels: ["link-rot"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        `linkcheck.sh` จับได้แค่ HTTP code — **มันจับกรณีที่ตอบ 200 แต่ของหายไปไม่ได้เลย**
+        ซึ่งเจอมาแล้ว 4 แบบ: โดเมนถูกขายต่อ, บริษัท rebrand ไปทำอย่างอื่น, repo archived,
+        และเว็บที่ render ฝั่ง client จนไม่มีเนื้อ
+
+        คนที่เปิดดูจริงเท่านั้นที่เจอ — เลยต้องมีฟอร์มนี้
+
+        *Automated checks only see status codes. If a link resolves but the thing
+        behind it is gone or changed, this is the form.*
+
+  - type: input
+    id: url
+    attributes:
+      label: URL ที่มีปัญหา
+    validations:
+      required: true
+
+  - type: dropdown
+    id: kind
+    attributes:
+      label: เกิดอะไรขึ้น / What happened
+      options:
+        - "404 / ลิงก์ตาย"
+        - "ย้ายที่ (redirect ไปที่ใหม่)"
+        - "ตอบ 200 แต่เนื้อหาเปลี่ยนไปแล้ว"
+        - "repo ถูก archive"
+        - "โดเมนเปลี่ยนเจ้าของ / ประกาศขาย"
+        - "อื่นๆ"
+    validations:
+      required: true
+
+  - type: textarea
+    id: detail
+    attributes:
+      label: รายละเอียด
+      description: ถ้ามีที่อยู่ใหม่หรือของที่ใช้แทนได้ ใส่มาด้วย
+      placeholder: |
+        เช่น: redirect ไป example.com ซึ่งเป็นคนละบริษัทแล้ว หน้าใหม่ไม่มีคำว่า Solana เลย
+    validations:
+      required: true
