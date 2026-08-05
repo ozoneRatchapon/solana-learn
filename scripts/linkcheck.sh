@@ -13,6 +13,15 @@ need yq
 fix=0
 if [ "${1:-}" = "--fix" ]; then fix=1; shift; fi
 filter="${1:-}"
+# หมวดที่ไม่มีจริงต้องดังทันที ไม่ใช่เช็คเป็น 0 รายการแล้วรายงานเหมือนปกติ
+# (พิมพ์ --only มาโดยไม่มีในสารบบ เคยได้ผลลัพธ์ SET ของ URL ว่างมาแล้ว)
+if [ -n "$filter" ]; then
+  if ! yq -e ".categories | has(\"$filter\")" "$DATA" >/dev/null 2>&1; then
+    echo "หมวด '$filter' ไม่มีใน $DATA — หมวดที่ใช้ได้:" >&2
+    yq -r '.categories | keys | .[]' "$DATA" | sed 's/^/  - /' >&2
+    exit 1
+  fi
+fi
 MAP="$(mktemp)"
 trap 'rm -f "$MAP"' EXIT
 if [ -n "$filter" ]; then
@@ -23,7 +32,11 @@ fi
 
 mismatch=0; checked=0
 while IFS=$'\t' read -r url name declared; do
-  code="$(curl -sS -o /dev/null -w '%{http_code}' -L --max-time 12 "$url" 2>/dev/null || echo 000)"
+  # `... || echo 000` ต่อท้ายค่าที่ curl พิมพ์ไปแล้ว ไม่ได้แทนที่ — หน้าใหญ่ที่โดน --max-time
+  # ตัดกลางคัน (rwa.xyz 4.6 MB, colosseum 2.9 MB) curl พิมพ์ "200" แล้ว exit 28 → ได้ "200000"
+  # กรณีนั้นบังเอิญยัง match 2* เลยไม่พัง แต่ "404000" จะตกไป unverified แทน dead
+  # การมอบหมายเกิดก่อน || เสมอ ดังนั้น $code มีค่าที่ curl พิมพ์อยู่แล้วตอน fallback ทำงาน
+  code="$(curl -sS -o /dev/null -w '%{http_code}' -L --max-time 12 "$url" 2>/dev/null)" || code="${code:-000}"
   case "$code" in
     2*) actual=ok ;;
     403|401|429) actual=blocked ;;
