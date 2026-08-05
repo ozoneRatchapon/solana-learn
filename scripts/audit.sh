@@ -19,7 +19,17 @@ source "$(dirname "${BASH_SOURCE[0]}")/lib.sh"
 need yq
 
 QUIET=0
-[ "${1:-}" = "--quiet" ] && QUIET=1
+case "${1:-}" in
+  --quiet) QUIET=1 ;;
+  --list-nonote)
+    # รายชื่อ entry ที่ยังไม่มี note เรียงตามหมวด — ใช้ไล่เติมทีละหมวด
+    # ที่นี่ใช้ @tsv ได้ปลอดภัย เพราะ category/name/url ไม่มีทางว่าง
+    yq -r '.resources[] | select(.note == null) | [.category, .name, .url] | @tsv' "$DATA" \
+      | sort | awk -F'\t' '{ if ($1 != c) { c=$1; printf "\n\033[1m%s\033[0m\n", c } printf "  %-44s %s\n", $2, $3 }' 
+    echo
+    yq -r '[.resources[] | select(.note == null)] | length' "$DATA" | sed 's/$/ รายการ — เขียน note แล้วใส่กลับด้วย yq หรือแก้ YAML ตรงๆ/'
+    exit 0 ;;
+esac
 
 # สัดส่วน note ขั้นต่ำที่ยอมรับได้ — ตั้งใจให้ต่ำกว่าของจริงเล็กน้อย แล้วค่อยๆ ขยับขึ้น
 # เมื่อไล่เติม note ได้ (ห้ามลดลง — ตัวเลขนี้เป็นเพดานล่างที่ขยับขึ้นอย่างเดียว)
@@ -61,6 +71,31 @@ badsrc="$(yq -r '[.resources[] | select(
     and .source != "vendor" and .source != "thailand")] | length' "$DATA")"
 if [ "$badsrc" = "0" ]; then ok "source อยู่ในชุดที่กำหนดทั้งหมด"
 else bad "$badsrc entry มี source นอกชุดที่กำหนด"; fi
+
+# ── 1b. ทะเบียนที่ปฏิเสธ ───────────────────────────────────────────────────
+nrej="$(yq -r '(.rejected // []) | length' "$REJECTED" 2>/dev/null || echo 0)"
+head_ "1b. ทะเบียนที่ปฏิเสธ ($nrej รายการ)"
+
+if [ "$nrej" = "0" ]; then
+  ok "ยังไม่มีรายการที่ปฏิเสธ (ไฟล์พร้อมใช้)"
+else
+  for f in url reason checked; do
+    n="$(yq -r "[(.rejected // [])[] | select(.$f == null)] | length" "$REJECTED")"
+    if [ "$n" = "0" ]; then ok "ทุกรายการมี $f"; else bad "$n รายการที่ปฏิเสธไม่มี $f"; fi
+  done
+
+  # เหตุผลสั้นเกินไปก็เท่ากับไม่ได้บันทึก — เกณฑ์เดียวกับ note
+  thin="$(yq -r "[(.rejected // [])[] | select((.reason // \"\") | length < 20)] | length" "$REJECTED")"
+  if [ "$thin" = "0" ]; then ok "ทุกเหตุผลยาวพอให้อ่านรู้เรื่อง"
+  else bad "$thin รายการมีเหตุผลสั้นกว่า 20 ตัวอักษร — เขียนให้คนอ่านแล้วไม่ต้องตรวจซ้ำ"; fi
+
+  # URL ห้ามอยู่ทั้งสองฝั่ง — เก็บและปฏิเสธพร้อมกันไม่ได้
+  both="$(comm -12 \
+    <(yq -r '.resources[].url' "$DATA" | sed -E 's#^[a-zA-Z]+://##; s#^www\.##; s#[?#].*$##; s#/+$##' | tr 'A-Z' 'a-z' | sort -u) \
+    <(yq -r '(.rejected // [])[].url' "$REJECTED" | sed -E 's#^[a-zA-Z]+://##; s#^www\.##; s#[?#].*$##; s#/+$##' | tr 'A-Z' 'a-z' | sort -u))"
+  if [ -z "$both" ]; then ok "ไม่มี URL ที่อยู่ทั้งในแคตตาล็อกและทะเบียนปฏิเสธ"
+  else bad "URL อยู่ทั้งสองฝั่ง: $(printf '%s' "$both" | tr '\n' ' ')"; fi
+fi
 
 # ── 2. คุณภาพ ──────────────────────────────────────────────────────────────
 head_ "2. คุณภาพเนื้อหา"
@@ -150,8 +185,8 @@ fi
 # ── สรุป ────────────────────────────────────────────────────────────────────
 echo
 if [ "$fails" = "0" ]; then
-  printf '\033[32mผ่าน\033[0m — %s รายการ · %s หมวด · ลิงก์ตาย %s · note %s%%' \
-    "$total" "$cats_used" "$dead" "$pct"
+  printf '\033[32mผ่าน\033[0m — %s รายการ · %s หมวด · ลิงก์ตาย %s · note %s%% · ปฏิเสธไว้ %s' \
+    "$total" "$cats_used" "$dead" "$pct" "$nrej"
   [ "$warns" != "0" ] && printf '  (เตือน %s)' "$warns"
   echo
   exit 0

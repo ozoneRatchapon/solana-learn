@@ -7,7 +7,6 @@ source "$(dirname "${BASH_SOURCE[0]}")/lib.sh"
 need yq
 
 OUT="$REPO_ROOT/CATALOG.md"
-SEP=$'\x1f'   # unit separator — ปลอดภัยกว่า tab เพราะ bash read ไม่ยุบ field ว่าง
 total="$(yq -r '.resources | length' "$DATA")"
 last_added="$(yq -r '[.resources[].added] | sort | .[-1]' "$DATA")"
 
