@@ -3,14 +3,14 @@
 > ไฟล์นี้ถูก generate จาก [data/resources.yml](data/resources.yml) — **อย่าแก้ตรงนี้**
 > แก้ที่ YAML แล้วรัน `./scripts/render.sh`
 
-รวม **197** รายการ · ข้อมูลล่าสุด 2026-08-05
+รวม **199** รายการ · ข้อมูลล่าสุด 2026-08-05
 
 หมายเหตุสถานะ: `blocked` = เว็บกัน bot ตอน curl (ลิงก์ยังใช้ได้), `unverified` = เช็คอัตโนมัติไม่ผ่าน ต้องดูด้วยตา
 
 ## สารบัญ
 
 - [Official — Foundation & Anza (source of truth ตัวจริง)](#official--foundation--anza-source-of-truth-ตัวจริง) — 18
-- [Learning — คอร์ส, bootcamp, tutorial](#learning--คอร์ส-bootcamp-tutorial) — 14
+- [Learning — คอร์ส, bootcamp, tutorial](#learning--คอร์ส-bootcamp-tutorial) — 16
 - [Program Frameworks — Anchor / Pinocchio / native](#program-frameworks--anchor--pinocchio--native) — 12
 - [Client SDK — Kit, web3.js, scaffolding](#client-sdk--kit-web3js-scaffolding) — 10
 - [Testing — LiteSVM, Mollusk, Surfpool](#testing--litesvm-mollusk-surfpool) — 5
@@ -132,6 +132,12 @@
 - [Solana Crashcourse — เส้นทางสั้นก่อนลง bootcamp เต็ม](https://solana.com/developers/bootcamp/solana-crashcourse) `official`
   คอร์สสั้นทางการที่เพิ่งเพิ่มเข้ามาใน bootcamp — เน้นเส้นทางสั้นที่สุดจาก "ยังไม่รู้อะไรเลย" ไปถึง "มีแอปที่ deploy แล้ว" ครอบ 3 อย่าง: roadmap ของนักพัฒนา Solana, ตั้งสภาพแวดล้อมในเครื่องให้ใช้งานได้ และ build-deploy รอบแรก; **ต่างจาก bootcamp เต็ม 4 โมดูลตรงที่ตั้งใจให้เบา** เอกสารเขียนเองว่าให้กลับไป bootcamp เมื่ออยากได้เส้นทางที่ลึกกว่า — เหมาะเป็นตัวส่งให้คนไทยที่ถามว่า "เริ่มยังไง" แล้วยังไม่พร้อมทุ่มเวลากับ bootcamp; หมายเหตุ หน้ายังใหม่ ตัวเอกสารเขียนเองว่า "more lessons can be added here as they finish editing" แปลว่ายังไม่ครบ ควรเช็คก่อนวางเป็นหลักสูตรจริง
   <sub>course, quickstart, video, roadmap, beginner</sub>
+- [MIT 14.129 — Blockchain and the Design of Financial Systems (ฟรี)](https://ocw.mit.edu/courses/14-129-blockchain-and-the-design-of-financial-systems-spring-2025/)
+  คอร์สระดับบัณฑิตศึกษาของ MIT ที่เอาเทคโนโลยีฝั่งคอมพิวเตอร์ (คริปโต บล็อกเชน tokenization แพลตฟอร์ม อัลกอริทึม) มาชนกับเครื่องมือฝั่งเศรษฐศาสตร์ (contract theory, mechanism design, general equilibrium, monetary theory) เป้าคือเข้าใจว่าข้อสมมติคืออะไร จุดอ่อนอยู่ตรงไหน และจะกระทบอะไรจริง — เปิดฟรีบน OCW มีทั้ง syllabus, readings, lecture notes และวิดีโอ; **ไม่ใช่ของ Solana แต่เก็บด้วยเหตุผลเฉพาะที่หนักกว่าปกติ** — ผู้สอนคือ Prof. Robert M. Townsend เจ้าของ Townsend Thai Project ที่สำรวจครัวเรือนไทยต่อเนื่องตั้งแต่ปี 1997 ครอบ 2,880 ครัวเรือน 262 กลุ่มชุมชน และ 161 สถาบันการเงินระดับหมู่บ้าน คือคนที่เข้าใจระบบการเงินฐานรากของไทยลึกที่สุดคนหนึ่ง มาสอนเรื่องออกแบบระบบการเงินด้วยบล็อกเชน; ใช้ตอนต้องเถียงเรื่อง tokenomics หรือออกแบบกลไกให้มีน้ำหนักกว่าอ้างจากบล็อกโปรโตคอล เช่นเวลาคุยเรื่อง SGP-0003 ที่เปลี่ยนโครงสร้างค่าธรรมเนียม ซึ่งเป็นโจทย์ mechanism design ตรงๆ
+  <sub>mit-ocw, economics, mechanism-design, graduate, free, lecture-notes</sub>
+- [Solana Rust client course (เรียนใน VS Code)](https://github.com/bergabman/solana-rust-vscode-course)
+  คอร์สฝั่ง client ของ Solana ที่เขียนด้วย Rust และ **เรียนอยู่ใน VS Code เลย** โครง repo มี exercises, crates, book (mdBook) และ justfile คือทำเป็นแบบฝึกหัดให้แก้ทีละข้อแบบ rustlings ไม่ใช่อ่านเอกสารเฉยๆ; ค่าอยู่ที่แคตตาล็อกนี้มีคอร์สฝั่งเขียนโปรแกรมบนเชนเยอะแล้วแต่**ฝั่ง client ที่เป็น Rust หายาก** ส่วนใหญ่เป็น TypeScript; ข้อควรระวัง ★16 คนทำคนเดียว push ล่าสุด พ.ค. 2026 และ **ไม่มี license** ซึ่งแปลว่าตามกฎหมายเอาไปใช้ต่อไม่ได้ ต้องถามเจ้าของก่อนถ้าจะเอาไปดัดแปลงเป็นเนื้อหาสอน
+  <sub>rust, client-side, vscode, exercises, interactive</sub>
 
 ## Program Frameworks — Anchor / Pinocchio / native
 
