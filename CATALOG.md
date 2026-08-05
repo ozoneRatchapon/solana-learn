@@ -3,7 +3,7 @@
 > ไฟล์นี้ถูก generate จาก [data/resources.yml](data/resources.yml) — **อย่าแก้ตรงนี้**
 > แก้ที่ YAML แล้วรัน `./scripts/render.sh`
 
-รวม **184** รายการ · ข้อมูลล่าสุด 2026-08-05
+รวม **191** รายการ · ข้อมูลล่าสุด 2026-08-05
 
 หมายเหตุสถานะ: `blocked` = เว็บกัน bot ตอน curl (ลิงก์ยังใช้ได้), `unverified` = เช็คอัตโนมัติไม่ผ่าน ต้องดูด้วยตา
 
@@ -16,7 +16,7 @@
 - [Testing — LiteSVM, Mollusk, Surfpool](#testing--litesvm-mollusk-surfpool) — 5
 - [IDL & Codegen](#idl--codegen) — 4
 - [Tokens & NFT — SPL, Token-2022, Metaplex](#tokens--nft--spl-token-2022-metaplex) — 7
-- [Payments & Commerce](#payments--commerce) — 20
+- [Payments & Commerce](#payments--commerce) — 22
 - [Security & Audit](#security--audit) — 5
 - [AI / Agent Skills / MCP](#ai--agent-skills--mcp) — 17
 - [Infra & RPC providers](#infra--rpc-providers) — 11
@@ -24,9 +24,10 @@
 - [DeFi & Ecosystem protocols](#defi--ecosystem-protocols) — 13
 - [Mobile](#mobile) — 2
 - [Protocol internals — Agave, Firedancer, network upgrades](#protocol-internals--agave-firedancer-network-upgrades) — 7
-- [Governance — SGP, SIMD, โหวตบนเชน](#governance--sgp-simd-โหวตบนเชน) — 8
+- [Governance — SGP, SIMD, โหวตบนเชน](#governance--sgp-simd-โหวตบนเชน) — 9
+- [Green software — พลังงาน คาร์บอน ประสิทธิภาพ](#green-software--พลังงาน-คาร์บอน-ประสิทธิภาพ) — 3
 - [Funding — grants, hackathon, bounty, jobs](#funding--grants-hackathon-bounty-jobs) — 16
-- [Thailand — ชุมชนไทย](#thailand--ชุมชนไทย) — 3
+- [Thailand — ชุมชนไทย](#thailand--ชุมชนไทย) — 4
 
 ## Official — Foundation & Anza (source of truth ตัวจริง)
 
@@ -320,6 +321,12 @@
 - [pay.sh — จ่ายค่า API ต่อครั้งโดยไม่ต้องสมัคร](https://pay.sh/) `official`
   x402 ที่ขึ้นใช้งานจริงแล้ว ไม่ใช่แค่สเปคในเอกสาร — CLI ตัวเดียว (brew install pay หรือ npm i -g @solana/pay) จัดการ HTTP 402 ให้ทั้งหมด agent เรียก API ที่มีค่าใช้จ่ายได้โดยไม่ต้องสมัครสมาชิกและไม่ต้องมีบัญชีกับผู้ให้บริการแต่ละราย ทะเบียนตอนนี้มี 72 เจ้า ราคาตั้งแต่ฟรีถึง $10 ต่อครั้ง (QuickNode RPC, Nansen, Birdeye, Venice.ai, Alibaba Cloud, AgentMail) เติมเงินผ่าน PayPal/Venmo/Apple Pay หรือกระเป๋า Solana; ดูแลโดย Foundation ยืนยันจาก repo github.com/solana-foundation/pay ที่ลิงก์อยู่ในหน้า; มี /index.md และ /llms.txt ให้ agent อ่านตรงได้แบบเดียวกับ solana.com; ข้อควรรู้ — ไม่ได้จำกัดแค่ของสาย Solana เป็นเกตเวย์ไป API ทั่วไป และเอกสารเตือนเองว่าให้ถือว่าราคา/หัวข้อมูลจากผู้ให้บริการเป็นข้อมูลที่เชื่อไม่ได้ ต้องตรวจก่อนใช้
   <sub>x402, agent, cli, pay-per-call, mcp, registry</sub>
+- [solana-foundation/pay — CLI ของ x402](https://github.com/solana-foundation/pay) `official`
+  โค้ดของ CLI ที่อยู่เบื้องหลัง pay.sh (Rust, MIT, ★1,746 push ทุกวัน) รองรับสามมาตรฐานคือ x402, MPP และ AP2 — เก็บแยกจาก pay.sh เพราะหน้าเว็บบอกวิธีใช้ ส่วน repo บอกว่ามันทำงานยังไงและรองรับอะไรบ้าง; ดาว 1,746 บนเครื่องมือที่เพิ่งออกแปลว่าสายจ่ายเงินให้ agent กำลังมาจริง ไม่ใช่ของทดลอง
+  <sub>x402, mpp, ap2, cli, rust, agentic</sub>
+- [Solana Private Channels (payment channel ระดับองค์กร)](https://github.com/solana-foundation/solana-private-channels) `official`
+  payment channel ที่ต่อสภาพคล่องกับ mainnet โดยตรง ทำธุรกรรมนับพันรายการแบบทันทีพร้อมคุมสิทธิ์และความเป็นส่วนตัว — ประกอบด้วย core ที่ทำ 5 ขั้น (ตัดซ้ำ ตรวจลายเซ็น จัดลำดับ ประมวลผล settle), โปรแกรม escrow/withdraw, indexer และ gateway; ใช้ Token-2022 confidential transfer กับ ZK proof ตอนถอนได้ ซึ่งเชื่อมกับหมวด tokens-nft; **ระวัง repo ประกาศเองว่ายังไม่ผ่าน audit และยังพัฒนาอยู่ ห้ามใช้กับเงินจริง** เก็บไว้อ่านว่า Foundation ออกแบบชั้น privacy ฝั่งองค์กรยังไง ไม่ใช่เอาไปใช้
+  <sub>payment-channel, privacy, token-2022, zk, experimental, rust</sub>
 
 ## Security & Audit
 
@@ -572,6 +579,21 @@
 - [Solana Forum — Governance](https://forum.solana.com/c/gov/11) `official`
   ที่ถกกันก่อนขึ้นเชน เธรดใหญ่ๆ อยู่ที่นี่ (SIMD-0326 Alpenglow 117 reply, priority fee เข้า validator เต็ม 76 reply) — อยากรู้ 'ทำไม' เบื้องหลังโหวตต้องอ่านที่นี่ ไม่ใช่ตัว proposal
   <sub>forum, discussion, pre-chain, simd</sub>
+- [SOL Tokenomics Simulator (จำลองผลของสองข้อเสนอ)](https://solburnrate.xyz/)
+  เครื่องมือเลื่อนสไลเดอร์ดูว่าสองข้อเสนอที่กำลังพิจารณาจะทำอะไรกับอุปทาน SOL — SIMD-0550 เร่งอัตราลดเงินเฟ้อจากปีละ 15% เป็น 30% ทำให้ถึงอัตราปลายทาง 1.5% ใน ~2.8 ปีแทน ~5.7 ปี · SGP-0003/SIMD-0553 เปลี่ยนโครงสร้างค่าธรรมเนียมจนการเผาต่อวันขึ้นจาก ~650 เป็น ~9,000 SOL (13.8 เท่า); ค่าที่แท้จริงคือ **ทำให้ SGP-0003 ที่เก็บไว้ในหมวดนี้อยู่แล้วมีตัวเลขจับต้องได้** แทนที่จะเป็นแค่ข้อความในข้อเสนอ ใช้ตอนอธิบายให้คนในชุมชนเห็นภาพว่าโหวตนี้กระทบอะไร; ข้อควรระวัง — เป็นของ community คนเดียวทำ (@jussy_world) ตัวเลขเป็น **แบบจำลอง ไม่ใช่ข้อเท็จจริง** ข้อมูลตั้งต้นดึงวันที่ 4 ส.ค. 2026 และยังพา SIMD-0550 ที่แคตตาล็อกยังไม่มีเข้ามาให้รู้จักด้วย
+  <sub>tokenomics, simulator, simd-0550, sgp-0003, burn, inflation</sub>
+
+## Green software — พลังงาน คาร์บอน ประสิทธิภาพ
+
+- [Solana Climate Dashboard (ทางการ)](https://climate.solana.com/) `official`
+  แดชบอร์ดสิ่งแวดล้อมทางการของเครือข่าย — ดูการใช้พลังงาน คาร์บอน และความเข้มข้นพลังงานต่อหน่วย ข้อมูลดึงจากซอฟต์แวร์ที่ติดตั้งบน validator จริง อัปเดตทุกสองสัปดาห์ ร่วมกับ Trycarbonara ซึ่งทำให้ดูได้ลึกถึงระดับ validator รายตัว; **นี่คือสิ่งที่ทำให้หมวดนี้ไม่ใช่แค่ความสนใจส่วนตัว** เพราะ Solana เป็นเชนไม่กี่เจ้าที่เผยแพร่ตัวเลขพลังงานเป็นประจำและตรวจสอบได้ ใช้ตอบคำถาม "บล็อกเชนเปลืองไฟไหม" ด้วยข้อมูลแทนความเห็น; เป็น SPA หน้าเปล่าตอน curl ต้องเปิดเบราว์เซอร์
+  <sub>carbon, energy, dashboard, validator, realtime</sub>
+- [Solana Energy Use Reports](https://solana.com/news/tag/energy-use-reports) `official`
+  รายงานการใช้พลังงานที่ออกเป็นระยะ — ต่างจากแดชบอร์ดตรงมีบริบทและวิธีคำนวณอธิบายไว้ ไม่ใช่แค่ตัวเลขสด ใช้ตอนต้องอ้างอิงในงานเขียนหรือสไลด์ที่ต้องบอกที่มาของตัวเลขได้; ตัวเลขที่มักถูกอ้าง เช่นการลดคาร์บอนราว 69% จาก ~8,786 tCO2 (2023) เหลือ ~2,671 tCO2 (2024) มาจากรายงานชุดนี้ — **ต้องเช็ควันที่ของรายงานก่อนอ้างเสมอ** เพราะตัวเลขเก่ากับใหม่ต่างกันมากและคนชอบหยิบตัวเลขเก่ามาใช้
+  <sub>energy, report, carbon-credit, historical</sub>
+- [Awesome Green Software (Green Software Foundation)](https://github.com/Green-Software-Foundation/awesome-green-software)
+  ลิสต์อ้างอิงของ Green Software Foundation (★691 ยัง active ส.ค. 2026) แยกเป็นเครื่องมือวัด/ลดการใช้พลังงาน องค์กร คอร์ส บทความ หนังสือ และงานวิจัย ครอบทั้งฝั่ง AI workload, cloud, source code และเว็บ; **ไม่ใช่ของ Solana** แต่เก็บด้วยเหตุผลเดียวกับที่เก็บสเปค Agent Skills — เป็นมาตรฐานอ้างอิงที่งานฝั่ง Solana ต้องยืนอยู่บนมัน จะพูดเรื่องพลังงานของเชนให้คนนอกวงเชื่อ ต้องใช้วิธีวัดที่วงการนี้ยอมรับ ไม่ใช่คิดเกณฑ์เอง; license เป็น NOASSERTION ต้องดูเงื่อนไขก่อนเอาเนื้อหาไปใช้ต่อ
+  <sub>reference, tooling, standard, course, measurement</sub>
 
 ## Funding — grants, hackathon, bounty, jobs
 
@@ -635,4 +657,7 @@
 - [ozoneRatchapon (King Crab — Community Operator)](https://github.com/ozoneRatchapon) `TH`
   โปรไฟล์ผู้ดูแล repo นี้ — King Crab (Community Operator) ของ Solana Thailand Genesis เก็บไว้เพื่อให้คนที่เจอแคตตาล็อกนี้รู้ว่าใครดูแลและติดต่อทางไหน ซึ่งเป็นสิ่งที่ awesome-list ส่วนใหญ่ไม่มีแล้วเลยไม่มีใครกล้าเชื่อ
   <sub>maintainer</sub>
+- [BeThere — เช็คอินอีเวนต์ด้วยเงินมัดจำ (ของชุมชนไทย)](https://bethere.solana-thailand.workers.dev/) `TH`
+  ของที่ชุมชนไทยทำเองและรันอยู่จริง — แก้ปัญหาคนลงชื่อแล้วไม่มา (งานฟรีมีอัตราไม่มา 30-40%) ด้วยการวางมัดจำ USDC ได้คืนเมื่อมาจริง ริบเมื่อไม่มา พร้อมออก badge เป็น cNFT ที่ ~$0.001 ต่อใบ ถูกกว่า POAP ราว 50 เท่า ค่าธุรกรรม ~$0.00087 เช็คอินเสร็จใน <500ms เพราะเสิร์ฟที่ edge; เขียน Rust ล้วน โฮสต์บน Cloudflare Workers มีเทส 85 ตัว; **ยังอยู่บน devnet ไม่ใช่ mainnet** — ตรงกับสูตร ship-program-to-mainnet ในไฟล์สูตรพอดี คือผ่านของฝั่ง client แล้วแต่ยังขาด audit/multisig/verified build; เก็บไว้เพราะเป็นหลักฐานว่าชุมชนนี้สร้างของได้จริง ไม่ใช่แค่รวบรวมลิงก์
+  <sub>event, escrow, cnft, usdc, devnet, rust, workers</sub>
 

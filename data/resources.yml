@@ -38,6 +38,7 @@ categories:
   mobile: "Mobile"
   protocol: "Protocol internals — Agave, Firedancer, network upgrades"
   governance: "Governance — SGP, SIMD, โหวตบนเชน"
+  green: "Green software — พลังงาน คาร์บอน ประสิทธิภาพ"
   funding: "Funding — grants, hackathon, bounty, jobs"
   thailand: "Thailand — ชุมชนไทย"
 
@@ -1715,5 +1716,68 @@ resources:
     source: community
     tags: [skill, research, competitor-scan, hackathon-data, idea-validation]
     note: 'skill ที่ติดตั้งเข้า Claude Code/Codex ได้ตรงๆ (npx skills add ColosseumOrg/colosseum-copilot — repo ★11 push ก.ค. 2026 ยังไม่ระบุ license) ใช้เอาไอเดียไปชนกับ **ผลงานแฮกกาธอน 5,400+ ชิ้น** บวกสินค้าคริปโต 6,300+ ตัวผ่าน The Grid และแหล่งวิจัยคัดแล้ว 65+ แห่ง (a16z Crypto, Multicoin, Electric Capital) เพื่อดูว่าไอเดียซ้ำกับใครแล้วบ้างและช่องว่างอยู่ตรงไหน; ค่าที่แท้จริงคือ **ใช้ลดความเสี่ยงก่อนกดนาฬิกา Eternal** — 4 สัปดาห์เต็มเวลาแล้วมาพบทีหลังว่ามีคนทำไปแล้วสามรอบคือความเสียหายที่เลี่ยงได้ด้วยการค้นครึ่งชั่วโมง; ต้องขอ token ก่อนใช้ หน้าเว็บไม่ระบุราคา ต้องเช็คก่อนแนะนำว่าฟรีหรือไม่'
+    status: ok
+    added: 2026-08-05
+
+  - url: https://climate.solana.com/
+    name: 'Solana Climate Dashboard (ทางการ)'
+    category: green
+    source: foundation
+    tags: [carbon, energy, dashboard, validator, realtime]
+    note: 'แดชบอร์ดสิ่งแวดล้อมทางการของเครือข่าย — ดูการใช้พลังงาน คาร์บอน และความเข้มข้นพลังงานต่อหน่วย ข้อมูลดึงจากซอฟต์แวร์ที่ติดตั้งบน validator จริง อัปเดตทุกสองสัปดาห์ ร่วมกับ Trycarbonara ซึ่งทำให้ดูได้ลึกถึงระดับ validator รายตัว; **นี่คือสิ่งที่ทำให้หมวดนี้ไม่ใช่แค่ความสนใจส่วนตัว** เพราะ Solana เป็นเชนไม่กี่เจ้าที่เผยแพร่ตัวเลขพลังงานเป็นประจำและตรวจสอบได้ ใช้ตอบคำถาม "บล็อกเชนเปลืองไฟไหม" ด้วยข้อมูลแทนความเห็น; เป็น SPA หน้าเปล่าตอน curl ต้องเปิดเบราว์เซอร์'
+    status: ok
+    added: 2026-08-05
+
+  - url: https://solana.com/news/tag/energy-use-reports
+    name: 'Solana Energy Use Reports'
+    category: green
+    source: foundation
+    tags: [energy, report, carbon-credit, historical]
+    note: 'รายงานการใช้พลังงานที่ออกเป็นระยะ — ต่างจากแดชบอร์ดตรงมีบริบทและวิธีคำนวณอธิบายไว้ ไม่ใช่แค่ตัวเลขสด ใช้ตอนต้องอ้างอิงในงานเขียนหรือสไลด์ที่ต้องบอกที่มาของตัวเลขได้; ตัวเลขที่มักถูกอ้าง เช่นการลดคาร์บอนราว 69% จาก ~8,786 tCO2 (2023) เหลือ ~2,671 tCO2 (2024) มาจากรายงานชุดนี้ — **ต้องเช็ควันที่ของรายงานก่อนอ้างเสมอ** เพราะตัวเลขเก่ากับใหม่ต่างกันมากและคนชอบหยิบตัวเลขเก่ามาใช้'
+    status: ok
+    added: 2026-08-05
+
+  - url: https://github.com/Green-Software-Foundation/awesome-green-software
+    name: 'Awesome Green Software (Green Software Foundation)'
+    category: green
+    source: community
+    tags: [reference, tooling, standard, course, measurement]
+    note: 'ลิสต์อ้างอิงของ Green Software Foundation (★691 ยัง active ส.ค. 2026) แยกเป็นเครื่องมือวัด/ลดการใช้พลังงาน องค์กร คอร์ส บทความ หนังสือ และงานวิจัย ครอบทั้งฝั่ง AI workload, cloud, source code และเว็บ; **ไม่ใช่ของ Solana** แต่เก็บด้วยเหตุผลเดียวกับที่เก็บสเปค Agent Skills — เป็นมาตรฐานอ้างอิงที่งานฝั่ง Solana ต้องยืนอยู่บนมัน จะพูดเรื่องพลังงานของเชนให้คนนอกวงเชื่อ ต้องใช้วิธีวัดที่วงการนี้ยอมรับ ไม่ใช่คิดเกณฑ์เอง; license เป็น NOASSERTION ต้องดูเงื่อนไขก่อนเอาเนื้อหาไปใช้ต่อ'
+    status: ok
+    added: 2026-08-05
+
+  - url: https://solburnrate.xyz/
+    name: 'SOL Tokenomics Simulator (จำลองผลของสองข้อเสนอ)'
+    category: governance
+    source: community
+    tags: [tokenomics, simulator, simd-0550, sgp-0003, burn, inflation]
+    note: 'เครื่องมือเลื่อนสไลเดอร์ดูว่าสองข้อเสนอที่กำลังพิจารณาจะทำอะไรกับอุปทาน SOL — SIMD-0550 เร่งอัตราลดเงินเฟ้อจากปีละ 15% เป็น 30% ทำให้ถึงอัตราปลายทาง 1.5% ใน ~2.8 ปีแทน ~5.7 ปี · SGP-0003/SIMD-0553 เปลี่ยนโครงสร้างค่าธรรมเนียมจนการเผาต่อวันขึ้นจาก ~650 เป็น ~9,000 SOL (13.8 เท่า); ค่าที่แท้จริงคือ **ทำให้ SGP-0003 ที่เก็บไว้ในหมวดนี้อยู่แล้วมีตัวเลขจับต้องได้** แทนที่จะเป็นแค่ข้อความในข้อเสนอ ใช้ตอนอธิบายให้คนในชุมชนเห็นภาพว่าโหวตนี้กระทบอะไร; ข้อควรระวัง — เป็นของ community คนเดียวทำ (@jussy_world) ตัวเลขเป็น **แบบจำลอง ไม่ใช่ข้อเท็จจริง** ข้อมูลตั้งต้นดึงวันที่ 4 ส.ค. 2026 และยังพา SIMD-0550 ที่แคตตาล็อกยังไม่มีเข้ามาให้รู้จักด้วย'
+    status: ok
+    added: 2026-08-05
+
+  - url: https://bethere.solana-thailand.workers.dev/
+    name: 'BeThere — เช็คอินอีเวนต์ด้วยเงินมัดจำ (ของชุมชนไทย)'
+    category: thailand
+    source: thailand
+    tags: [event, escrow, cnft, usdc, devnet, rust, workers]
+    note: 'ของที่ชุมชนไทยทำเองและรันอยู่จริง — แก้ปัญหาคนลงชื่อแล้วไม่มา (งานฟรีมีอัตราไม่มา 30-40%) ด้วยการวางมัดจำ USDC ได้คืนเมื่อมาจริง ริบเมื่อไม่มา พร้อมออก badge เป็น cNFT ที่ ~$0.001 ต่อใบ ถูกกว่า POAP ราว 50 เท่า ค่าธุรกรรม ~$0.00087 เช็คอินเสร็จใน <500ms เพราะเสิร์ฟที่ edge; เขียน Rust ล้วน โฮสต์บน Cloudflare Workers มีเทส 85 ตัว; **ยังอยู่บน devnet ไม่ใช่ mainnet** — ตรงกับสูตร ship-program-to-mainnet ในไฟล์สูตรพอดี คือผ่านของฝั่ง client แล้วแต่ยังขาด audit/multisig/verified build; เก็บไว้เพราะเป็นหลักฐานว่าชุมชนนี้สร้างของได้จริง ไม่ใช่แค่รวบรวมลิงก์'
+    status: ok
+    added: 2026-08-05
+
+  - url: https://github.com/solana-foundation/pay
+    name: 'solana-foundation/pay — CLI ของ x402'
+    category: payments
+    source: foundation
+    tags: [x402, mpp, ap2, cli, rust, agentic]
+    note: 'โค้ดของ CLI ที่อยู่เบื้องหลัง pay.sh (Rust, MIT, ★1,746 push ทุกวัน) รองรับสามมาตรฐานคือ x402, MPP และ AP2 — เก็บแยกจาก pay.sh เพราะหน้าเว็บบอกวิธีใช้ ส่วน repo บอกว่ามันทำงานยังไงและรองรับอะไรบ้าง; ดาว 1,746 บนเครื่องมือที่เพิ่งออกแปลว่าสายจ่ายเงินให้ agent กำลังมาจริง ไม่ใช่ของทดลอง'
+    status: ok
+    added: 2026-08-05
+
+  - url: https://github.com/solana-foundation/solana-private-channels
+    name: 'Solana Private Channels (payment channel ระดับองค์กร)'
+    category: payments
+    source: foundation
+    tags: [payment-channel, privacy, token-2022, zk, experimental, rust]
+    note: 'payment channel ที่ต่อสภาพคล่องกับ mainnet โดยตรง ทำธุรกรรมนับพันรายการแบบทันทีพร้อมคุมสิทธิ์และความเป็นส่วนตัว — ประกอบด้วย core ที่ทำ 5 ขั้น (ตัดซ้ำ ตรวจลายเซ็น จัดลำดับ ประมวลผล settle), โปรแกรม escrow/withdraw, indexer และ gateway; ใช้ Token-2022 confidential transfer กับ ZK proof ตอนถอนได้ ซึ่งเชื่อมกับหมวด tokens-nft; **ระวัง repo ประกาศเองว่ายังไม่ผ่าน audit และยังพัฒนาอยู่ ห้ามใช้กับเงินจริง** เก็บไว้อ่านว่า Foundation ออกแบบชั้น privacy ฝั่งองค์กรยังไง ไม่ใช่เอาไปใช้'
     status: ok
     added: 2026-08-05
