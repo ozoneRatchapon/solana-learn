@@ -11,7 +11,7 @@
 | [CATALOG.md](CATALOG.md) | รายการทั้งหมดจัดกลุ่มแล้ว (generate ห้ามแก้มือ) |
 | [OPPORTUNITIES.md](OPPORTUNITIES.md) | วิเคราะห์: สร้างอะไรได้บ้างจาก resource ที่มี |
 | [data/rejected.yml](data/rejected.yml) | ทะเบียน "ดูแล้วไม่เอา" + เหตุผล |
-| [scripts/](scripts/) | check / add / reject / render / linkcheck / audit |
+| [scripts/](scripts/) | check / add / reject / setnote / deprecate / render / linkcheck / audit |
 | [CLAUDE.md](CLAUDE.md) | บริบทสำหรับ Claude Code — กฎเหล็ก, workflow, กับดักที่เคยเจอ |
 
 ตอนนี้: **180 รายการ · 18 หมวด · ลิงก์ตาย 0**
@@ -88,6 +88,26 @@ CI รันตัวนี้ทุก push — ตัวเลขใน README
 | `blocked` | 401/403/429 — เว็บกัน bot ตอน curl **ลิงก์ยังใช้ได้ปกติ** (เช่น Solscan, Dune, DefiLlama) |
 | `unverified` | ยิงไม่ผ่าน/timeout — ต้องเปิดดูด้วยตา |
 | `dead` | 404/410 — ต้องหา URL ใหม่หรือถอดออก |
+
+## "ลิงก์ยังเปิดได้" กับ "ยังควรใช้" เป็นคนละเรื่อง
+
+`status` ตอบเรื่องแรก — เครื่องยิง HTTP เช็คเอง
+`deprecated` ตอบเรื่องที่สอง — คนตัดสิน เครื่องตัดสินแทนไม่ได้
+
+tutorial Anchor 0.29 คือ `status: ok` (ลิงก์เปิดได้) **และ** `deprecated` พร้อมกัน
+ถ้ายัดรวมเป็น `status: deprecated` แล้ว `linkcheck --fix` รอบหน้าจะเขียนทับเป็น `ok`
+เพราะมันได้ HTTP 200 — คำตัดสินของคนหายไปเงียบๆ
+
+```bash
+./scripts/deprecate.sh -u <url> -r "<เหตุผล>" [-b <url ที่ใช้แทน>]
+./scripts/deprecate.sh -u <url> --undo
+```
+
+CATALOG.md จะแสดงเป็น ~~ขีดฆ่า~~ + เหตุผล + ตัวแทน — **ไม่ลบทิ้ง** เพราะคนที่เจอลิงก์นี้
+จากที่อื่นต้องรู้ว่าเราดูแล้วและใช้อะไรแทน การลบเฉยๆ ทำให้เขาไปเสียเวลากับมันอยู่ดี
+
+นี่คือรูปที่บำรุงรักษาได้ของ **"อันไหนยังใช้ได้ปี 2026"** (OPPORTUNITIES §1.2) —
+ข้อมูลอยู่กับ entry ไม่ใช่ตารางแยกที่ต้องไล่อัปเดตเอง
 
 ---
 

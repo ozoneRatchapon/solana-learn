@@ -9,8 +9,17 @@
 #   source:   foundation | anza | community | vendor | thailand
 #   tags:     [list] สำหรับ filter
 #   note:     ทำไมถึงอยู่ในลิสต์ / ใช้ตอนไหน
-#   status:   ok | blocked | dead | unverified   (scripts/linkcheck.sh อัปเดตให้)
+#   status:   ok | blocked | dead | unverified   (scripts/linkcheck.sh อัปเดตให้ — เครื่องเป็นเจ้าของ)
+#   deprecated:    '<เหตุผล>'  ยังเปิดได้แต่ไม่ควรใช้แล้ว (optional, คนเป็นเจ้าของ)
+#   superseded_by: <url>      ใช้อะไรแทน (optional, คู่กับ deprecated)
 #   added:    YYYY-MM-DD
+#
+# ทำไม deprecated ถึงเป็นฟิลด์แยก ไม่ใช่ค่าหนึ่งใน status:
+#   status ตอบว่า "ลิงก์ยังเปิดได้ไหม" — linkcheck ยิง HTTP แล้วเขียนกลับเอง
+#   deprecated ตอบว่า "ยังควรใช้ไหม" — คนตัดสิน เครื่องตัดสินแทนไม่ได้
+#   tutorial Anchor 0.29 คือ status: ok (ลิงก์เปิดได้) และ deprecated พร้อมกัน
+#   ถ้ายัดรวมเป็น status: deprecated แล้ว linkcheck --fix รอบหน้าจะเขียนทับเป็น ok
+#   เพราะมันได้ HTTP 200 — คำตัดสินของคนหายไปเงียบๆ สองเรื่องนี้ตั้งฉากกัน ต้องแยกฟิลด์
 
 categories:
   official: "Official — Foundation & Anza (source of truth ตัวจริง)"
@@ -218,7 +227,9 @@ resources:
     category: learning
     source: community
     tags: [snippets, legacy]
-    note: ยังมีของดี แต่หลายตัวอย่างเป็น web3.js v1 — เช็ควันที่ก่อนใช้
+    note: 'cookbook ชุมชนรุ่นแรก ครอบคลุม task พื้นฐานกว้างและอธิบายแนวคิดดี — ปัจจุบันมีตัวทางการแล้ว'
+    deprecated: 'ตัวอย่างส่วนใหญ่เป็น web3.js v1 ซึ่งอยู่ maintenance แล้ว โค้ดก็อปไปรันตรงๆ กับ Kit/v3 ไม่ผ่าน — ยังมีของดีเชิงแนวคิดอยู่ แต่ต้องแปลงโค้ดเองทุกครั้ง'
+    superseded_by: https://solana.com/developers/cookbook
     status: ok
     added: 2026-08-04
 

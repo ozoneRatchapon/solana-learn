@@ -47,10 +47,10 @@ last_added="$(yq -r '[.resources[].added] | sort | .[-1]' "$DATA")"
       # ทำให้ field ที่ว่าง (เช่น note) หายไปแล้ว field ถัดไปเลื่อนมาแทน
       yq -r "
         .resources[] | select(.category == \"$key\")
-        | [ .name, .url, (.source // \"\"), ((.tags // []) | join(\", \")), (.note // \"\"), (.status // \"\") ]
+        | [ .name, .url, (.source // \"\"), ((.tags // []) | join(\", \")), (.note // \"\"), (.status // \"\"), (.deprecated // \"\"), (.superseded_by // \"\") ]
         | join(\"$SEP\")
       " "$DATA" \
-      | while IFS="$SEP" read -r name url source tags note status; do
+      | while IFS="$SEP" read -r name url source tags note status dep sup; do
           badge=""
           case "$source" in
             foundation) badge=" \`official\`" ;;
@@ -63,7 +63,14 @@ last_added="$(yq -r '[.resources[].added] | sort | .[-1]' "$DATA")"
             unverified) badge="$badge \`unverified\`" ;;
             dead)       badge="$badge \`DEAD\`" ;;
           esac
-          echo "- [$name]($url)$badge"
+          if [ -n "$dep" ]; then
+            # ขีดฆ่าแทนที่จะลบทิ้ง — คนที่เจอลิงก์นี้จากที่อื่นต้องรู้ว่าเราดูแล้วและทำไมถึงไม่แนะนำ
+            echo "- ~~[$name]($url)~~$badge \`เลิกใช้\`"
+            echo "  $dep"
+            [ -n "$sup" ] && echo "  **ใช้แทน:** $sup"
+          else
+            echo "- [$name]($url)$badge"
+          fi
           [ -n "$note" ] && echo "  $note"
           [ -n "$tags" ] && echo "  <sub>$tags</sub>"
         done

@@ -97,6 +97,31 @@ else
   else bad "URL อยู่ทั้งสองฝั่ง: $(printf '%s' "$both" | tr '\n' ' ')"; fi
 fi
 
+# ── 1c. เลิกใช้แล้ว ────────────────────────────────────────────────────────
+ndep="$(yq -r '[.resources[] | select(.deprecated != null)] | length' "$DATA")"
+head_ "1c. รายการที่เลิกใช้ ($ndep รายการ)"
+
+if [ "$ndep" = "0" ]; then
+  warn "ยังไม่มี entry ไหนถูกทำเครื่องหมายว่าเลิกใช้ — ในปีที่ Anchor ขึ้น 1.0 และ web3.js ย้ายไป Kit เป็นไปได้ยากที่จะไม่มีเลย"
+else
+  thin="$(yq -r '[.resources[] | select(.deprecated != null and ((.deprecated | length) < 20))] | length' "$DATA")"
+  if [ "$thin" = "0" ]; then ok "ทุกเหตุผลยาวพอให้อ่านรู้เรื่อง"
+  else bad "$thin รายการมีเหตุผลเลิกใช้สั้นกว่า 20 ตัวอักษร"; fi
+
+  nosup="$(yq -r '[.resources[] | select(.deprecated != null and .superseded_by == null)] | length' "$DATA")"
+  if [ "$nosup" = "0" ]; then ok "ทุกรายการบอกว่าใช้อะไรแทน"
+  else warn "$nosup รายการเลิกใช้แต่ไม่ได้บอกตัวแทน — บอกได้จะช่วยคนอ่านมากกว่า"; fi
+
+  # superseded_by ที่ชี้ไปหา entry ที่เลิกใช้เหมือนกัน = ส่งคนไปเจอทางตันต่อ
+  loop="$(yq -r '[.resources[] | select(.deprecated != null) | .superseded_by // ""] | .[]' "$DATA" | while read -r u; do
+    if [ -n "$u" ]; then
+      if yq -e "[.resources[] | select(.url == \"$u\" and .deprecated != null)] | length > 0" "$DATA" >/dev/null 2>&1; then echo "$u"; fi
+    fi
+  done)"
+  if [ -z "$loop" ]; then ok "ไม่มีตัวแทนที่ตัวเองก็เลิกใช้แล้ว"
+  else bad "superseded_by ชี้ไปหาของที่เลิกใช้เหมือนกัน: $(printf '%s' "$loop" | tr '\n' ' ')"; fi
+fi
+
 # ── 2. คุณภาพ ──────────────────────────────────────────────────────────────
 head_ "2. คุณภาพเนื้อหา"
 
@@ -185,8 +210,8 @@ fi
 # ── สรุป ────────────────────────────────────────────────────────────────────
 echo
 if [ "$fails" = "0" ]; then
-  printf '\033[32mผ่าน\033[0m — %s รายการ · %s หมวด · ลิงก์ตาย %s · note %s%% · ปฏิเสธไว้ %s' \
-    "$total" "$cats_used" "$dead" "$pct" "$nrej"
+  printf '\033[32mผ่าน\033[0m — %s รายการ · %s หมวด · ลิงก์ตาย %s · note %s%% · ปฏิเสธไว้ %s · เลิกใช้ %s' \
+    "$total" "$cats_used" "$dead" "$pct" "$nrej" "$ndep"
   [ "$warns" != "0" ] && printf '  (เตือน %s)' "$warns"
   echo
   exit 0

@@ -96,8 +96,10 @@
 - [Blueshift Research](https://blueshift.gg/research/)
   เขียนเรื่อง sunrising web3.js / ทิศทาง TS ecosystem ได้ดี
   <sub>research, ecosystem</sub>
-- [Solana Cookbook (community, รุ่นเก่า)](https://solanacookbook.com/)
-  ยังมีของดี แต่หลายตัวอย่างเป็น web3.js v1 — เช็ควันที่ก่อนใช้
+- ~~[Solana Cookbook (community, รุ่นเก่า)](https://solanacookbook.com/)~~ `เลิกใช้`
+  ตัวอย่างส่วนใหญ่เป็น web3.js v1 ซึ่งอยู่ maintenance แล้ว โค้ดก็อปไปรันตรงๆ กับ Kit/v3 ไม่ผ่าน — ยังมีของดีเชิงแนวคิดอยู่ แต่ต้องแปลงโค้ดเองทุกครั้ง
+  **ใช้แทน:** https://solana.com/developers/cookbook
+  cookbook ชุมชนรุ่นแรก ครอบคลุม task พื้นฐานกว้างและอธิบายแนวคิดดี — ปัจจุบันมีตัวทางการแล้ว
   <sub>snippets, legacy</sub>
 - [Turbin3](https://turbin3.org/)
   cohort เข้มข้น มี live code review + mentor 2,000+ dev ผ่านมาแล้ว
