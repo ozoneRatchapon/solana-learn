@@ -37,23 +37,28 @@
   หน้ารวม guides / cookbook / courses / bootcamp / templates
   <sub>hub, index</sub>
 - [Solana Developer Guides](https://solana.com/developers/guides) `official`
+  ระวัง URL นี้ redirect ไป solana.com/docs แล้ว หน้า guides เดิมไม่มีอยู่ต่างหากอีกต่อไป — ปลายทางปัจจุบันคือหน้า Start Here ที่ให้เลือกระหว่าง quickstart, เขียนโค้ดกับ AI agent, หรือเรียนว่า Solana ทำงานยังไง; เก็บ entry ไว้เพราะยังมีคนส่งลิงก์เก่านี้กันอยู่ จะได้รู้ว่ามันพาไปไหน
   <sub>guides, howto</sub>
 - [Solana Cookbook (official)](https://solana.com/developers/cookbook) `official`
   recipe สั้นๆ ต่อ task — ต่างจาก solanacookbook.com ของเดิมที่เป็น community
   <sub>snippets, recipes</sub>
 - [Solana RPC API Reference](https://solana.com/docs/rpc) `official`
+  เอกสารอ้างอิง JSON-RPC ทั้งชุด พร้อม endpoint ของแต่ละ cluster และเรื่องระดับ commitment — ตัวหลังเป็นจุดที่คนพลาดบ่อยที่สุดเวลาทำระบบจ่ายเงิน เพราะเลือก commitment ผิดแล้วนับว่าเงินเข้าทั้งที่ยังไม่ final
   <sub>rpc, api, reference</sub>
 - [Solana Tools & Infrastructure Docs](https://solana.com/docs/tools) `official`
+  แคตตาล็อกเครื่องมือทางการทั้งหมด แยกเป็น reference / งานในเครื่อง / เรียนจากตัวอย่าง / เครื่องมือ / ระบบนิเวศ — ใช้เป็นตัวเทียบว่าแคตตาล็อกของเราตกอะไรไปบ้าง ซึ่งเป็นวิธีหา resource ใหม่ที่ได้ผลกว่าการค้นเอง
   <sub>tooling</sub>
 - [Solana Developer Platform (SDP)](https://platform.solana.com) `official`
   platform API-first สำหรับ enterprise/สถาบันการเงิน ออกปี 2026 — ของใหม่ ยังมีคนใช้น้อย
   <sub>api, enterprise, fintech, new-2026</sub>
 - [Solana Developer Platform Docs](https://platform.solana.com/docs) `official`
+  เอกสารของ SDP — แดชบอร์ดกับ REST API สำหรับออกสินทรัพย์จริง งานชำระเงิน และตลาด พร้อมชั้นควบคุมตามกฎในตัว; เขียนสำหรับองค์กรที่ไม่อยากแตะระดับโปรแกรมเอง อ่านคู่กับ repo solana-developer-platform ที่ประกาศเองว่ายัง pre-mainnet และยังไม่ผ่าน audit
   <sub>api, docs</sub>
 - [Solana Media / Changelog](https://solana.com/news) `official`
   Solana Changelog ออกทุก ~2 สัปดาห์ ใช้ track ว่าอะไรเปลี่ยน
   <sub>news, changelog</sub>
 - [Solana Foundation GitHub](https://github.com/solana-foundation) `official`
+  org GitHub ของ Foundation 99 repo — ประตูเข้าของทุกอย่างฝั่งทางการ แต่หน้านี้โชว์แค่ที่ pin ไว้ ถ้าจะดูครบต้องไปหน้า repositories ที่เก็บแยกไว้แล้ว ซึ่งเป็นที่ที่ของอย่าง subscriptions และ rpc-latency-monitor โผล่มาให้เจอ
   <sub>github, org</sub>
 - [developer-content (repo ของ docs ทั้งหมด)](https://github.com/solana-foundation/developer-content) `official`
   ARCHIVED — ตรวจ 4 ส.ค. 2026 ด้วย gh api ได้ archived=true, push ล่าสุด 24 ม.ค. 2025 เปิด PR ไม่ได้แล้ว เนื้อหาย้ายไปอยู่ solana-com เก็บไว้อ้างอิงประวัติเท่านั้น (โน้ตเดิมเขียนว่าเป็นช่องทาง contribute ซึ่งผิด)
@@ -62,6 +67,7 @@
   มี i18n อยู่ในนี้ — จุดเข้าถ้าจะดันภาษาไทย
   <sub>github, website, i18n</sub>
 - [Validated (podcast)](https://solana.com/validated) `official`
+  พอดแคสต์ที่ Austin Federa คุยกับผู้ก่อตั้งและนักวิจัยในระบบนิเวศ — ใช้เป็นวัตถุดิบทำคอนเทนต์เพราะได้บริบทเบื้องหลังการตัดสินใจที่ไม่มีในเอกสาร; ถ้าจะค้นเนื้อหาแบบเป็นข้อความ Solana Compass มี transcript ให้ค้นได้ในหมวด data-analytics
   <sub>podcast</sub>
 - [solana-developer-platform (SDP repo)](https://github.com/solana-foundation/solana-developer-platform) `official`
   โค้ดหลังบ้านของ platform.solana.com — monorepo Node 22/TS/Postgres/Redis มี sdp-api (Cloud Run + OpenAPI), dashboard, docs; ตัวโปรเจกต์ประกาศเองว่ายัง pre-mainnet ยังไม่ผ่าน audit ห้ามเอาไปใช้กับเงินจริง และ self-host ยังทำไม่เสร็จ — ค่าที่แท้จริงตอนนี้คือใช้อ่านว่า Foundation ออกแบบ wallet/token issuance/compliance ฝั่ง enterprise ยังไง
@@ -82,6 +88,7 @@
 ## Learning — คอร์ส, bootcamp, tutorial
 
 - [Solana Courses](https://solana.com/developers/courses) `official`
+  คอร์สทางการแบบมีลำดับ — แต่ต้องรู้ก่อนว่า URL นี้ redirect ไปที่ GitHub tree ของ repo developer-content ซึ่ง archived ตั้งแต่ ม.ค. 2025 แปลว่าเนื้อหายังอ่านได้แต่ไม่มีใครอัปเดตแล้วและส่ง PR แก้ไม่ได้ ตรวจวันที่ในแต่ละบทก่อนใช้สอน โดยเฉพาะส่วนที่เป็น web3.js v1
   <sub>course, structured</sub>
 - [Solana Developer Bootcamp](https://solana.com/developers/bootcamp) `official`
   foundations → program patterns → fullstack → production
@@ -93,6 +100,7 @@
   Foundation แนะนำเอง — คอร์สฟรี open-source มี challenge ให้ทำจริง
   <sub>course, free, anchor, rust, typescript, challenges</sub>
 - [Blueshift GitHub](https://github.com/blueshift-gg)
+  org GitHub ของ Blueshift (92 repo) — เนื้อหาคอร์สเปิดโค้ดทั้งหมดอยู่ที่นี่ ใช้ตอนอยากดูเฉลยหรือหยิบโครงแบบฝึกไปดัดแปลงเป็น quest ของ Genesis โดยไม่ต้องเขียนใหม่
   <sub>github, course-content</sub>
 - [Blueshift Research](https://blueshift.gg/research/)
   เขียนเรื่อง sunrising web3.js / ทิศทาง TS ecosystem ได้ดี
@@ -106,15 +114,19 @@
   cohort เข้มข้น มี live code review + mentor 2,000+ dev ผ่านมาแล้ว
   <sub>cohort, intensive, rust, anchor</sub>
 - [Turbin3 Institute (free training)](https://turbin3.org/institute)
+  สายฝึกฟรีของ Turbin3 มีผู้สอนจากวงการจริง เคลมว่ามีคนผ่านแล้ว 2,000+ — เป็นประตูที่เบากว่า cohort หลักที่เข้มข้นและต้องทุ่มเวลา ใช้เป็นขั้นแรกให้คนไทยที่ยังไม่แน่ใจว่าไหวไหม
   <sub>free, training</sub>
 - [Rise In — Solana Bootcamp](https://www.risein.com/programs/solana-bootcamp)
+  bootcamp แบบมีรอบลงทะเบียน เปิดรับทั้งมือใหม่และคนที่เขียนโปรแกรมเป็นแล้ว — ต่างจากคอร์สที่เรียนเองได้ตลอดเวลาตรงมีกำหนดเวลาและมีเพื่อนร่วมรุ่น ซึ่งช่วยคนที่เรียนเองแล้วไม่จบ; ต้องเช็ครอบที่เปิดอยู่ก่อนแนะนำ
   <sub>bootcamp</sub>
 - [RareSkills — Ethereum to Solana](https://www.rareskills.io/solana-tutorial)
   ดีมากถ้ากลุ่มเป้าหมายเป็น dev สาย EVM
   <sub>evm-migration, tutorial</sub>
 - [HackQuest — Solana learning track](https://www.hackquest.io/)
+  แพลตฟอร์มเรียนแบบหลายเชน มี Solana เป็นหนึ่งใน 20+ ระบบนิเวศที่รองรับ พร้อมอีเวนต์ แฮกกาธอน และ accelerator — ค่าอยู่ที่เหมาะกับคนที่ยังไม่ตัดสินใจว่าจะลงเชนไหน ส่วนคนที่เลือก Solana แล้วควรไป Blueshift หรือ Ackee ที่ลึกกว่า
   <sub>interactive</sub>
 - [Ackee — School of Solana](https://ackee.xyz/school-of-solana)
+  คอร์สฟรีที่มีใบรับรอง สอน Rust ควบ Solana มี lecture, Solana Handbook และเกณฑ์รับใบรับรองเขียนไว้ชัด — ต่างจากคอร์สอื่นในหมวดตรงมีเส้นจบที่วัดได้ เหมาะกับคนที่ต้องการหลักฐานเอาไปสมัครงาน ไม่ใช่แค่ความรู้
   <sub>course, certificate</sub>
 
 ## Program Frameworks — Anchor / Pinocchio / native
@@ -132,6 +144,7 @@
   URL นี้ 301 ไป github.com/otter-sec/anchor แล้ว (crates.io ของ anchor-lang ก็ชี้ otter-sec) แต่ anchor-lang.com ยังลิงก์ solana-foundation อยู่ — คงไว้แบบนี้เพราะ 301 ยังพาไปถึง แต่ต้องรู้ว่าคนดูแลจริงเปลี่ยนแล้ว
   <sub>anchor, github</sub>
 - [Anchor Version Manager (AVM)](https://www.anchor-lang.com/docs/avm) `official`
+  ตัวสลับเวอร์ชัน Anchor — สำคัญมากกับงานตารางความเข้ากันได้ที่ตั้งเป็นธง เพราะทำให้ทดสอบหลายสายได้โดยไม่ต้องถอนของเดิม เครื่องเจ้าของติดตั้ง 1.0.2 อยู่และไม่ควรอัปทับ ให้ใช้ AVM เพิ่มสายอื่นแทน
   <sub>anchor, versioning</sub>
 - [Anchor v0.32 → v1 Migration Guide](https://github.com/solana-foundation/solana-dev-skill/blob/main/skills/solana-dev/references/anchor/migrating-v0.32-to-v1.md) `official`
   สำคัญมาก — tutorial เก่าเกือบทั้งหมดยังเป็น 0.3x
@@ -143,10 +156,13 @@
   คู่มือ Pinocchio จากชุมชน — ระวัง: repo ไม่ถูกแตะตั้งแต่ 27 ม.ค. 2026 ขณะที่ตัว Pinocchio เองยังพัฒนาต่อ เทียบกับ repo ทางการก่อนเชื่อรายละเอียด API
   <sub>pinocchio, tutorial</sub>
 - [Helius — How to Build with Pinocchio](https://www.helius.dev/blog/pinocchio) `vendor`
+  สอนเขียนโปรแกรมด้วย Pinocchio พร้อมเทียบกับ Anchor และ Steel ตรงๆ และมีตัวอย่างสร้าง token — เป็นบทความที่ตอบคำถาม "จะเลือกเฟรมเวิร์กไหน" ได้ดีที่สุดในลิสต์ เพราะเทียบให้เห็นทั้งสามฝั่งแทนที่จะเชียร์ตัวเดียว
   <sub>pinocchio, article</sub>
 - [Solana Optimized Programs](https://github.com/Laugharne/solana_optimized_programs)
+  ถอดเทปวิดีโอเรื่องการรีดประสิทธิภาพโปรแกรม — compute, storage, data พร้อมเทียบ Anchor กับ Pinocchio และลงถึงระดับ assembly; ★9 push ล่าสุด พ.ค. 2025 เป็นของเก่ากว่าตัวอื่นในหมวด ใช้เอาแนวคิด อย่าลอกโค้ดตรงๆ โดยไม่เช็คเวอร์ชัน
   <sub>optimization, cu</sub>
 - [sBPF Assembly SDK](https://github.com/blueshift-gg/sbpf)
+  เครื่องมือ bootstrap/build/deploy โปรแกรม sBPF assembly (Rust ★127 ยัง active) — สำหรับงานที่ต้องรีด compute unit จนสุดทางซึ่งจะสำคัญขึ้นมากถ้า SGP-0003 ผ่าน เพราะค่า fee จะผูกกับ CU ที่ขอ; ไม่ใช่ของสำหรับมือใหม่
   <sub>sbpf, assembly, advanced</sub>
 - [Compatibility Matrix (ของ Foundation)](https://github.com/solana-foundation/solana-dev-skill/blob/main/skills/solana-dev/references/compatibility-matrix.md) `official`
   ตารางความเข้ากันได้ทางการ 15 KB ครอบ Anchor 0.29 ถึง 1.1.x, Solana CLI 1.16-4.1, Platform Tools, GLIBC รายดิสโทร, และเวอร์ชัน litesvm ฝั่ง Rust/node — น่าอายที่ repo นี้เพิ่งเพิ่มวันนี้ทั้งที่เป็นวัตถุดิบหลักของงานตารางเวอร์ชันที่ตั้งเป็นเป้าไว้เอง; สิ่งที่ตารางนี้ไม่มีและเป็นช่องที่เหลือให้ทำจริงคือแกน @solana/kit และ web3.js v3 กับการยืนยันบน macOS (ของเขาอิง Debian)
@@ -155,6 +171,7 @@
 ## Client SDK — Kit, web3.js, scaffolding
 
 - [Solana Templates](https://solana.com/developers/templates) `official`
+  เทมเพลตพร้อมใช้สำหรับ dApp, DeFi, NFT marketplace — ประหยัดขั้นตอนตั้งโครงที่มักพาคนใหม่ไปติดกับ config ก่อนได้เขียนอะไรเลย; เช็คก่อนว่าเทมเพลตที่หยิบใช้ web3.js v1 หรือ Kit เพราะยังมีทั้งสองแบบปนกันในระบบนิเวศ
   <sub>scaffold, starter</sub>
 - [Solana Kit Docs](https://www.solanakit.com/) `anza`
   SDK มาตรฐานปัจจุบัน — tree-shakable zero-dependency แทน web3.js v1
@@ -169,11 +186,13 @@
   URL ที่ curated list ของ Foundation ระบุไว้ (/docs/clients/kit) ตาย 404 — อันนี้คือของจริง ครอบคลุม @solana/kit, @solana/client และ React hooks
   <sub>kit, docs, react</sub>
 - [Rust client docs](https://solana.com/docs/clients/official/rust) `official`
+  รายการ crate ทางการฝั่ง Rust แยกเป็นกลุ่มชัด: client / program / interface / การเซ็นและจัดการกุญแจ — ใช้ตอนต้องเลือกว่าจะ import ตัวไหนแทนการเดาจากชื่อ ซึ่งพลาดง่ายเพราะ crate ตระกูล solana-* ถูกแยกย่อยใหม่หลังยุค monorepo
   <sub>rust, client</sub>
 - [@solana/web3.js v3.x](https://github.com/solana-foundation/solana-web3.js/tree/v3.x) `official`
   v3 = API แบบคลาสสิกแต่รันบนไส้ใน Kit — v1 อยู่ maintenance (security fix เท่านั้น)
   <sub>web3js, v3</sub>
 - [web3.js v1 → v3 Migration Guide](https://github.com/solana-foundation/solana-web3.js/blob/v3.x/docs/web3js-v1-to-v3-migration.md) `official`
+  คู่มือย้ายจาก web3.js v1 ไป v3 อย่างเป็นทางการ — เป็นวัตถุดิบหลักของงานตารางความเข้ากันได้ที่ตั้งเป็นธง เพราะเป็นคลื่นที่สองที่ทำให้ tutorial เก่ารันไม่ผ่าน; อ่านคู่กับ compatibility-matrix ของ Foundation ซึ่งครอบฝั่ง Anchor แต่ไม่ครอบฝั่งนี้
   <sub>migration, web3js</sub>
 - [Sunrising web3.js — ทำไม TS ecosystem ถึงกลับมารวมกัน](https://blueshift.gg/research/sunrising-web3js-reuniting-solanas-typescript-ecosystem)
   อ่านตัวนี้ก่อนตัดสินใจว่าโปรเจกต์จะใช้ Kit หรือ web3.js v3
@@ -188,11 +207,13 @@
   fork mainnet ได้ + cheatcode — เหมาะกับ workshop ที่ไม่อยากรอ airdrop
   <sub>surfpool, mainnet-fork, cheatcodes</sub>
 - [Surfpool Repository](https://github.com/solana-foundation/surfpool) `official`
+  fork mainnet มารันในเครื่องพร้อม cheatcode (Rust ★581 active) — แก้ปัญหาเวิร์กช็อปที่ต้องใช้สภาพจริงของ mainnet แต่ไม่อยากพึ่งเครือข่าย ต่างจาก LiteSVM ตรงได้สถานะจริงของโปรแกรมที่ deploy อยู่แล้วมาเล่นด้วย
   <sub>surfpool, github</sub>
 - [LiteSVM](https://github.com/LiteSVM/litesvm)
   เร็วกว่า solana-test-validator หลายเท่า มีทั้ง crate และ npm
   <sub>litesvm, fast-test</sub>
 - [LiteSVM Docs](https://solana.com/docs/tools/litesvm) `official`
+  เอกสารทางการของ LiteSVM — รันโปรแกรมในโปรเซสเดียวกันเลย ไม่ต้องมี validator ไม่ต้องรอเครือข่าย มีทั้งฝั่ง Rust และ TypeScript; นี่คือตัวที่ทำให้เวิร์กช็อป 40 คนไม่ต้องแย่ง airdrop กัน อ่านหน้านี้ก่อน repo เพราะสรุปการติดตั้งกับข้อจำกัดไว้ครบกว่า
   <sub>litesvm, docs</sub>
 - [Mollusk](https://github.com/anza-xyz/mollusk) `anza`
   ทดสอบระดับ instruction + วัด CU ได้
@@ -207,6 +228,7 @@
   URL ที่ curated list ของ Foundation ระบุไว้ (/docs/programs/codama-generating-clients) ตาย 404 — อันนี้คือของจริง
   <sub>idl, codegen</sub>
 - [IDLs — Interface Definition Language (guide)](https://solana.com/developers/guides/advanced/idls) `official`
+  อธิบายว่า IDL คือ JSON ที่บรรยายโปรแกรม ใช้ decode instruction กับ account และ generate client หลายภาษาได้โดยไม่ต้องอ่านซอร์ส — มีทั้งฝั่ง Anchor และฝั่งที่ไม่ใช้ Anchor ซึ่งหายากกว่า; อ่านหน้านี้ก่อนเข้าเครื่องมือ codegen ตัวอื่นในหมวดเดียวกัน จะเข้าใจว่าแต่ละตัวทำอะไรกับ IDL
   <sub>idl, concept</sub>
 - [Shank (Metaplex)](https://github.com/metaplex-foundation/shank)
   ดึง IDL จาก native program ที่ไม่ได้ใช้ Anchor
@@ -215,14 +237,19 @@
 ## Tokens & NFT — SPL, Token-2022, Metaplex
 
 - [SPL Token Documentation](https://spl.solana.com/token) `official`
+  เอกสารอ้างอิงของ SPL Token โปรแกรมเดิม — อ่านเมื่อทำงานกับ mint/account ที่สร้างมานานแล้วหรือต้องเข้าใจ interface ระดับ instruction; ของใหม่ควรเริ่มที่ Token-2022 แทน และหมายเหตุว่า URL นี้ redirect ไป solana-program.com แล้ว ลิงก์เดิมยังใช้ได้แต่ปลายทางย้ายบ้าน
   <sub>spl, token</sub>
 - [Token-2022 Documentation](https://spl.solana.com/token-2022) `official`
+  รุ่นที่ต่อยอด SPL Token ด้วย extension — เป็นตัวที่ควรใช้กับของใหม่ทุกกรณี เพราะฟีเจอร์อย่าง transfer hook, confidential transfer, metadata ในตัว อยู่ที่นี่ทั้งหมด; หน้ามีหัวข้อ Security Audits แยกให้ด้วย ใช้ตอบคำถามว่าปลอดภัยพอไหมได้ตรงๆ ต่างจากเอกสารส่วนใหญ่ที่ต้องไปหาเอง
   <sub>token-2022, extensions</sub>
 - [Tokenized Assets (docs)](https://solana.com/docs/tokenization) `official`
+  หน้าแม่ของสาย tokenization ฝั่งทางการ ครอบ stablecoin และ RWA พร้อมกลไกคุมการโอน ความเป็นส่วนตัว และการชำระราคา — มุมนี้เขียนสำหรับคนที่ต้องคุยเรื่อง compliance ไม่ใช่คนที่จะ mint เล่น ใช้เป็นตัวตั้งเวลาคุยกับองค์กรหรือหน่วยงานที่ถามเรื่องกฎก่อนถามเรื่องโค้ด
   <sub>rwa, tokenization</sub>
 - [Token-2022 Launch Quickstart](https://solana.com/docs/tokenization/quickstart) `official`
+  พา mint Token-2022 แบบพร้อมใช้กับงานที่มีข้อกำหนดในราว 10 นาทีบนเครือข่ายในเครื่อง ได้ metadata, หยุดการโอนได้, permanent delegate และบัญชีที่ freeze ไว้เป็นค่าเริ่มต้นครบในตัวอย่างเดียว — เป็นบทเปิดเวิร์กช็อปสาย token ที่ดีที่สุดเพราะเห็นของจริงเร็วและต่อยอดไปหน้าแม่ได้
   <sub>token-2022, quickstart</sub>
 - [Metaplex Developer Docs](https://developers.metaplex.com/)
+  ศูนย์รวมเอกสารของ Metaplex — token, NFT, smart contract, dev tool และสาย agent อยู่ที่เดียว ใช้เมื่อทำงาน NFT ที่เกินกว่าที่ SPL ให้ เช่น collection, royalty, compression; หมายเหตุ URL นี้ redirect ไป metaplex.com/docs แล้ว
   <sub>nft, core, bubblegum, candy-machine, umi</sub>
 - [Collector Crypt — การ์ดสะสมจริงบนเชน](https://collectorcrypt.com/) `vendor`
   ตัวอย่างที่ชัดที่สุดของ RWA สาย longtail บน Solana — เอาการ์ด Pokemon/กีฬาจริงเข้าตู้เซฟแล้ว mint เป็น NFT ถอนกลับเป็นของจริงได้ตลอด ต้องผ่านการเกรดจาก PSA/BGS/CGC ก่อน เก็บในคลังควบคุมอุณหภูมิของ PWCC/ALT พร้อมประกัน; ตัวเลข มิ.ย. 2026 ปริมาณซื้อขายสะสม ~$1.3B รายได้โปรโตคอลสะสม >$64M และ พ.ค. 2026 มีการ์ดในตู้เกิน 130,000 ใบ ค่าธรรมเนียมผู้ขาย 2% (แพลตฟอร์ม 1% + royalty 1%) จุดที่ดังคือ Gacha Machine ที่จำลองการเปิดซองแบบสุ่ม; ค่าสำหรับเราคือใช้เป็นเคสสอนว่า tokenization ที่มีของจริงหนุนหลังหน้าตาเป็นยังไง จับต้องได้กว่าอธิบาย RWA ด้วยพันธบัตร และคนไทยที่เล่นการ์ดมีเยอะ เข้าใจได้ทันทีโดยไม่ต้องอธิบายคริปโตก่อน
@@ -234,8 +261,10 @@
 ## Payments & Commerce
 
 - [Solana Pay](https://docs.solanapay.com/) `official`
+  สเปคและ reference implementation ของ Solana Pay — มาตรฐาน URL/QR สำหรับรับเงิน มีรายชื่อกระเป๋าที่รองรับอยู่ในนั้นด้วย ซึ่งเป็นข้อมูลที่ต้องดูก่อนตัดสินใจใช้จริงเพราะถ้ากระเป๋าที่ผู้ใช้ไทยใช้ไม่รองรับก็จบ; สำหรับของใหม่ปี 2026 ควรเทียบกับ Commerce Kit และ payment button ในหมวดเดียวกันก่อนเลือก
   <sub>payment, qr</sub>
 - [Payments docs](https://solana.com/docs/payments) `official`
+  หน้าแม่ของหมวด payments ทั้งหมด 32 หน้า — จุดตั้งต้นก่อนลงหน้าย่อย และเป็นที่ที่ตัวเลขทางการอย่างค่าธรรมเนียมต่ำกว่า $0.001 กับการชำระราคาแบบทันทีถูกเขียนไว้ให้อ้างได้; ในแคตตาล็อกเก็บหน้าย่อยที่มีเนื้อจริงไว้ 13 หน้า ส่วนที่เหลือบันทึกเหตุผลไว้ใน rejected.yml แล้ว
   <sub>payment, checkout</sub>
 - [Kora (gasless/relayer)](https://solana.com/docs/tools/kora) `official`
   relayer ที่ทำให้ผู้ใช้ทำธุรกรรมได้โดยไม่ต้องมี SOL — อ่านคู่กับ fee-abstraction และ x402-facilitator ในหมวดเดียวกัน; แก้ URL 4 ส.ค. 2026: ของเดิมชี้ docs.kora.network ซึ่งตายแล้ว (TLS ล้ม) และโดเมน kora.network กลายเป็น parked domain ประกาศขาย — apex ตอบ 200 แต่เนื้อแค่ 114 byte redirect ไป GoDaddy อย่าเผลอใช้เป็นตัวสำรอง
@@ -298,6 +327,7 @@
   ฟรี + มี cert สาย security โดยเฉพาะ
   <sub>audit, free, certificate</sub>
 - [Blueshift — Program Security Course](https://learn.blueshift.gg/en/courses/program-security)
+  คอร์สความปลอดภัยระดับโปรแกรม ครอบเรื่องที่พลาดกันบ่อยที่สุด — ตรวจเจ้าของ account, การคุมสิทธิ์, และ CPI; ต่างจากบล็อกความปลอดภัยทั่วไปตรงเป็นคอร์สมีลำดับและมีแบบฝึก เหมาะให้คนที่เขียน Anchor เป็นแล้วแต่ยังไม่เคยคิดเรื่องคนโจมตี
   <sub>security, course, free</sub>
 - [Solana Dev Skill — Security Checklist](https://github.com/solana-foundation/solana-dev-skill/blob/main/skills/solana-dev/references/security.md) `official`
   checklist สั้นๆ ที่ใช้รีวิว PR ได้จริง
@@ -306,11 +336,13 @@
   จากทีม School of Solana — scan หา logic flaw เฉพาะทาง Solana
   <sub>ai, audit, scanner</sub>
 - [Neodyme Blog](https://neodyme.io/en/blog/)
+  บล็อกของทีม audit ที่เจาะ Solana โดยเฉพาะ — เขียนถึงช่องโหว่จริงที่เคยเจอในโปรแกรมจริง ใช้เป็นวัตถุดิบสอนว่าโค้ดพังหน้าตาเป็นยังไง ซึ่งมีน้ำหนักกว่าการท่องรายการ best practice; อ่านคู่กับคอร์สความปลอดภัยของ Blueshift ในหมวดเดียวกัน
   <sub>audit, writeup, exploit</sub>
 
 ## AI / Agent Skills / MCP
 
 - [Metaplex Agent Skill (official)](https://github.com/metaplex-foundation/skill)
+  skill ทางการของ Metaplex สำหรับงาน NFT/token — ตัวอย่างของ skill ที่ผูกกับโปรโตคอลเดียว ซึ่งเป็นรูปแบบที่ skill ในระบบนิเวศเกือบทั้งหมดเป็นอยู่ตอนนี้ ใช้เป็นแบบอ้างอิงโครงสร้างเวลาจะทำของตัวเอง
   <sub>skill, nft, mplx-cli</sub>
 - [Solana Agent Skills (หน้ารวม)](https://solana.com/skills) `official`
   11 skill ทางการ + community อีก 30+ ตัว
@@ -325,22 +357,28 @@
   ลิสต์ AI tooling ทั้งหมด — ที่ที่ควรส่ง PR ถ้าเราทำ skill เอง
   <sub>index, skills, agents, tools</sub>
 - [Agent Skills Specification](https://agentskills.io/specification)
+  สเปคกลางของ Agent Skills — บอกโครงไดเรกทอรีและรูปแบบ SKILL.md ที่ต้องเขียน; อ่านตัวนี้ก่อนลงมือทำ skill ของตัวเอง จะได้ไม่ต้องรื้อ packaging ทีหลัง มาตรฐานยังใหม่และเปลี่ยนได้ แต่สิ่งที่เปลี่ยนคือวิธีห่อ ไม่ใช่เนื้อหาข้างใน
   <sub>spec, standard</sub>
 - [skills.sh (discovery + installer)](https://www.skills.sh/)
+  ไดเรกทอรีรวม skill ของ agent พร้อมตัวติดตั้ง มี leaderboard ให้ดูว่าตัวไหนคนใช้จริง — ใช้สำรวจว่าช่องไหนมีคนทำแล้วก่อนลงแรงทำซ้ำ ซึ่งเป็นขั้นตอนที่ควรทำก่อนเริ่ม skill สาย education ตามที่เขียนไว้ใน OPPORTUNITIES
   <sub>registry, installer</sub>
 - [Solana Agent Kit](https://github.com/sendaifun/solana-agent-kit)
+  ตัวเชื่อม agent เข้ากับโปรโตคอลบน Solana ★1,704 เป็นตัวที่คนใช้มากที่สุดในสายนี้ — แต่ push ล่าสุด พ.ค. 2026 ห่างจากตัวอื่นในหมวดเดียวกันที่ยังขยับทุกสัปดาห์ ต้องเช็คว่ารองรับ Kit/web3.js v3 แล้วหรือยังก่อนเริ่มโปรเจกต์ใหม่
   <sub>agent, 30-protocols, langchain</sub>
 - [SendAI Skills (DeFi/infra skill รวม)](https://github.com/sendaifun/skills)
+  ตลาดรวม skill สาย Solana สำหรับ agent (★122) — ที่ที่ควรไปดูก่อนว่ามีคนทำ skill ที่คิดอยู่แล้วหรือยัง และเป็นช่องเผยแพร่ที่เข้าถึงง่ายกว่าการรอขึ้น solana.com/skills
   <sub>skills, defi, jupiter, raydium, kamino</sub>
 - [solana-ai-kit (CLAUDE.md/agents/hooks)](https://github.com/solanabr/solana-ai-kit)
   ชุด config Claude Code สำหรับ Solana — เทียบกับของเราแล้วหยิบของดีมาใช้ได้
   <sub>claude-code, config, template</sub>
 - [Helius core-ai skills](https://github.com/helius-labs/core-ai) `vendor`
+  ชุดเครื่องมือ AI ทางการของ Helius (TypeScript ★24 ยัง active ส.ค. 2026) — มุมของผู้ให้บริการ RPC ที่ทำ tooling ให้ agent เรียกข้อมูลบนเชน ใช้เทียบกับ MCP ทางการว่าใครครอบอะไร ก่อนตัดสินใจว่าจะพึ่งเจ้าไหน
   <sub>skill, rpc, das, svm-internals</sub>
 - [QuickNode — Solana Finance Claude Plugin](https://github.com/quicknode/solana-finance-claude-plugin) `vendor`
   แก้ 4 ส.ค. 2026 — URL เดิม quiknode-labs/solana-anchor-claude-skill 301 มาที่นี่ และของเปลี่ยนไปแล้วจริงๆ ไม่ใช่แค่ย้ายบ้าน ชื่อเดิมในแคตตาล็อกจึงชี้ผิดของ
   <sub>skill, plugin, finance, claude</sub>
 - [Orquestra (IDL → REST + MCP)](https://github.com/berkayoztunc/orquestra)
+  แปลง IDL ของโปรแกรมเป็น REST API และ MCP server ให้อัตโนมัติ (TypeScript ★21) — ตัดงานเขียน wrapper ด้วยมือทิ้งทั้งขั้น เหมาะกับตอนอยากให้ agent คุยกับโปรแกรมที่เพิ่ง deploy โดยไม่ต้องทำ client เอง; ของ community เจ้าเดียว ยังไม่มี audit ใช้กับ devnet ก่อน
   <sub>idl, rest-api, mcp</sub>
 - [solana.com llms.txt (ดัชนีเอกสารสำหรับ AI)](https://solana.com/llms.txt) `official`
   ดัชนี 514 หน้าเอกสารทางการพร้อมคำอธิบายบรรทัดเดียวต่อหน้า — ท่าที่ควรรู้และเช็คแล้วว่าใช้ได้จริง: เติม .md ท้าย URL ไหนก็ได้จะได้ markdown ดิบ (หรือส่ง header Accept: text/markdown ผลเท่ากัน) และมีดัชนีย่อยรายหมวด ขนาดต่างกันมากตามหมวด (วัดเอง 4 ส.ค. 2026: finance 471 byte, defi 1.4 KB, payments 5.5 KB, rpc 13.5 KB) ใช้ตัวย่อยตอนทำงานเรื่องเดียวจะประหยัด context กว่าดัชนีเต็ม 93 KB มาก; ตัวไฟล์เองบอกด้วยว่าโค้ดใน cookbook มาจากไฟล์ตัวอย่างที่เทสต์แล้ว ให้เชื่อมากกว่าเดาเอง
@@ -352,15 +390,19 @@
 ## Infra & RPC providers
 
 - [Helius](https://www.helius.dev/) `vendor`
+  ผู้ให้บริการ RPC/API ที่คนไทยใช้เยอะที่สุดเจ้าหนึ่ง มี LaserStream สำหรับข้อมูลสดและ Sender สำหรับส่งธุรกรรม เริ่มใช้ฟรีได้ — เก็บไว้เพราะเป็นตัวเลือกแรกที่คนถามถึงเวลาจะเลิกใช้ public RPC ควรเทียบกับ Triton และ QuickNode ก่อนตัดสินใจผูกยาว
   <sub>rpc, das, webhook, laserstream</sub>
 - [Helius Blog](https://www.helius.dev/blog) `vendor`
   คุณภาพบทความสูงสุดในสาย Solana internals — ใช้เป็นวัตถุดิบสอนได้เลย
   <sub>article, deep-dive</sub>
 - [QuickNode Solana Guides](https://www.quicknode.com/guides/solana-development) `vendor`
+  คลังไกด์สอนทำทีละเรื่องของ QuickNode — จุดแข็งคือครอบงานย่อยที่เอกสารทางการข้าม เช่นสร้าง vanity address; เป็นเนื้อหาของ vendor ตัวอย่างจะผูกกับบริการเขาบ้าง อ่านเอาวิธีแล้วเปลี่ยน endpoint เองได้
   <sub>guides, rpc</sub>
 - [Triton One](https://triton.one/) `vendor`
+  ผู้ให้บริการ RPC และ validator ที่อยู่มาตั้งแต่ปี 2021 เคลม uptime 99.99% และเปิดโค้ดจริง — ตระกูล Yellowstone ทั้งหมดมาจากที่นี่ ซึ่งแปลว่าเลิกใช้บริการแล้วยังรันเองต่อได้ ต่างจากเจ้าอื่นที่ผูกกับแพลตฟอร์ม; อ่านคู่กับ entry Riptide/Shred และ Superbank ในหมวดเดียวกัน
   <sub>rpc, yellowstone-grpc</sub>
 - [Chainstack — Solana tooling overview](https://docs.chainstack.com/docs/solana-tooling) `vendor`
+  ภาพรวมเครื่องมือจากมุมผู้ให้บริการโหนด — ที่มีค่าคือมันอัปเดตตามของจริงปี 2026 แล้ว (ระบุ Anchor 1.0, @solana/kit, LiteSVM, Surfpool ชัดเจน) ต่างจากบทความรวมเครื่องมือส่วนใหญ่ที่ยังค้างยุค web3.js v1 ใช้เป็นตัวเช็คว่าตกอะไรไปบ้าง
   <sub>overview, tooling</sub>
 - [Triton — Riptide & Shred Streaming (ก่อนบล็อกจะเกิด)](https://blog.triton.one/before-the-block-get-the-fastest-streams-on-solana/) `vendor`
   อธิบายชั้นข้อมูลที่เร็วกว่า RPC ปกติ: Riptide คือ endpoint gRPC ตัวใหม่ (Dragon's Mouth เดิม ราคาเท่าเดิม เปลี่ยนแค่ URL) เคลม P90 มาถึงก่อนเจ้าอื่น 81.8% · Shred Streaming คือดูดชิ้นข้อมูลดิบขนาดไม่เกิน 1,228 byte ตรงจาก 5 เมือง (NY/London/Amsterdam/Frankfurt/Tokyo) ร่วมกับ DoubleZero — ได้เห็น tx ก่อนบล็อกประกอบเสร็จ แต่ต้อง verify signature/กู้ packet/decode เองทั้งหมด; อ่านตัวนี้ถ้าจะสอนว่าทำไม arbitrage/oracle ถึงไม่ใช้ RPC ธรรมดา และเส้นแบ่ง shred กับ block คืออะไร
@@ -384,6 +426,7 @@
 ## Data & Analytics
 
 - [Solana Explorer (first-party)](https://explorer.solana.com/) `official`
+  explorer ทางการ — ใช้ตรวจธุรกรรมและ account แบบดิบที่สุด ไม่มีชั้นตีความเหมือน explorer ของ vendor ซึ่งสำคัญเวลาต้องยืนยันว่าอะไรเกิดขึ้นจริงบนเชน; เวลาสอนควรใช้ตัวนี้เพราะไม่ผูกกับบริการเจ้าไหน
   <sub>explorer</sub>
 - [Solscan](https://solscan.io/) `vendor` `blocked`
   403 ตอน curl = กัน bot ไม่ใช่ลิงก์ตาย
@@ -392,15 +435,19 @@
   fork dashboard คนอื่นได้ ประหยัดเวลามาก
   <sub>sql, dashboard, fork</sub>
 - [DefiLlama — Solana](https://defillama.com/chain/Solana) `vendor` `blocked`
+  TVL และภาพรวม DeFi ของ Solana จากแหล่งที่วัดทุกเชนด้วยวิธีเดียวกัน — จุดแข็งคือเทียบข้ามเชนได้อย่างยุติธรรม เลยน่าเชื่อกว่าเอาตัวเลขฝั่ง Solana มาพูดเอง ใช้คู่กับ Blockworks ในหมวดเดียวกัน; 403 ตอน curl เพราะกัน bot
   <sub>tvl, defi</sub>
 - [Solana Compass](https://solanacompass.com/)
   มี transcript พอดแคสต์ให้ค้นด้วย — วัตถุดิบทำ content ดี
   <sub>projects, metrics, podcast-transcript</sub>
 - [Helius — Analyzing Solana On-chain Data: Tools & Dashboards](https://www.helius.dev/blog/solana-data-tools) `vendor`
+  ภาพรวมเครื่องมือดูข้อมูลบนเชนทั้งสาย แยกเป็น RPC / ข้อมูลสด / ข้อมูลย้อนหลัง / metric — เป็นแผนที่ที่ดีที่สุดในลิสต์สำหรับคนที่ยังไม่รู้ว่าควรเริ่มดูข้อมูลจากตรงไหน อ่านตัวนี้ก่อนเลือกเครื่องมือ จะได้ไม่จ่ายค่าบริการที่ไม่ต้องใช้
   <sub>overview, comparison</sub>
 - [Birdeye](https://birdeye.so/) `vendor` `blocked`
+  ข้อมูลราคาและสภาพคล่องรายโทเคนข้าม DEX — ใช้ตอนต้องดูว่าโทเคนหนึ่งซื้อขายกันจริงที่ไหนและลึกแค่ไหน ซึ่ง explorer ไม่ตอบให้; ตอบ 403 ตอน curl เพราะกัน bot ลิงก์ยังใช้ได้ปกติ เป็นของ vendor ไม่ใช่ตัวเลขทางการ
   <sub>token, price, dex</sub>
 - [Step Finance](https://www.step.finance/) `vendor`
+  ระวัง หน้าแรกเปลี่ยนไปแล้ว — ตอนนี้ชูเรื่อง validator ของ Step และการ delegate SOL เป็นหลัก ส่วนแดชบอร์ดพอร์ตที่เป็นเหตุผลเดิมที่เก็บไว้ ย้ายไปอยู่ที่ app.step.finance ถ้าจะส่งให้ใครดูพอร์ตต้องส่งลิงก์ app ไม่ใช่หน้าแรก
   <sub>portfolio, dashboard</sub>
 - [Solana Network Data (first-party)](https://solana.com/data) `official`
   ตัวเลขเครือข่ายทางการ (tx, fee, CU, fee payer, slot) — ใช้อ้างอิงในสไลด์/คอนเทนต์ได้โดยไม่ต้องแก้ตัวเลขเอง แต่ refresh วันละ 2 รอบและ lag 1 วัน ไม่ใช่ realtime ถ้าต้องสดใช้ explorer/Dune แทน; หน้านี้ยังลิงก์ไป Allium / Tokens.xyz / Lightspeed / Tx Sender Metrics ด้วย
@@ -463,6 +510,7 @@
 ## Mobile
 
 - [Solana Mobile](https://solanamobile.com/)
+  ฝั่งมือถือของระบบนิเวศ — เครื่อง Seeker และ SKR ที่เป็นสินทรัพย์ของเศรษฐกิจสายนี้ พร้อมส่วนสำหรับนักพัฒนา; หมวด mobile ในแคตตาล็อกมีแค่ 2 รายการ สะท้อนว่ายังไม่ได้ลงแรงตรวจสายนี้จริง ถ้าจะเอาจริงต้องเริ่มที่นี่กับ docs.solanamobile.com
   <sub>seeker, hardware</sub>
 - [Solana Mobile Docs](https://docs.solanamobile.com/)
   dApp Store คิดค่าธรรมเนียม 0% + มี builder grant
@@ -477,6 +525,7 @@
   กินสัดส่วน stake บน mainnet ราว 14% (กลางปี 2026)
   <sub>validator, client-diversity, c</sub>
 - [Anza](https://www.anza.xyz/) `anza`
+  บริษัทที่ดูแล core ของ Solana จริง — agave, kit, solana-sdk, pinocchio, mollusk ออกมาจากที่นี่ทั้งหมด; เก็บไว้เพื่อรู้ว่าเวลาข้อมูลขัดกันระหว่าง community กับ Anza ให้ยึด Anza และเพื่อรู้ว่าใครเป็นคนตัดสินใจเรื่อง client จริงๆ ไม่ใช่ Foundation
   <sub>core-dev, org</sub>
 - [Solana Network Upgrades (Alpenglow roadmap)](https://solana.com/news/solana-network-upgrades) `official`
   TowerBFT → Alpenglow เป้า finality 150ms และเลิกใช้ vote transaction — โค้ดเสร็จอยู่ใน Agave 4.2 แล้วแต่ยังไม่เปิดใช้ รอเปิดใน 4.3 ราว ต.ค. 2026 (ยืนยันจากหน้า agave-4-2-release-overview 4 ส.ค. 2026)
@@ -497,6 +546,7 @@
   อยากรู้ว่า protocol จะเปลี่ยนอะไร อ่านที่นี่ก่อนข่าว
   <sub>governance, spec, proposal</sub>
 - [SIMD Mirror (อ่านง่ายกว่า)](https://simd.mixy.one/)
+  มิเรอร์ของ SIMD ที่ค้นและไล่อ่านง่ายกว่า repo ต้นทางมาก — ใช้ตอนอยากรู้ว่า SIMD หมายเลขหนึ่งพูดเรื่องอะไรโดยไม่ต้องเปิด GitHub ทีละไฟล์; เป็นของ community เวลาข้อมูลขัดกับ repo ทางการให้ยึด repo
   <sub>simd, browse</sub>
 - [SGP-0003: Resource and Inclusion Fee (โหวตบนเชน)](https://governance.solana.com/proposal/AGHDQ6gjRFJPoyEcHuc4X7sbxJwyJfeKTb3UrGFzFNZD) `official`
   ข้อเสนอรื้อโครงสร้าง base fee: inclusion fee คงที่ 2,500 lamport/tx เข้า leader 100% + resource fee ตาม requested cost unit เผา 100% (ramp 1/10→1/4→1/2 lamport/CU) priority fee ไม่เปลี่ยน สเปคเทคนิคอยู่ที่ SIMD-0553 โหวตนี้เป็นแค่ mandate ไม่ได้เปิด feature gate — ประเด็นที่ต้องบอกคนไทย: ค่า fee จะผูกกับ CU ที่ 'ขอ' ไม่ใช่ที่ 'ใช้' การใส่ compute budget เผื่อๆ จะเริ่มมีราคา สอน request CU ให้แม่นตั้งแต่ตอนนี้; หน้านี้ render ฝั่ง client — curl/WebFetch ได้หน้าเปล่า ต้องเปิดเบราว์เซอร์หรืออ่าน account บนเชนเอง
@@ -523,21 +573,28 @@
   hackathon + accelerator 6 สัปดาห์ + venture fund $60M
   <sub>hackathon, accelerator, vc</sub>
 - [Colosseum Hackathon](https://colosseum.com/hackathon)
+  แฮกกาธอนหลักของระบบนิเวศ ปีละ 2 รอบ แต่ละรอบตามด้วย accelerator cohort — จนถึงตอนนี้จัดมาแล้ว 5 รอบ (Renaissance 1,076 โปรเจกต์ → Radar 1,360 → Breakout 1,416 → Cypherpunk 1,576 → Frontier) ตัวเลขโตทุกรอบ ใช้ประเมินระดับการแข่งขันจริงก่อนชวนทีมไทยลง; ผู้ชนะที่ถูกเลือกเข้า accelerator ได้ทุน $250K ทำเต็มเวลา ถ้าไม่อยากรอรอบถัดไปใช้ Eternal ที่เปิดตลอดปีแทน
   <sub>hackathon</sub>
 - [Colosseum Codex (blog)](https://blog.colosseum.com/)
+  บล็อกของ Colosseum — ใช้ตามว่าทีมที่ชนะแต่ละรอบทำอะไรต่อและกรรมการมองหาอะไร ซึ่งเป็นข้อมูลที่หาที่อื่นไม่ได้และมีค่ากว่าประกาศผลรอบเดียวจบ เวลาจะโค้ชทีมไทยก่อนลงแข่ง
   <sub>announcement, blog</sub>
 - [Superteam](https://superteam.fun/)
+  องค์กรแม่ของ Superteam ทั้งเครือข่าย นิยามตัวเองว่าเป็นชั้น talent ของ Solana — ใช้หาว่าประเทศไหนมี chapter บ้างและติดต่อใคร เวลาจะทำงานข้ามประเทศหรืออ้างอิงโครงสร้างเวลาคุยกับ Foundation; ตัวที่ใช้งานจริงรายวันคือ Earn (bounty) กับ Talent (งาน) ที่แยก entry ไว้แล้ว หน้านี้เป็นชั้นบนสุดไม่ต้องเข้าบ่อย
   <sub>talent-network, community</sub>
 - [Superteam Earn (bounty)](https://earn.superteam.fun/)
   ทางเข้าที่ต่ำที่สุดสำหรับคนไทยจะได้เงินก้อนแรกจาก ecosystem
   <sub>bounty, grant, freelance</sub>
 - [Superteam Talent (หางาน)](https://talent.superteam.fun/)
+  ที่หางานสาย Solana แบบสร้างโปรไฟล์ครั้งเดียวแล้วถูกจับคู่กับหลายทีมในเครือข่าย — ต่างจากบอร์ดงานทั่วไปตรงมีฝั่งบริษัทที่จ่ายเงินหาคนอยู่จริง; ใช้เป็นปลายทางที่จับต้องได้เวลามีคนในชุมชนถามว่าเรียนจบแล้วไปไหนต่อ คู่กับ open application ของ Foundation ที่เก็บไว้ในหมวดเดียวกัน
   <sub>jobs</sub>
 - [Superteam × Solana Hackathon Hub](https://superteam.fun/hackathon)
+  หน้ารวมทรัพยากรสำหรับแฮกกาธอน Frontier โดยเฉพาะ — ต่างจากหน้าของ Colosseum ตรงนี้เป็นมุม Superteam ที่รวมของช่วยคิดไอเดียและหาทีม เหมาะส่งให้คนที่อยากลงแต่ยังไม่มีโจทย์ ส่วนกติกาและการส่งงานจริงอยู่ฝั่ง Colosseum
   <sub>hackathon, hub</sub>
 - [Solana Foundation Grants](https://solana.org/grants) `official`
+  ประตูรวมของเงินทุนฝั่ง Foundation แยกเป็น 3 สาย: grant ปกติ / convertible grant / RFP เปิดรับทั้งบุคคล ทีม บริษัท มหาวิทยาลัย และหน่วยงานรัฐ กระบวนการราว 3 สัปดาห์ (ยื่น → รีวิวราว 1 สัปดาห์ → ผู้เชี่ยวชาญตรวจ → ตัดสิน → ทำสัญญา); เกณฑ์ที่เขียนไว้ชัดและใช้ประเมินตัวเองก่อนยื่นได้ — ต้องเป็นของสาธารณะ เปิดโค้ดในเชิงหลักการ อธิบายให้ได้ว่าทำไมต้องเป็น Solana และแบ่งงบเป็น milestone ที่วัดได้; หน้านี้ยังชี้ไป Superteam Microgrant $10k ที่ระบุเอเชียตะวันออกเฉียงใต้เป็นเป้าโดยตรง ซึ่งเป็นประตูที่ตรงกับคนไทยที่สุดและเบากว่า grant ใหญ่มาก
   <sub>grant</sub>
 - [Superteam Events Calendar](https://luma.com/superteam)
+  ปฏิทินอีเวนต์ของ Superteam ทั้งโลก ใช้ดูว่าที่อื่นจัดอะไรกันและจังหวะไหนที่ควรจัดของไทยให้ไม่ชนกัน รวมถึงหยิบรูปแบบงานที่ได้ผลมาใช้ซ้ำ; ระดับประเทศดูที่ปฏิทินของ Superteam Thailand แทน
   <sub>events</sub>
 - [Solana Foundation — บอร์ดสมัครงาน](https://jobs.ashbyhq.com/Solana%20Foundation) `official`
   บอร์ดงานทางการของ Foundation (Ashby) — ส.ค. 2026 เปิด 10 ตำแหน่ง ส่วนใหญ่เป็นสาย BD/growth และมีฝั่งเอเชียหลายตัว (Greater China, Japan, Trading Growth Lead - Asia) ซึ่งใกล้ตัวคนไทยกว่าที่คิด; หน้าเว็บเป็น SPA อ่านผ่าน curl ไม่ได้ แต่ Ashby มี public API ดึงได้ทั้งบอร์ดพร้อมรายละเอียด: https://api.ashbyhq.com/posting-api/job-board/Solana%20Foundation?includeCompensation=true แล้วอ่านด้วย jq
@@ -558,10 +615,12 @@
 ## Thailand — ชุมชนไทย
 
 - [Superteam Thailand — Events Calendar](https://luma.com/SuperteamTH) `TH`
+  ปฏิทินอีเวนต์ของชุมชนไทยโดยตรง — จุดที่คนใหม่เจอชุมชนครั้งแรกได้ง่ายที่สุดเพราะไม่ต้องเข้า Discord ก่อน ใช้เป็นลิงก์แรกที่ส่งให้คนถามว่าจะเริ่มยังไง และเป็นที่ที่ควรลงงานของ Genesis ทุกครั้ง
   <sub>events, luma</sub>
 - [Solana Thailand Genesis — Discord](https://discord.gg/PGbUgNmsns) `TH`
   ทางเข้าหลักของชุมชน (rank Spectator → Challenger → Builder → Job Hunter)
   <sub>discord, community</sub>
 - [ozoneRatchapon (King Crab — Community Operator)](https://github.com/ozoneRatchapon) `TH`
+  โปรไฟล์ผู้ดูแล repo นี้ — King Crab (Community Operator) ของ Solana Thailand Genesis เก็บไว้เพื่อให้คนที่เจอแคตตาล็อกนี้รู้ว่าใครดูแลและติดต่อทางไหน ซึ่งเป็นสิ่งที่ awesome-list ส่วนใหญ่ไม่มีแล้วเลยไม่มีใครกล้าเชื่อ
   <sub>maintainer</sub>
 
