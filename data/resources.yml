@@ -1799,3 +1799,12 @@ resources:
     note: 'ดัชนีของ Cambridge Centre for Alternative Finance (Judge Business School) วัดพลังงานเชนด้วยการวัดกำลังไฟที่ปลั๊กจริงของโหนดแล้วคูณจำนวนโหนดที่นับได้ — เป็นวิธีที่วงการยอมรับและใช้อ้างอิงได้ รายงานล่าสุด "Ethereum After the Merge — A Change in Power" ลงวันที่ 10 ก.ค. 2026 ระบุ Ethereum ใช้ไฟ 7.87 GWh/ปี ปล่อย 2.37 ktCO2e กินไฟต่อเนื่อง ~0.90 MW และใช้พลังงานสะอาด 56.4%; **ข้อสำคัญที่สุดของ entry นี้: ดัชนีครอบแค่ Bitcoin กับ Ethereum ไม่มี Solana เลย** ตรวจแล้วทั้ง /cbnsi, /cbnsi/cbeci, /cbnsi/about และหน้า Ethereum — คำว่า Solana ปรากฏ 0 ครั้ง และหน้าประกาศรายงานของ Judge Business School ก็ระบุว่าประเมิน Ethereum อย่างเดียว; **ดังนั้นข้ออ้างที่วนอยู่ในข่าวว่า "Cambridge บอก Solana ใช้ไฟ 13.48 GWh เข้มข้นกว่า Ethereum 8.5 เท่า" สาวกลับไปหา Cambridge ไม่ได้** ใครยกมาค้านให้ขอแหล่งปฐมภูมิก่อน — และในทางกลับกัน อย่าเอาตัวเลข 0.1 Wh ต่อธุรกรรมของฝั่ง Solana ไปอ้างลอยๆ เหมือนกัน เพราะมาจากบทความรวมข่าวเช่นกัน ทั้งสองฝั่งยังไม่มีแหล่งปฐมภูมิที่เทียบกันด้วยวิธีเดียวกัน'
     status: ok
     added: 2026-08-05
+
+  - url: https://build.magicblock.app/rfps
+    name: 'MagicBlock RFPs — 12 โจทย์ที่เขาอยากให้มีคนสร้าง'
+    category: funding
+    source: vendor
+    tags: [rfp, project-idea, hackathon, difficulty, api]
+    note: 'รายการโจทย์ที่ MagicBlock อยากให้มีคนทำ 12 ข้อ แต่ละข้อบอกหมวด คำโปรย คำอธิบาย และ **ระดับความยากเป็น weekend / grind / moonshot** พร้อมนับว่ามีคนทำไปแล้วกี่ทีม — ตัวอย่างเช่น Real-Time Onchain Poker (grind), Live Auction House (weekend), Sub-Second Order Book (moonshot), Pay-Per-Second Streaming (weekend); **ค่าที่แท้จริงคือแก้ปัญหา "ไม่รู้จะทำอะไร" ซึ่งเป็นด่านแรกของทุกแฮกกาธอน** และระดับความยากช่วยให้จับคู่กับเวลาที่มีจริงได้ ไม่ต้องเดา; หน้าเว็บ render ฝั่ง client (ข้อความอ่านได้ 278 จาก 25,000 byte) ดึงข้อมูลจริงที่ /api/rfps ซึ่งเป็น JSON เปิด ไม่ต้องล็อกอิน'
+    status: ok
+    added: 2026-08-05

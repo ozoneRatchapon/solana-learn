@@ -3,7 +3,7 @@
 > ไฟล์นี้ถูก generate จาก [data/resources.yml](data/resources.yml) — **อย่าแก้ตรงนี้**
 > แก้ที่ YAML แล้วรัน `./scripts/render.sh`
 
-รวม **193** รายการ · ข้อมูลล่าสุด 2026-08-05
+รวม **194** รายการ · ข้อมูลล่าสุด 2026-08-05
 
 หมายเหตุสถานะ: `blocked` = เว็บกัน bot ตอน curl (ลิงก์ยังใช้ได้), `unverified` = เช็คอัตโนมัติไม่ผ่าน ต้องดูด้วยตา
 
@@ -26,7 +26,7 @@
 - [Protocol internals — Agave, Firedancer, network upgrades](#protocol-internals--agave-firedancer-network-upgrades) — 7
 - [Governance — SGP, SIMD, โหวตบนเชน](#governance--sgp-simd-โหวตบนเชน) — 9
 - [Green software — พลังงาน คาร์บอน ประสิทธิภาพ](#green-software--พลังงาน-คาร์บอน-ประสิทธิภาพ) — 4
-- [Funding — grants, hackathon, bounty, jobs](#funding--grants-hackathon-bounty-jobs) — 16
+- [Funding — grants, hackathon, bounty, jobs](#funding--grants-hackathon-bounty-jobs) — 17
 - [Thailand — ชุมชนไทย](#thailand--ชุมชนไทย) — 4
 
 ## Official — Foundation & Anza (source of truth ตัวจริง)
@@ -651,6 +651,9 @@
 - [Solana Hackathon (หน้าทางการ)](https://solana.com/hackathon) `official`
   หน้าทางการที่รวมแฮกกาธอนทุกรอบ มีรายชื่อผู้ชนะและสปอนเซอร์ย้อนหลัง — ค่าที่แท้จริงคือใช้ไล่ดูว่าโปรเจกต์แบบไหนชนะจริง ก่อนจะโค้ชทีมไทยว่าควรทำอะไร ซึ่งมีน้ำหนักกว่าเดาจากกติกา; ตัวสมัครและกติกาจริงอยู่ที่ Colosseum หน้านี้เป็นชั้นแนะนำ
   <sub>hackathon, colosseum, index, winners</sub>
+- [MagicBlock RFPs — 12 โจทย์ที่เขาอยากให้มีคนสร้าง](https://build.magicblock.app/rfps) `vendor`
+  รายการโจทย์ที่ MagicBlock อยากให้มีคนทำ 12 ข้อ แต่ละข้อบอกหมวด คำโปรย คำอธิบาย และ **ระดับความยากเป็น weekend / grind / moonshot** พร้อมนับว่ามีคนทำไปแล้วกี่ทีม — ตัวอย่างเช่น Real-Time Onchain Poker (grind), Live Auction House (weekend), Sub-Second Order Book (moonshot), Pay-Per-Second Streaming (weekend); **ค่าที่แท้จริงคือแก้ปัญหา "ไม่รู้จะทำอะไร" ซึ่งเป็นด่านแรกของทุกแฮกกาธอน** และระดับความยากช่วยให้จับคู่กับเวลาที่มีจริงได้ ไม่ต้องเดา; หน้าเว็บ render ฝั่ง client (ข้อความอ่านได้ 278 จาก 25,000 byte) ดึงข้อมูลจริงที่ /api/rfps ซึ่งเป็น JSON เปิด ไม่ต้องล็อกอิน
+  <sub>rfp, project-idea, hackathon, difficulty, api</sub>
 
 ## Thailand — ชุมชนไทย
 
