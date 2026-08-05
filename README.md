@@ -93,6 +93,20 @@ pbpaste | ./scripts/check.sh          # copy ลิสต์ลิงก์ม�
 
 CI รันตัวนี้ทุก push — ตัวเลขใน README ที่ไม่ตรงกับ YAML ทำให้ build แดง
 
+## หน้าเว็บ — ดูเองก่อน ไม่ต้องฝากใครโฮสต์
+
+```bash
+./scripts/web.sh            # render แล้วเปิดในเบราว์เซอร์เลย
+./scripts/web.sh --serve    # เสิร์ฟ localhost:8765 (เปิดจากมือถือในวงแลนเดียวกันได้)
+./scripts/web.sh --no-open  # render อย่างเดียว
+```
+
+`web/index.html` เป็น**ไฟล์เดียวจบ** ไม่มี dependency ภายนอกสักตัว — คัดลอกไปไหนก็เปิดได้
+AirDrop / แนบอีเมล / ใส่ USB ก็ยังทำงานเหมือนเดิม และเปิดได้แม้ไม่มีเน็ต
+
+อยากขึ้นเว็บสาธารณะเมื่อไหร่ มี [.github/workflows/pages.yml](.github/workflows/pages.yml) เตรียมไว้แล้ว
+แต่**ปิดอยู่โดยตั้งใจ** — รันเมื่อกดเองเท่านั้น และยังต้องไปเปิด Pages ใน Settings อีกชั้น
+
 ## เช็คลิงก์เน่า
 
 ```bash

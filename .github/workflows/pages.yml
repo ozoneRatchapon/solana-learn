@@ -1,0 +1,56 @@
+name: pages
+
+# ปิดไว้โดยตั้งใจ — รันเมื่อกดเองเท่านั้น (workflow_dispatch) ไม่ผูกกับ push
+#
+# ถึงกดรันแล้วก็ยังไม่ขึ้นเว็บ จนกว่าจะไปเปิด GitHub Pages ในหน้า Settings ก่อน
+# (Settings → Pages → Source: GitHub Actions) เป็นสองชั้นที่กันเผลอเผยแพร่
+#
+# พร้อมจะเปิดจริงเมื่อไหร่ ให้เพิ่ม on.push.branches: [main] แล้วมันจะอัปเดตทุกครั้งที่แก้ YAML
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: ติดตั้ง yq (mikefarah v4)
+        run: |
+          sudo wget -qO /usr/local/bin/yq \
+            https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
+          sudo chmod +x /usr/local/bin/yq
+
+      # สร้างใหม่จาก YAML เสมอ ไม่ใช้ไฟล์ที่ commit ไว้ — กันหน้าเว็บค้างคนละเวอร์ชันกับข้อมูล
+      - name: render
+        run: ./scripts/render-web.sh
+
+      - name: หน้าเว็บต้องตรงกับ YAML
+        run: |
+          if ! git diff --quiet web/index.html; then
+            echo "::warning::web/index.html ที่ commit ไว้ไม่ตรงกับผล render — deploy ตัวที่ render ใหม่"
+          fi
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: web
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
