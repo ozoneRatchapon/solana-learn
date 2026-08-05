@@ -43,6 +43,23 @@
 
 หลายอันพร้อมกันได้ ไม่ต้องถามทีละตัว: เช็คทั้งชุด → เพิ่มเฉพาะที่ใหม่ → render → commit รวดเดียว
 
+### Ecosystem map — ใครเป็นใคร
+
+```bash
+./scripts/entity-check.sh              # ตรวจก่อนเชื่ออะไรจากกราฟ
+./scripts/entity-check.sh --self-test  # พิสูจน์ว่าตัวตรวจจับของผิดได้จริง
+./scripts/render-graph.sh              # generate GRAPH.md (mermaid)
+```
+
+`data/entities.yml` ตอบคนละคำถามกับ `resources.yml` — ไม่ใช่ "ของอยู่ที่ไหน" แต่คือ **ใครทำ ใครดูแล ใครจ่ายเงิน ใครตรวจ**
+
+**ไม่มี `kind: person` ในไฟล์นี้โดยตั้งใจ** repo เป็น public — กันไว้ที่ schema ไม่ใช่ที่วินัยคนกรอก
+เพราะตอนทดลองออกแบบ guard แบบ regex ถูกเจาะแตกทุกแบบ (LINE ID, เบอร์เลขไทย, อีเมลเขียนเลี่ยง,
+ลิงก์ชีตส่วนตัวยัดผ่าน channel type ที่เปิดกว้าง) **guard ที่คนเชื่อว่าแน่นแต่พรุน อันตรายกว่าไม่มี guard**
+ข้อมูลรายบุคคล/บันทึกการคุย/การประเมินตัวบุคคล ให้ไป `data/private.yml` ที่ `.gitignore` ไว้แล้ว
+
+ทุก `evidence` ต้องเป็น URL ที่มีอยู่จริงใน `resources.yml` — กฎนี้ทำให้กราฟอ้างของที่ไม่มีรองรับไม่ได้
+
 ### เช็คลิงก์เน่า
 
 ```bash
@@ -109,6 +126,13 @@ cargo run -p slcat -- audit      # เท่ากับ audit.sh ชั้น 1
   `while` ที่อยู่ใน pipeline entry สุดท้ายของหมวดสุดท้ายไม่มี tags → pipeline คืน 1 → `set -e` ฆ่า script
   **bash 3.2 บน macOS ไม่แสดงอาการ bash 5.x บน ubuntu-latest แสดง** — เขียน script ที่นี่แล้วทดสอบแค่บนเครื่องไม่พอ
 - **ไม่มี PyYAML ในเครื่อง** ใช้ `yq` (mikefarah v4) กับ `jq` เท่านั้น
+- **`norm()` ใช้ `printf '%s'` ไม่มีท้ายบรรทัด** — เรียกทีละครั้งไม่มีปัญหา แต่ถ้าเอามาวนสร้างไฟล์
+  URL ทั้ง 180 จะต่อกันเป็นบรรทัดเดียวแล้ว `grep -x` ไม่เจออะไรเลย ให้ห่อเป็น `printf '%s\n' "$(norm "$u")"`
+- **อย่าเขียน jq-ism ลง yq** — `index()` และ `.a | .b, .c` ใช้ไม่ได้กับ mikefarah yq
+  `.relations[] | .from, .to` คืน `.from` ทุกตัวแล้วตามด้วย `.to` ของ root (= null) ให้ใช้
+  `[.relations[].from] + [.relations[].to] | .[]` แทน · **และที่อันตรายกว่าคือ yq ที่ล้มจะคืนสตริงว่าง**
+  ถ้าโค้ดตีความว่า "ว่าง = ไม่มีของผิด" ตัวตรวจจะรายงานผ่านทั้งที่ไม่ได้ตรวจ — `entity-check.sh`
+  เลยมี `yq_or_die()` กับ `--self-test` ที่ยัดของผิดเข้าไปพิสูจน์ว่าจับได้จริง ทำแบบเดียวกันกับตัวตรวจใหม่ทุกตัว
 - **`sed` range ที่คร่อมอักษรไทย เช่น `[^a-z0-9ก-๙ -]` — BSD sed (macOS) รับ แต่ GNU sed (CI) ตอบ
   `Invalid collation character` แล้วตาย** เจอตอน CI รันครั้งแรก `render.sh` พังทั้งที่รันบนเครื่องผ่าน
   และ `LC_ALL=C` ก็ reproduce ไม่ได้ เพราะ BSD sed ไม่สนใจ locale ตรงนี้
@@ -129,6 +153,16 @@ cargo run -p slcat -- audit      # เท่ากับ audit.sh ชั้น 1
 
   ได้ชื่อ SGP + ลิงก์ markdown ที่ pin commit SHA ไว้ แล้วค่อย curl ตัว markdown มาอ่าน
   ท่าทั่วไปเวลาเจอ SPA: `grep -o '/_next/static/chunks/[a-f0-9]*\.js' page.html` → โหลด chunk มา grep หา endpoint ที่มันยิง
+- **SPA ที่กัน bot ด้วย — ท่า grep chunk ใช้ไม่ได้** เจอที่ `world.xyz`: WebFetch ได้ 403 ต้องใส่ browser User-Agent ถึงได้ 200
+  แล้วได้ shell 1,021 byte เท่ากันทุก path (รวม `/robots.txt` และ `/sitemap.xml`) · grep bundle 232 KB ไม่เจอ endpoint เลยสักตัว
+  **ท่าที่ได้ผลคือเดาซับโดเมน** — `docs.` / `api.` / `app.` ซึ่งพาไปเจอว่าเอกสารอยู่หลัง login
+  เจอเคสแบบนี้ให้เลิกขุดแล้วบันทึกลง `rejected.yml` ดีกว่าเสียเวลาต่อ
+- **เนื้อหาที่อยู่ใน `<details>/<summary>` อาจไม่มีใน HTML เลย** — Colosseum FAQ มีแต่คำถาม (`<summary>`) ส่วนคำตอบ
+  render หลัง hydration ตรวจได้ด้วยการนับว่าข้อความคำถามปรากฏกี่ครั้ง: ถ้าครั้งเดียวแปลว่าคำตอบไม่ได้อยู่ใน payload
+- **`status: ok` ไม่ได้แปลว่าของยังอยู่** — เจอมาแล้ว 4 แบบที่ตอบ 200 แต่ของหายไป: parked domain ประกาศขาย
+  (`kora.network`), บริษัท rebrand ไปทำอย่างอื่น (`flipsidecrypto.xyz` → `edisyl.com`), repo ที่ archived
+  (`developer-content`), และ client-side render · `linkcheck.sh` จับไม่ได้สักแบบเพราะอ่านแค่ HTTP code
+  **เวลาเติม note ให้เปิดหน้าจริงเสมอ** — การไล่เติม note ครั้งล่าสุดเจอของเปลี่ยนไป 3 ตัวจากวิธีนี้
 
 ## ภาษา — ใช้คนละภาษาตามชั้นของงาน
 

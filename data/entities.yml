@@ -1,0 +1,278 @@
+# Ecosystem Map — ใครเป็นใครในระบบนิเวศ และเกี่ยวข้องกันยังไง (SOURCE OF TRUTH)
+#
+# GRAPH.md generate จากไฟล์นี้ อย่าแก้ GRAPH.md ตรงๆ
+#
+# ทำไมต้องมีไฟล์นี้แยกจาก resources.yml:
+# resources.yml ตอบว่า "ของอยู่ที่ไหน" ไฟล์นี้ตอบว่า "ใครทำ ใครดูแล ใครจ่ายเงิน ใครตรวจ"
+# ซึ่งเป็นคำถามที่เกิดตอนจะติดต่อ ไม่ใช่ตอนจะอ่าน
+#
+# ─────────────────────────────────────────────────────────────────────────
+# กฎความเป็นส่วนตัว — สำคัญที่สุดในไฟล์นี้ อ่านก่อนเพิ่มอะไร
+# ─────────────────────────────────────────────────────────────────────────
+# repo นี้เป็น public บน GitHub
+#
+# **ไม่มี kind: person ในไฟล์นี้โดยตั้งใจ** — ไม่ใช่เพราะยังไม่ได้ทำ แต่เพราะกันไว้ที่ schema
+# entity-check.sh จะไม่ผ่านถ้าเจอ kind นอกรายการปิดด้านล่าง
+#
+# เหตุผล: ตอนทดลองออกแบบ ตัว guard แบบ regex ที่เคลมว่ากันข้อมูลส่วนตัวได้ ถูกเจาะแตกทุกแบบ
+# — LINE ID, เบอร์เลขไทย, อีเมลเขียนเลี่ยงแบบ "somchai dot dev at gmail dot com",
+# ลิงก์ Google Sheets ส่วนตัวยัดผ่าน channel type ที่เปิดกว้าง ผ่าน guard หมด
+# **guard ที่คนเชื่อว่าแน่นแต่พรุน อันตรายกว่าไม่มี guard** เพราะถอดความระแวงที่ควรมีออกไป
+#
+# ทางเดียวที่กันได้จริงคือไม่มีที่ให้ใส่ตั้งแต่แรก ถ้าต้องเก็บข้อมูลรายบุคคลหรือบันทึกการคุย
+# ให้ไปไฟล์ที่ไม่ขึ้น git — ดู data/.gitignore
+#
+# อีกข้อที่ regex แก้ไม่ได้: ห้ามเขียนประเมินตัวบุคคลหรือความเปราะขององค์กรลงไฟล์นี้
+# ชื่อคนแต่ละคนเป็นข้อมูลสาธารณะจริง แต่การรวมร่างแล้วประเมิน เปลี่ยนสภาพเป็นของคนละชนิด
+# `reach` ต้องตอบว่า "ติดต่อเรื่องอะไรได้" ไม่ใช่ "เขาเป็นคนยังไง"
+#
+# ─────────────────────────────────────────────────────────────────────────
+# schema ต่อ 1 entity:
+#   id:        kebab-case ไม่ซ้ำ (required)
+#   name:      ชื่อที่คนเรียกจริง (required)
+#   kind:      ต้องอยู่ใน kinds ด้านล่าง (required)
+#   evidence:  URL ที่ต้องมีอยู่ใน data/resources.yml จริง (required)
+#              — ตัวนี้คือกฎที่ทำให้กราฟโกหกไม่ได้ ถ้าไม่มีของในแคตตาล็อกก็ใส่ entity ไม่ได้
+#   reach:     ติดต่อเรื่องอะไรได้ / เกี่ยวกับงานชุมชนไทยตรงไหน (required)
+#   confirmed: YYYY-MM-DD วันที่ยืนยันล่าสุด — ข้อมูลองค์กรเน่าเร็วกว่าลิงก์ ต้องมีวันที่กำกับ
+#
+# schema ต่อ 1 relation:
+#   from / type / to:  type ต้องอยู่ใน relation_types ด้านล่าง
+#   evidence:          URL ใน resources.yml ที่ยืนยันความสัมพันธ์นี้
+# ─────────────────────────────────────────────────────────────────────────
+
+# รายการปิด — เพิ่มค่าใหม่ต้องแก้ที่นี่ก่อน ไม่ใช่พิมพ์ลงไปเลย
+kinds:
+  org: "องค์กร / บริษัท / มูลนิธิ"
+  community: "ชุมชน / เครือข่ายคน"
+  program: "โปรแกรมบนเชน หรือ client ระดับโปรโตคอล"
+  product: "เครื่องมือ / บริการ / SDK"
+
+relation_types:
+  maintains: "ดูแลพัฒนา"
+  funds: "ให้ทุน"
+  audited: "ตรวจความปลอดภัยให้"
+  authored: "เป็นผู้เสนอ/เขียน"
+  operates: "เป็นผู้ให้บริการ"
+  part-of: "เป็นส่วนหนึ่งของ"
+  partners: "ร่วมมือกัน"
+  powers: "เป็นโครงสร้างพื้นฐานให้"
+  documents: "เป็นคนเขียนเอกสารให้"
+
+entities:
+  # ─────────────────────────────── core
+  - id: solana-foundation
+    name: Solana Foundation
+    kind: org
+    evidence: https://github.com/solana-foundation
+    reach: เจ้าของ solana.com, เอกสารทางการ, ทุน grant, ปฏิทินอีเวนต์โลก — ช่องที่คนไทยเข้าถึงได้จริงโดยไม่ต้องมีคนแนะนำคือฟอร์มส่งอีเวนต์และ open application สาย engineer
+    confirmed: 2026-08-05
+
+  - id: anza
+    name: Anza
+    kind: org
+    evidence: https://www.anza.xyz/
+    reach: คนทำ core จริง (agave, kit, solana-sdk, pinocchio, mollusk) — เวลาข้อมูลเรื่อง client ขัดกันให้ยึดฝั่งนี้ ไม่ใช่ Foundation
+    confirmed: 2026-08-05
+
+  - id: agave
+    name: Agave (validator client)
+    kind: program
+    evidence: https://github.com/anza-xyz/agave
+    reach: client หลักของเครือข่าย — เวอร์ชันที่รันอยู่กำหนดว่าฟีเจอร์ไหนใช้ได้จริง
+    confirmed: 2026-08-05
+
+  - id: firedancer
+    name: Firedancer
+    kind: program
+    evidence: https://github.com/firedancer-io/firedancer
+    reach: client ตัวที่สองเพื่อความหลากหลาย เขียนด้วย C — ใช้ตอบคำถามเรื่องความเสี่ยงกระจุกที่ client เดียว
+    confirmed: 2026-08-05
+
+  - id: anchor
+    name: Anchor
+    kind: product
+    evidence: https://github.com/solana-foundation/anchor
+    reach: เฟรมเวิร์กที่คนไทยเริ่มต้นด้วยเกือบทั้งหมด — repo 301 ไป otter-sec แล้ว คนดูแลจริงเปลี่ยนมือ
+    confirmed: 2026-08-05
+
+  - id: otter-sec
+    name: OtterSec
+    kind: org
+    evidence: https://github.com/solana-foundation/anchor
+    reach: ปลายทางที่ repo Anchor redirect ไป — ถ้าจะ contribute เข้า Anchor ต้องคุยฝั่งนี้ ไม่ใช่ Foundation
+    confirmed: 2026-08-05
+
+  # ─────────────────────────────── infra
+  - id: helius
+    name: Helius
+    kind: org
+    evidence: https://www.helius.dev/
+    reach: ผู้ให้บริการ RPC/API ที่คนไทยใช้เยอะสุดเจ้าหนึ่ง มีบล็อกที่ใช้เป็นสื่อการสอนได้จริง
+    confirmed: 2026-08-05
+
+  - id: triton-one
+    name: Triton One
+    kind: org
+    evidence: https://triton.one/
+    reach: RPC + validator ที่เปิดโค้ดจริง — เลิกใช้บริการแล้วยังรันเองต่อได้ org GitHub ชื่อ rpcpool ไม่ใช่ triton
+    confirmed: 2026-08-05
+
+  - id: yellowstone-grpc
+    name: Yellowstone gRPC (Dragon's Mouth)
+    kind: product
+    evidence: https://github.com/orgs/rpcpool/repositories
+    reach: มาตรฐานโดยพฤตินัยของการดูดข้อมูลสด — เอกสาร indexing ทางการชี้มาที่นี่
+    confirmed: 2026-08-05
+
+  - id: magicblock
+    name: MagicBlock
+    kind: org
+    evidence: https://www.magicblock.xyz/
+    reach: Ephemeral Rollup สำหรับงาน real-time เปิดโค้ดทั้งกอง และมีเส้นทาง builder → ทุน ที่ไม่ต้องรอคนแนะนำ
+    confirmed: 2026-08-05
+
+  # ─────────────────────────────── governance
+  - id: svmgov
+    name: svmgov (โปรแกรมโหวต)
+    kind: program
+    evidence: https://github.com/solana-foundation/solana-governance
+    reach: โปรแกรมที่รับโหวต SGP จริงบนเชน — เป็นตัวอย่าง production Anchor + merkle proof ที่อ่านได้
+    confirmed: 2026-08-05
+
+  - id: jito-labs
+    name: Jito Labs
+    kind: org
+    evidence: https://solana.com/upgrades/100m-cu-blocks
+    reach: ผู้เสนอ SIMD-0286 ที่ขยาย block limit เป็น 100M CU — ฝั่งที่ผลักดันเรื่อง throughput
+    confirmed: 2026-08-05
+
+  # ─────────────────────────────── payments
+  - id: kora
+    name: Kora (relayer)
+    kind: product
+    evidence: https://solana.com/docs/tools/kora
+    reach: ทำให้ผู้ใช้ทำธุรกรรมได้โดยไม่ต้องมี SOL — คำตอบของกำแพงแรกที่เจอทุกเวิร์กช็อป
+    confirmed: 2026-08-05
+
+  - id: pay-sh
+    name: pay.sh
+    kind: product
+    evidence: https://pay.sh/
+    reach: x402 ที่ใช้งานจริง เติมเงินผ่าน PayPal/Apple Pay ได้ — คนที่ไม่มีคริปโตเลยก็เริ่มได้
+    confirmed: 2026-08-05
+
+  - id: subscriptions
+    name: Subscriptions Delegation Program
+    kind: program
+    evidence: https://github.com/solana-foundation/subscriptions
+    reach: จ่ายรายรอบบนเชน audit แล้วขึ้น mainnet — ตัวอย่างโค้ด production สาย Pinocchio + Codama + LiteSVM
+    confirmed: 2026-08-05
+
+  - id: cantina
+    name: Cantina
+    kind: org
+    evidence: https://github.com/solana-foundation/subscriptions
+    reach: ผู้ตรวจ audit ให้โปรแกรม subscriptions — ใช้เป็นตัวอย่างว่าโปรแกรมที่ผ่าน audit หน้าตาเป็นยังไง
+    confirmed: 2026-08-05
+
+  # ─────────────────────────────── learning
+  - id: blueshift
+    name: Blueshift
+    kind: org
+    evidence: https://learn.blueshift.gg/
+    reach: คอร์สฟรีเปิดโค้ดที่ Foundation แนะนำเอง — หยิบโครงแบบฝึกไปทำ quest ต่อได้
+    confirmed: 2026-08-05
+
+  - id: turbin3
+    name: Turbin3
+    kind: org
+    evidence: https://turbin3.org/
+    reach: cohort เข้มข้นและมีสายฝึกฟรี — ปลายทางที่ชี้ให้คนไทยที่เอาจริงไปต่อได้
+    confirmed: 2026-08-05
+
+  - id: ackee
+    name: Ackee Blockchain
+    kind: org
+    evidence: https://ackee.xyz/school-of-solana
+    reach: คอร์สฟรีที่มีใบรับรอง — ต่างจากที่อื่นตรงมีหลักฐานเอาไปสมัครงานได้
+    confirmed: 2026-08-05
+
+  - id: neodyme
+    name: Neodyme
+    kind: org
+    evidence: https://neodyme.io/en/blog/
+    reach: ทีม audit ที่เขียนเคสช่องโหว่จริง — วัตถุดิบสอนความปลอดภัยที่มีน้ำหนักกว่ารายการ best practice
+    confirmed: 2026-08-05
+
+  # ─────────────────────────────── funding & community
+  - id: colosseum
+    name: Colosseum
+    kind: org
+    evidence: https://colosseum.com/
+    reach: แฮกกาธอน + accelerator + กองทุน — Eternal เปิดตลอดปี ไม่ต้องรอรอบ
+    confirmed: 2026-08-05
+
+  - id: superteam
+    name: Superteam
+    kind: community
+    evidence: https://superteam.fun/
+    reach: เครือข่าย talent ระดับภูมิภาค มี Earn (bounty) และ Talent (งาน) เป็นประตูเข้า
+    confirmed: 2026-08-05
+
+  - id: superteam-thailand
+    name: Superteam Thailand
+    kind: community
+    evidence: https://luma.com/SuperteamTH
+    reach: chapter ไทย — ปฏิทินอีเวนต์เป็นลิงก์แรกที่ส่งให้คนถามว่าจะเริ่มยังไง
+    confirmed: 2026-08-05
+
+  - id: solana-thailand-genesis
+    name: Solana Thailand Genesis
+    kind: community
+    evidence: https://discord.gg/PGbUgNmsns
+    reach: ชุมชนที่ repo นี้สังกัด มีระบบ rank และ quest อยู่แล้ว — ปลายทางของเนื้อหาที่ผลิตจากแคตตาล็อกนี้
+    confirmed: 2026-08-05
+
+  - id: solana-forum
+    name: Solana Forum (หมวด governance)
+    kind: community
+    evidence: https://forum.solana.com/c/gov/11
+    reach: ที่ถกก่อนขึ้นเชน — ช่องที่คนไทยเข้าไปออกความเห็นได้โดยไม่ต้องมี stake
+    confirmed: 2026-08-05
+
+  # ─────────────────────────────── policy & adoption
+  - id: solana-policy-institute
+    name: Solana Policy Institute
+    kind: org
+    evidence: https://www.solanapolicyinstitute.org/
+    reach: องค์กรนโยบาย — ใช้เป็นแม่แบบกรอบการคุยกับหน่วยงานกำกับ โดยเฉพาะประเด็นคุ้มครองนักพัฒนา
+    confirmed: 2026-08-05
+
+  - id: collector-crypt
+    name: Collector Crypt
+    kind: org
+    evidence: https://collectorcrypt.com/
+    reach: RWA สาย longtail ที่มีตัวเลขบนเชนให้ตรวจ — เคสสอน tokenization ที่คนไทยเข้าใจทันที
+    confirmed: 2026-08-05
+
+relations:
+  - { from: anza, type: maintains, to: agave, evidence: https://github.com/anza-xyz/agave }
+  - { from: otter-sec, type: maintains, to: anchor, evidence: https://github.com/solana-foundation/anchor }
+  - { from: solana-foundation, type: maintains, to: svmgov, evidence: https://github.com/solana-foundation/solana-governance }
+  - { from: solana-foundation, type: maintains, to: subscriptions, evidence: https://github.com/solana-foundation/subscriptions }
+  - { from: solana-foundation, type: maintains, to: kora, evidence: https://solana.com/docs/tools/kora }
+  - { from: solana-foundation, type: maintains, to: pay-sh, evidence: https://pay.sh/ }
+  - { from: cantina, type: audited, to: subscriptions, evidence: https://github.com/solana-foundation/subscriptions }
+  - { from: jito-labs, type: authored, to: agave, evidence: https://solana.com/upgrades/100m-cu-blocks }
+  - { from: triton-one, type: maintains, to: yellowstone-grpc, evidence: https://github.com/orgs/rpcpool/repositories }
+  - { from: triton-one, type: powers, to: agave, evidence: https://triton.one/ }
+  - { from: helius, type: operates, to: yellowstone-grpc, evidence: https://solana.com/docs/payments/accept-payments/indexing }
+  - { from: superteam-thailand, type: part-of, to: superteam, evidence: https://superteam.fun/ }
+  - { from: solana-foundation, type: funds, to: colosseum, evidence: https://solana.org/grants }
+  - { from: solana-foundation, type: funds, to: superteam, evidence: https://solana.org/grants }
+  - { from: solana-foundation, type: partners, to: blueshift, evidence: https://learn.blueshift.gg/ }
+  - { from: solana-foundation, type: documents, to: kora, evidence: https://solana.com/docs/tools/kora }
+  - { from: solana-thailand-genesis, type: partners, to: superteam-thailand, evidence: https://luma.com/SuperteamTH }
+  - { from: magicblock, type: powers, to: agave, evidence: https://www.magicblock.xyz/ }
+  - { from: solana-foundation, type: maintains, to: solana-forum, evidence: https://forum.solana.com/c/gov/11 }

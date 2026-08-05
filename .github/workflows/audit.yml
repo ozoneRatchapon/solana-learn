@@ -39,3 +39,9 @@ jobs:
             git diff --stat CATALOG.md
             exit 1
           fi
+
+      - name: ตรวจ ecosystem map
+        run: ./scripts/entity-check.sh
+
+      - name: ตัวตรวจต้องจับของผิดได้จริง
+        run: ./scripts/entity-check.sh --self-test
