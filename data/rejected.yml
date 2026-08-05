@@ -105,3 +105,8 @@ rejected:
   - url: https://github.com/spider-rs/spider
     reason: 'ไม่เกี่ยวกับ Solana — เป็น crawler ทั่วไป (Rust, MIT, ★2,643) เกณฑ์เดียวกับที่ใช้ปฏิเสธ katgpt-rs ต้องใช้เหมือนกันถึงจะเชื่อถือได้; เครื่องมือที่ใช้ "ดูแลแคตตาล็อก" คนละอย่างกับ "resource ของระบบนิเวศ Solana" ที่ทางของมันคือ CLAUDE.md ไม่ใช่ resources.yml — ถ้าเริ่มเก็บเครื่องมือ maintenance ปนเข้ามา เส้นแบ่งจะหายและแคตตาล็อกจะกลายเป็นลิสต์ของทุกอย่างที่เคยใช้'
     checked: 2026-08-05
+
+  - url: https://solana.com/news/tag/energy-use-reports
+    reason: 'ตอบ HTTP 200 แต่หน้าแท็กไม่มีโพสต์เรื่องพลังงานเลยสักรายการ — ไล่ลิงก์ /news ในหน้าได้ 22 รายการ เป็นข่าวทั่วไปทั้งหมด เจ้าของ repo ทักว่าเปิดแล้วไม่เจออะไร ตรวจแล้วจริง; ผมเพิ่มเข้ามาโดยดูแค่ status code ซึ่งเป็นกับดักที่เขียนเตือนไว้เองใน CLAUDE.md — เนื้อหาจริงอยู่ที่บทความประกาศเดี่ยวๆ ใช้ตัวนั้นแทน'
+    superseded_by: https://solana.com/news/announcing-real-time-emissions-measurement-on-the-solana-blockchain
+    checked: 2026-08-05

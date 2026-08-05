@@ -3,7 +3,7 @@
 > ไฟล์นี้ถูก generate จาก [data/resources.yml](data/resources.yml) — **อย่าแก้ตรงนี้**
 > แก้ที่ YAML แล้วรัน `./scripts/render.sh`
 
-รวม **191** รายการ · ข้อมูลล่าสุด 2026-08-05
+รวม **192** รายการ · ข้อมูลล่าสุด 2026-08-05
 
 หมายเหตุสถานะ: `blocked` = เว็บกัน bot ตอน curl (ลิงก์ยังใช้ได้), `unverified` = เช็คอัตโนมัติไม่ผ่าน ต้องดูด้วยตา
 
@@ -18,7 +18,7 @@
 - [Tokens & NFT — SPL, Token-2022, Metaplex](#tokens--nft--spl-token-2022-metaplex) — 7
 - [Payments & Commerce](#payments--commerce) — 22
 - [Security & Audit](#security--audit) — 5
-- [AI / Agent Skills / MCP](#ai--agent-skills--mcp) — 17
+- [AI / Agent Skills / MCP](#ai--agent-skills--mcp) — 18
 - [Infra & RPC providers](#infra--rpc-providers) — 11
 - [Data & Analytics](#data--analytics) — 13
 - [DeFi & Ecosystem protocols](#defi--ecosystem-protocols) — 13
@@ -399,6 +399,9 @@
 - [Colosseum Copilot (skill สำหรับ Claude Code)](https://colosseum.com/copilot)
   skill ที่ติดตั้งเข้า Claude Code/Codex ได้ตรงๆ (npx skills add ColosseumOrg/colosseum-copilot — repo ★11 push ก.ค. 2026 ยังไม่ระบุ license) ใช้เอาไอเดียไปชนกับ **ผลงานแฮกกาธอน 5,400+ ชิ้น** บวกสินค้าคริปโต 6,300+ ตัวผ่าน The Grid และแหล่งวิจัยคัดแล้ว 65+ แห่ง (a16z Crypto, Multicoin, Electric Capital) เพื่อดูว่าไอเดียซ้ำกับใครแล้วบ้างและช่องว่างอยู่ตรงไหน; ค่าที่แท้จริงคือ **ใช้ลดความเสี่ยงก่อนกดนาฬิกา Eternal** — 4 สัปดาห์เต็มเวลาแล้วมาพบทีหลังว่ามีคนทำไปแล้วสามรอบคือความเสียหายที่เลี่ยงได้ด้วยการค้นครึ่งชั่วโมง; ต้องขอ token ก่อนใช้ หน้าเว็บไม่ระบุราคา ต้องเช็คก่อนแนะนำว่าฟรีหรือไม่
   <sub>skill, research, competitor-scan, hackathon-data, idea-validation</sub>
+- [Solana Agent Registry (ตัวตนและชื่อเสียงของ agent บนเชน)](https://solana.com/agent-registry) `official`
+  โปรโตคอลบนเชนที่ให้ AI agent มีตัวตนที่ยืนยันได้ ชื่อเสียงที่พกติดตัวไปได้ และโครงสร้างความน่าเชื่อถือ — ทำงานบน Solana และคุยกับมาตรฐาน ERC-8004 ฝั่ง Ethereum ได้ ลงทะเบียนครั้งละราว 0.009 SOL (~$0.81); ต่อกับสิ่งที่เก็บมาทั้งวันโดยตรง — Superteam Earn ให้ agent ทำงานได้แต่ต้องมีมนุษย์เคลมเงิน pay.sh ให้ agent จ่ายเงินได้ **ตัวนี้คือชั้นที่ตอบว่าแล้วจะเชื่อ agent ตัวไหนได้** ซึ่งเป็นคำถามที่เกิดขึ้นทันทีเมื่อ agent เริ่มถือเงินและรับงาน; มีสเปคกับ quickstart บน GitHub
+  <sub>agent, identity, reputation, erc-8004, onchain, registry</sub>
 
 ## Infra & RPC providers
 
@@ -586,14 +589,14 @@
 ## Green software — พลังงาน คาร์บอน ประสิทธิภาพ
 
 - [Solana Climate Dashboard (ทางการ)](https://climate.solana.com/) `official`
-  แดชบอร์ดสิ่งแวดล้อมทางการของเครือข่าย — ดูการใช้พลังงาน คาร์บอน และความเข้มข้นพลังงานต่อหน่วย ข้อมูลดึงจากซอฟต์แวร์ที่ติดตั้งบน validator จริง อัปเดตทุกสองสัปดาห์ ร่วมกับ Trycarbonara ซึ่งทำให้ดูได้ลึกถึงระดับ validator รายตัว; **นี่คือสิ่งที่ทำให้หมวดนี้ไม่ใช่แค่ความสนใจส่วนตัว** เพราะ Solana เป็นเชนไม่กี่เจ้าที่เผยแพร่ตัวเลขพลังงานเป็นประจำและตรวจสอบได้ ใช้ตอบคำถาม "บล็อกเชนเปลืองไฟไหม" ด้วยข้อมูลแทนความเห็น; เป็น SPA หน้าเปล่าตอน curl ต้องเปิดเบราว์เซอร์
+  แดชบอร์ดสิ่งแวดล้อมทางการ — ดูพลังงาน คาร์บอน และความเข้มข้นพลังงาน ข้อมูลจากซอฟต์แวร์บน validator จริง ร่วมกับ Trycarbonara ลึกถึง validator รายตัว; **ข้อสังเกตสำคัญ (ตรวจ 5 ส.ค. 2026): solana.com ไม่ลิงก์มาที่นี่จากที่ไหนเลย** — ไล่หน้าแรก /data /news แล้วไม่เจอสักจุด และหน้าแท็ก energy-use-reports ก็ไม่มีโพสต์เรื่องพลังงานเหลืออยู่ ทางเข้าเดียวที่ยังใช้ได้คือ solana.com/environment ที่ 301 มาที่นี่ หรือพิมพ์ URL ตรงๆ แปลว่าเรื่องนี้ยังมีอยู่แต่ถูกลดความสำคัญลง **อย่าเชียร์ว่าเป็นสิ่งที่ Solana ชูอยู่ตอนนี้** ให้พูดว่ามีข้อมูลให้ตรวจได้ ซึ่งยังจริง; เป็น SPA curl ได้หน้าเปล่า ต้องเปิดเบราว์เซอร์
   <sub>carbon, energy, dashboard, validator, realtime</sub>
-- [Solana Energy Use Reports](https://solana.com/news/tag/energy-use-reports) `official`
-  รายงานการใช้พลังงานที่ออกเป็นระยะ — ต่างจากแดชบอร์ดตรงมีบริบทและวิธีคำนวณอธิบายไว้ ไม่ใช่แค่ตัวเลขสด ใช้ตอนต้องอ้างอิงในงานเขียนหรือสไลด์ที่ต้องบอกที่มาของตัวเลขได้; ตัวเลขที่มักถูกอ้าง เช่นการลดคาร์บอนราว 69% จาก ~8,786 tCO2 (2023) เหลือ ~2,671 tCO2 (2024) มาจากรายงานชุดนี้ — **ต้องเช็ควันที่ของรายงานก่อนอ้างเสมอ** เพราะตัวเลขเก่ากับใหม่ต่างกันมากและคนชอบหยิบตัวเลขเก่ามาใช้
-  <sub>energy, report, carbon-credit, historical</sub>
 - [Awesome Green Software (Green Software Foundation)](https://github.com/Green-Software-Foundation/awesome-green-software)
   ลิสต์อ้างอิงของ Green Software Foundation (★691 ยัง active ส.ค. 2026) แยกเป็นเครื่องมือวัด/ลดการใช้พลังงาน องค์กร คอร์ส บทความ หนังสือ และงานวิจัย ครอบทั้งฝั่ง AI workload, cloud, source code และเว็บ; **ไม่ใช่ของ Solana** แต่เก็บด้วยเหตุผลเดียวกับที่เก็บสเปค Agent Skills — เป็นมาตรฐานอ้างอิงที่งานฝั่ง Solana ต้องยืนอยู่บนมัน จะพูดเรื่องพลังงานของเชนให้คนนอกวงเชื่อ ต้องใช้วิธีวัดที่วงการนี้ยอมรับ ไม่ใช่คิดเกณฑ์เอง; license เป็น NOASSERTION ต้องดูเงื่อนไขก่อนเอาเนื้อหาไปใช้ต่อ
   <sub>reference, tooling, standard, course, measurement</sub>
+- [ประกาศวัดคาร์บอนแบบเรียลไทม์ (บทความต้นทาง)](https://solana.com/news/announcing-real-time-emissions-measurement-on-the-solana-blockchain) `official`
+  บทความที่อธิบายว่าวัดคาร์บอนยังไง — ฝังซอฟต์แวร์ลงบนโหนดโดยตรงร่วมกับ Trycarbonara ไม่ใช่ประมาณจากข้อมูลบนเชนอย่างเดียว ครอบทั้งพลังงานที่ใช้ การปล่อยของโหนด RPC คาร์บอนของ validator รายตัว และ embodied emission จากการผลิตและขนส่งฮาร์ดแวร์ Solana เคลมว่าเป็นเชนสัญญาอัจฉริยะรายใหญ่รายแรกที่วัดแบบเรียลไทม์; **เก็บตัวบทความไม่ใช่หน้าแท็ก** เพราะหน้าแท็ก energy-use-reports ตอบ 200 แต่ไม่มีโพสต์เรื่องพลังงานเลย (บันทึกไว้ใน rejected.yml แล้ว) — ตัวนี้คือที่ที่วิธีวัดถูกอธิบายไว้จริงและใช้อ้างอิงได้
+  <sub>carbon, emission, trycarbonara, announcement, methodology</sub>
 
 ## Funding — grants, hackathon, bounty, jobs
 
