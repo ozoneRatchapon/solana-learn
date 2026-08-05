@@ -51,3 +51,9 @@ jobs:
 
       - name: ตัวตรวจ radar ต้องจับของผิดได้จริง
         run: ./scripts/radar-check.sh --self-test
+
+      - name: ตรวจสูตร
+        run: ./scripts/recipe-check.sh
+
+      - name: ตัวตรวจสูตรต้องจับของผิดได้จริง
+        run: ./scripts/recipe-check.sh --self-test

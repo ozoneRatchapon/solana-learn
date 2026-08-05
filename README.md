@@ -30,6 +30,7 @@ Issues and PRs in English are welcome.
 | [data/rejected.yml](data/rejected.yml) | ทะเบียน "ดูแล้วไม่เอา" + เหตุผล |
 | [RADAR.md](RADAR.md) | โอกาสที่เปิดอยู่ + เดดไลน์ + verdict ว่าทำได้จริงไหม (generate) |
 | [GRAPH.md](GRAPH.md) | ecosystem map — ใครทำ ใครดูแล ใครจ่ายเงิน ใครตรวจ (generate) |
+| [RECIPES.md](RECIPES.md) | โจทย์ที่เจอจริง → หยิบอะไรมาต่อกัน + ข้อจำกัด (generate) |
 | [scripts/](scripts/) | check / add / reject / setnote / deprecate / render / linkcheck / audit |
 | [CLAUDE.md](CLAUDE.md) | บริบทสำหรับ Claude Code — กฎเหล็ก, workflow, กับดักที่เคยเจอ |
 

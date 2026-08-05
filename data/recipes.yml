@@ -1,0 +1,182 @@
+# สูตร — โจทย์ที่เจอจริง + ข้อจำกัด → หยิบอะไรมาประกอบกัน (SOURCE OF TRUTH)
+#
+# RECIPES.md generate จากไฟล์นี้ อย่าแก้ RECIPES.md ตรงๆ
+#
+# ทำไมต้องมี:
+# แคตตาล็อกบอกว่า "มีอะไรบ้าง" แต่ไม่บอกว่า "โจทย์นี้ต้องหยิบอันไหนมาต่อกัน"
+# ความรู้ตรงนั้นอยู่ในหัวคนที่เคยทำ แล้วหายไปพร้อมกับคนนั้น — เหมือนกับที่ rejected.yml
+# แก้ปัญหาว่า "ทำไมถึงไม่เอาอันนี้" เคยหายไป
+#
+# ─────────────────────────────────────────────────────────────────────────
+# constraints คือส่วนที่ทำให้สูตรมีค่า ไม่ใช่ steps
+# ─────────────────────────────────────────────────────────────────────────
+# ทางแก้ที่ดีที่สุดในสุญญากาศมักใช้ไม่ได้กับของจริง เพราะติดข้อจำกัดที่ไม่มีใครเขียนไว้
+# — คนในห้อง 40 คนไม่มีใครมี SOL, เน็ตงานอีเวนต์ห่วย, เวลามีชั่วโมงเดียว
+# สูตรที่ไม่ระบุข้อจำกัดคือ tutorial ธรรมดา ซึ่งมีเยอะแล้วบนเน็ต
+#
+# status ต้องซื่อสัตย์:
+#   proven   = เคยทำจริงแล้วได้ผล ระบุด้วยว่าทำเมื่อไหร่/ที่ไหน
+#   untested = ประกอบจากของที่ตรวจแล้วว่ามีจริง แต่ยังไม่เคยรันทั้งชุด
+# **ห้ามใส่ proven ถ้ายังไม่เคยทำ** — สูตรที่โกหกแย่กว่าไม่มีสูตร
+#
+# schema:
+#   id           kebab-case ไม่ซ้ำ
+#   problem      โจทย์ในภาษาที่คนถามจริงๆ ใช้ ไม่ใช่ศัพท์เทคนิค
+#   constraints  ข้อจำกัดที่ทำให้ทางแก้ทั่วไปใช้ไม่ได้ (อย่างน้อย 1 ข้อ)
+#   uses         URL ที่ต้องมีอยู่จริงใน resources.yml ทุกตัว
+#   approach     ลำดับการประกอบ — บอกว่าแต่ละชิ้นรับหน้าที่อะไร
+#   watch_out    จุดที่จะพลาด ถ้ายังไม่รู้ว่าพลาดตรงไหนให้เขียนว่ายังไม่รู้
+#   status       proven | untested
+#   checked      YYYY-MM-DD
+# ─────────────────────────────────────────────────────────────────────────
+
+statuses:
+  proven: "เคยทำจริงแล้วได้ผล"
+  untested: "ประกอบจากของที่ตรวจแล้ว แต่ยังไม่เคยรันทั้งชุด"
+
+recipes:
+  - id: workshop-no-sol
+    problem: จัดเวิร์กช็อป 40 คน แต่ไม่มีใครมี SOL และขอ airdrop พร้อมกันแล้ว devnet เตะทิ้ง
+    constraints:
+      - ผู้เข้าร่วมส่วนใหญ่ไม่เคยมีกระเป๋ามาก่อน ไม่มีทั้ง SOL และ USDC
+      - เน็ตในงานอีเวนต์ช้าและหลุดบ่อย พึ่ง devnet ไม่ได้
+      - มีเวลาสอนจริงไม่เกิน 2 ชั่วโมงรวมติดตั้ง
+    uses:
+      - https://github.com/solana-foundation/surfpool
+      - https://github.com/litesvm/litesvm
+      - https://solana.com/docs/tools/kora
+      - https://solana.com/docs/payments/send-payments/payment-processing/fee-abstraction
+      - https://solana.com/docs/payments/quickstart
+    approach: >-
+      แยกสองสาย — สายที่เขียนโปรแกรมบนเชนใช้ LiteSVM หรือ Surfpool รันในเครื่อง
+      ไม่ต้องต่อเน็ตเลยหลังติดตั้งเสร็จ ส่วนสายที่จะเห็นของจริงบน mainnet ใช้ Kora
+      เป็นคนออกค่าแก๊สแทน ผู้เข้าร่วมจึงทำธุรกรรมได้โดยไม่ต้องมี SOL
+      เปิดคาบด้วย quickstart ที่วางปุ่มรับเงินได้ใน 5 นาที เพื่อให้เห็นผลก่อนเจอ Rust
+    watch_out: >-
+      Surfpool ต้อง fork mainnet ซึ่งใช้เน็ตตอนเริ่ม ให้ทำก่อนงานแล้วแจกภาพ container ไป
+      · Kora ต้องมีคนรัน relayer และเติมเงินไว้ ไม่ใช่บริการฟรีสาธารณะ ต้องเตรียมล่วงหน้า
+      · rent ที่ Agave 4.2 ลด 90% ทำให้การออกค่าเปิด token account ให้ผู้เข้าร่วมถูกลงมาก
+      แต่ยังไม่ฟรี ต้องคำนวณจำนวนหัวคูณค่าเปิดบัญชีก่อน
+    status: untested
+    checked: 2026-08-05
+
+  - id: is-this-tutorial-still-valid
+    problem: เจอ tutorial บนเน็ต จะรู้ได้ยังไงว่ายังรันผ่านกับของปี 2026
+    constraints:
+      - tutorial ส่วนใหญ่ไม่เขียนเวอร์ชันไว้ หรือเขียนไว้แต่ไม่ตรงกับที่ใช้จริง
+      - ลงมือรันตามทั้งบทเพื่อพิสูจน์ว่าพังใช้เวลานานเกินไป
+      - เครื่องติดตั้ง Anchor ได้ทีละสายเท่านั้น
+    uses:
+      - https://github.com/solana-foundation/solana-dev-skill/blob/main/skills/solana-dev/references/compatibility-matrix.md
+      - https://www.anchor-lang.com/docs/avm
+      - https://github.com/solana-foundation/solana-dev-skill/blob/main/skills/solana-dev/references/anchor/migrating-v0.32-to-v1.md
+      - https://github.com/solana-foundation/solana-web3.js/blob/v3.x/docs/web3js-v1-to-v3-migration.md
+      - https://blueshift.gg/research/sunrising-web3js-reuniting-solanas-typescript-ecosystem
+    approach: >-
+      ดูสัญญาณเร็วสามอย่างก่อนลงแรง — import ที่เขียนว่า @coral-xyz/anchor แปลว่าก่อน 1.0
+      (ชื่อเปลี่ยนเป็น @anchor-lang/core แล้ว) · เห็น new Connection กับ PublicKey แปลว่า
+      web3.js v1 · เห็น solana-test-validator แปลว่าเขียนก่อนยุค LiteSVM
+      เจอสัญญาณไหนก็เปิด compatibility matrix ของ Foundation เทียบ แล้วใช้ AVM
+      สลับสาย Anchor ไปตรงกับที่ tutorial เขียนเพื่อพิสูจน์ แทนที่จะอัปของตัวเองทิ้ง
+    watch_out: >-
+      อย่าอัป anchor-cli จาก 1.0.2 ขึ้นเพื่อ "ให้ทันสมัย" เพราะจะทดสอบสาย 1.0 ไม่ได้อีก
+      · matrix ของ Foundation ครอบฝั่ง Anchor/CLI/GLIBC แต่ไม่ครอบแกน Kit กับ web3.js v3
+      ตรงนั้นต้องดู migration guide สองตัวแทน
+    status: untested
+    checked: 2026-08-05
+
+  - id: accept-payment-at-event
+    problem: อยากรับเงินจริงหน้างาน เช่นขายของหรือเก็บค่าเข้า โดยไม่ต้องเขียนโปรแกรมบนเชน
+    constraints:
+      - ไม่มีทีมพัฒนา ต้องขึ้นได้ภายในวันสองวัน
+      - ต้องกระทบยอดกับรายการขายจริงได้ ไม่ใช่แค่เห็นว่าเงินเข้า
+      - ผิดพลาดแล้วเป็นเงินจริง ไม่มีปุ่ม undo
+    uses:
+      - https://solana.com/docs/payments/quickstart
+      - https://solana.com/docs/payments/accept-payments/payment-button
+      - https://solana.com/docs/payments/accept-payments/verification-tools
+      - https://solana.com/docs/payments/production-readiness
+    approach: >-
+      เริ่มที่ quickstart ให้มีปุ่มที่รับเงินได้จริงก่อน แล้วค่อยอ่าน payment-button
+      เพื่อปรับโหมดและ callback ให้ตรงกับหน้าร้าน · ส่วนที่ tutorial ทั่วไปข้ามคือ
+      verification-tools ที่สอนกระทบยอดด้วย memo ซึ่งเป็นสิ่งที่ทำให้ปิดบัญชีตอนจบงานได้
+      · ก่อนเปิดรับเงินจริงให้ไล่เช็คลิสต์ production-readiness 14 ข้อทั้งหมด
+    watch_out: >-
+      Commerce Kit ยังเป็น beta เอกสารเตือนเองว่า API เปลี่ยนได้ อย่าเพิ่งสอนว่าเป็นมาตรฐาน
+      · ข้อที่พลาดกันบ่อยที่สุดในเช็คลิสต์คือระดับ commitment — เลือกผิดแล้วนับว่าเงินเข้า
+      ทั้งที่ยังไม่ final และข้อยืนยัน mint ว่าไม่ใช่ของ devnet
+    status: untested
+    checked: 2026-08-05
+
+  - id: pay-many-quest-rewards
+    problem: จ่ายรางวัล quest ให้คนในชุมชนหลายสิบคนพร้อมกัน โดยไม่ต้องกดทีละคน
+    constraints:
+      - ผู้รับบางคนยังไม่มี token account ต้องมีคนออกค่าเปิดให้
+      - งบมาจาก treasury ที่ต้องมีคนอนุมัติมากกว่าหนึ่งคน
+      - ต้องตรวจสอบย้อนหลังได้ว่าใครได้เท่าไหร่
+    uses:
+      - https://solana.com/docs/payments/send-payments/payment-processing/batch-payments
+      - https://solana.com/docs/payments/advanced-payments/spend-permissions
+      - https://solana.com/docs/payments/accept-payments/verification-tools
+      - https://squads.so/
+    approach: >-
+      ยัดหลาย instruction ใน transaction เดียวตาม batch-payments แล้วใช้ transaction
+      planning เมื่อจำนวนเกินขนาด tx · ฝั่งอนุมัติใช้ Squads เป็น multisig ของ treasury
+      · ถ้าอยากให้ระบบดึงเงินเองตามรอบแทนการกดจ่าย ให้ดู spend-permissions ซึ่งกำหนด
+      เพดานได้และเจ้าของเพิกถอนเองได้ทันที ต่างจากการโอนเข้ากระเป๋ากลาง
+    watch_out: >-
+      Agave 4.2 ขยาย tx เป็น 4,096 byte ตั้งแต่ 17 ส.ค. 2026 ซึ่งเพิ่มจำนวนผู้รับต่อ tx ได้
+      แต่ต้อง opt-in เอง ของเดิมยังคิดที่ 1,232 byte · ตรวจ address ผู้รับก่อนส่งเสมอว่า
+      เป็นกระเป๋าไม่ใช่ token account หรือ mint ซึ่งเป็นสาเหตุอันดับหนึ่งของเงินหาย
+    status: untested
+    checked: 2026-08-05
+
+  - id: weekly-network-brief-th
+    problem: อยากทำสรุปสถานะเครือข่ายภาษาไทยรายสัปดาห์ แต่ไม่มีเวลานั่งไล่อ่านทุกแหล่ง
+    constraints:
+      - มีเวลาไม่เกิน 20 นาทีต่อสัปดาห์
+      - ตัวเลขต้องอ้างได้ ถ้าโดนถามต้องชี้แหล่งได้ทันที
+      - ไม่อยากพึ่งแหล่งที่อาจหายไป
+    uses:
+      - https://solana-state.vercel.app/
+      - https://solana.com/data
+      - https://solana.com/upgrades
+      - https://github.com/solana-foundation/solana-governance-proposals
+      - https://solana.com/llms.txt
+    approach: >-
+      ดึงวัตถุดิบด้วยเครื่อง — solana-state มี /api/report/markdown ที่เป็นสรุปสำเร็จรูป
+      ราว 4.6 KB รีเฟรชทุก 30 นาที · เทียบตัวเลขที่จะเอาไปอ้างกับ solana.com/data
+      ซึ่งเป็นทางการแต่ lag 1 วัน · ฝั่ง governance ดึง SGP repo ที่เป็น markdown ล้วน
+      · หน้า upgrades ต้องอ่านด้วยคน ใช้ .md ไม่ได้
+      ส่วนที่ automate ไม่ได้คือการเลือกว่าอะไรสำคัญกับคนไทยและการเขียน ซึ่งคือคุณค่าทั้งหมด
+    watch_out: >-
+      อย่าเรียกสิ่งนี้ว่าบอทอัตโนมัติ มันคือระบบเตรียมวัตถุดิบให้คนเขียน 20 นาที
+      · solana-state โฮสต์บน vercel.app ฟรี หายได้ทุกเมื่อ ตัวเลขที่จะเอาไปพูดในที่สาธารณะ
+      ให้ยึด solana.com/data เป็นหลัก · โค้ดตัวดึงควรอยู่ repo devrel-helper ไม่ใช่ที่นี่
+    status: untested
+    checked: 2026-08-05
+
+  - id: ship-program-to-mainnet
+    problem: เขียนโปรแกรมเสร็จแล้ว จะขึ้น mainnet ต้องเตรียมอะไรบ้าง
+    constraints:
+      - ไม่มีงบจ้าง audit เต็มรูปแบบ
+      - ทีมมีคนเดียวหรือสองคน ไม่มีใครรีวิวโค้ดให้
+      - พลาดแล้วเป็นเงินคนอื่น
+    uses:
+      - https://solana.com/docs/payments/production-readiness
+      - https://learn.blueshift.gg/en/courses/program-security
+      - https://neodyme.io/en/blog/
+      - https://squads.so/
+      - https://github.com/solana-foundation/subscriptions
+    approach: >-
+      ไล่เช็คลิสต์ production-readiness 14 ข้อก่อน ซึ่งครอบชั้น client และ RPC
+      · แต่มันไม่ครอบชั้นโปรแกรม ส่วนนั้นใช้คอร์ส program security ของ Blueshift
+      ไล่เรื่องตรวจเจ้าของ account การคุมสิทธิ์ และ CPI แล้วอ่านเคสจริงจากบล็อก Neodyme
+      · upgrade authority ต้องอยู่ใต้ multisig ของ Squads ไม่ใช่กุญแจเดียวในเครื่องใครคนหนึ่ง
+      · อยากดูว่าโปรแกรมที่ผ่าน audit จริงหน้าตายังไง อ่าน subscriptions ที่เปิดโค้ดครบ
+    watch_out: >-
+      เช็คลิสต์ทางการ 14 ข้อผ่านหมดแล้วยังขึ้น mainnet ไม่ได้ ถ้ายังไม่มี audit
+      multisig upgrade authority และ verified build — สามอย่างนี้ไม่มีอยู่ในเช็คลิสต์นั้นเลย
+      เพราะมันเขียนสำหรับคนที่ใช้โปรแกรมของคนอื่น ไม่ใช่คนที่เขียนเอง
+    status: untested
+    checked: 2026-08-05
