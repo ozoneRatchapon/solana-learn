@@ -45,3 +45,9 @@ jobs:
 
       - name: ตัวตรวจต้องจับของผิดได้จริง
         run: ./scripts/entity-check.sh --self-test
+
+      - name: ตรวจ radar (เดดไลน์)
+        run: ./scripts/radar-check.sh
+
+      - name: ตัวตรวจ radar ต้องจับของผิดได้จริง
+        run: ./scripts/radar-check.sh --self-test

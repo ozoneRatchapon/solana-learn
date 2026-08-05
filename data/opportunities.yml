@@ -1,0 +1,226 @@
+# Radar — โอกาสที่เปิดอยู่ และของที่มีเดดไลน์ (SOURCE OF TRUTH)
+#
+# RADAR.md generate จากไฟล์นี้ อย่าแก้ RADAR.md ตรงๆ
+#
+# ทำไมต้องแยกจาก resources.yml:
+# แคตตาล็อกเน่าเมื่อ "ลิงก์" เปลี่ยน ไฟล์นี้เน่าเมื่อ "เวลา" ผ่านไป — คนละกลไกกันโดยสิ้นเชิง
+# bounty ที่ปิดไปแล้วยังตอบ HTTP 200 อยู่ linkcheck จับไม่ได้ ต้องให้ radar-check.sh ดูวันที่แทน
+#
+# ─────────────────────────────────────────────────────────────────────────
+# ช่อง verdict คือหัวใจของไฟล์นี้
+# ─────────────────────────────────────────────────────────────────────────
+# ลิสต์โอกาสมีเยอะแล้วในโลก สิ่งที่ไม่มีคือคำตอบว่า **เราทำได้จริงไหม และรู้ได้ยังไง**
+# verdict ต้องเป็นคำตัดสินที่ตรวจสอบได้ ไม่ใช่กำลังใจ:
+#
+#   ✗ "น่าสนใจมาก ควรลอง"
+#   ✓ "ทำได้ — ต้องมีคนอ่าน Rust ระดับ consensus ได้ 1 คน ยังไม่รู้ว่าในชุมชนมีใคร
+#      ต้องถามใน Genesis ก่อน 8 ส.ค. ไม่งั้นเหลือเวลาอ่านโค้ดไม่พอ"
+#
+# ถ้าเขียน verdict ไม่ได้ แปลว่ายังไม่ได้คิดจริง ให้ใส่ status: unproven ไว้ก่อน
+#
+# schema:
+#   id       kebab-case ไม่ซ้ำ (required)
+#   name     ชื่อที่คนเรียก (required)
+#   url      ต้องมีอยู่จริงใน resources.yml (required)
+#   kind     bounty | grant | hackathon | job | program | deadline
+#   opens    YYYY-MM-DD หรือ rolling
+#   closes   YYYY-MM-DD หรือ rolling
+#   reward   ได้อะไร — ระบุให้ตรงกับที่ต้นทางเขียน อย่าปัดขึ้น
+#   fit      ใครในชุมชนที่เหมาะ / ต้องมีอะไรก่อนถึงจะยื่นได้
+#   effort   ประเมินแรงแบบตรงไปตรงมา
+#   verdict  ทำได้จริงไหม + หลักฐาน + สิ่งที่ต้องรู้เพิ่ม (required)
+#   status   ready | unproven | watching
+#   checked  YYYY-MM-DD ที่ยืนยันล่าสุด
+# ─────────────────────────────────────────────────────────────────────────
+
+kinds:
+  bounty: "ล่าบั๊ก / งานย่อยมีรางวัล"
+  grant: "ทุน"
+  hackathon: "แข่งสร้างของ"
+  job: "งานประจำ / เปิดรับสมัคร"
+  program: "โปรแกรมระยะยาว / ไดเรกทอรี"
+  deadline: "ไม่ใช่โอกาส แต่เป็นวันที่ต้องเตรียมตัว"
+
+statuses:
+  ready: "ประเมินแล้วว่าลงมือได้ รู้ว่าต้องทำอะไร"
+  unproven: "ยังตอบไม่ได้ว่าทำได้ไหม — ระบุไว้ว่าต้องพิสูจน์อะไรก่อน"
+  watching: "ยังไม่เปิด / รอจังหวะ"
+
+opportunities:
+  - id: alpenglow-bounty
+    name: Alpenglow Bug Bounty
+    url: https://github.com/anza-xyz/alpenglow
+    kind: bounty
+    opens: 2026-08-05
+    closes: 2026-08-19
+    reward: "เพดาน 50,000 SOL เฉพาะกรณี Loss of Funds — ชั้นอื่นต่ำกว่านั้น"
+    fit: คนที่อ่าน Rust ระดับ consensus ได้ จุดตั้งต้น 4 crate ใน agave — votor, votor-messages, bls-sigverify, bls-cert-verify
+    effort: สูงมาก ต้องมี PoC ทุกระดับ รันบน local fork เท่านั้น
+    verdict: >-
+      หน้าต่างสั้นเกินกว่าจะสร้างคนได้ทัน แต่คุ้มที่จะกระจายข่าวเพราะเดิม Alpenglow ถูกกันออกจาก
+      bug bounty ของ agave เพิ่งเข้าเกณฑ์รอบนี้ แปลว่าโค้ดผ่านสายตาคนนอกน้อยกว่าส่วนอื่น
+      สิ่งที่ต้องบอกให้ครบตอนกระจาย — ไม่ต้องลงทะเบียน, ส่งผ่าน GitHub Security Advisory เท่านั้น,
+      และอะไรที่ public แล้วตกเกณฑ์ทันทีรวมถึงโพสต์ใน Discord ซึ่งคนไทยชอบแชร์ระหว่างทาง
+    status: ready
+    checked: 2026-08-05
+
+  - id: agave-4-2-activation
+    name: Agave 4.2 เริ่มเปิด feature บน mainnet
+    url: https://solana.com/upgrades/agave-4-2-release-overview
+    kind: deadline
+    opens: 2026-08-17
+    closes: 2026-08-17
+    reward: "ไม่มีรางวัล — แต่เป็นวันที่ของเปลี่ยนจริง"
+    fit: ใครที่รัน indexer หรือมีโค้ดที่ประกอบ transaction เอง
+    effort: ต่ำถ้าเตรียมล่วงหน้า สูงถ้ารู้ทีหลัง
+    verdict: >-
+      ไม่ต้องทำอะไรถ้าเป็น dev ทั่วไป แต่ tx v1 ขยายเป็น 4,096 byte ต้อง opt-in เอง
+      และ indexer ต้องรองรับ layout ใหม่ · rent ลด 90% เปลี่ยนสมมติฐานต้นทุนของ
+      Tier 3 เรื่อง ZK compression ไปแล้ว ควรอัปเดตเนื้อหาสอนก่อนวันนี้ ไม่ใช่หลัง
+    status: ready
+    checked: 2026-08-05
+
+  - id: colosseum-eternal
+    name: Colosseum Eternal
+    url: https://colosseum.com/eternal
+    kind: hackathon
+    opens: rolling
+    closes: rolling
+    reward: "$250,000 pre-seed + ที่นั่งใน accelerator 8 สัปดาห์"
+    fit: ทีมที่มีของอยู่แล้วระดับหนึ่ง เพราะต้องส่งผลิตภัณฑ์ใน 4 สัปดาห์นับจากกดนาฬิกาเอง
+    effort: 4 สัปดาห์เต็มเวลา + วิดีโออัปเดต 1 นาทีทุกสัปดาห์
+    verdict: >-
+      เป็นข้อที่เปลี่ยนจากสมมติฐานเป็นของจริงแล้ว เพราะไม่ต้องรอรอบแฮกกาธอนอีกต่อไป
+      สมมติฐานที่เหลือข้อเดียวคือทีมพร้อมทุ่ม 4 สัปดาห์ไหม ซึ่งตอบเองได้ไม่ต้องหาข้อมูลเพิ่ม
+      กรรมการเป็นผู้ก่อตั้ง Helius/Jito/Tensor/Squads/Kamino/Drift/Phantom — เกณฑ์คือ
+      ความสามารถในการจัดลำดับและส่งของ ไม่ใช่ความใหม่ของไอเดีย
+    status: ready
+    checked: 2026-08-05
+
+  - id: superteam-microgrant
+    name: Superteam Microgrant
+    url: https://solana.org/grants
+    kind: grant
+    opens: rolling
+    closes: rolling
+    reward: "$10,000"
+    fit: builder ระยะเริ่มต้น — หน้าทางการระบุเอเชียตะวันออกเฉียงใต้เป็นเป้าโดยตรง
+    effort: ต่ำที่สุดในบรรดาทุนทั้งหมดที่รวบรวมมา
+    verdict: >-
+      ประตูที่ตรงกับคนไทยที่สุดและเบากว่า grant ใหญ่มาก เพราะระบุภูมิภาคเราไว้เอง
+      สิ่งที่ยังไม่รู้คือขั้นตอนจริงและอัตราการอนุมัติ — หน้า solana.org ไม่ได้เขียนไว้
+      ต้องถาม Superteam โดยตรงก่อนชวนคนในชุมชนยื่นเป็นชุด ไม่งั้นเสียเครดิตถ้าโดนปฏิเสธหมด
+    status: unproven
+    checked: 2026-08-05
+
+  - id: foundation-grants
+    name: Solana Foundation Grants
+    url: https://solana.org/grants
+    kind: grant
+    opens: rolling
+    closes: rolling
+    reward: "ไม่ระบุจำนวน — มี grant ปกติ / convertible / RFP"
+    fit: งานที่เป็นของสาธารณะ เปิดโค้ด และอธิบายได้ว่าทำไมต้องเป็น Solana
+    effort: ปานกลาง — ต้องแบ่งงบเป็น milestone ที่วัดได้
+    verdict: >-
+      กระบวนการราว 3 สัปดาห์และเกณฑ์เขียนไว้ชัดพอที่จะประเมินตัวเองก่อนยื่นได้
+      ตัวแคตตาล็อกนี้เองน่าจะเข้าเกณฑ์ public good ได้ แต่ยังไม่ควรยื่นตอนนี้เพราะ
+      ยังไม่มีผู้ใช้นอกจากเจ้าของ — ต้องผ่านขั้น distribution ก่อนถึงจะมีอะไรให้อ้าง
+    status: unproven
+    checked: 2026-08-05
+
+  - id: solana-mobile-grants
+    name: Solana Mobile Builder Grants
+    url: https://solanamobile.com/grants
+    kind: grant
+    opens: rolling
+    closes: rolling
+    reward: "ไม่ระบุจำนวน"
+    fit: งานที่ต่อกับ Solana Mobile Stack — รับทั้ง dApp, tooling, เนื้อหา และงานวิจัย
+    effort: ปานกลาง
+    verdict: >-
+      เป็นสายที่คู่แข่งน้อยกว่า DeFi มากและรับงานประเภทเนื้อหาด้วย ซึ่งตรงกับสิ่งที่เราทำเป็น
+      แต่สมมติฐานที่ยังไม่ได้พิสูจน์คือมีคนในชุมชนไทยที่ทำ mobile ได้จริงกี่คน
+      ต้องนับหัวก่อน ไม่ใช่เขียนใบสมัครก่อน
+    status: unproven
+    checked: 2026-08-05
+
+  - id: foundation-open-application
+    name: Solana Program Engineer (open application)
+    url: https://jobs.ashbyhq.com/Solana%20Foundation/6be29283-a2e0-48f4-b388-d06f48e240b3
+    kind: job
+    opens: 2025-11-05
+    closes: rolling
+    reward: "งานประจำ Remote-International"
+    fit: คนที่ผ่าน Blueshift/Turbin3 แล้ว — สายที่ระบุตรงกับที่ฝึกมา (CLOB, AMM, lending, oracle, gasless relayer, indexer, contribute Anchor/Pinocchio)
+    effort: ต่ำ — เป็นการแสดงความสนใจ ไม่ใช่สมัครตำแหน่งเดียว
+    verdict: >-
+      เปิดมาตั้งแต่ พ.ย. 2025 ถึง ส.ค. 2026 ก็ยังเปิด แปลว่าเป็นช่องถาวรไม่ใช่รอบ
+      ไม่มีข้อจำกัดเรื่องที่อยู่ คนไทยยื่นได้ — ใช้เป็นคำตอบที่จับต้องได้เวลามีคนถามว่า
+      เรียนไปแล้วไปทำอะไรต่อ ซึ่งเป็นคำถามที่ตอบไม่ได้มาตลอด
+    status: ready
+    checked: 2026-08-05
+
+  - id: event-calendar-submission
+    name: ส่งอีเวนต์เข้าปฏิทินนักพัฒนาโลก
+    url: https://docs.google.com/forms/d/e/1FAIpQLSfTosHwpQg2Uvf7tgySMSIEzyJGxaRaNNSL9HhTl_GgNFQvWg/viewform
+    kind: program
+    opens: rolling
+    closes: rolling
+    reward: "พื้นที่บนปฏิทินทางการ + ชื่อไปปรากฏในที่ที่ทีม Foundation เห็น"
+    fit: งานของ Genesis และ Superteam TH ที่มีกำหนดแล้ว
+    effort: ต่ำที่สุดในไฟล์นี้ — กรอก 4 ช่องบังคับ
+    verdict: >-
+      ทำได้ทันทีวันนี้ ไม่ต้องรออนุมัติ ไม่ต้องมีคอนเนกชัน ไม่ต้องมีผลงานก่อน
+      ต่างจากทุกช่องอื่นที่ต้องมีของก่อนถึงจะเข้าไปได้ — ควรเป็นสิ่งแรกที่ทำ
+      ข้อควรระวังเดียวคือเป็น Google Form ที่ปิดเมื่อไหร่ก็ได้ เช็คก่อนวางแผนพึ่งพา
+    status: ready
+    checked: 2026-08-05
+
+  - id: superteam-earn
+    name: Superteam Earn (bounty)
+    url: https://earn.superteam.fun/
+    kind: bounty
+    opens: rolling
+    closes: rolling
+    reward: "ต่างกันไปตาม bounty"
+    fit: คนในชุมชนที่อยากได้งานชิ้นแรกโดยยังไม่ต้องสมัครงานประจำ
+    effort: ต่ำถึงปานกลางต่อชิ้น
+    verdict: >-
+      ยังพิสูจน์ไม่ได้ว่าคุ้ม เพราะยังไม่มีใครไปนั่งดูว่า bounty ที่เปิดอยู่ตรงกับสกิล
+      คนใน Genesis แค่ไหน เป็นสมมติฐานเดิมจาก OPPORTUNITIES Tier 3 ที่ยังค้าง
+      งานที่ต้องทำก่อนคือไล่ดู bounty ที่เปิดอยู่จริงสัก 20 อันแล้วนับว่ากี่อันที่คนเราทำได้
+    status: unproven
+    checked: 2026-08-05
+
+  - id: magicblock-builders
+    name: MagicBlock Builders
+    url: https://build.magicblock.app/builders
+    kind: program
+    opens: rolling
+    closes: rolling
+    reward: "เข้ากลุ่ม builder + เส้นทางไป Forge / Hacker House / ระดมทุน"
+    fit: คนที่หา cofounder อยู่
+    effort: ต่ำ — กรอกโปรไฟล์
+    verdict: >-
+      เข้าได้โดยไม่ต้องรอให้ใครแนะนำ ซึ่งเป็นข้อดีจริงสำหรับคนไทยที่ไม่มีคอนเนกชัน
+      แต่ต้องล็อกอิน Telegram และเชื่อมกระเป๋า = ผูกตัวตนกับที่อยู่กระเป๋าในไดเรกทอรีสาธารณะ
+      ต้องบอกเรื่องนี้ก่อนชวนใครสมัคร และแนะนำให้ใช้กระเป๋าที่ไม่ใช่ตัวหลัก
+    status: ready
+    checked: 2026-08-05
+
+  - id: colosseum-hackathon
+    name: Colosseum Hackathon (รอบใหญ่)
+    url: https://colosseum.com/hackathon
+    kind: hackathon
+    opens: rolling
+    closes: rolling
+    reward: "$250K สำหรับผู้ชนะที่เข้า accelerator"
+    fit: ทีมที่อยากแข่งกับคนทั้งโลก
+    effort: หลายสัปดาห์
+    verdict: >-
+      ปีละ 2 รอบ รอบล่าสุด Frontier — จำนวนโปรเจกต์โตทุกรอบ (Renaissance 1,076 →
+      Radar 1,360 → Breakout 1,416 → Cypherpunk 1,576) ใช้ประเมินระดับการแข่งขันได้จริง
+      ถ้าไม่อยากรอรอบถัดไปใช้ Eternal แทนได้เลย ซึ่งเป็นทางที่แนะนำมากกว่าสำหรับทีมแรก
+    status: watching
+    checked: 2026-08-05

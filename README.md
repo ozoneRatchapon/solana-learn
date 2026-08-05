@@ -28,10 +28,12 @@ Issues and PRs in English are welcome.
 | [CATALOG.md](CATALOG.md) | รายการทั้งหมดจัดกลุ่มแล้ว (generate ห้ามแก้มือ) |
 | [OPPORTUNITIES.md](OPPORTUNITIES.md) | วิเคราะห์: สร้างอะไรได้บ้างจาก resource ที่มี |
 | [data/rejected.yml](data/rejected.yml) | ทะเบียน "ดูแล้วไม่เอา" + เหตุผล |
+| [RADAR.md](RADAR.md) | โอกาสที่เปิดอยู่ + เดดไลน์ + verdict ว่าทำได้จริงไหม (generate) |
+| [GRAPH.md](GRAPH.md) | ecosystem map — ใครทำ ใครดูแล ใครจ่ายเงิน ใครตรวจ (generate) |
 | [scripts/](scripts/) | check / add / reject / setnote / deprecate / render / linkcheck / audit |
 | [CLAUDE.md](CLAUDE.md) | บริบทสำหรับ Claude Code — กฎเหล็ก, workflow, กับดักที่เคยเจอ |
 
-ตอนนี้: **180 รายการ · 18 หมวด · ลิงก์ตาย 0**
+ตอนนี้: **182 รายการ · 18 หมวด · ลิงก์ตาย 0**
 
 > ตัวเลขบรรทัดบนถูกตรวจโดย `./scripts/audit.sh` — ถ้าไม่ตรงกับ YAML แล้ว CI จะไม่ผ่าน
 

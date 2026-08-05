@@ -3,7 +3,7 @@
 > ไฟล์นี้ถูก generate จาก [data/resources.yml](data/resources.yml) — **อย่าแก้ตรงนี้**
 > แก้ที่ YAML แล้วรัน `./scripts/render.sh`
 
-รวม **180** รายการ · ข้อมูลล่าสุด 2026-08-05
+รวม **182** รายการ · ข้อมูลล่าสุด 2026-08-05
 
 หมายเหตุสถานะ: `blocked` = เว็บกัน bot ตอน curl (ลิงก์ยังใช้ได้), `unverified` = เช็คอัตโนมัติไม่ผ่าน ต้องดูด้วยตา
 
@@ -25,7 +25,7 @@
 - [Mobile](#mobile) — 2
 - [Protocol internals — Agave, Firedancer, network upgrades](#protocol-internals--agave-firedancer-network-upgrades) — 7
 - [Governance — SGP, SIMD, โหวตบนเชน](#governance--sgp-simd-โหวตบนเชน) — 8
-- [Funding — grants, hackathon, bounty, jobs](#funding--grants-hackathon-bounty-jobs) — 14
+- [Funding — grants, hackathon, bounty, jobs](#funding--grants-hackathon-bounty-jobs) — 16
 - [Thailand — ชุมชนไทย](#thailand--ชุมชนไทย) — 3
 
 ## Official — Foundation & Anza (source of truth ตัวจริง)
@@ -611,6 +611,12 @@
 - [Colosseum Eternal — ไม่ต้องรอแฮกกาธอนรอบหน้า](https://colosseum.com/eternal)
   การแข่งแบบเปิดตลอดปีคั่นระหว่างแฮกกาธอนสองรอบ — กดนาฬิกาเองแล้วมีเวลา 4 สัปดาห์ส่งผลิตภัณฑ์ ระหว่างทางต้องส่งอัปเดตวิดีโอ 1 นาทีทุกสัปดาห์ ผู้ชนะได้ $250,000 pre-seed พร้อมเข้า accelerator 8 สัปดาห์แบบผสมออนไลน์และเจอตัว มี mentor ตัวต่อตัว และมี Eternal Award มอบปีละสองครั้ง; กรรมการไม่ใช่แค่ทีม Colosseum แต่มีผู้ก่อตั้งตัวจริงของ Helius, Jito, Tensor, Squads, Kamino, Drift, Phantom, Sphere ร่วมตัดสิน; ตัวนี้ตอบคำถามค้างใน OPPORTUNITIES.md Tier 3 ที่ว่าแฮกกาธอนรอบหน้าเมื่อไหร่ — คำตอบคือไม่ต้องรอ เริ่มเมื่อไหร่ก็ได้ ซึ่งเปลี่ยนข้อนั้นจากสมมติฐานเป็นของที่ลงมือได้จริง; หมายเหตุ คำตอบใน FAQ เป็น accordion ที่ไม่อยู่ใน HTML ต้องกดดูในเบราว์เซอร์ curl ได้แค่หัวข้อคำถาม
   <sub>accelerator, pre-seed, continuous, sprint, deadline-self-start</sub>
+- [Solana Mobile Builder Grants](https://solanamobile.com/grants) `vendor`
+  ทุนสำหรับงานสาย mobile ที่ต่อกับ Solana Mobile Stack — หน้าระบุเกณฑ์การสมัครไว้ชัด และรับทั้ง dApp, tooling, เนื้อหา และงานวิจัยที่ดันระบบนิเวศมือถือ ไม่ใช่แค่โค้ด; สำคัญกับไทยเพราะเป็นสายที่แคตตาล็อกบางที่สุดและมีคู่แข่งน้อยกว่าสาย DeFi มาก แต่ต้องพิสูจน์ก่อนว่ามีคนในชุมชนทำ mobile ได้จริงกี่คน (สมมติฐานที่ค้างใน OPPORTUNITIES Tier 3)
+  <sub>grant, mobile, dapp-store, sms</sub>
+- [Solana Hackathon (หน้าทางการ)](https://solana.com/hackathon) `official`
+  หน้าทางการที่รวมแฮกกาธอนทุกรอบ มีรายชื่อผู้ชนะและสปอนเซอร์ย้อนหลัง — ค่าที่แท้จริงคือใช้ไล่ดูว่าโปรเจกต์แบบไหนชนะจริง ก่อนจะโค้ชทีมไทยว่าควรทำอะไร ซึ่งมีน้ำหนักกว่าเดาจากกติกา; ตัวสมัครและกติกาจริงอยู่ที่ Colosseum หน้านี้เป็นชั้นแนะนำ
+  <sub>hackathon, colosseum, index, winners</sub>
 
 ## Thailand — ชุมชนไทย
 

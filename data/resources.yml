@@ -1681,3 +1681,21 @@ resources:
     note: 'การแข่งแบบเปิดตลอดปีคั่นระหว่างแฮกกาธอนสองรอบ — กดนาฬิกาเองแล้วมีเวลา 4 สัปดาห์ส่งผลิตภัณฑ์ ระหว่างทางต้องส่งอัปเดตวิดีโอ 1 นาทีทุกสัปดาห์ ผู้ชนะได้ $250,000 pre-seed พร้อมเข้า accelerator 8 สัปดาห์แบบผสมออนไลน์และเจอตัว มี mentor ตัวต่อตัว และมี Eternal Award มอบปีละสองครั้ง; กรรมการไม่ใช่แค่ทีม Colosseum แต่มีผู้ก่อตั้งตัวจริงของ Helius, Jito, Tensor, Squads, Kamino, Drift, Phantom, Sphere ร่วมตัดสิน; ตัวนี้ตอบคำถามค้างใน OPPORTUNITIES.md Tier 3 ที่ว่าแฮกกาธอนรอบหน้าเมื่อไหร่ — คำตอบคือไม่ต้องรอ เริ่มเมื่อไหร่ก็ได้ ซึ่งเปลี่ยนข้อนั้นจากสมมติฐานเป็นของที่ลงมือได้จริง; หมายเหตุ คำตอบใน FAQ เป็น accordion ที่ไม่อยู่ใน HTML ต้องกดดูในเบราว์เซอร์ curl ได้แค่หัวข้อคำถาม'
     status: ok
     added: 2026-08-05
+
+  - url: https://solanamobile.com/grants
+    name: 'Solana Mobile Builder Grants'
+    category: funding
+    source: vendor
+    tags: [grant, mobile, dapp-store, sms]
+    note: 'ทุนสำหรับงานสาย mobile ที่ต่อกับ Solana Mobile Stack — หน้าระบุเกณฑ์การสมัครไว้ชัด และรับทั้ง dApp, tooling, เนื้อหา และงานวิจัยที่ดันระบบนิเวศมือถือ ไม่ใช่แค่โค้ด; สำคัญกับไทยเพราะเป็นสายที่แคตตาล็อกบางที่สุดและมีคู่แข่งน้อยกว่าสาย DeFi มาก แต่ต้องพิสูจน์ก่อนว่ามีคนในชุมชนทำ mobile ได้จริงกี่คน (สมมติฐานที่ค้างใน OPPORTUNITIES Tier 3)'
+    status: ok
+    added: 2026-08-05
+
+  - url: https://solana.com/hackathon
+    name: 'Solana Hackathon (หน้าทางการ)'
+    category: funding
+    source: foundation
+    tags: [hackathon, colosseum, index, winners]
+    note: 'หน้าทางการที่รวมแฮกกาธอนทุกรอบ มีรายชื่อผู้ชนะและสปอนเซอร์ย้อนหลัง — ค่าที่แท้จริงคือใช้ไล่ดูว่าโปรเจกต์แบบไหนชนะจริง ก่อนจะโค้ชทีมไทยว่าควรทำอะไร ซึ่งมีน้ำหนักกว่าเดาจากกติกา; ตัวสมัครและกติกาจริงอยู่ที่ Colosseum หน้านี้เป็นชั้นแนะนำ'
+    status: ok
+    added: 2026-08-05
