@@ -158,6 +158,17 @@ cargo run -p slcat -- audit      # เท่ากับ audit.sh ชั้น 1
 
   ได้ชื่อ SGP + ลิงก์ markdown ที่ pin commit SHA ไว้ แล้วค่อย curl ตัว markdown มาอ่าน
   ท่าทั่วไปเวลาเจอ SPA: `grep -o '/_next/static/chunks/[a-f0-9]*\.js' page.html` → โหลด chunk มา grep หา endpoint ที่มันยิง
+- **ลำดับที่ควรลองเวลาเจอเว็บที่ curl แล้วไม่ได้เนื้อ** — เรียงตามที่ได้ผลจริงในวันที่ 5 ส.ค. 2026:
+  1. **หาแหล่งข้อมูลจริงก่อนเสมอ** อย่าพยายาม render — `governance.solana.com` อ่าน account บนเชนได้
+     `superteam.fun` มี API ทางการที่ `skill.md` (ตอนแรกสรุปผิดว่าไม่มี เพราะยิงเปล่าๆ ได้ 401 เลยไม่โผล่)
+     **การได้ข้อมูลจากต้นทางดีกว่าการ scrape UI เสมอ เพราะ UI เปลี่ยนเมื่อไหร่ก็พังเมื่อนั้น**
+  2. เดาซับโดเมน `docs.` / `api.` / `app.` — `world.xyz` เจอว่าเอกสารอยู่หลัง login ด้วยวิธีนี้
+  3. grep JS chunk หา endpoint — ได้ผลกับ Next.js ไม่ได้ผลกับ `world.xyz`
+  4. ถ้ายังไม่ได้ ให้บันทึกลง `rejected.yml` ว่าขุดแล้วไม่ได้ ดีกว่าเดาเนื้อหา
+  **[spider-rs](https://github.com/spider-rs/spider)** (Rust, MIT) มี `crawl_smart()` ที่เปิด headless Chrome
+  เฉพาะหน้าที่ต้องใช้ JS และมี stealth สำหรับเว็บกัน bot — เป็นทางออกของข้อ 4 ถ้าวันหนึ่งจำเป็นจริง
+  แต่**ยังไม่ควรเอาเข้ามาตอนนี้** เพราะทุกเคสที่เจอมาแก้ได้ด้วยข้อ 1-3 ซึ่งให้ข้อมูลที่ทนกว่า
+  และมันพ่วง headless Chrome เข้า repo ที่ตอนนี้ต้องการแค่ `yq` กับ `jq`
 - **SPA ที่กัน bot ด้วย — ท่า grep chunk ใช้ไม่ได้** เจอที่ `world.xyz`: WebFetch ได้ 403 ต้องใส่ browser User-Agent ถึงได้ 200
   แล้วได้ shell 1,021 byte เท่ากันทุก path (รวม `/robots.txt` และ `/sitemap.xml`) · grep bundle 232 KB ไม่เจอ endpoint เลยสักตัว
   **ท่าที่ได้ผลคือเดาซับโดเมน** — `docs.` / `api.` / `app.` ซึ่งพาไปเจอว่าเอกสารอยู่หลัง login

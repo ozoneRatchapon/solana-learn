@@ -101,3 +101,7 @@ rejected:
     reason: 'ไกด์ย่อยรายคำสั่งของโปรแกรม subscriptions — หน้า overview ที่เก็บไว้แล้วอธิบายกลไกครบและลิงก์ต่อไปหน้าพวกนี้เอง เก็บทั้ง 6 หน้าจะได้แคตตาล็อกที่ยาวขึ้นแต่ไม่ได้ช่วยตัดสินใจอะไรเพิ่ม'
     superseded_by: https://solana.com/docs/payments/subscriptions/overview
     checked: 2026-08-05
+
+  - url: https://github.com/spider-rs/spider
+    reason: 'ไม่เกี่ยวกับ Solana — เป็น crawler ทั่วไป (Rust, MIT, ★2,643) เกณฑ์เดียวกับที่ใช้ปฏิเสธ katgpt-rs ต้องใช้เหมือนกันถึงจะเชื่อถือได้; เครื่องมือที่ใช้ "ดูแลแคตตาล็อก" คนละอย่างกับ "resource ของระบบนิเวศ Solana" ที่ทางของมันคือ CLAUDE.md ไม่ใช่ resources.yml — ถ้าเริ่มเก็บเครื่องมือ maintenance ปนเข้ามา เส้นแบ่งจะหายและแคตตาล็อกจะกลายเป็นลิสต์ของทุกอย่างที่เคยใช้'
+    checked: 2026-08-05
