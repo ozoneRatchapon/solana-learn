@@ -3,7 +3,7 @@
 > ไฟล์นี้ถูก generate จาก [data/resources.yml](data/resources.yml) — **อย่าแก้ตรงนี้**
 > แก้ที่ YAML แล้วรัน `./scripts/render.sh`
 
-รวม **183** รายการ · ข้อมูลล่าสุด 2026-08-05
+รวม **184** รายการ · ข้อมูลล่าสุด 2026-08-05
 
 หมายเหตุสถานะ: `blocked` = เว็บกัน bot ตอน curl (ลิงก์ยังใช้ได้), `unverified` = เช็คอัตโนมัติไม่ผ่าน ต้องดูด้วยตา
 
@@ -18,7 +18,7 @@
 - [Tokens & NFT — SPL, Token-2022, Metaplex](#tokens--nft--spl-token-2022-metaplex) — 7
 - [Payments & Commerce](#payments--commerce) — 20
 - [Security & Audit](#security--audit) — 5
-- [AI / Agent Skills / MCP](#ai--agent-skills--mcp) — 16
+- [AI / Agent Skills / MCP](#ai--agent-skills--mcp) — 17
 - [Infra & RPC providers](#infra--rpc-providers) — 11
 - [Data & Analytics](#data--analytics) — 13
 - [DeFi & Ecosystem protocols](#defi--ecosystem-protocols) — 13
@@ -389,6 +389,9 @@
 - [Superteam Earn สำหรับ AI agent](https://superteam.fun/earn/agents)
   Earn เปิดให้ agent ทำงานรับเงินได้จริง มี skill ทางการที่ superteam.fun/skill.md (v0.5.1) กับ heartbeat.md (v0.2.0) — flow คือ POST /api/agents ตั้งชื่อ agent แล้วได้ apiKey กับ claimCode กลับมา จากนั้นดึงงานที่ agent ทำได้จาก /api/agents/listings/live (กรอง type=bounty|project|hackathon และ deadline ได้) ส่งงานผ่าน /api/agents/submissions/create แล้ว **ให้มนุษย์ถือ claimCode ไปรับเงิน** เพราะ agent รับเงินเองไม่ได้; จำกัด 60 submission/ชั่วโมง และงานประเภท project บังคับใส่ Telegram ของมนุษย์; นี่คือคำตอบของช่องที่ค้างในเรดาร์ว่าทำไมนับ bounty ไม่ได้ — มี API อยู่จริงแต่ต้องลงทะเบียนก่อน ไม่ได้เปิดสาธารณะ (ยิงเปล่าๆ ได้ 401); และเป็นตัวอย่างรูปธรรมของสิ่งที่ OPPORTUNITIES 2.1 อยากทำ คือเผยแพร่ skill ให้ agent อ่านเอง
   <sub>agent, api, skill-md, bounty, autonomous, earn</sub>
+- [Colosseum Copilot (skill สำหรับ Claude Code)](https://colosseum.com/copilot)
+  skill ที่ติดตั้งเข้า Claude Code/Codex ได้ตรงๆ (npx skills add ColosseumOrg/colosseum-copilot — repo ★11 push ก.ค. 2026 ยังไม่ระบุ license) ใช้เอาไอเดียไปชนกับ **ผลงานแฮกกาธอน 5,400+ ชิ้น** บวกสินค้าคริปโต 6,300+ ตัวผ่าน The Grid และแหล่งวิจัยคัดแล้ว 65+ แห่ง (a16z Crypto, Multicoin, Electric Capital) เพื่อดูว่าไอเดียซ้ำกับใครแล้วบ้างและช่องว่างอยู่ตรงไหน; ค่าที่แท้จริงคือ **ใช้ลดความเสี่ยงก่อนกดนาฬิกา Eternal** — 4 สัปดาห์เต็มเวลาแล้วมาพบทีหลังว่ามีคนทำไปแล้วสามรอบคือความเสียหายที่เลี่ยงได้ด้วยการค้นครึ่งชั่วโมง; ต้องขอ token ก่อนใช้ หน้าเว็บไม่ระบุราคา ต้องเช็คก่อนแนะนำว่าฟรีหรือไม่
+  <sub>skill, research, competitor-scan, hackathon-data, idea-validation</sub>
 
 ## Infra & RPC providers
 
