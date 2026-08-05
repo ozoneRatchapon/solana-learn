@@ -232,7 +232,7 @@
   <sub>payment, qr</sub>
 - [Payments docs](https://solana.com/docs/payments) `official`
   <sub>payment, checkout</sub>
-- [Kora (gasless/relayer)](https://solana.com/docs/tools/kora) `official` `unverified`
+- [Kora (gasless/relayer)](https://solana.com/docs/tools/kora) `official`
   relayer ที่ทำให้ผู้ใช้ทำธุรกรรมได้โดยไม่ต้องมี SOL — อ่านคู่กับ fee-abstraction และ x402-facilitator ในหมวดเดียวกัน; แก้ URL 4 ส.ค. 2026: ของเดิมชี้ docs.kora.network ซึ่งตายแล้ว (TLS ล้ม) และโดเมน kora.network กลายเป็น parked domain ประกาศขาย — apex ตอบ 200 แต่เนื้อแค่ 114 byte redirect ไป GoDaddy อย่าเผลอใช้เป็นตัวสำรอง
   <sub>gasless, relayer, fee-payer, onboarding</sub>
 - [Solana × WSOP (case study การใช้งานจริง)](https://solana.com/wsop) `official`
