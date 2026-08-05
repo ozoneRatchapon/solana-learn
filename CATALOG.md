@@ -3,14 +3,14 @@
 > ไฟล์นี้ถูก generate จาก [data/resources.yml](data/resources.yml) — **อย่าแก้ตรงนี้**
 > แก้ที่ YAML แล้วรัน `./scripts/render.sh`
 
-รวม **199** รายการ · ข้อมูลล่าสุด 2026-08-05
+รวม **200** รายการ · ข้อมูลล่าสุด 2026-08-06
 
 หมายเหตุสถานะ: `blocked` = เว็บกัน bot ตอน curl (ลิงก์ยังใช้ได้), `unverified` = เช็คอัตโนมัติไม่ผ่าน ต้องดูด้วยตา
 
 ## สารบัญ
 
 - [Official — Foundation & Anza (source of truth ตัวจริง)](#official--foundation--anza-source-of-truth-ตัวจริง) — 18
-- [Learning — คอร์ส, bootcamp, tutorial](#learning--คอร์ส-bootcamp-tutorial) — 16
+- [Learning — คอร์ส, bootcamp, tutorial](#learning--คอร์ส-bootcamp-tutorial) — 17
 - [Program Frameworks — Anchor / Pinocchio / native](#program-frameworks--anchor--pinocchio--native) — 12
 - [Client SDK — Kit, web3.js, scaffolding](#client-sdk--kit-web3js-scaffolding) — 10
 - [Testing — LiteSVM, Mollusk, Surfpool](#testing--litesvm-mollusk-surfpool) — 5
@@ -138,6 +138,9 @@
 - [Solana Rust client course (เรียนใน VS Code)](https://github.com/bergabman/solana-rust-vscode-course)
   คอร์สฝั่ง client ของ Solana ที่เขียนด้วย Rust และ **เรียนอยู่ใน VS Code เลย** โครง repo มี exercises, crates, book (mdBook) และ justfile คือทำเป็นแบบฝึกหัดให้แก้ทีละข้อแบบ rustlings ไม่ใช่อ่านเอกสารเฉยๆ; ค่าอยู่ที่แคตตาล็อกนี้มีคอร์สฝั่งเขียนโปรแกรมบนเชนเยอะแล้วแต่**ฝั่ง client ที่เป็น Rust หายาก** ส่วนใหญ่เป็น TypeScript; ข้อควรระวัง ★16 คนทำคนเดียว push ล่าสุด พ.ค. 2026 และ **ไม่มี license** ซึ่งแปลว่าตามกฎหมายเอาไปใช้ต่อไม่ได้ ต้องถามเจ้าของก่อนถ้าจะเอาไปดัดแปลงเป็นเนื้อหาสอน
   <sub>rust, client-side, vscode, exercises, interactive</sub>
+- [Solana Stack Exchange — คลังคำถามที่ค้นได้ (แต่คนตอบน้อย)](https://solana.stackexchange.com/)
+  ถาม-ตอบแบบ Stack Exchange ที่ค้นย้อนหลังได้และมี API สาธารณะ — ตัวเลขจริงจาก api.stackexchange.com วันที่ 6 ส.ค. 2026: คำถาม 8,226 · คำตอบ 9,606 · ผู้ใช้ 50,119; **แต่ต้องรู้ก่อนส่งให้มือใหม่** — ไม่มีคำตอบเลย 1,750 ข้อ (21%) และมีคำตอบที่เจ้าของรับแล้วแค่ 34% เฉลี่ยคำตอบต่อคำถาม 1.17 · คำถาม 3 อันล่าสุด (26 ก.ค. / 27 ก.ค. / 3 ส.ค.) ยังไม่มีคำตอบสักข้อ **ใช้เป็นคลังค้นของเก่าได้ดี แต่อย่าบอกคนใหม่ว่าถามแล้วจะได้คำตอบ** ให้ไป Discord หรือ forum เร็วกว่า; มุมกลับที่น่าสนใจ — 1,750 คำถามค้างคือช่องสร้างชื่อที่ต้นทุนต่ำสำหรับคนไทยที่รู้เรื่องนั้นจริง ตอบแล้วเป็นผลงานที่ค้นเจอถาวรและอ้างอิงได้ ต่างจากตอบใน Discord ที่หายไปใน 3 วัน
+  <sub>qa, stackexchange, archive, unanswered, api</sub>
 
 ## Program Frameworks — Anchor / Pinocchio / native
 
