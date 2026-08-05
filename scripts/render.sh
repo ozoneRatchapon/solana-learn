@@ -30,7 +30,7 @@ last_added="$(yq -r '[.resources[].added] | sort | .[-1]' "$DATA")"
   yq -r '.categories | to_entries | .[] | [.key, .value] | @tsv' "$DATA" \
   | while IFS=$'\t' read -r key label; do
       n="$(yq -r "[.resources[] | select(.category == \"$key\")] | length" "$DATA")"
-      [ "$n" = "0" ] && continue
+      if [ "$n" = "0" ]; then continue; fi
       anchor="$(printf '%s' "$label" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9ก-๙ -]//g; s/ /-/g')"
       echo "- [$label](#$anchor) — $n"
     done
@@ -40,7 +40,7 @@ last_added="$(yq -r '[.resources[].added] | sort | .[-1]' "$DATA")"
   yq -r '.categories | to_entries | .[] | [.key, .value] | @tsv' "$DATA" \
   | while IFS=$'\t' read -r key label; do
       n="$(yq -r "[.resources[] | select(.category == \"$key\")] | length" "$DATA")"
-      [ "$n" = "0" ] && continue
+      if [ "$n" = "0" ]; then continue; fi
       echo "## $label"
       echo
       # ใช้ \x1f (unit separator) ไม่ใช่ tab — bash read ยุบ tab ที่ติดกันเป็นตัวเดียว
@@ -67,12 +67,15 @@ last_added="$(yq -r '[.resources[].added] | sort | .[-1]' "$DATA")"
             # ขีดฆ่าแทนที่จะลบทิ้ง — คนที่เจอลิงก์นี้จากที่อื่นต้องรู้ว่าเราดูแล้วและทำไมถึงไม่แนะนำ
             echo "- ~~[$name]($url)~~$badge \`เลิกใช้\`"
             echo "  $dep"
-            [ -n "$sup" ] && echo "  **ใช้แทน:** $sup"
+            if [ -n "$sup" ]; then echo "  **ใช้แทน:** $sup"; fi
           else
             echo "- [$name]($url)$badge"
           fi
-          [ -n "$note" ] && echo "  $note"
-          [ -n "$tags" ] && echo "  <sub>$tags</sub>"
+          # ใช้ if/fi ไม่ใช่ `[ ... ] && echo` — ถ้าเงื่อนไขสุดท้ายของ iteration สุดท้าย
+          # เป็นเท็จ while จะคืน exit 1 ทั้ง pipeline แล้ว set -e ฆ่า script
+          # (กับดักข้อ 2 ใน CLAUDE.md — bash 3.2 บน macOS ไม่แสดงอาการ bash 5 บน CI แสดง)
+          if [ -n "$note" ]; then echo "  $note"; fi
+          if [ -n "$tags" ]; then echo "  <sub>$tags</sub>"; fi
         done
       echo
     done

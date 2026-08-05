@@ -81,7 +81,14 @@
 ## กับดักที่เคยเจอมาแล้ว
 
 - **`IFS=$'\t' read` ยุบ field ว่าง** เพราะ tab เป็น IFS whitespace → `render.sh` เลยใช้ `\x1f` (ตัวแปร `$SEP`) ถ้าจะเขียน script ใหม่ที่อ่าน field ซึ่งอาจว่าง ให้ใช้ `$SEP` อย่าใช้ tab
-- **`set -e` + `cmd | while ...; do [ cond ] && ...; done` ใน `$(...)`** — รอบสุดท้ายที่เงื่อนไขเป็นเท็จทำให้ทั้ง pipeline คืน exit 1 แล้ว script ตายเงียบๆ ใช้ `if/fi` แทน `&&`
+- **`set -e` + `cmd | while ...; do [ cond ] && ...; done`** — รอบสุดท้ายที่เงื่อนไขเป็นเท็จทำให้ทั้ง pipeline คืน exit 1 แล้ว script ตายเงียบๆ ใช้ `if/fi` แทน `&&`
+
+  กฎที่แม่นกว่านั้น: `[ x ] && cmd` **ปลอดภัย**ในฐานะ statement ธรรมดา (set -e ยกเว้นให้ทุกคำสั่งใน `&&` list ยกเว้นตัวสุดท้าย)
+  แต่**อันตรายเมื่อเป็นคำสั่งสุดท้ายของ loop body / ฟังก์ชัน / ตัว script** เพราะ exit status ของทั้งก้อนกลายเป็น 1
+
+  **โดนจริงตอน CI รันครั้งแรก (2026-08-05):** `render.sh` มี `[ -n "$tags" ] && echo` เป็นบรรทัดสุดท้ายของ
+  `while` ที่อยู่ใน pipeline entry สุดท้ายของหมวดสุดท้ายไม่มี tags → pipeline คืน 1 → `set -e` ฆ่า script
+  **bash 3.2 บน macOS ไม่แสดงอาการ bash 5.x บน ubuntu-latest แสดง** — เขียน script ที่นี่แล้วทดสอบแค่บนเครื่องไม่พอ
 - **ไม่มี PyYAML ในเครื่อง** ใช้ `yq` (mikefarah v4) กับ `jq` เท่านั้น
 - **`add.sh` เคยทำ `resources.yml` พังทั้งไฟล์** เพราะเขียน note ลง double-quoted scalar โดยไม่ escape — พอ note มี `"` (เช่นตัวอย่างคำสั่ง jq) YAML ก็เจ๊ง แก้แล้วโดยเปลี่ยนไปใช้ single-quoted + `yesc()` ถ้าจะเขียน script ที่ append YAML เพิ่ม ใช้ท่าเดียวกัน (single-quote ต้อง escape แค่ `'` → `''`)
 - ทดสอบ script ที่เขียนลง YAML ได้โดยไม่แตะไฟล์จริง: `DATA=/tmp/copy.yml ./scripts/add.sh ...` (`REJECTED=` ก็ override ได้เหมือนกัน)

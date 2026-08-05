@@ -194,16 +194,19 @@ fi
 # ── 4. ของ generate ────────────────────────────────────────────────────────
 head_ "4. CATALOG.md ตรงกับ YAML"
 
-tmp="$(mktemp)"; trap 'rm -f "$tmp"' EXIT
+tmp="$(mktemp)"; err="$(mktemp)"; trap 'rm -f "$tmp" "$err"' EXIT
 cp "$REPO_ROOT/CATALOG.md" "$tmp"
-if "$REPO_ROOT/scripts/render.sh" >/dev/null 2>&1; then
+# เก็บ stderr ไว้แสดงตอนพัง — เดิมกลืนทิ้งแล้วบอกแค่ "รันไม่ผ่าน"
+# ซึ่งทำให้ CI แดงโดยไม่มีใครรู้สาเหตุ ตัวตรวจที่ไม่บอกว่าพังเพราะอะไรก็ตรวจได้ครึ่งเดียว
+if "$REPO_ROOT/scripts/render.sh" >/dev/null 2>"$err"; then
   if diff -q "$tmp" "$REPO_ROOT/CATALOG.md" >/dev/null; then
     ok "CATALOG.md เป็นผลของ render.sh ล่าสุด"
   else
     bad "CATALOG.md ไม่ตรงกับ YAML — ลืมรัน ./scripts/render.sh (ไฟล์ถูก render ใหม่ให้แล้ว)"
   fi
 else
-  bad "render.sh รันไม่ผ่าน"
+  bad "render.sh รันไม่ผ่าน:"
+  sed 's/^/      /' "$err" >&2
   cp "$tmp" "$REPO_ROOT/CATALOG.md"
 fi
 
