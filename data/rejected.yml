@@ -111,3 +111,7 @@ rejected:
     superseded_by: https://solana.com/news/announcing-real-time-emissions-measurement-on-the-solana-blockchain
     checked: 2026-08-05
 
+
+  - url: https://a16z.com/product-hunt-a-passion-for-products-the-makers-behind-them-and-the-community-around-them/
+    reason: 'ประกาศการลงทุนของ a16z ใน Product Hunt เขียนโดย Steven Sinofsky ลงวันที่ 8 ต.ค. 2014 — ตรวจแล้วไม่มีคำว่า Solana, คริปโต, บล็อกเชน หรือ Web3 เลยแม้แต่คำเดียว และเก่า 12 ปี เกณฑ์เดียวกับที่ใช้ปฏิเสธ katgpt-rs และ spider-rs; **แต่ประเด็นในบทความเกี่ยวกับปัญหาของเราจริง** — เขาเขียนว่า "ของถูกสร้างเร็วขึ้นกว่าเดิมมาก แต่การทำให้คนเห็นและเชื่อมกับผู้ใช้ยากขึ้น" ซึ่งตรงกับช่องว่างที่ OPPORTUNITIES 1.1 ระบุไว้เองว่าครึ่งที่ขาดคือ distribution ไม่ใช่ CI และวิธีที่ Product Hunt แก้คือ curation กับการสื่อสารสองทาง ไม่ใช่รีวิวทางเดียว ซึ่งเป็นสิ่งเดียวกับที่โน้ตในแคตตาล็อกนี้ทำ — **ความคิดนี้ควรอยู่ใน OPPORTUNITIES ไม่ใช่ resources.yml** เพราะมันคือบทเรียนเชิงกลยุทธ์ ไม่ใช่ resource ของระบบนิเวศ Solana'
+    checked: 2026-08-06
