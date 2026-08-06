@@ -3,7 +3,7 @@
 > ไฟล์นี้ถูก generate จาก [data/resources.yml](data/resources.yml) — **อย่าแก้ตรงนี้**
 > แก้ที่ YAML แล้วรัน `./scripts/render.sh`
 
-รวม **202** รายการ · ข้อมูลล่าสุด 2026-08-06
+รวม **205** รายการ · ข้อมูลล่าสุด 2026-08-06
 
 หมายเหตุสถานะ: `blocked` = เว็บกัน bot ตอน curl (ลิงก์ยังใช้ได้), `unverified` = เช็คอัตโนมัติไม่ผ่าน ต้องดูด้วยตา
 
@@ -17,7 +17,7 @@
 - [IDL & Codegen](#idl--codegen) — 4
 - [Tokens & NFT — SPL, Token-2022, Metaplex](#tokens--nft--spl-token-2022-metaplex) — 7
 - [Payments & Commerce](#payments--commerce) — 23
-- [Security & Audit](#security--audit) — 5
+- [Security & Audit](#security--audit) — 7
 - [AI / Agent Skills / MCP](#ai--agent-skills--mcp) — 19
 - [Infra & RPC providers](#infra--rpc-providers) — 12
 - [Data & Analytics](#data--analytics) — 13
@@ -26,7 +26,7 @@
 - [Protocol internals — Agave, Firedancer, network upgrades](#protocol-internals--agave-firedancer-network-upgrades) — 8
 - [Governance — SGP, SIMD, โหวตบนเชน](#governance--sgp-simd-โหวตบนเชน) — 9
 - [Green software — พลังงาน คาร์บอน ประสิทธิภาพ](#green-software--พลังงาน-คาร์บอน-ประสิทธิภาพ) — 4
-- [Funding — grants, hackathon, bounty, jobs](#funding--grants-hackathon-bounty-jobs) — 17
+- [Funding — grants, hackathon, bounty, jobs](#funding--grants-hackathon-bounty-jobs) — 18
 - [Thailand — ชุมชนไทย](#thailand--ชุมชนไทย) — 4
 
 ## Official — Foundation & Anza (source of truth ตัวจริง)
@@ -360,6 +360,12 @@
 - [Neodyme Blog](https://neodyme.io/en/blog/)
   บล็อกของทีม audit ที่เจาะ Solana โดยเฉพาะ — เขียนถึงช่องโหว่จริงที่เคยเจอในโปรแกรมจริง ใช้เป็นวัตถุดิบสอนว่าโค้ดพังหน้าตาเป็นยังไง ซึ่งมีน้ำหนักกว่าการท่องรายการ best practice; อ่านคู่กับคอร์สความปลอดภัยของ Blueshift ในหมวดเดียวกัน
   <sub>audit, writeup, exploit</sub>
+- [Helius — ZK proof ตอนที่ 1: พื้นฐาน](https://www.helius.dev/blog/zero-knowledge-proofs-an-introduction-to-the-fundamentals) `vendor`
+  บทความยาวมาก (ข้อความล้วนราว 67,000 ตัวอักษร) ปูพื้น zero-knowledge proof ตั้งแต่ต้น — เป็นตอนที่ 1 ของสองตอน ตอนที่ 2 ว่าด้วยการใช้งานบน Solana โดยเฉพาะ; **อ่านตัวนี้ก่อนถ้ายังไม่เคยแตะ ZK** เพราะเนื้อหาฝั่ง Solana อย่าง Token-2022 confidential transfer, ZK compression ของ Light Protocol และ private channels สมมติว่าผู้อ่านรู้พื้นฐานแล้วทั้งหมด; เป็นของ vendor แต่เขียนแบบสอนไม่ใช่ขายของ ยาวขนาดนี้เอามาย่อยเป็นคอนเทนต์ไทยได้หลายตอน
+  <sub>zk, cryptography, fundamentals, longform, explainer</sub>
+- [Helius — ZK proof ตอนที่ 2: ใช้จริงบน Solana](https://www.helius.dev/blog/zero-knowledge-proofs-its-applications-on-solana) `vendor`
+  ตอนที่ 2 ต่อจากพื้นฐาน — ว่าด้วยว่า ZK ถูกใช้จริงตรงไหนบน Solana; **ตัวนี้คือสะพานที่หายไป** ระหว่างทฤษฎีกับของที่เก็บไว้ในแคตตาล็อกแล้ว: Token-2022 confidential transfer, ZK compression ของ Light Protocol, และ solana-private-channels ที่ใช้ ZK proof ตอนถอนเงิน ทั้งสามตัวนั้นสมมติว่าผู้อ่านรู้แล้วว่า ZK ทำงานยังไง; อ่านคู่กับตอนที่ 1 ตามลำดับ อย่าข้ามมาอ่านตัวนี้ก่อน
+  <sub>zk, solana, applications, confidential-transfer, compression</sub>
 
 ## AI / Agent Skills / MCP
 
@@ -678,6 +684,9 @@
 - [MagicBlock RFPs — 12 โจทย์ที่เขาอยากให้มีคนสร้าง](https://build.magicblock.app/rfps) `vendor`
   รายการโจทย์ที่ MagicBlock อยากให้มีคนทำ 12 ข้อ แต่ละข้อบอกหมวด คำโปรย และ **ระดับความยาก weekend / grind / moonshot** ซึ่งช่วยจับคู่กับเวลาที่มีจริงได้โดยไม่ต้องเดา — weekend มี 4 ข้อ (Live Auction House, Pay-Per-Second Streaming, Token-Gated Live Spaces, Reaction Battle Royale) · grind 5 ข้อ (Real-Time Onchain Poker, Multiplayer Physics Arena, Live-Event Prediction Markets, Agent-vs-Agent Arena, Private Sealed-Bid Auctions) · moonshot 3 ข้อ (Tick-Based Strategy Game, Sub-Second Order Book, DePIN Micro-Settlement Rail); **ค่าที่แท้จริงคือแก้ปัญหา "ไม่รู้จะทำอะไร" ซึ่งเป็นด่านแรกของทุกแฮกกาธอน**; หน้าเว็บ render ฝั่ง client (อ่านได้ 278 จาก 25,204 byte) ข้อมูลจริงอยู่ที่ /api/rfps เป็น JSON เปิด ไม่ต้องล็อกอิน; **ข้อควรระวังเรื่องตัวเลข — 11 จาก 12 ข้อขึ้น buildCount = 6 เท่ากันเป๊ะ เพราะ API ตัดรายการที่ 6 ไม่ใช่ว่ามีคนทำ 6 ทีมพอดี** ตัวเลขจริงคือ "อย่างน้อย 6" ส่วน DePIN Micro-Settlement Rail มี 3 ซึ่งเป็นเลขจริงเพราะต่ำกว่าเพดาน รวม project id ไม่ซ้ำกัน 55 ตัว
   <sub>rfp, project-idea, hackathon, difficulty, api</sub>
+- [Alchemy Solana Fund — เครดิต $20M (ไม่ใช่เงินสด)](https://www.alchemy.com/solana-20m-fund) `vendor`
+  โครงการมูลค่ารวม $20M ให้ทีมที่สร้างบน Solana **สูงสุด $25K ต่อทีม** ทำร่วมกับ Superteam, Solana Foundation และ Monke Foundry — สมัครผ่านฟอร์ม (ชื่อ บริษัท เว็บโปรเจกต์ อีเมล Telegram ผู้ให้บริการ infra ปัจจุบัน คำอธิบายโปรเจกต์) ตอบกลับภายใน 5 วันทำการ ให้ทดลอง 90 วัน ระบุว่าไม่มี lock-in และไม่มี proprietary API; **จุดที่ต้องเข้าใจก่อนตื่นเต้น — เป็นเครดิตค่าบริการ infra ของ Alchemy ไม่ใช่เงินที่เอาไปใช้อะไรก็ได้** ต่างจาก grant ของ Foundation หรือ Superteam Microgrant $10k ที่เป็นเงินจริง มีค่าถ้ากำลังจะจ่ายค่า RPC อยู่แล้ว แต่ไม่ได้แก้ปัญหาว่าไม่มีทุนทำงาน; ไม่ระบุเดดไลน์ เป็นการรับต่อเนื่อง
+  <sub>credits, infrastructure, rpc, superteam, rolling</sub>
 
 ## Thailand — ชุมชนไทย
 

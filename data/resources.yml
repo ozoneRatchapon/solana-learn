@@ -1880,3 +1880,30 @@ resources:
     note: 'ทอล์ก 13 นาทีจาก RustConf 2025 (ช่อง Rust Foundation, เผยแพร่ 3 ต.ค. 2025, ~1,700 view) โดย Alessandro Decina วิศวกรฝั่ง core ของ Solana — พูดในฐานะ Diamond Sponsor ว่ากำลังสร้าง "decentralized Nasdaq" มีสไลด์แนบในคำอธิบายวิดีโอ; **ค่าที่ต่างจากคอนเทนต์ Solana ทั่วไปคือผู้ฟังเป็นคน Rust ไม่ใช่คนคริปโต** — เขาเลยต้องอธิบายว่าทำไมข้อจำกัดด้านประสิทธิภาพถึงสำคัญโดยไม่พึ่งศัพท์คริปโต ซึ่งเป็นวิธีเล่าที่เอามาใช้กับคนไทยสาย backend ที่ยังไม่อินคริปโตได้ตรงๆ; ชื่อทอล์กเป็นมุกแต่เนื้อหาเป็นเรื่องจริงจังเรื่องการรีดประสิทธิภาพระดับ validator อ่านคู่กับ sbpf และ solana_optimized_programs ในหมวด framework'
     status: ok
     added: 2026-08-06
+
+  - url: https://www.alchemy.com/solana-20m-fund
+    name: 'Alchemy Solana Fund — เครดิต $20M (ไม่ใช่เงินสด)'
+    category: funding
+    source: vendor
+    tags: [credits, infrastructure, rpc, superteam, rolling]
+    note: 'โครงการมูลค่ารวม $20M ให้ทีมที่สร้างบน Solana **สูงสุด $25K ต่อทีม** ทำร่วมกับ Superteam, Solana Foundation และ Monke Foundry — สมัครผ่านฟอร์ม (ชื่อ บริษัท เว็บโปรเจกต์ อีเมล Telegram ผู้ให้บริการ infra ปัจจุบัน คำอธิบายโปรเจกต์) ตอบกลับภายใน 5 วันทำการ ให้ทดลอง 90 วัน ระบุว่าไม่มี lock-in และไม่มี proprietary API; **จุดที่ต้องเข้าใจก่อนตื่นเต้น — เป็นเครดิตค่าบริการ infra ของ Alchemy ไม่ใช่เงินที่เอาไปใช้อะไรก็ได้** ต่างจาก grant ของ Foundation หรือ Superteam Microgrant $10k ที่เป็นเงินจริง มีค่าถ้ากำลังจะจ่ายค่า RPC อยู่แล้ว แต่ไม่ได้แก้ปัญหาว่าไม่มีทุนทำงาน; ไม่ระบุเดดไลน์ เป็นการรับต่อเนื่อง'
+    status: ok
+    added: 2026-08-06
+
+  - url: https://www.helius.dev/blog/zero-knowledge-proofs-an-introduction-to-the-fundamentals
+    name: 'Helius — ZK proof ตอนที่ 1: พื้นฐาน'
+    category: security
+    source: vendor
+    tags: [zk, cryptography, fundamentals, longform, explainer]
+    note: 'บทความยาวมาก (ข้อความล้วนราว 67,000 ตัวอักษร) ปูพื้น zero-knowledge proof ตั้งแต่ต้น — เป็นตอนที่ 1 ของสองตอน ตอนที่ 2 ว่าด้วยการใช้งานบน Solana โดยเฉพาะ; **อ่านตัวนี้ก่อนถ้ายังไม่เคยแตะ ZK** เพราะเนื้อหาฝั่ง Solana อย่าง Token-2022 confidential transfer, ZK compression ของ Light Protocol และ private channels สมมติว่าผู้อ่านรู้พื้นฐานแล้วทั้งหมด; เป็นของ vendor แต่เขียนแบบสอนไม่ใช่ขายของ ยาวขนาดนี้เอามาย่อยเป็นคอนเทนต์ไทยได้หลายตอน'
+    status: ok
+    added: 2026-08-06
+
+  - url: https://www.helius.dev/blog/zero-knowledge-proofs-its-applications-on-solana
+    name: 'Helius — ZK proof ตอนที่ 2: ใช้จริงบน Solana'
+    category: security
+    source: vendor
+    tags: [zk, solana, applications, confidential-transfer, compression]
+    note: 'ตอนที่ 2 ต่อจากพื้นฐาน — ว่าด้วยว่า ZK ถูกใช้จริงตรงไหนบน Solana; **ตัวนี้คือสะพานที่หายไป** ระหว่างทฤษฎีกับของที่เก็บไว้ในแคตตาล็อกแล้ว: Token-2022 confidential transfer, ZK compression ของ Light Protocol, และ solana-private-channels ที่ใช้ ZK proof ตอนถอนเงิน ทั้งสามตัวนั้นสมมติว่าผู้อ่านรู้แล้วว่า ZK ทำงานยังไง; อ่านคู่กับตอนที่ 1 ตามลำดับ อย่าข้ามมาอ่านตัวนี้ก่อน'
+    status: ok
+    added: 2026-08-06

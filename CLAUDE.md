@@ -143,6 +143,11 @@ cargo run -p slcat -- audit      # เท่ากับ audit.sh ชั้น 1
   และ `LC_ALL=C` ก็ reproduce ไม่ได้ เพราะ BSD sed ไม่สนใจ locale ตรงนี้
   **ทางแก้: เปลี่ยนจาก "เก็บเฉพาะอักษรที่ระบุ" เป็น "ลบเครื่องหมายวรรคตอนที่ระบุ"** — ไม่มี range ก็ไม่มี collation
   ให้ตีความ กฎกว้างกว่านั้น: **อย่าใช้ range ของอักขระ non-ASCII ใน bracket expression เลย**
+- **จำนวนเงินที่ขึ้นต้นด้วย `$` ในสตริง double-quote ของ bash จะหายไป** — `-n "เครดิต $20M"`
+  bash ตีความ `$20` เป็น positional parameter ที่ว่างเปล่า ชื่อจึงกลายเป็น "เครดิต M" **โดยไม่มี error**
+  เจอกับ Alchemy Solana Fund 6 ส.ค. 2026 · โน้ตรอดเพราะบังเอิญใช้ single-quote
+  **กฎ: argument ที่มี `$` ต้องใช้ single-quote เสมอ** ทั้ง `-n` และ `-m` และตรวจผลหลังรัน add.sh
+  ตระกูลเดียวกับบั๊ก escape ของ YAML ด้านล่าง — ทั้งคู่คือ "พังเงียบ ไม่มีสัญญาณเตือน"
 - **`add.sh` เคยทำ `resources.yml` พังทั้งไฟล์** เพราะเขียน note ลง double-quoted scalar โดยไม่ escape — พอ note มี `"` (เช่นตัวอย่างคำสั่ง jq) YAML ก็เจ๊ง แก้แล้วโดยเปลี่ยนไปใช้ single-quoted + `yesc()` ถ้าจะเขียน script ที่ append YAML เพิ่ม ใช้ท่าเดียวกัน (single-quote ต้อง escape แค่ `'` → `''`)
 - ทดสอบ script ที่เขียนลง YAML ได้โดยไม่แตะไฟล์จริง: `DATA=/tmp/copy.yml ./scripts/add.sh ...` (`REJECTED=` ก็ override ได้เหมือนกัน)
 - **`yq -i` เขียนไฟล์ใหม่ทั้งไฟล์ → บรรทัดว่างระหว่าง entry หายหมด** (ลองแล้ว 1599 → 1427 บรรทัด) comment หัวไฟล์รอด แต่ไฟล์อ่านยากขึ้นมาก และ `resources.yml` เป็นไฟล์ที่คนแก้ด้วยมือด้วย **อย่าใช้ `yq -i` กับไฟล์ข้อมูล** ให้ใช้ awk แก้เฉพาะบรรทัดแบบที่ `linkcheck.sh --fix` และ `setnote.sh` ทำ
