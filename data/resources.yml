@@ -1871,3 +1871,12 @@ resources:
     note: 'primitive สำหรับการจ่ายเงินแบบ agentic รองรับ x402 กับ MPP — **README ขึ้นธง 🚧 Work in progress เอง** ★4 สร้าง เม.ย. 2026 แต่ push วันนี้ (6 ส.ค. 2026) แปลว่ายังทำอยู่จริงไม่ใช่ของทิ้ง; **อย่าสับสนกับ solana-private-channels ที่เก็บไว้แล้ว** — ตัวนั้น ★61 เป็น payment channel ระดับองค์กรที่เน้นความเป็นส่วนตัวและ throughput ส่วนตัวนี้เป็น primitive ฝั่ง agentic payment คนละโจทย์กัน; เก็บเพราะเป็นชิ้นที่หายไปในภาพรวมสาย agent ที่เก็บมาทั้งวัน (Agent Registry ให้ตัวตน · Earn ให้งาน · pay.sh ให้จ่าย) ตัวนี้คือชั้น primitive ที่อยู่ใต้ pay.sh อีกที — **ยังใช้ทำอะไรจริงไม่ได้ เก็บไว้ดูทิศทาง ไม่ใช่เอาไปใช้**'
     status: ok
     added: 2026-08-06
+
+  - url: https://www.youtube.com/watch?v=AqKFBEvwqqg
+    name: 'RustConf 2025 — "Blazing-Fast Magic Beans" (Alessandro Decina, Solana)'
+    category: protocol
+    source: foundation
+    tags: [rustconf, talk, video, rust, validator, performance]
+    note: 'ทอล์ก 13 นาทีจาก RustConf 2025 (ช่อง Rust Foundation, เผยแพร่ 3 ต.ค. 2025, ~1,700 view) โดย Alessandro Decina วิศวกรฝั่ง core ของ Solana — พูดในฐานะ Diamond Sponsor ว่ากำลังสร้าง "decentralized Nasdaq" มีสไลด์แนบในคำอธิบายวิดีโอ; **ค่าที่ต่างจากคอนเทนต์ Solana ทั่วไปคือผู้ฟังเป็นคน Rust ไม่ใช่คนคริปโต** — เขาเลยต้องอธิบายว่าทำไมข้อจำกัดด้านประสิทธิภาพถึงสำคัญโดยไม่พึ่งศัพท์คริปโต ซึ่งเป็นวิธีเล่าที่เอามาใช้กับคนไทยสาย backend ที่ยังไม่อินคริปโตได้ตรงๆ; ชื่อทอล์กเป็นมุกแต่เนื้อหาเป็นเรื่องจริงจังเรื่องการรีดประสิทธิภาพระดับ validator อ่านคู่กับ sbpf และ solana_optimized_programs ในหมวด framework'
+    status: ok
+    added: 2026-08-06

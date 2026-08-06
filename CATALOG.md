@@ -3,7 +3,7 @@
 > ไฟล์นี้ถูก generate จาก [data/resources.yml](data/resources.yml) — **อย่าแก้ตรงนี้**
 > แก้ที่ YAML แล้วรัน `./scripts/render.sh`
 
-รวม **201** รายการ · ข้อมูลล่าสุด 2026-08-06
+รวม **202** รายการ · ข้อมูลล่าสุด 2026-08-06
 
 หมายเหตุสถานะ: `blocked` = เว็บกัน bot ตอน curl (ลิงก์ยังใช้ได้), `unverified` = เช็คอัตโนมัติไม่ผ่าน ต้องดูด้วยตา
 
@@ -23,7 +23,7 @@
 - [Data & Analytics](#data--analytics) — 13
 - [DeFi & Ecosystem protocols](#defi--ecosystem-protocols) — 13
 - [Mobile](#mobile) — 2
-- [Protocol internals — Agave, Firedancer, network upgrades](#protocol-internals--agave-firedancer-network-upgrades) — 7
+- [Protocol internals — Agave, Firedancer, network upgrades](#protocol-internals--agave-firedancer-network-upgrades) — 8
 - [Governance — SGP, SIMD, โหวตบนเชน](#governance--sgp-simd-โหวตบนเชน) — 9
 - [Green software — พลังงาน คาร์บอน ประสิทธิภาพ](#green-software--พลังงาน-คาร์บอน-ประสิทธิภาพ) — 4
 - [Funding — grants, hackathon, bounty, jobs](#funding--grants-hackathon-bounty-jobs) — 17
@@ -576,6 +576,9 @@
 - [Agave 4.2 — รวมสามอย่างที่กระทบ dev มากที่สุดปีนี้](https://solana.com/upgrades/agave-4-2-release-overview) `official`
   เริ่มเปิด feature บน mainnet 17 ส.ค. 2026 ไม่มี breaking change แต่ของข้างในกระทบวิธีออกแบบแอปจริง สามตัว: (1) SIMD-0437 ลดค่า rent 90% ทยอยผ่าน 5 feature gate — SPL token account จาก ~$0.159 เหลือ ~$0.0159 แปลว่าธุรกิจออกค่าเปิดบัญชีให้ผู้ใช้ทั้งหมดเริ่มเป็นไปได้จริงในเชิงต้นทุน ต่อกับ fee-abstraction/Kora ในหมวด payments ได้พอดี (2) SIMD-0296 transaction v1 ขยายขนาดสูงสุด 1,232 -> 4,096 byte งานที่เคยยัดไม่ลง tx เดียวอย่าง ZK proof หรือ multisig ใหญ่ ทำแบบ atomic ได้แล้ว ต้อง opt-in เอง และ indexer ต้องรองรับ layout ใหม่ (3) SIMD-0525 ลด slot 400ms -> 200ms ทีละ 50ms สี่ครั้ง; Alpenglow โค้ดเสร็จใน 4.2 แล้วแต่ยังไม่เปิด รอ 4.3 ต.ค. 2026
   <sub>agave, rent, transaction-size, slot-time, simd, deadline-aug-2026</sub>
+- [RustConf 2025 — "Blazing-Fast Magic Beans" (Alessandro Decina, Solana)](https://www.youtube.com/watch?v=AqKFBEvwqqg) `official`
+  ทอล์ก 13 นาทีจาก RustConf 2025 (ช่อง Rust Foundation, เผยแพร่ 3 ต.ค. 2025, ~1,700 view) โดย Alessandro Decina วิศวกรฝั่ง core ของ Solana — พูดในฐานะ Diamond Sponsor ว่ากำลังสร้าง "decentralized Nasdaq" มีสไลด์แนบในคำอธิบายวิดีโอ; **ค่าที่ต่างจากคอนเทนต์ Solana ทั่วไปคือผู้ฟังเป็นคน Rust ไม่ใช่คนคริปโต** — เขาเลยต้องอธิบายว่าทำไมข้อจำกัดด้านประสิทธิภาพถึงสำคัญโดยไม่พึ่งศัพท์คริปโต ซึ่งเป็นวิธีเล่าที่เอามาใช้กับคนไทยสาย backend ที่ยังไม่อินคริปโตได้ตรงๆ; ชื่อทอล์กเป็นมุกแต่เนื้อหาเป็นเรื่องจริงจังเรื่องการรีดประสิทธิภาพระดับ validator อ่านคู่กับ sbpf และ solana_optimized_programs ในหมวด framework
+  <sub>rustconf, talk, video, rust, validator, performance</sub>
 
 ## Governance — SGP, SIMD, โหวตบนเชน
 
