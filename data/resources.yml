@@ -1907,3 +1907,30 @@ resources:
     note: 'ตอนที่ 2 ต่อจากพื้นฐาน — ว่าด้วยว่า ZK ถูกใช้จริงตรงไหนบน Solana; **ตัวนี้คือสะพานที่หายไป** ระหว่างทฤษฎีกับของที่เก็บไว้ในแคตตาล็อกแล้ว: Token-2022 confidential transfer, ZK compression ของ Light Protocol, และ solana-private-channels ที่ใช้ ZK proof ตอนถอนเงิน ทั้งสามตัวนั้นสมมติว่าผู้อ่านรู้แล้วว่า ZK ทำงานยังไง; อ่านคู่กับตอนที่ 1 ตามลำดับ อย่าข้ามมาอ่านตัวนี้ก่อน'
     status: ok
     added: 2026-08-06
+
+  - url: https://github.com/solana-foundation/curriculum
+    name: 'Solana Curriculum — สื่อการสอนทางการสำหรับมหาวิทยาลัยและ bootcamp'
+    category: learning
+    source: foundation
+    tags: [curriculum, teaching, workshop, course-plan, university]
+    note: 'ชุดสื่อการสอน Solana ที่ Foundation ทำให้มหาวิทยาลัยและ bootcamp เอาไปใช้ (★193) มี 7 คอร์ส — blockchain-basics, rust-basics-for-solana-development, anchor-and-programs, spl-tokens-2022-and-extensions, web-for-solana-development-101, web3-solana-starter-pack, defi-on-jupiter แต่ละคอร์สมี course-plan แยก; **นี่คือของที่ตรงกับงาน community operator มากที่สุดในแคตตาล็อกทั้งหมด** เพราะไม่ต้องออกแบบหลักสูตรเองตั้งแต่ต้น หยิบโครงมาปรับเป็นภาษาไทยแล้วต่อกับ quest ของ Genesis ได้เลย; **ข้อควรระวังสองข้อ** — ไม่มี license ตามกฎหมายจึงเอาไปดัดแปลงไม่ได้จนกว่าจะถาม (ปัญหาเดียวกับ solana-rust-vscode-course) และ push ล่าสุด ม.ค. 2026 คือเงียบมา 7 เดือน ต้องเช็คว่าเนื้อหายังตรงกับ Anchor 1.0 และ Kit หรือยังก่อนเอาไปสอน'
+    status: ok
+    added: 2026-08-06
+
+  - url: https://www.helius.dev/blog/solana-virtual-machine
+    name: 'Helius — Solana Virtual Machine (SVM) อธิบายยาว'
+    category: protocol
+    source: vendor
+    tags: [svm, runtime, deep-dive, longform, explainer]
+    note: 'บทความยาวมาก (ข้อความล้วนราว 93,000 ตัวอักษร ยาวที่สุดในแคตตาล็อกตอนนี้) อธิบาย SVM ตั้งแต่รากว่ารันโปรแกรมยังไง จัดการ account ยังไง และทำไมถึงขนานได้ — **จำเป็นถ้าจะเข้าใจว่าทำไม MagicBlock ถึงสร้าง Ephemeral Rollup เป็น SVM runtime แยก และทำไม LiteSVM ถึงเทสได้เร็วโดยไม่ต้องมี validator** ซึ่งสองอย่างนี้อยู่ในแคตตาล็อกแล้วแต่สมมติว่าผู้อ่านรู้จัก SVM; อ่านคู่กับทอล์ก RustConf ของ Alessandro Decina ที่พูดเรื่องรีดประสิทธิภาพระดับ validator'
+    status: ok
+    added: 2026-08-06
+
+  - url: https://www.guibibeau.com/blog/proof-of-history-explained
+    name: 'Proof of History อธิบายแบบเข้าใจได้'
+    category: protocol
+    source: community
+    tags: [poh, consensus, explainer, fundamentals]
+    note: 'อธิบาย Proof of History ซึ่งเป็นกลไกที่คนเข้าใจผิดบ่อยที่สุดเรื่องหนึ่งของ Solana — หลายคนคิดว่าเป็น consensus ทั้งที่จริงเป็นนาฬิกาที่ทำให้ validator ตกลงเรื่องลำดับเวลาได้โดยไม่ต้องคุยกัน; เขียนโดย GuiBibeau คนเดียวกับที่ทำ Harness ในหมวด defi — เป็นนักพัฒนาที่ทำของจริงไม่ใช่นักเขียนคอนเทนต์อย่างเดียว; ใช้เป็นตัวส่งให้คนไทยที่ถามว่า "Solana เร็วเพราะอะไร" ซึ่งตอบด้วย PoH อย่างเดียวไม่พอแต่เป็นจุดเริ่มที่ถูก'
+    status: ok
+    added: 2026-08-06

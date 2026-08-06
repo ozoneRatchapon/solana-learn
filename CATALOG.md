@@ -3,14 +3,14 @@
 > ไฟล์นี้ถูก generate จาก [data/resources.yml](data/resources.yml) — **อย่าแก้ตรงนี้**
 > แก้ที่ YAML แล้วรัน `./scripts/render.sh`
 
-รวม **205** รายการ · ข้อมูลล่าสุด 2026-08-06
+รวม **208** รายการ · ข้อมูลล่าสุด 2026-08-06
 
 หมายเหตุสถานะ: `blocked` = เว็บกัน bot ตอน curl (ลิงก์ยังใช้ได้), `unverified` = เช็คอัตโนมัติไม่ผ่าน ต้องดูด้วยตา
 
 ## สารบัญ
 
 - [Official — Foundation & Anza (source of truth ตัวจริง)](#official--foundation--anza-source-of-truth-ตัวจริง) — 18
-- [Learning — คอร์ส, bootcamp, tutorial](#learning--คอร์ส-bootcamp-tutorial) — 17
+- [Learning — คอร์ส, bootcamp, tutorial](#learning--คอร์ส-bootcamp-tutorial) — 18
 - [Program Frameworks — Anchor / Pinocchio / native](#program-frameworks--anchor--pinocchio--native) — 12
 - [Client SDK — Kit, web3.js, scaffolding](#client-sdk--kit-web3js-scaffolding) — 10
 - [Testing — LiteSVM, Mollusk, Surfpool](#testing--litesvm-mollusk-surfpool) — 5
@@ -23,7 +23,7 @@
 - [Data & Analytics](#data--analytics) — 13
 - [DeFi & Ecosystem protocols](#defi--ecosystem-protocols) — 13
 - [Mobile](#mobile) — 2
-- [Protocol internals — Agave, Firedancer, network upgrades](#protocol-internals--agave-firedancer-network-upgrades) — 8
+- [Protocol internals — Agave, Firedancer, network upgrades](#protocol-internals--agave-firedancer-network-upgrades) — 10
 - [Governance — SGP, SIMD, โหวตบนเชน](#governance--sgp-simd-โหวตบนเชน) — 9
 - [Green software — พลังงาน คาร์บอน ประสิทธิภาพ](#green-software--พลังงาน-คาร์บอน-ประสิทธิภาพ) — 4
 - [Funding — grants, hackathon, bounty, jobs](#funding--grants-hackathon-bounty-jobs) — 18
@@ -141,6 +141,9 @@
 - [Solana Stack Exchange — คลังคำถามที่ค้นได้ (แต่คนตอบน้อย)](https://solana.stackexchange.com/)
   ถาม-ตอบแบบ Stack Exchange ที่ค้นย้อนหลังได้และมี API สาธารณะ — ตัวเลขจริงจาก api.stackexchange.com วันที่ 6 ส.ค. 2026: คำถาม 8,226 · คำตอบ 9,606 · ผู้ใช้ 50,119; **แต่ต้องรู้ก่อนส่งให้มือใหม่** — ไม่มีคำตอบเลย 1,750 ข้อ (21%) และมีคำตอบที่เจ้าของรับแล้วแค่ 34% เฉลี่ยคำตอบต่อคำถาม 1.17 · คำถาม 3 อันล่าสุด (26 ก.ค. / 27 ก.ค. / 3 ส.ค.) ยังไม่มีคำตอบสักข้อ **ใช้เป็นคลังค้นของเก่าได้ดี แต่อย่าบอกคนใหม่ว่าถามแล้วจะได้คำตอบ** ให้ไป Discord หรือ forum เร็วกว่า; มุมกลับที่น่าสนใจ — 1,750 คำถามค้างคือช่องสร้างชื่อที่ต้นทุนต่ำสำหรับคนไทยที่รู้เรื่องนั้นจริง ตอบแล้วเป็นผลงานที่ค้นเจอถาวรและอ้างอิงได้ ต่างจากตอบใน Discord ที่หายไปใน 3 วัน
   <sub>qa, stackexchange, archive, unanswered, api</sub>
+- [Solana Curriculum — สื่อการสอนทางการสำหรับมหาวิทยาลัยและ bootcamp](https://github.com/solana-foundation/curriculum) `official`
+  ชุดสื่อการสอน Solana ที่ Foundation ทำให้มหาวิทยาลัยและ bootcamp เอาไปใช้ (★193) มี 7 คอร์ส — blockchain-basics, rust-basics-for-solana-development, anchor-and-programs, spl-tokens-2022-and-extensions, web-for-solana-development-101, web3-solana-starter-pack, defi-on-jupiter แต่ละคอร์สมี course-plan แยก; **นี่คือของที่ตรงกับงาน community operator มากที่สุดในแคตตาล็อกทั้งหมด** เพราะไม่ต้องออกแบบหลักสูตรเองตั้งแต่ต้น หยิบโครงมาปรับเป็นภาษาไทยแล้วต่อกับ quest ของ Genesis ได้เลย; **ข้อควรระวังสองข้อ** — ไม่มี license ตามกฎหมายจึงเอาไปดัดแปลงไม่ได้จนกว่าจะถาม (ปัญหาเดียวกับ solana-rust-vscode-course) และ push ล่าสุด ม.ค. 2026 คือเงียบมา 7 เดือน ต้องเช็คว่าเนื้อหายังตรงกับ Anchor 1.0 และ Kit หรือยังก่อนเอาไปสอน
+  <sub>curriculum, teaching, workshop, course-plan, university</sub>
 
 ## Program Frameworks — Anchor / Pinocchio / native
 
@@ -585,6 +588,12 @@
 - [RustConf 2025 — "Blazing-Fast Magic Beans" (Alessandro Decina, Solana)](https://www.youtube.com/watch?v=AqKFBEvwqqg) `official`
   ทอล์ก 13 นาทีจาก RustConf 2025 (ช่อง Rust Foundation, เผยแพร่ 3 ต.ค. 2025, ~1,700 view) โดย Alessandro Decina วิศวกรฝั่ง core ของ Solana — พูดในฐานะ Diamond Sponsor ว่ากำลังสร้าง "decentralized Nasdaq" มีสไลด์แนบในคำอธิบายวิดีโอ; **ค่าที่ต่างจากคอนเทนต์ Solana ทั่วไปคือผู้ฟังเป็นคน Rust ไม่ใช่คนคริปโต** — เขาเลยต้องอธิบายว่าทำไมข้อจำกัดด้านประสิทธิภาพถึงสำคัญโดยไม่พึ่งศัพท์คริปโต ซึ่งเป็นวิธีเล่าที่เอามาใช้กับคนไทยสาย backend ที่ยังไม่อินคริปโตได้ตรงๆ; ชื่อทอล์กเป็นมุกแต่เนื้อหาเป็นเรื่องจริงจังเรื่องการรีดประสิทธิภาพระดับ validator อ่านคู่กับ sbpf และ solana_optimized_programs ในหมวด framework
   <sub>rustconf, talk, video, rust, validator, performance</sub>
+- [Helius — Solana Virtual Machine (SVM) อธิบายยาว](https://www.helius.dev/blog/solana-virtual-machine) `vendor`
+  บทความยาวมาก (ข้อความล้วนราว 93,000 ตัวอักษร ยาวที่สุดในแคตตาล็อกตอนนี้) อธิบาย SVM ตั้งแต่รากว่ารันโปรแกรมยังไง จัดการ account ยังไง และทำไมถึงขนานได้ — **จำเป็นถ้าจะเข้าใจว่าทำไม MagicBlock ถึงสร้าง Ephemeral Rollup เป็น SVM runtime แยก และทำไม LiteSVM ถึงเทสได้เร็วโดยไม่ต้องมี validator** ซึ่งสองอย่างนี้อยู่ในแคตตาล็อกแล้วแต่สมมติว่าผู้อ่านรู้จัก SVM; อ่านคู่กับทอล์ก RustConf ของ Alessandro Decina ที่พูดเรื่องรีดประสิทธิภาพระดับ validator
+  <sub>svm, runtime, deep-dive, longform, explainer</sub>
+- [Proof of History อธิบายแบบเข้าใจได้](https://www.guibibeau.com/blog/proof-of-history-explained)
+  อธิบาย Proof of History ซึ่งเป็นกลไกที่คนเข้าใจผิดบ่อยที่สุดเรื่องหนึ่งของ Solana — หลายคนคิดว่าเป็น consensus ทั้งที่จริงเป็นนาฬิกาที่ทำให้ validator ตกลงเรื่องลำดับเวลาได้โดยไม่ต้องคุยกัน; เขียนโดย GuiBibeau คนเดียวกับที่ทำ Harness ในหมวด defi — เป็นนักพัฒนาที่ทำของจริงไม่ใช่นักเขียนคอนเทนต์อย่างเดียว; ใช้เป็นตัวส่งให้คนไทยที่ถามว่า "Solana เร็วเพราะอะไร" ซึ่งตอบด้วย PoH อย่างเดียวไม่พอแต่เป็นจุดเริ่มที่ถูก
+  <sub>poh, consensus, explainer, fundamentals</sub>
 
 ## Governance — SGP, SIMD, โหวตบนเชน
 
