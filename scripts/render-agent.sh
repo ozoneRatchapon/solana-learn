@@ -29,6 +29,7 @@ cp "$REPO_ROOT/RECIPES.md"      "$DIST/recipes.md"
 cp "$REPO_ROOT/GRAPH.md"        "$DIST/graph.md"
 cp "$REPO_ROOT/OPPORTUNITIES.md" "$DIST/opportunities.md"
 cp "$REPO_ROOT/SKILL.md"        "$DIST/skill.md"
+cp "$REPO_ROOT/VERSIONS.md"     "$DIST/versions.md"
 
 # ── ข้อมูลดิบ ────────────────────────────────────────────────────────
 python3 - "$REPO_ROOT" "$DIST" "$TODAY" <<'PY'
@@ -127,6 +128,7 @@ cat > "$DIST/llms.txt" <<EOF
 - [skill.md]($BASE/skill.md): วิธีใช้ที่นี่สำหรับ agent + ความหมายของแต่ละ field ที่ตีความผิดง่าย — อ่านก่อนสรุปอะไร
 - [report.md]($BASE/report.md): สรุปสถานะ ตัวเลข เดดไลน์ และโอกาสที่ลงมือได้ — เล็กที่สุด อ่านตัวนี้ก่อน
 - [data.json]($BASE/data.json): ข้อมูลดิบทั้งหมดในไฟล์เดียว resource, entity, opportunity, recipe, rejected
+- [versions.md]($BASE/versions.md): อันไหนใช้ด้วยกันได้ปี 2026 — ดึงเวอร์ชันจาก npm สดทุกครั้งที่ generate
 - [catalog.md]($BASE/catalog.md): แคตตาล็อกเต็มจัดกลุ่มตามหมวด พร้อมโน้ตทุกรายการ
 - [radar.md]($BASE/radar.md): โอกาสที่เปิดอยู่ แต่ละอันมี verdict ว่าทำได้จริงไหมและรู้ได้ยังไง
 - [recipes.md]($BASE/recipes.md): โจทย์ที่เจอจริง + ข้อจำกัด → หยิบ resource ตัวไหนมาต่อกัน

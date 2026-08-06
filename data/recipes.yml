@@ -78,6 +78,9 @@ recipes:
       web3.js v1 · เห็น solana-test-validator แปลว่าเขียนก่อนยุค LiteSVM
       เจอสัญญาณไหนก็เปิด compatibility matrix ของ Foundation เทียบ แล้วใช้ AVM
       สลับสาย Anchor ไปตรงกับที่ tutorial เขียนเพื่อพิสูจน์ แทนที่จะอัปของตัวเองทิ้ง
+      · ตั้งแต่ 7 ส.ค. 2026 รัน ./scripts/render-versions.sh ในเครื่องได้เลย
+      มันดึงเวอร์ชันจริงจาก npm สดแล้วสร้าง VERSIONS.md ให้ ซึ่งครอบแกน client
+      ฝั่ง TypeScript ที่ matrix ของ Foundation ไม่มี
     watch_out: >-
       อย่าอัป anchor-cli จาก 1.0.2 ขึ้นเพื่อ "ให้ทันสมัย" เพราะจะทดสอบสาย 1.0 ไม่ได้อีก
       · matrix ของ Foundation ครอบฝั่ง Anchor/CLI/GLIBC แต่ไม่ครอบแกน Kit กับ web3.js v3

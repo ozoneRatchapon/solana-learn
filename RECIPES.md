@@ -3,7 +3,7 @@
 > generate จาก [data/recipes.yml](data/recipes.yml) — **อย่าแก้ตรงนี้**
 > แก้ YAML แล้วรัน `./scripts/render-recipes.sh`
 
-**6 สูตร** · อัปเดต 2026-08-05
+**6 สูตร** · อัปเดต 2026-08-07
 
 [CATALOG.md](CATALOG.md) บอกว่ามีอะไรบ้าง ไฟล์นี้บอกว่า **โจทย์นี้ต้องหยิบอันไหนมาต่อกัน**
 ซึ่งเป็นความรู้ที่ปกติอยู่ในหัวคนที่เคยทำแล้วหายไปพร้อมกับคนนั้น
@@ -71,7 +71,7 @@
 - [web3.js v1 → v3 Migration Guide](https://github.com/solana-foundation/solana-web3.js/blob/v3.x/docs/web3js-v1-to-v3-migration.md)
 - [Sunrising web3.js — ทำไม TS ecosystem ถึงกลับมารวมกัน](https://blueshift.gg/research/sunrising-web3js-reuniting-solanas-typescript-ecosystem)
 
-**ประกอบยังไง** — ดูสัญญาณเร็วสามอย่างก่อนลงแรง — import ที่เขียนว่า @coral-xyz/anchor แปลว่าก่อน 1.0 (ชื่อเปลี่ยนเป็น @anchor-lang/core แล้ว) · เห็น new Connection กับ PublicKey แปลว่า web3.js v1 · เห็น solana-test-validator แปลว่าเขียนก่อนยุค LiteSVM เจอสัญญาณไหนก็เปิด compatibility matrix ของ Foundation เทียบ แล้วใช้ AVM สลับสาย Anchor ไปตรงกับที่ tutorial เขียนเพื่อพิสูจน์ แทนที่จะอัปของตัวเองทิ้ง
+**ประกอบยังไง** — ดูสัญญาณเร็วสามอย่างก่อนลงแรง — import ที่เขียนว่า @coral-xyz/anchor แปลว่าก่อน 1.0 (ชื่อเปลี่ยนเป็น @anchor-lang/core แล้ว) · เห็น new Connection กับ PublicKey แปลว่า web3.js v1 · เห็น solana-test-validator แปลว่าเขียนก่อนยุค LiteSVM เจอสัญญาณไหนก็เปิด compatibility matrix ของ Foundation เทียบ แล้วใช้ AVM สลับสาย Anchor ไปตรงกับที่ tutorial เขียนเพื่อพิสูจน์ แทนที่จะอัปของตัวเองทิ้ง · ตั้งแต่ 7 ส.ค. 2026 รัน ./scripts/render-versions.sh ในเครื่องได้เลย มันดึงเวอร์ชันจริงจาก npm สดแล้วสร้าง VERSIONS.md ให้ ซึ่งครอบแกน client ฝั่ง TypeScript ที่ matrix ของ Foundation ไม่มี
 
 **จุดที่จะพลาด** — อย่าอัป anchor-cli จาก 1.0.2 ขึ้นเพื่อ "ให้ทันสมัย" เพราะจะทดสอบสาย 1.0 ไม่ได้อีก · matrix ของ Foundation ครอบฝั่ง Anchor/CLI/GLIBC แต่ไม่ครอบแกน Kit กับ web3.js v3 ตรงนั้นต้องดู migration guide สองตัวแทน
 
