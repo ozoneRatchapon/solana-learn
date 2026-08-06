@@ -26,6 +26,20 @@ npmdep() {  # $1=pkg  $2=dep
 }
 local_v() { command -v "$1" >/dev/null 2>&1 && ($2 2>/dev/null | head -1) || echo "ไม่ได้ติดตั้ง"; }
 
+# crates.io — คืน "stable|newest|updated"
+cratev() {
+  curl -s --compressed "https://crates.io/api/v1/crates/$1" \
+       -H 'User-Agent: solana-learn-catalog/1.0 (github.com/ozoneRatchapon/solana-learn)' \
+  | python3 -c "
+import json,sys
+try:
+    d=json.load(sys.stdin)['crate']
+    print(f\"{d['max_stable_version']}|{d['newest_version']}|{d['updated_at'][:10]}\")
+except Exception: print('?|?|?')
+" 2>/dev/null || echo "?|?|?"
+  sleep 0.3
+}
+
 echo "▸ ดึงข้อมูล npm สด..." >&2
 ANCHOR_NEW="$(npmv @anchor-lang/core)"
 ANCHOR_OLD="$(npmv @coral-xyz/anchor)"
@@ -89,6 +103,47 @@ OLD_DEP_W3="$(npmdep @coral-xyz/anchor @solana/web3.js)"
   echo "| ดูแลโค้ดเก่า | \`@coral-xyz/anchor\` $ANCHOR_OLD | web3.js v1 |"
   echo "| อยากรอ v3 | ยังรอไม่ได้ | \`rc\` เท่านั้น |"
   echo
+  echo "## ฝั่ง Rust (crates.io)"
+  echo
+  echo "| crate | stable | newest | อัปเดตล่าสุด |"
+  echo "|---|---|---|---|"
+  for c in anchor-lang anchor-spl solana-sdk solana-program solana-client litesvm mollusk-svm pinocchio; do
+    IFS='|' read -r st nw up <<< "$(cratev "$c")"
+    if [ "$st" != "$nw" ]; then
+      printf '| `%s` | **%s** | %s ⚠️ | %s |\n' "$c" "$st" "$nw" "$up"
+    else
+      printf '| `%s` | **%s** | %s | %s |\n' "$c" "$st" "$nw" "$up"
+    fi
+  done
+  echo
+  echo "⚠️ = ตัวที่ **ปล่อยล่าสุดตามเวลา** ไม่ตรงกับตัวที่ \`cargo add\` จะหยิบ"
+  echo
+  echo "ระวังตรงนี้ — \`newest_version\` ของ crates.io แปลว่า *ปล่อยล่าสุด* ไม่ใช่ *เลขสูงสุด*"
+  echo "จึงเป็นได้สองแบบ: **pre-release** (เช่น \`solana-client 4.3.0-alpha.3\`, \`mollusk-svm ...agave-4.2.0-rc.0\`)"
+  echo "หรือ **backport เข้าสายเก่า** ซึ่งเลขต่ำกว่าแต่ใหม่กว่าตามเวลา"
+  echo
+  echo "### สาย Anchor 1.0 ยังมีคนดูแลอยู่"
+  echo
+  echo "\`anchor-lang 1.0.3\` กับ \`1.1.2\` **ปล่อยวันเดียวกัน (2026-06-26)** — ตรวจจาก crates.io versions API"
+  echo "แปลว่า 1.0.3 เป็น backport เข้าสาย 1.0 ไม่ใช่ของเก่าที่ถูกทิ้ง"
+  echo
+  echo "**มีผลกับเครื่องนี้โดยตรง** — \`anchor-cli\` ที่ติดตั้งอยู่เป็น \`$(anchor --version 2>/dev/null | awk '{print $2}')\`"
+  echo "ถ้าอยากได้ patch ล่าสุดโดย**ไม่ต้องย้ายไปสาย 1.1** ให้ขยับไป 1.0.3 ผ่าน \`avm\`"
+  echo "ซึ่งตรงกับกฎในไฟล์นี้ว่าอย่าอัปข้ามสาย เพราะจะทดสอบของเก่าไม่ได้อีก"
+  echo
+  echo "### จุดที่คนสับสนบ่อย — เลข CLI กับเลข crate ไม่ใช่เลขเดียวกัน"
+  echo
+  echo "\`solana-cli\` ในเครื่องนี้เป็น **$(solana --version 2>/dev/null | awk '{print $2}')** แต่ \`solana-sdk\` กับ \`solana-program\` อยู่ที่ **4.x**"
+  echo
+  echo "**ไม่ใช่ความผิดพลาด** — ตั้งแต่แยก repo ออกจาก monorepo แล้ว crate ฝั่ง SDK"
+  echo "เดินเลขเวอร์ชันของตัวเองแยกจาก Agave CLI **อย่าพยายามจับให้ตรงกัน**"
+  echo "และอย่าตกใจถ้า tutorial เขียน \`solana-sdk = \"1.x\"\` แล้วของจริงเป็น 4.x — นั่นคือสัญญาณว่า tutorial เก่า"
+  echo
+  echo "### สัญญาณว่าเครื่องมือกำลังเตรียมรับ Agave 4.2"
+  echo
+  echo "\`mollusk-svm\` ปล่อยรุ่นที่ตรึงกับ \`agave-4.2.0-rc\` ไว้แล้ว ซึ่งแปลว่าฝั่งเครื่องมือทดสอบ"
+  echo "ตามการเปิด feature วันที่ 17 ส.ค. 2026 อยู่ — ถ้าโปรแกรมพึ่งพฤติกรรมของ runtime ควรเทสกับรุ่นนั้นก่อนวันนั้น"
+  echo
   echo "## ยืนยันบนเครื่องนี้"
   echo
   echo "ของ Foundation อิง Debian หน้านี้ยืนยันบน macOS"
@@ -130,7 +185,7 @@ OLD_DEP_W3="$(npmdep @coral-xyz/anchor @solana/web3.js)"
   echo "- **ยังไม่ได้ build จริง** ตัวเลขทั้งหมดมาจาก metadata ของ npm กับคำสั่ง \`--version\`"
   echo "  ไม่ได้แปลว่าเอาไปประกอบกันแล้วคอมไพล์ผ่าน"
   echo "- **ยังไม่ได้ทดสอบสาย Anchor เก่ากับ AVM** ว่าสายไหนคู่กับ Solana CLI ตัวไหนได้บ้าง"
-  echo "- **ไม่ครอบฝั่ง Rust client** — \`solana-sdk\`, \`solana-client\` ยังไม่ได้ตรวจ"
+  echo "- **ยังไม่ได้ทดสอบว่า crate ฝั่ง Rust ประกอบกันแล้วคอมไพล์ผ่าน** — ดึงแค่เลขเวอร์ชันจาก crates.io"
   echo
   echo "รันซ้ำเมื่อไหร่ก็ได้ด้วย \`./scripts/render-versions.sh\` ตัวเลขจะอัปเดตเอง"
 } > "$OUT"
