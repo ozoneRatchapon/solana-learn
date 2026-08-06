@@ -3,7 +3,7 @@
 > ไฟล์นี้ถูก generate จาก [data/resources.yml](data/resources.yml) — **อย่าแก้ตรงนี้**
 > แก้ที่ YAML แล้วรัน `./scripts/render.sh`
 
-รวม **200** รายการ · ข้อมูลล่าสุด 2026-08-06
+รวม **201** รายการ · ข้อมูลล่าสุด 2026-08-06
 
 หมายเหตุสถานะ: `blocked` = เว็บกัน bot ตอน curl (ลิงก์ยังใช้ได้), `unverified` = เช็คอัตโนมัติไม่ผ่าน ต้องดูด้วยตา
 
@@ -16,7 +16,7 @@
 - [Testing — LiteSVM, Mollusk, Surfpool](#testing--litesvm-mollusk-surfpool) — 5
 - [IDL & Codegen](#idl--codegen) — 4
 - [Tokens & NFT — SPL, Token-2022, Metaplex](#tokens--nft--spl-token-2022-metaplex) — 7
-- [Payments & Commerce](#payments--commerce) — 22
+- [Payments & Commerce](#payments--commerce) — 23
 - [Security & Audit](#security--audit) — 5
 - [AI / Agent Skills / MCP](#ai--agent-skills--mcp) — 19
 - [Infra & RPC providers](#infra--rpc-providers) — 12
@@ -210,8 +210,8 @@
 - [Sunrising web3.js — ทำไม TS ecosystem ถึงกลับมารวมกัน](https://blueshift.gg/research/sunrising-web3js-reuniting-solanas-typescript-ecosystem)
   อ่านตัวนี้ก่อนตัดสินใจว่าโปรเจกต์จะใช้ Kit หรือ web3.js v3
   <sub>context, article</sub>
-- [create-solana-dapp](https://github.com/solana-developers/create-solana-dapp) `official`
-  scaffold โปรเจกต์ตั้งต้นแบบเลือก template ได้ — ตัว template ย้ายไปอยู่ solana-foundation/templates แล้ว repo นี้ active มาก (push 5 ส.ค. 2026)
+- [create-solana-dapp](https://github.com/solana-foundation/create-solana-dapp) `official`
+  ตัวสร้างโครงโปรเจกต์ที่เร็วที่สุดสำหรับเริ่มแอป Solana (★643 push วันนี้ 6 ส.ค. 2026 ยัง active มาก) — เลือกเทมเพลตแล้วได้โครงที่รันได้ทันที ไม่ต้องต่อ config เอง เชื่อมกับ solana-foundation/templates; **หมายเหตุเรื่อง URL — repo ย้ายจาก org solana-developers มาอยู่ solana-foundation แล้ว** ลิงก์เก่ายัง redirect มาถูกที่ แต่แคตตาล็อกอัปเดตเป็นปลายทางจริงแล้วเพื่อไม่ให้พึ่ง redirect ที่วันหนึ่งอาจหาย; ก่อนใช้เช็คว่าเทมเพลตที่เลือกใช้ web3.js v1 หรือ Kit เพราะยังมีทั้งสองแบบปนกันในระบบนิเวศ
   <sub>scaffold, cli</sub>
 
 ## Testing — LiteSVM, Mollusk, Surfpool
@@ -339,6 +339,9 @@
 - [Solana Private Channels (payment channel ระดับองค์กร)](https://github.com/solana-foundation/solana-private-channels) `official`
   payment channel ที่ต่อสภาพคล่องกับ mainnet โดยตรง ทำธุรกรรมนับพันรายการแบบทันทีพร้อมคุมสิทธิ์และความเป็นส่วนตัว — ประกอบด้วย core ที่ทำ 5 ขั้น (ตัดซ้ำ ตรวจลายเซ็น จัดลำดับ ประมวลผล settle), โปรแกรม escrow/withdraw, indexer และ gateway; ใช้ Token-2022 confidential transfer กับ ZK proof ตอนถอนได้ ซึ่งเชื่อมกับหมวด tokens-nft; **ระวัง repo ประกาศเองว่ายังไม่ผ่าน audit และยังพัฒนาอยู่ ห้ามใช้กับเงินจริง** เก็บไว้อ่านว่า Foundation ออกแบบชั้น privacy ฝั่งองค์กรยังไง ไม่ใช่เอาไปใช้
   <sub>payment-channel, privacy, token-2022, zk, experimental, rust</sub>
+- [payment-channels — primitive จ่ายเงินให้ agent (ยังไม่เสร็จ)](https://github.com/solana-foundation/payment-channels) `official`
+  primitive สำหรับการจ่ายเงินแบบ agentic รองรับ x402 กับ MPP — **README ขึ้นธง 🚧 Work in progress เอง** ★4 สร้าง เม.ย. 2026 แต่ push วันนี้ (6 ส.ค. 2026) แปลว่ายังทำอยู่จริงไม่ใช่ของทิ้ง; **อย่าสับสนกับ solana-private-channels ที่เก็บไว้แล้ว** — ตัวนั้น ★61 เป็น payment channel ระดับองค์กรที่เน้นความเป็นส่วนตัวและ throughput ส่วนตัวนี้เป็น primitive ฝั่ง agentic payment คนละโจทย์กัน; เก็บเพราะเป็นชิ้นที่หายไปในภาพรวมสาย agent ที่เก็บมาทั้งวัน (Agent Registry ให้ตัวตน · Earn ให้งาน · pay.sh ให้จ่าย) ตัวนี้คือชั้น primitive ที่อยู่ใต้ pay.sh อีกที — **ยังใช้ทำอะไรจริงไม่ได้ เก็บไว้ดูทิศทาง ไม่ใช่เอาไปใช้**
+  <sub>x402, mpp, agentic, payment-channel, rust, wip</sub>
 
 ## Security & Audit
 

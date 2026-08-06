@@ -481,12 +481,12 @@ resources:
     status: ok
     added: 2026-08-04
 
-  - url: https://github.com/solana-developers/create-solana-dapp
+  - url: https://github.com/solana-foundation/create-solana-dapp
     name: create-solana-dapp
     category: client-sdk
     source: foundation
     tags: [scaffold, cli]
-    note: 'scaffold โปรเจกต์ตั้งต้นแบบเลือก template ได้ — ตัว template ย้ายไปอยู่ solana-foundation/templates แล้ว repo นี้ active มาก (push 5 ส.ค. 2026)'
+    note: 'ตัวสร้างโครงโปรเจกต์ที่เร็วที่สุดสำหรับเริ่มแอป Solana (★643 push วันนี้ 6 ส.ค. 2026 ยัง active มาก) — เลือกเทมเพลตแล้วได้โครงที่รันได้ทันที ไม่ต้องต่อ config เอง เชื่อมกับ solana-foundation/templates; **หมายเหตุเรื่อง URL — repo ย้ายจาก org solana-developers มาอยู่ solana-foundation แล้ว** ลิงก์เก่ายัง redirect มาถูกที่ แต่แคตตาล็อกอัปเดตเป็นปลายทางจริงแล้วเพื่อไม่ให้พึ่ง redirect ที่วันหนึ่งอาจหาย; ก่อนใช้เช็คว่าเทมเพลตที่เลือกใช้ web3.js v1 หรือ Kit เพราะยังมีทั้งสองแบบปนกันในระบบนิเวศ'
     status: ok
     added: 2026-08-04
 
@@ -1860,5 +1860,14 @@ resources:
     source: community
     tags: [qa, stackexchange, archive, unanswered, api]
     note: 'ถาม-ตอบแบบ Stack Exchange ที่ค้นย้อนหลังได้และมี API สาธารณะ — ตัวเลขจริงจาก api.stackexchange.com วันที่ 6 ส.ค. 2026: คำถาม 8,226 · คำตอบ 9,606 · ผู้ใช้ 50,119; **แต่ต้องรู้ก่อนส่งให้มือใหม่** — ไม่มีคำตอบเลย 1,750 ข้อ (21%) และมีคำตอบที่เจ้าของรับแล้วแค่ 34% เฉลี่ยคำตอบต่อคำถาม 1.17 · คำถาม 3 อันล่าสุด (26 ก.ค. / 27 ก.ค. / 3 ส.ค.) ยังไม่มีคำตอบสักข้อ **ใช้เป็นคลังค้นของเก่าได้ดี แต่อย่าบอกคนใหม่ว่าถามแล้วจะได้คำตอบ** ให้ไป Discord หรือ forum เร็วกว่า; มุมกลับที่น่าสนใจ — 1,750 คำถามค้างคือช่องสร้างชื่อที่ต้นทุนต่ำสำหรับคนไทยที่รู้เรื่องนั้นจริง ตอบแล้วเป็นผลงานที่ค้นเจอถาวรและอ้างอิงได้ ต่างจากตอบใน Discord ที่หายไปใน 3 วัน'
+    status: ok
+    added: 2026-08-06
+
+  - url: https://github.com/solana-foundation/payment-channels
+    name: 'payment-channels — primitive จ่ายเงินให้ agent (ยังไม่เสร็จ)'
+    category: payments
+    source: foundation
+    tags: [x402, mpp, agentic, payment-channel, rust, wip]
+    note: 'primitive สำหรับการจ่ายเงินแบบ agentic รองรับ x402 กับ MPP — **README ขึ้นธง 🚧 Work in progress เอง** ★4 สร้าง เม.ย. 2026 แต่ push วันนี้ (6 ส.ค. 2026) แปลว่ายังทำอยู่จริงไม่ใช่ของทิ้ง; **อย่าสับสนกับ solana-private-channels ที่เก็บไว้แล้ว** — ตัวนั้น ★61 เป็น payment channel ระดับองค์กรที่เน้นความเป็นส่วนตัวและ throughput ส่วนตัวนี้เป็น primitive ฝั่ง agentic payment คนละโจทย์กัน; เก็บเพราะเป็นชิ้นที่หายไปในภาพรวมสาย agent ที่เก็บมาทั้งวัน (Agent Registry ให้ตัวตน · Earn ให้งาน · pay.sh ให้จ่าย) ตัวนี้คือชั้น primitive ที่อยู่ใต้ pay.sh อีกที — **ยังใช้ทำอะไรจริงไม่ได้ เก็บไว้ดูทิศทาง ไม่ใช่เอาไปใช้**'
     status: ok
     added: 2026-08-06
