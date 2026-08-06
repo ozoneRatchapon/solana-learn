@@ -3,7 +3,7 @@
 > ไฟล์นี้ถูก generate จาก [data/resources.yml](data/resources.yml) — **อย่าแก้ตรงนี้**
 > แก้ที่ YAML แล้วรัน `./scripts/render.sh`
 
-รวม **208** รายการ · ข้อมูลล่าสุด 2026-08-06
+รวม **209** รายการ · ข้อมูลล่าสุด 2026-08-07
 
 หมายเหตุสถานะ: `blocked` = เว็บกัน bot ตอน curl (ลิงก์ยังใช้ได้), `unverified` = เช็คอัตโนมัติไม่ผ่าน ต้องดูด้วยตา
 
@@ -12,7 +12,7 @@
 - [Official — Foundation & Anza (source of truth ตัวจริง)](#official--foundation--anza-source-of-truth-ตัวจริง) — 18
 - [Learning — คอร์ส, bootcamp, tutorial](#learning--คอร์ส-bootcamp-tutorial) — 18
 - [Program Frameworks — Anchor / Pinocchio / native](#program-frameworks--anchor--pinocchio--native) — 12
-- [Client SDK — Kit, web3.js, scaffolding](#client-sdk--kit-web3js-scaffolding) — 10
+- [Client SDK — Kit, web3.js, scaffolding](#client-sdk--kit-web3js-scaffolding) — 11
 - [Testing — LiteSVM, Mollusk, Surfpool](#testing--litesvm-mollusk-surfpool) — 5
 - [IDL & Codegen](#idl--codegen) — 4
 - [Tokens & NFT — SPL, Token-2022, Metaplex](#tokens--nft--spl-token-2022-metaplex) — 7
@@ -216,6 +216,9 @@
 - [create-solana-dapp](https://github.com/solana-foundation/create-solana-dapp) `official`
   ตัวสร้างโครงโปรเจกต์ที่เร็วที่สุดสำหรับเริ่มแอป Solana (★643 push วันนี้ 6 ส.ค. 2026 ยัง active มาก) — เลือกเทมเพลตแล้วได้โครงที่รันได้ทันที ไม่ต้องต่อ config เอง เชื่อมกับ solana-foundation/templates; **หมายเหตุเรื่อง URL — repo ย้ายจาก org solana-developers มาอยู่ solana-foundation แล้ว** ลิงก์เก่ายัง redirect มาถูกที่ แต่แคตตาล็อกอัปเดตเป็นปลายทางจริงแล้วเพื่อไม่ให้พึ่ง redirect ที่วันหนึ่งอาจหาย; ก่อนใช้เช็คว่าเทมเพลตที่เลือกใช้ web3.js v1 หรือ Kit เพราะยังมีทั้งสองแบบปนกันในระบบนิเวศ
   <sub>scaffold, cli</sub>
+- [Open Wallet Standard — เซ็นแบบมีนโยบายกำกับ รันในเครื่อง](https://github.com/open-wallet-standard/core)
+  มาตรฐานเปิดสำหรับจัดการกระเป๋าและเซ็นธุรกรรมที่รันในเครื่อง โดยมีชั้นนโยบายกำกับว่าอะไรเซ็นได้บ้าง รองรับหลายเชนไม่ใช่แค่ Solana (Rust, MIT, ★363, สร้าง ก.พ. 2026 push ก.ค. 2026); **เกี่ยวกับสายที่เก็บมาสองวันโดยตรง** — พอ agent เริ่มถือเงินและรับงานได้ (Agent Registry, Superteam Earn, pay.sh, payment-channels) คำถามถัดมาคือจะให้มันเซ็นอะไรได้บ้างโดยไม่ต้องมอบกุญแจทั้งดอก ตัวนี้ตอบข้อนั้น ต่อกับ spend-permissions ในหมวด payments ที่ทำเรื่องเดียวกันแต่ระดับ token; ยังไม่ได้ตรวจว่ามีใครใช้ใน production จริงหรือยัง ★363 บ่งว่ามีคนสนใจแต่ไม่ได้บอกว่าใช้จริง
+  <sub>wallet, signing, policy, multi-chain, rust, agent</sub>
 
 ## Testing — LiteSVM, Mollusk, Surfpool
 
