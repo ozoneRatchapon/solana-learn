@@ -1,0 +1,83 @@
+name: รายงานผลการใช้สูตร
+description: ลองทำตามสูตรใน RECIPES.md แล้ว — ผ่านหรือพังตรงไหน
+title: "recipe: "
+labels: ["recipe-report"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **ตอนนี้ยังไม่มีสูตรไหนเป็น `proven` เลยสักอัน** — ทุกอันเป็น 🧪 คือประกอบจาก
+        ของที่ตรวจแล้วทีละชิ้น แต่ยังไม่เคยมีใครรันทั้งชุดตั้งแต่ต้นจนจบ
+
+        ฟอร์มนี้คือทางเดียวที่สูตรจะเปลี่ยนเป็น ✅ ได้ **และรายงานว่าพังก็มีค่าเท่ากับรายงานว่าผ่าน**
+        — จุดที่พังคือสิ่งที่ควรไปอยู่ในช่อง `จุดที่จะพลาด` ของสูตรนั้น
+
+        กฎในไฟล์เขียนไว้ว่า *"สูตรที่โกหกแย่กว่าไม่มีสูตร"* เราจึงไม่เติม `proven` เอง
+        ต้องมีคนทำจริงแล้วบอกมาเท่านั้น
+
+        *No recipe here is proven yet. This form is the only way one becomes proven,
+        and a report that it broke is worth exactly as much as one that it worked.*
+
+  - type: input
+    id: recipe-id
+    attributes:
+      label: สูตรไหน (id)
+      description: ดูได้จาก RECIPES.md เช่น `workshop-no-sol`
+      placeholder: workshop-no-sol
+    validations:
+      required: true
+
+  - type: dropdown
+    id: outcome
+    attributes:
+      label: ผลเป็นยังไง / Outcome
+      options:
+        - "ผ่านทั้งชุด ทำตามแล้วได้ผลจริง"
+        - "ผ่าน แต่ต้องแก้บางขั้น"
+        - "พังกลางทาง"
+        - "เริ่มไม่ได้เลย ติดตั้งแต่ต้น"
+    validations:
+      required: true
+
+  - type: input
+    id: when-where
+    attributes:
+      label: ทำเมื่อไหร่ ที่ไหน
+      description: สูตรที่เป็น proven ต้องระบุได้ว่าใครทำเมื่อไหร่ ไม่งั้นก็ยังเป็นคำอ้างลอยๆ
+      placeholder: "เช่น 18 ส.ค. 2026 · Solana Co-Working BKK · 12 คน"
+    validations:
+      required: true
+
+  - type: textarea
+    id: versions
+    attributes:
+      label: เวอร์ชันที่ใช้
+      description: |
+        **ส่วนนี้สำคัญที่สุดและคนมักข้าม** — ของที่ผ่านเมื่อเดือนก่อนอาจพังเดือนนี้
+        เพราะ Anchor หรือ Kit ขยับ ถ้าไม่มีเวอร์ชัน รายงานนี้จะหมดอายุโดยไม่มีใครรู้
+      placeholder: |
+        anchor-cli 1.0.2
+        solana-cli 3.1.10 (Agave)
+        @solana/kit 7.0.0
+        node v24.16.0
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: detail
+    attributes:
+      label: พังตรงไหน / ต้องแก้อะไร
+      description: ถ้าผ่านหมดก็เขียนว่าผ่าน แต่ถ้ามีขั้นไหนไม่ตรงกับที่เขียนไว้ ให้ลงรายละเอียด
+      placeholder: |
+        เช่น: ขั้นที่ 3 คำสั่งในสูตรใช้ไม่ได้แล้ว flag เปลี่ยนชื่อเป็น --xxx
+        ต้องเพิ่มขั้นที่ไม่มีในสูตรคือ ...
+    validations:
+      required: true
+
+  - type: input
+    id: evidence
+    attributes:
+      label: หลักฐาน (ถ้ามี)
+      description: ลิงก์ repo, ธุรกรรมบน explorer, สกรีนช็อต, หรือ gist ของ log
+      placeholder: "https://..."

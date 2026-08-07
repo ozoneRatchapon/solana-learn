@@ -23,6 +23,16 @@
 
 ✅ เคยทำจริงแล้ว · 🧪 ประกอบจากของที่ตรวจแล้ว แต่ยังไม่เคยรันทั้งชุด
 
+## ยังไม่มีสูตรไหนเป็น ✅ เลย — และคุณช่วยได้
+
+ทุกสูตรที่นี่ประกอบจากของที่ตรวจมาแล้วทีละชิ้น **แต่ยังไม่เคยมีใครรันทั้งชุดตั้งแต่ต้นจนจบ**
+เราจึงไม่เติม ✅ ให้ตัวเอง เพราะกฎในไฟล์ข้อมูลเขียนไว้ว่า *"สูตรที่โกหกแย่กว่าไม่มีสูตร"*
+
+- **[กด 👍 ในเธรดของสูตร](https://github.com/ozoneRatchapon/solana-learn/issues?q=is%3Aissue+label%3Arecipe)** ว่าอยากให้พิสูจน์อันไหนก่อน
+  — ไม่ต้องมีกระเป๋า ไม่ต้องเซ็นอะไร เวลามีจำกัด เสียงตรงนี้บอกว่าควรเริ่มที่ไหน
+- **ลองแล้วมารายงาน** ไม่ว่าผ่านหรือพัง — **รายงานว่าพังมีค่าเท่ากับรายงานว่าผ่าน**
+  เพราะจุดที่พังคือสิ่งที่ควรไปอยู่ในช่อง `จุดที่จะพลาด` ของสูตรนั้น
+
 ---
 
 <a id="workshop-no-sol"></a>
@@ -48,6 +58,8 @@
 **ประกอบยังไง** — แยกสองสาย — สายที่เขียนโปรแกรมบนเชนใช้ LiteSVM หรือ Surfpool รันในเครื่อง ไม่ต้องต่อเน็ตเลยหลังติดตั้งเสร็จ ส่วนสายที่จะเห็นของจริงบน mainnet ใช้ Kora เป็นคนออกค่าแก๊สแทน ผู้เข้าร่วมจึงทำธุรกรรมได้โดยไม่ต้องมี SOL เปิดคาบด้วย quickstart ที่วางปุ่มรับเงินได้ใน 5 นาที เพื่อให้เห็นผลก่อนเจอ Rust
 
 **จุดที่จะพลาด** — Surfpool ต้อง fork mainnet ซึ่งใช้เน็ตตอนเริ่ม ให้ทำก่อนงานแล้วแจกภาพ container ไป · Kora ต้องมีคนรัน relayer และเติมเงินไว้ ไม่ใช่บริการฟรีสาธารณะ ต้องเตรียมล่วงหน้า · rent ที่ Agave 4.2 ลด 90% ทำให้การออกค่าเปิด token account ให้ผู้เข้าร่วมถูกลงมาก แต่ยังไม่ฟรี ต้องคำนวณจำนวนหัวคูณค่าเปิดบัญชีก่อน
+
+🧪 **ยังไม่มีใครรันทั้งชุด** — [รายงานผลถ้าลองแล้ว](https://github.com/ozoneRatchapon/solana-learn/issues/new?template=recipe-report.yml&recipe-id=workshop-no-sol) · [กด 👍 ให้พิสูจน์อันนี้ก่อน](https://github.com/ozoneRatchapon/solana-learn/issues?q=is%3Aissue+label%3Arecipe+in%3Atitle+workshop-no-sol)
 
 ---
 
@@ -75,6 +87,8 @@
 
 **จุดที่จะพลาด** — อย่าอัป anchor-cli จาก 1.0.2 ขึ้นเพื่อ "ให้ทันสมัย" เพราะจะทดสอบสาย 1.0 ไม่ได้อีก · matrix ของ Foundation ครอบฝั่ง Anchor/CLI/GLIBC แต่ไม่ครอบแกน Kit กับ web3.js v3 ตรงนั้นต้องดู migration guide สองตัวแทน
 
+🧪 **ยังไม่มีใครรันทั้งชุด** — [รายงานผลถ้าลองแล้ว](https://github.com/ozoneRatchapon/solana-learn/issues/new?template=recipe-report.yml&recipe-id=is-this-tutorial-still-valid) · [กด 👍 ให้พิสูจน์อันนี้ก่อน](https://github.com/ozoneRatchapon/solana-learn/issues?q=is%3Aissue+label%3Arecipe+in%3Atitle+is-this-tutorial-still-valid)
+
 ---
 
 <a id="accept-payment-at-event"></a>
@@ -100,6 +114,8 @@
 
 **จุดที่จะพลาด** — Commerce Kit ยังเป็น beta เอกสารเตือนเองว่า API เปลี่ยนได้ อย่าเพิ่งสอนว่าเป็นมาตรฐาน · ข้อที่พลาดกันบ่อยที่สุดในเช็คลิสต์คือระดับ commitment — เลือกผิดแล้วนับว่าเงินเข้า ทั้งที่ยังไม่ final และข้อยืนยัน mint ว่าไม่ใช่ของ devnet
 
+🧪 **ยังไม่มีใครรันทั้งชุด** — [รายงานผลถ้าลองแล้ว](https://github.com/ozoneRatchapon/solana-learn/issues/new?template=recipe-report.yml&recipe-id=accept-payment-at-event) · [กด 👍 ให้พิสูจน์อันนี้ก่อน](https://github.com/ozoneRatchapon/solana-learn/issues?q=is%3Aissue+label%3Arecipe+in%3Atitle+accept-payment-at-event)
+
 ---
 
 <a id="pay-many-quest-rewards"></a>
@@ -124,6 +140,8 @@
 **ประกอบยังไง** — ยัดหลาย instruction ใน transaction เดียวตาม batch-payments แล้วใช้ transaction planning เมื่อจำนวนเกินขนาด tx · ฝั่งอนุมัติใช้ Squads เป็น multisig ของ treasury · ถ้าอยากให้ระบบดึงเงินเองตามรอบแทนการกดจ่าย ให้ดู spend-permissions ซึ่งกำหนด เพดานได้และเจ้าของเพิกถอนเองได้ทันที ต่างจากการโอนเข้ากระเป๋ากลาง
 
 **จุดที่จะพลาด** — Agave 4.2 ขยาย tx เป็น 4,096 byte ตั้งแต่ 17 ส.ค. 2026 ซึ่งเพิ่มจำนวนผู้รับต่อ tx ได้ แต่ต้อง opt-in เอง ของเดิมยังคิดที่ 1,232 byte · ตรวจ address ผู้รับก่อนส่งเสมอว่า เป็นกระเป๋าไม่ใช่ token account หรือ mint ซึ่งเป็นสาเหตุอันดับหนึ่งของเงินหาย
+
+🧪 **ยังไม่มีใครรันทั้งชุด** — [รายงานผลถ้าลองแล้ว](https://github.com/ozoneRatchapon/solana-learn/issues/new?template=recipe-report.yml&recipe-id=pay-many-quest-rewards) · [กด 👍 ให้พิสูจน์อันนี้ก่อน](https://github.com/ozoneRatchapon/solana-learn/issues?q=is%3Aissue+label%3Arecipe+in%3Atitle+pay-many-quest-rewards)
 
 ---
 
@@ -151,6 +169,8 @@
 
 **จุดที่จะพลาด** — อย่าเรียกสิ่งนี้ว่าบอทอัตโนมัติ มันคือระบบเตรียมวัตถุดิบให้คนเขียน 20 นาที · solana-state โฮสต์บน vercel.app ฟรี หายได้ทุกเมื่อ ตัวเลขที่จะเอาไปพูดในที่สาธารณะ ให้ยึด solana.com/data เป็นหลัก · โค้ดตัวดึงควรอยู่ repo devrel-helper ไม่ใช่ที่นี่
 
+🧪 **ยังไม่มีใครรันทั้งชุด** — [รายงานผลถ้าลองแล้ว](https://github.com/ozoneRatchapon/solana-learn/issues/new?template=recipe-report.yml&recipe-id=weekly-network-brief-th) · [กด 👍 ให้พิสูจน์อันนี้ก่อน](https://github.com/ozoneRatchapon/solana-learn/issues?q=is%3Aissue+label%3Arecipe+in%3Atitle+weekly-network-brief-th)
+
 ---
 
 <a id="ship-program-to-mainnet"></a>
@@ -176,6 +196,8 @@
 **ประกอบยังไง** — ไล่เช็คลิสต์ production-readiness 14 ข้อก่อน ซึ่งครอบชั้น client และ RPC · แต่มันไม่ครอบชั้นโปรแกรม ส่วนนั้นใช้คอร์ส program security ของ Blueshift ไล่เรื่องตรวจเจ้าของ account การคุมสิทธิ์ และ CPI แล้วอ่านเคสจริงจากบล็อก Neodyme · upgrade authority ต้องอยู่ใต้ multisig ของ Squads ไม่ใช่กุญแจเดียวในเครื่องใครคนหนึ่ง · อยากดูว่าโปรแกรมที่ผ่าน audit จริงหน้าตายังไง อ่าน subscriptions ที่เปิดโค้ดครบ
 
 **จุดที่จะพลาด** — เช็คลิสต์ทางการ 14 ข้อผ่านหมดแล้วยังขึ้น mainnet ไม่ได้ ถ้ายังไม่มี audit multisig upgrade authority และ verified build — สามอย่างนี้ไม่มีอยู่ในเช็คลิสต์นั้นเลย เพราะมันเขียนสำหรับคนที่ใช้โปรแกรมของคนอื่น ไม่ใช่คนที่เขียนเอง
+
+🧪 **ยังไม่มีใครรันทั้งชุด** — [รายงานผลถ้าลองแล้ว](https://github.com/ozoneRatchapon/solana-learn/issues/new?template=recipe-report.yml&recipe-id=ship-program-to-mainnet) · [กด 👍 ให้พิสูจน์อันนี้ก่อน](https://github.com/ozoneRatchapon/solana-learn/issues?q=is%3Aissue+label%3Arecipe+in%3Atitle+ship-program-to-mainnet)
 
 ---
 

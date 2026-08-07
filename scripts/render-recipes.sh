@@ -10,6 +10,12 @@ RECIPES="${RECIPES:-$REPO_ROOT/data/recipes.yml}"
 OUT="${RECIPES_OUT:-$REPO_ROOT/RECIPES.md}"
 SEP=$'\x1f'
 
+# ลิงก์กลับไปหาเธรดของแต่ละสูตรบน GitHub — สร้างจาก id ไม่ใช่เลข issue
+# เพราะเลข issue รู้ได้ต่อเมื่อสร้างแล้ว การ hardcode ไว้จะพังทันทีที่เพิ่มสูตรใหม่
+GH="${GH_REPO_URL:-https://github.com/ozoneRatchapon/solana-learn}"
+vote_url()   { printf '%s/issues?q=is%%3Aissue+label%%3Arecipe+in%%3Atitle+%s' "$GH" "$1"; }
+report_url() { printf '%s/issues/new?template=recipe-report.yml&recipe-id=%s' "$GH" "$1"; }
+
 n="$(yq -r '.recipes | length' "$RECIPES")"
 
 # แผนที่ url(normalize) -> name สร้างครั้งเดียว แทนที่จะยิง yq ต่อ url
@@ -45,6 +51,16 @@ yq -r ".resources[] | [.url, .name] | join(\"$SEP\")" "$DATA" \
     done
   echo
   echo "✅ เคยทำจริงแล้ว · 🧪 ประกอบจากของที่ตรวจแล้ว แต่ยังไม่เคยรันทั้งชุด"
+  echo
+  echo "## ยังไม่มีสูตรไหนเป็น ✅ เลย — และคุณช่วยได้"
+  echo
+  echo "ทุกสูตรที่นี่ประกอบจากของที่ตรวจมาแล้วทีละชิ้น **แต่ยังไม่เคยมีใครรันทั้งชุดตั้งแต่ต้นจนจบ**"
+  echo "เราจึงไม่เติม ✅ ให้ตัวเอง เพราะกฎในไฟล์ข้อมูลเขียนไว้ว่า *\"สูตรที่โกหกแย่กว่าไม่มีสูตร\"*"
+  echo
+  echo "- **[กด 👍 ในเธรดของสูตร]($GH/issues?q=is%3Aissue+label%3Arecipe)** ว่าอยากให้พิสูจน์อันไหนก่อน"
+  echo "  — ไม่ต้องมีกระเป๋า ไม่ต้องเซ็นอะไร เวลามีจำกัด เสียงตรงนี้บอกว่าควรเริ่มที่ไหน"
+  echo "- **ลองแล้วมารายงาน** ไม่ว่าผ่านหรือพัง — **รายงานว่าพังมีค่าเท่ากับรายงานว่าผ่าน**"
+  echo "  เพราะจุดที่พังคือสิ่งที่ควรไปอยู่ในช่อง \`จุดที่จะพลาด\` ของสูตรนั้น"
   echo
   echo "---"
   echo
@@ -84,6 +100,13 @@ yq -r ".resources[] | [.url, .name] | join(\"$SEP\")" "$DATA" \
     echo
     printf '**ประกอบยังไง** — %s\n\n' "$approach"
     printf '**จุดที่จะพลาด** — %s\n\n' "$watch"
+    if [ "$status" = "proven" ]; then
+      printf 'เคยทำแล้วเจอต่างจากนี้? [รายงานผล](%s) · [เธรดของสูตรนี้](%s)\n\n' \
+        "$(report_url "$id")" "$(vote_url "$id")"
+    else
+      printf '🧪 **ยังไม่มีใครรันทั้งชุด** — [รายงานผลถ้าลองแล้ว](%s) · [กด 👍 ให้พิสูจน์อันนี้ก่อน](%s)\n\n' \
+        "$(report_url "$id")" "$(vote_url "$id")"
+    fi
     echo "---"
     echo
   done

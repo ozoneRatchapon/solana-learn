@@ -184,6 +184,10 @@ input[type="search"]:focus-visible, button:focus-visible, a:focus-visible {
                   background: var(--surface-2); border: 1px solid var(--line-soft);
                   padding: .18rem .42rem; border-radius: 2px; color: var(--ink-2); }
 .recipe .uses a:hover { border-color: var(--accent); color: var(--accent); }
+.recipe-act { display: flex; gap: .9rem; flex-wrap: wrap; font-size: .8rem;
+  padding-top: .5rem; border-top: 1px dashed var(--line-soft); }
+.recipe-act a { color: var(--ink-2); text-decoration: none; border-bottom: 1px solid var(--line-soft); }
+.recipe-act a:hover { color: var(--accent); border-color: var(--accent); }
 .fld { font-size: .84rem; color: var(--ink-2); }
 .fld b { color: var(--ink); font-weight: 560; margin-right: .3rem; }
 .fld.warn { border-left: 2px solid var(--warn); padding-left: .7rem; }
@@ -312,6 +316,12 @@ footer { margin-top: 3.5rem; border-top: 1px solid var(--line); padding-top: 1.2
       <h2>โจทย์นี้หยิบอะไรมาต่อกัน</h2>
       <span class="note">ข้อจำกัดคือส่วนที่ทำให้สูตรมีค่า ไม่ใช่ขั้นตอน</span>
     </div>
+    <p class="note" style="margin:0 0 .8rem">
+      <b>ยังไม่มีสูตรไหนเป็น “เคยทำจริง” เลยสักอัน</b> — ทุกอันประกอบจากของที่ตรวจมาแล้วทีละชิ้น
+      แต่ไม่มีใครรันทั้งชุดตั้งแต่ต้นจนจบ เราจึงไม่ติดป้ายให้ตัวเอง
+      <a href="https://github.com/ozoneRatchapon/solana-learn/issues?q=is%3Aissue+label%3Arecipe" target="_blank" rel="noopener">กด 👍 ว่าอยากให้พิสูจน์อันไหนก่อน</a>
+      ก็ช่วยได้ ไม่ต้องมีกระเป๋า ไม่ต้องเซ็นอะไร
+    </p>
     <div class="recipes" id="recipes"></div>
   </section>
 
@@ -449,6 +459,7 @@ $("kinds").innerHTML = ["org", "community", "program", "product"].map(k => {
 const nameByUrl = {};
 DATA.resources.forEach(r => nameByUrl[r.url.toLowerCase().replace(/\/+$/, "")] = r.name);
 const lookup = (u) => nameByUrl[String(u).toLowerCase().replace(/\/+$/, "")] || u;
+const GH = "https://github.com/ozoneRatchapon/solana-learn";
 $("recipes").innerHTML = DATA.recipes.map(r => `
   <div class="recipe">
     <div class="opp-top">
@@ -459,6 +470,10 @@ $("recipes").innerHTML = DATA.recipes.map(r => `
     <div class="uses">${(r.uses || []).map(u => `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(lookup(u))}</a>`).join("")}</div>
     ${r.approach ? `<div class="fld"><b>ประกอบยังไง</b> ${esc(r.approach)}</div>` : ""}
     ${r.watch_out ? `<div class="fld warn"><b>จุดที่จะพลาด</b> ${esc(r.watch_out)}</div>` : ""}
+    <div class="recipe-act">
+      <a href="${GH}/issues/new?template=recipe-report.yml&recipe-id=${encodeURIComponent(r.id)}" target="_blank" rel="noopener">รายงานผลถ้าลองแล้ว</a>
+      <a href="${GH}/issues?q=is%3Aissue+label%3Arecipe+in%3Atitle+${encodeURIComponent(r.id)}" target="_blank" rel="noopener">👍 ให้พิสูจน์อันนี้ก่อน</a>
+    </div>
   </div>
 `).join("");
 
