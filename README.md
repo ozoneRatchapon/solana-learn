@@ -36,7 +36,7 @@ Issues and PRs in English are welcome.
 | [scripts/](scripts/) | check / add / reject / setnote / deprecate / render / linkcheck / audit |
 | [CLAUDE.md](CLAUDE.md) | บริบทสำหรับ Claude Code — กฎเหล็ก, workflow, กับดักที่เคยเจอ |
 
-ตอนนี้: **214 รายการ · 19 หมวด · ลิงก์ตาย 0**
+ตอนนี้: **218 รายการ · 19 หมวด · ลิงก์ตาย 0**
 
 > ตัวเลขบรรทัดบนถูกตรวจโดย `./scripts/audit.sh` — ถ้าไม่ตรงกับ YAML แล้ว CI จะไม่ผ่าน
 

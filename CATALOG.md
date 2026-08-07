@@ -3,14 +3,14 @@
 > ไฟล์นี้ถูก generate จาก [data/resources.yml](data/resources.yml) — **อย่าแก้ตรงนี้**
 > แก้ที่ YAML แล้วรัน `./scripts/render.sh`
 
-รวม **214** รายการ · ข้อมูลล่าสุด 2026-08-07
+รวม **218** รายการ · ข้อมูลล่าสุด 2026-08-08
 
 หมายเหตุสถานะ: `blocked` = เว็บกัน bot ตอน curl (ลิงก์ยังใช้ได้), `unverified` = เช็คอัตโนมัติไม่ผ่าน ต้องดูด้วยตา
 
 ## สารบัญ
 
 - [Official — Foundation & Anza (source of truth ตัวจริง)](#official--foundation--anza-source-of-truth-ตัวจริง) — 18
-- [Learning — คอร์ส, bootcamp, tutorial](#learning--คอร์ส-bootcamp-tutorial) — 18
+- [Learning — คอร์ส, bootcamp, tutorial](#learning--คอร์ส-bootcamp-tutorial) — 19
 - [Program Frameworks — Anchor / Pinocchio / native](#program-frameworks--anchor--pinocchio--native) — 12
 - [Client SDK — Kit, web3.js, scaffolding](#client-sdk--kit-web3js-scaffolding) — 11
 - [Testing — LiteSVM, Mollusk, Surfpool](#testing--litesvm-mollusk-surfpool) — 5
@@ -21,9 +21,9 @@
 - [AI / Agent Skills / MCP](#ai--agent-skills--mcp) — 20
 - [Infra & RPC providers](#infra--rpc-providers) — 12
 - [Data & Analytics](#data--analytics) — 13
-- [DeFi & Ecosystem protocols](#defi--ecosystem-protocols) — 13
+- [DeFi & Ecosystem protocols](#defi--ecosystem-protocols) — 14
 - [Mobile](#mobile) — 2
-- [Protocol internals — Agave, Firedancer, network upgrades](#protocol-internals--agave-firedancer-network-upgrades) — 10
+- [Protocol internals — Agave, Firedancer, network upgrades](#protocol-internals--agave-firedancer-network-upgrades) — 12
 - [Governance — SGP, SIMD, โหวตบนเชน](#governance--sgp-simd-โหวตบนเชน) — 9
 - [Green software — พลังงาน คาร์บอน ประสิทธิภาพ](#green-software--พลังงาน-คาร์บอน-ประสิทธิภาพ) — 4
 - [Funding — grants, hackathon, bounty, jobs](#funding--grants-hackathon-bounty-jobs) — 22
@@ -144,6 +144,9 @@
 - [Solana Curriculum — สื่อการสอนทางการสำหรับมหาวิทยาลัยและ bootcamp](https://github.com/solana-foundation/curriculum) `official`
   ชุดสื่อการสอน Solana ที่ Foundation ทำให้มหาวิทยาลัยและ bootcamp เอาไปใช้ (★193) มี 7 คอร์ส — blockchain-basics, rust-basics-for-solana-development, anchor-and-programs, spl-tokens-2022-and-extensions, web-for-solana-development-101, web3-solana-starter-pack, defi-on-jupiter แต่ละคอร์สมี course-plan แยก; **นี่คือของที่ตรงกับงาน community operator มากที่สุดในแคตตาล็อกทั้งหมด** เพราะไม่ต้องออกแบบหลักสูตรเองตั้งแต่ต้น หยิบโครงมาปรับเป็นภาษาไทยแล้วต่อกับ quest ของ Genesis ได้เลย; **ข้อควรระวังสองข้อ** — ไม่มี license ตามกฎหมายจึงเอาไปดัดแปลงไม่ได้จนกว่าจะถาม (ปัญหาเดียวกับ solana-rust-vscode-course) และ push ล่าสุด ม.ค. 2026 คือเงียบมา 7 เดือน ต้องเช็คว่าเนื้อหายังตรงกับ Anchor 1.0 และ Kit หรือยังก่อนเอาไปสอน
   <sub>curriculum, teaching, workshop, course-plan, university</sub>
+- [Lamport Press — อ่านตัวอย่างโปรแกรมทางการทั้ง 52 ตัวแบบรีวิวโค้ด](https://lamport.press/)
+  หนังสือ **เสียเงิน $9** (EPUB+PDF ไม่มี DRM อัปเดตฟรีตลอด) เล่มแรกชื่อ Basics จาก 4 เล่มที่วางไว้ — ไม่ใช่ tutorial แต่คือการ **พาอ่าน `solana-foundation/program-examples` ทั้ง 52 ตัวแบบรีวิว PR** ว่าทำอะไร ทำไมทำแบบนั้น และเวลาเขียนเองต้องระวังอะไร; **เหตุผลที่เก็บทั้งที่เสียเงินและไม่เป็นทางการ** — ผมเช็ค `Cargo.toml` ของต้นทางแล้วได้ `anchor-lang = "1.0.2"` (repo ★1425 MIT push 7 ส.ค. 2026) **ซึ่งหมายความว่าเนื้อหาอิงของปัจจุบัน ไม่ใช่ Anchor 0.3x เหมือนคอร์สเกือบทั้งเน็ต** และเล่มนี้ยังพา Hello World เดียวกันผ่านทั้ง Anchor / native Rust / Pinocchio เพื่อให้เห็นว่าเฟรมเวิร์กเป็นตัวเลือกไม่ใช่ข้อบังคับ พร้อมใช้ LiteSVM เทส ตรงกับสแตกที่เราแนะนำอยู่แล้ว; **สิ่งที่ยังตรวจไม่ได้และต้องถามก่อนซื้อ** — หน้าเว็บบอกว่า pin ไว้ที่ commit เดียวแต่ **ไม่ระบุว่า commit ไหน** ถ้า pin ไว้นานแล้วก็เจอปัญหาเดียวกับที่หนังสือเล่มนี้ตั้งใจแก้; ผู้เขียน Jose Ferrer ทำในนาม Moviendome Limited (ฮ่องกง) **ประกาศเองว่าไม่ได้สังกัด Solana Foundation** ส่วนการยกโค้ดทำได้เพราะต้นทางเป็น MIT
+  <sub>book, program-examples, anchor, pinocchio, litesvm, paid</sub>
 
 ## Program Frameworks — Anchor / Pinocchio / native
 
@@ -558,6 +561,9 @@
 - [Frontier Traders — โปรแกรม incentive การเทรดของ Foundation](https://www.frontiertraders.com/) `official`
   ยืนยันแล้วว่าเป็นของ Foundation จริง ไม่ใช่ของปลอม — ToS ของเว็บระบุเองว่า Solana Foundation เป็น Sponsor ของ onchain markets program ที่รันผ่าน trading.solana.com และ dig แล้วพบว่า trading.solana.com กับ www.frontiertraders.com ชี้ไป Vercel deployment เดียวกันเป๊ะ; แคมเปญเป็นการแข่งเทรด เงินรางวัลก้อนละ $25,000 แบ่งตาม leaderboard สองสาย volume กับ PnL นับเฉพาะกระเป๋าที่สมัครและยืนยันแล้ว ล่าสุดเปิดให้เคลม 31 ก.ค. 2026 หน้าต่าง 30 วัน (micron / sndk / bot) พาร์ตเนอร์ที่โชว์บนหน้าแรกมี Phoenix, Pyth, Helius, Backpack, Ondo, DoubleZero, Axiom, Pump.fun; ข้อควรคิดก่อนกระจายในชุมชน — นี่คือรางวัลจากการเทรด ไม่ใช่จากการสร้าง และ leaderboard แบบ PnL เร่งให้คนกล้าเสี่ยงมากขึ้นโดยธรรมชาติ ต่างจาก bounty หรือ grant ในหมวด funding ที่ยิ่งทำยิ่งได้ทักษะ; ต้องเชื่อมกระเป๋าและยืนยันตัวตนด้วย และ solana.com หน้าหลักที่เช็คแล้วไม่ได้ลิงก์มาที่นี่ คนทั่วไปจึงตรวจสอบความเป็นทางการเองได้ยาก
   <sub>incentive, competition, leaderboard, trading, campaign, verified-wallet</sub>
+- [0x Swap API บน Solana — เปิด open beta](https://0x.org/post/0x-swap-api-on-solana-is-now-in-open-beta) `vendor`
+  ครั้งแรกที่ 0x ออกนอกโลก EVM หลังทำ aggregator มา 9 ปี **แต่ส่วนที่น่าสนใจสำหรับคนเขียนโค้ดไม่ใช่ข่าว คือวิธีที่มันออกแบบให้เข้ากับ Solana จริงๆ**; `POST /solana/swap-instructions` **คืน instruction ไม่ใช่ธุรกรรมสำเร็จรูป** เพราะถ้าคืนทั้งธุรกรรมคุณจะแทรก instruction ของตัวเองไม่ได้ ซึ่งเป็นหัวใจของการทำงานแบบ atomic บน Solana; มีพารามิเตอร์ `reserve_transaction_bytes` กันที่ไว้ให้ instruction ของคุณ, คืน Address Lookup Table มาด้วยเพื่อให้เส้นทางหลายขาคอมไพล์ลงในขนาดที่จำกัด, `recipient` ส่งผลลัพธ์ไปกระเป๋าอื่นในธุรกรรมเดียวกันได้, `slippage_bps` ค่าเริ่มต้น 50 (0.5%), และสร้าง ATA ให้ในชุด instruction เลย; รองรับ SPL, native SOL (ไม่ต้อง wrap แยก) และ Token-2022 (เปิด ก.ค. 2026); **ตัวเลขที่อ้างต้องอ่านแบบระวัง** — 97.8% ของ quote รอด simulation และ revert 2.2% เป็น **ตัวเลขที่ 0x วัดเองและใช้ทำการตลาด ยังไม่มีใครนอกยืนยัน** ส่วนที่ตรวจได้คือ Kamino กับ Titan ใช้จริงใน closed beta; ตอนนี้โปรโมทค่าธรรมเนียม swap = 0 ซึ่งแปลว่า **ต้องเช็คราคาจริงก่อนวางแผนระยะยาว**
+  <sub>swap, aggregator, api, token-2022, instructions</sub>
 
 ## Mobile
 
@@ -600,6 +606,12 @@
 - [Proof of History อธิบายแบบเข้าใจได้](https://www.guibibeau.com/blog/proof-of-history-explained)
   อธิบาย Proof of History ซึ่งเป็นกลไกที่คนเข้าใจผิดบ่อยที่สุดเรื่องหนึ่งของ Solana — หลายคนคิดว่าเป็น consensus ทั้งที่จริงเป็นนาฬิกาที่ทำให้ validator ตกลงเรื่องลำดับเวลาได้โดยไม่ต้องคุยกัน; เขียนโดย GuiBibeau คนเดียวกับที่ทำ Harness ในหมวด defi — เป็นนักพัฒนาที่ทำของจริงไม่ใช่นักเขียนคอนเทนต์อย่างเดียว; ใช้เป็นตัวส่งให้คนไทยที่ถามว่า "Solana เร็วเพราะอะไร" ซึ่งตอบด้วย PoH อย่างเดียวไม่พอแต่เป็นจุดเริ่มที่ถูก
   <sub>poh, consensus, explainer, fundamentals</sub>
+- [Quantumglow — Alpenglow เวอร์ชันทนควอนตัม](https://www.anza.xyz/blog/quantumglow-will-solana%E2%80%99s-performance-survive-quantum-computing) `anza`
+  งานวิจัยของ Anza (Quentin Kniep, Kobi Sliwinski, Roger Wattenhofer — กลุ่ม ETH Zurich) ลง 30 ก.ค. 2026 **ตอบคำถามที่ทุกเชนต้องตอบสักวันแต่ยังไม่มีใครตอบเป็นรูปธรรม**; ปัญหาไม่ใช่ว่าไม่มีลายเซ็นทนควอนตัม แต่คือ **มันใหญ่เกินไป** — Alpenglow ออกแบบให้ vote/shred/certificate ลงได้ในแพ็กเก็ตเดียว ส่วน Falcon-512 ซึ่งเล็กที่สุดในกลุ่มที่กำลังจะเป็นมาตรฐานก็ยัง 666 byte ที่เหลือเป็นกิโลไบต์; ทางออกที่เลือกคือ **เลี่ยงการเซ็นแทนที่จะหาลายเซ็นเล็กลง** — ใช้ hash-based (XMSS) ที่ทำเองชื่อ Ax (Alpenglow XMSS) ซึ่งพึ่งแค่ความปลอดภัยของ hash function, validator แลก one-time public key กันไว้ล่วงหน้าแล้วแคช ลายเซ็นจึงตัด Merkle path ทิ้งได้, และ Rotor เลิกเซ็นทุก shred เปลี่ยนเป็น block commitment อันเดียวต่อบล็อก; **ปัญหาที่ยากจริงคือ aggregate** — cert ของ Alpenglow คือลายเซ็น BLS 192 byte อันเดียวแทนทั้ง quorum ส่วนของฝั่งควอนตัมโตตามจำนวนผู้เซ็น (หลักสิบถึงร้อย KB) และ aggregate ช้าเป็นวินาที Quantumglow เลย **เลิกสู้ตรงนั้นทั้งหมด — เปลี่ยน cert จากข้อความที่ส่งกันเป็นเหตุการณ์ที่แต่ละโหนดบันทึกเอง** แล้วเติมข้อความใหม่ชื่อ approval แทน (คนที่รู้จัก Bracha reliable broadcast จะคุ้น); ผลคือ fast-finalize ที่ 80% ของ stake ยังเร็วเท่าเดิม ขั้นเพิ่มเกิดเฉพาะตอนมีคนโกงหรือเน็ตมีปัญหา; **อ่านคู่กับ JumpCrypto/falcon ที่เก็บไว้แล้ว — สองทีมเดิมพันคนละทางในสัปดาห์เดียวกัน**
+  <sub>post-quantum, alpenglow, consensus, cryptography, research</sub>
+- [Falcon Verify on AVX-512 (Jump Crypto / Firedancer)](https://github.com/JumpCrypto/falcon) `vendor`
+  อีกขั้วของคำถามเดียวกันกับ Quantumglow และลงวันเดียวกันเป๊ะ (30 ก.ค. 2026) — **Anza เลือกเลี่ยง Falcon เพราะ 666 byte ใหญ่ไป ส่วน Jump เลือกทำให้ Falcon เร็วพอจนใช้ได้จริง**; เป็น implementation ภาษา C ของการ *ตรวจ* ลายเซ็น Falcon บน AVX-512 ทำในโครงการ Firedancer แล้วแยกออกมาเป็น repo เดี่ยวเพื่อให้ reproduce benchmark ในเปเปอร์ได้โดยไม่ต้องโคลน Firedancer ทั้งต้น มีเปเปอร์ IACR ePrint 2026/1539 ชื่อ Falcon Verify on AVX-512: Speed Records กำกับ; ตัวเร็วสุดอยู่ที่ falcon/falcon_avx512.c รันด้วย make test แล้ว ./bench ได้เลย; **ข้อควรระวัง** — ★5 license เป็น NOASSERTION (GitHub อ่านไฟล์ license ไม่ออก) ต้องเปิดดูเองก่อนเอาไปใช้ในงานที่มีข้อผูกพัน และ build ตั้ง -march=native ไว้ **เครื่องที่ไม่มี AVX-512 รันไม่ได้**; คุณค่าที่แท้จริงคือเป็นหลักฐานว่าคำถาม post-quantum ของ Solana ตอนนี้มีสองสำนักที่มีของจริง ไม่ใช่แค่การถกกันลอยๆ
+  <sub>post-quantum, falcon, avx512, firedancer, paper, benchmark</sub>
 
 ## Governance — SGP, SIMD, โหวตบนเชน
 

@@ -1988,3 +1988,39 @@ resources:
     note: 'ดัชนีอีเวนต์นักพัฒนา 1,735 งานใน 96 ประเทศ (Solana / crypto / AI / tech ทั่วไป) **มีตัวกรอง Thailand และมีของไทยจริง** — เช็คหน้าแรกวันที่ 7 ส.ค. 2026 เจอ 4 งาน: MagicBlock Workshop with Superteam Thailand (ออนไลน์ 8 ส.ค. luma.com/gf0kd65i), Superteam Blitz: Thailand Build Station (กรุงเทพฯ 8 ส.ค. luma.com/8hf5xv6n **ตรงกับ Blitz V7 ที่ปิด 9 ส.ค. พอดี**), Solana Co-Working BKK 11 ส.ค. (luma.com/5dtjffiy) และ 18 ส.ค. (luma.com/nzury1e5) — ยิงเช็คทั้ง 4 ลิงก์แล้วได้ 200 ชื่อตรงทุกอัน; **กับดักสองอย่างที่ต้องรู้ก่อนใช้** — (1) `https://devs.events/api/events` **มีอยู่จริงและตอบ 200 แต่คืนอีเวนต์ตัวอย่างตัวเดียวตายตัว** และฟิลด์ createdAt เป็นสตริง `CURRENT_TIMESTAMP` ที่ยังไม่ถูกแทนค่า **มันคือ stub ไม่ใช่ API จริง** ใครหรือ agent ตัวไหนเชื่อ endpoint นี้จะสรุปว่าเว็บมีอีเวนต์เดียวที่ไนจีเรีย · ส่ง `?country=` `?page=` `?limit=` ไปก็ไม่มีผล ได้ตัวเดิมทุกครั้ง (2) HTML หน้าแรกบรรจุ **แค่ 100 งานจาก 1,735** เรียงตามวันที่ใกล้สุด ที่เหลืออยู่หลังปุ่ม Load more และไม่มี payload ซ่อนใน script (สคริปต์รวมกันแค่ 4,969 byte) **จึงห้ามสรุปว่าประเทศไหนไม่มีงานจากการยิงครั้งเดียว**; ของจริงต้องอ่านจาก HTML ไม่ใช่จาก API ซึ่งเป็นสถานการณ์กลับด้านกับที่เจอบ่อย'
     status: ok
     added: 2026-08-07
+
+  - url: https://www.anza.xyz/blog/quantumglow-will-solana%E2%80%99s-performance-survive-quantum-computing
+    name: 'Quantumglow — Alpenglow เวอร์ชันทนควอนตัม'
+    category: protocol
+    source: anza
+    tags: [post-quantum, alpenglow, consensus, cryptography, research]
+    note: 'งานวิจัยของ Anza (Quentin Kniep, Kobi Sliwinski, Roger Wattenhofer — กลุ่ม ETH Zurich) ลง 30 ก.ค. 2026 **ตอบคำถามที่ทุกเชนต้องตอบสักวันแต่ยังไม่มีใครตอบเป็นรูปธรรม**; ปัญหาไม่ใช่ว่าไม่มีลายเซ็นทนควอนตัม แต่คือ **มันใหญ่เกินไป** — Alpenglow ออกแบบให้ vote/shred/certificate ลงได้ในแพ็กเก็ตเดียว ส่วน Falcon-512 ซึ่งเล็กที่สุดในกลุ่มที่กำลังจะเป็นมาตรฐานก็ยัง 666 byte ที่เหลือเป็นกิโลไบต์; ทางออกที่เลือกคือ **เลี่ยงการเซ็นแทนที่จะหาลายเซ็นเล็กลง** — ใช้ hash-based (XMSS) ที่ทำเองชื่อ Ax (Alpenglow XMSS) ซึ่งพึ่งแค่ความปลอดภัยของ hash function, validator แลก one-time public key กันไว้ล่วงหน้าแล้วแคช ลายเซ็นจึงตัด Merkle path ทิ้งได้, และ Rotor เลิกเซ็นทุก shred เปลี่ยนเป็น block commitment อันเดียวต่อบล็อก; **ปัญหาที่ยากจริงคือ aggregate** — cert ของ Alpenglow คือลายเซ็น BLS 192 byte อันเดียวแทนทั้ง quorum ส่วนของฝั่งควอนตัมโตตามจำนวนผู้เซ็น (หลักสิบถึงร้อย KB) และ aggregate ช้าเป็นวินาที Quantumglow เลย **เลิกสู้ตรงนั้นทั้งหมด — เปลี่ยน cert จากข้อความที่ส่งกันเป็นเหตุการณ์ที่แต่ละโหนดบันทึกเอง** แล้วเติมข้อความใหม่ชื่อ approval แทน (คนที่รู้จัก Bracha reliable broadcast จะคุ้น); ผลคือ fast-finalize ที่ 80% ของ stake ยังเร็วเท่าเดิม ขั้นเพิ่มเกิดเฉพาะตอนมีคนโกงหรือเน็ตมีปัญหา; **อ่านคู่กับ JumpCrypto/falcon ที่เก็บไว้แล้ว — สองทีมเดิมพันคนละทางในสัปดาห์เดียวกัน**'
+    status: ok
+    added: 2026-08-08
+
+  - url: https://github.com/JumpCrypto/falcon
+    name: 'Falcon Verify on AVX-512 (Jump Crypto / Firedancer)'
+    category: protocol
+    source: vendor
+    tags: [post-quantum, falcon, avx512, firedancer, paper, benchmark]
+    note: 'อีกขั้วของคำถามเดียวกันกับ Quantumglow และลงวันเดียวกันเป๊ะ (30 ก.ค. 2026) — **Anza เลือกเลี่ยง Falcon เพราะ 666 byte ใหญ่ไป ส่วน Jump เลือกทำให้ Falcon เร็วพอจนใช้ได้จริง**; เป็น implementation ภาษา C ของการ *ตรวจ* ลายเซ็น Falcon บน AVX-512 ทำในโครงการ Firedancer แล้วแยกออกมาเป็น repo เดี่ยวเพื่อให้ reproduce benchmark ในเปเปอร์ได้โดยไม่ต้องโคลน Firedancer ทั้งต้น มีเปเปอร์ IACR ePrint 2026/1539 ชื่อ Falcon Verify on AVX-512: Speed Records กำกับ; ตัวเร็วสุดอยู่ที่ falcon/falcon_avx512.c รันด้วย make test แล้ว ./bench ได้เลย; **ข้อควรระวัง** — ★5 license เป็น NOASSERTION (GitHub อ่านไฟล์ license ไม่ออก) ต้องเปิดดูเองก่อนเอาไปใช้ในงานที่มีข้อผูกพัน และ build ตั้ง -march=native ไว้ **เครื่องที่ไม่มี AVX-512 รันไม่ได้**; คุณค่าที่แท้จริงคือเป็นหลักฐานว่าคำถาม post-quantum ของ Solana ตอนนี้มีสองสำนักที่มีของจริง ไม่ใช่แค่การถกกันลอยๆ'
+    status: ok
+    added: 2026-08-08
+
+  - url: https://0x.org/post/0x-swap-api-on-solana-is-now-in-open-beta
+    name: '0x Swap API บน Solana — เปิด open beta'
+    category: defi
+    source: vendor
+    tags: [swap, aggregator, api, token-2022, instructions]
+    note: 'ครั้งแรกที่ 0x ออกนอกโลก EVM หลังทำ aggregator มา 9 ปี **แต่ส่วนที่น่าสนใจสำหรับคนเขียนโค้ดไม่ใช่ข่าว คือวิธีที่มันออกแบบให้เข้ากับ Solana จริงๆ**; `POST /solana/swap-instructions` **คืน instruction ไม่ใช่ธุรกรรมสำเร็จรูป** เพราะถ้าคืนทั้งธุรกรรมคุณจะแทรก instruction ของตัวเองไม่ได้ ซึ่งเป็นหัวใจของการทำงานแบบ atomic บน Solana; มีพารามิเตอร์ `reserve_transaction_bytes` กันที่ไว้ให้ instruction ของคุณ, คืน Address Lookup Table มาด้วยเพื่อให้เส้นทางหลายขาคอมไพล์ลงในขนาดที่จำกัด, `recipient` ส่งผลลัพธ์ไปกระเป๋าอื่นในธุรกรรมเดียวกันได้, `slippage_bps` ค่าเริ่มต้น 50 (0.5%), และสร้าง ATA ให้ในชุด instruction เลย; รองรับ SPL, native SOL (ไม่ต้อง wrap แยก) และ Token-2022 (เปิด ก.ค. 2026); **ตัวเลขที่อ้างต้องอ่านแบบระวัง** — 97.8% ของ quote รอด simulation และ revert 2.2% เป็น **ตัวเลขที่ 0x วัดเองและใช้ทำการตลาด ยังไม่มีใครนอกยืนยัน** ส่วนที่ตรวจได้คือ Kamino กับ Titan ใช้จริงใน closed beta; ตอนนี้โปรโมทค่าธรรมเนียม swap = 0 ซึ่งแปลว่า **ต้องเช็คราคาจริงก่อนวางแผนระยะยาว**'
+    status: ok
+    added: 2026-08-08
+
+  - url: https://lamport.press/
+    name: 'Lamport Press — อ่านตัวอย่างโปรแกรมทางการทั้ง 52 ตัวแบบรีวิวโค้ด'
+    category: learning
+    source: community
+    tags: [book, program-examples, anchor, pinocchio, litesvm, paid]
+    note: 'หนังสือ **เสียเงิน $9** (EPUB+PDF ไม่มี DRM อัปเดตฟรีตลอด) เล่มแรกชื่อ Basics จาก 4 เล่มที่วางไว้ — ไม่ใช่ tutorial แต่คือการ **พาอ่าน `solana-foundation/program-examples` ทั้ง 52 ตัวแบบรีวิว PR** ว่าทำอะไร ทำไมทำแบบนั้น และเวลาเขียนเองต้องระวังอะไร; **เหตุผลที่เก็บทั้งที่เสียเงินและไม่เป็นทางการ** — ผมเช็ค `Cargo.toml` ของต้นทางแล้วได้ `anchor-lang = "1.0.2"` (repo ★1425 MIT push 7 ส.ค. 2026) **ซึ่งหมายความว่าเนื้อหาอิงของปัจจุบัน ไม่ใช่ Anchor 0.3x เหมือนคอร์สเกือบทั้งเน็ต** และเล่มนี้ยังพา Hello World เดียวกันผ่านทั้ง Anchor / native Rust / Pinocchio เพื่อให้เห็นว่าเฟรมเวิร์กเป็นตัวเลือกไม่ใช่ข้อบังคับ พร้อมใช้ LiteSVM เทส ตรงกับสแตกที่เราแนะนำอยู่แล้ว; **สิ่งที่ยังตรวจไม่ได้และต้องถามก่อนซื้อ** — หน้าเว็บบอกว่า pin ไว้ที่ commit เดียวแต่ **ไม่ระบุว่า commit ไหน** ถ้า pin ไว้นานแล้วก็เจอปัญหาเดียวกับที่หนังสือเล่มนี้ตั้งใจแก้; ผู้เขียน Jose Ferrer ทำในนาม Moviendome Limited (ฮ่องกง) **ประกาศเองว่าไม่ได้สังกัด Solana Foundation** ส่วนการยกโค้ดทำได้เพราะต้นทางเป็น MIT'
+    status: ok
+    added: 2026-08-08
