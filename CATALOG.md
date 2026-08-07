@@ -3,7 +3,7 @@
 > ไฟล์นี้ถูก generate จาก [data/resources.yml](data/resources.yml) — **อย่าแก้ตรงนี้**
 > แก้ที่ YAML แล้วรัน `./scripts/render.sh`
 
-รวม **212** รายการ · ข้อมูลล่าสุด 2026-08-07
+รวม **213** รายการ · ข้อมูลล่าสุด 2026-08-07
 
 หมายเหตุสถานะ: `blocked` = เว็บกัน bot ตอน curl (ลิงก์ยังใช้ได้), `unverified` = เช็คอัตโนมัติไม่ผ่าน ต้องดูด้วยตา
 
@@ -26,7 +26,7 @@
 - [Protocol internals — Agave, Firedancer, network upgrades](#protocol-internals--agave-firedancer-network-upgrades) — 10
 - [Governance — SGP, SIMD, โหวตบนเชน](#governance--sgp-simd-โหวตบนเชน) — 9
 - [Green software — พลังงาน คาร์บอน ประสิทธิภาพ](#green-software--พลังงาน-คาร์บอน-ประสิทธิภาพ) — 4
-- [Funding — grants, hackathon, bounty, jobs](#funding--grants-hackathon-bounty-jobs) — 20
+- [Funding — grants, hackathon, bounty, jobs](#funding--grants-hackathon-bounty-jobs) — 21
 - [Thailand — ชุมชนไทย](#thailand--ชุมชนไทย) — 4
 
 ## Official — Foundation & Anza (source of truth ตัวจริง)
@@ -708,6 +708,9 @@
 - [Solana Pulse (Kyzzen) — จดหมายข่าวรายวันเชิงตัวเลข](https://solanapulse.kyzzen.io/) `vendor`
   จุดที่ใช้จริงไม่ใช่หน้าเว็บ แต่คือ **https://solanapulse.kyzzen.io/rss/ ซึ่งให้เนื้อฉบับเต็มฟรี ไม่ต้องกรอกอีเมล** — ตรวจแล้วใน content:encoded มีข้อความเต็ม 3,887 ตัวอักษร ไม่มีร่องรอย members-only จึงให้สคริปต์หรือ agent ดึงเองได้; ทุกฉบับมีหัวข้อ **Opportunities** ที่ระบุ **วันปิดชัดเจน** เช่นฉบับ 4 ส.ค. 2026 — Jupiter Gacha $100K (ปิด 9 ส.ค.), PhoenixTrade USDC 420K (ปิด 23 ส.ค.), Solana Foundation $25K equity perps (ปิด 30 ส.ค.), Seeker Summer (ปิด 30 ส.ค.), Kamino USDG $300K (ปิด 13 ต.ค.) พ่วง Bounties Ending Soon กับ New Job Listings; **ระวังสองอย่าง** — (1) หน้า About เขียนว่า delivered daily แต่ฟีดจริงมี 15 ฉบับใน 42 วัน (24 มิ.ย.–4 ส.ค.) ราว 2–3 ครั้ง/สัปดาห์ เจ้าตัวยอมรับเองว่าข้ามไปหลายฉบับตอนไปงาน Malaysia Blockchain Week **อย่าใช้แทนการเช็คต้นทาง** (2) แคมเปญส่วนใหญ่เป็น incentive ฝั่งเทรด/ฟาร์มยิลด์ที่ต้องใส่เงินและขาดทุนได้ **ไม่ใช่โอกาสสาย builder แบบ grant/hackathon** ห้ามยกเข้าเรดาร์รวมกันโดยไม่แยก; ผู้ทำคือ Kyzzen ซึ่งเป็นแพลตฟอร์ม analytics บน Solana เอง จึงไม่ใช่กองบรรณาธิการเป็นกลาง; ใช้คู่กับ Colosseum Codex ไม่ใช่แทนกัน — Codex เกาะฝั่ง builder/โปรโตคอล/governance ส่วนตัวนี้เกาะฝั่งตลาด ยิลด์ และแคมเปญที่มีเดดไลน์
   <sub>newsletter, rss, market, opportunities, deadlines</sub>
+- [Superteam Earn Telegram Bot — แจ้งเตือน bounty ใหม่](https://t.me/STEarnBot)
+  **ยืนยันว่าเป็นของทางการจากซอร์สโค้ด ไม่ใช่จากคำโฆษณาของบอทเอง** — hardcode อยู่ใน `src/constants/Telegram.ts` ของ repo SuperteamDAO/earn (★253 push 7 ส.ค. 2026) เป็นค่า production ส่วน staging คือ @EarnNotificationsStagingBot; **เรื่องนี้ต้องเช็คทุกครั้งกับบอท Telegram สายคริปโต** เพราะบอทปลอมที่ก็อปชื่อกับรูปมาแล้วหลอกให้ต่อกระเป๋าเป็นรูปแบบหลอกลวงที่พบบ่อยที่สุด **ห้ามส่งต่อบอทให้ชุมชนโดยไม่ตามไปดูซอร์ส**; ประโยชน์กับเราคือ **เปลี่ยนจากไปเปิดเว็บดูเอง เป็นให้มันเด้งมาหา** — คู่กับ superteam.fun/earn/agents ที่เก็บไว้แล้วซึ่งเป็นฝั่ง API สำหรับ agent ตัวนี้คือฝั่งคน เอาเข้ากลุ่มชุมชนไทยได้เลยไม่ต้องมีใครคอยไล่เช็ค; **กับดักความเป็นส่วนตัวที่เจอตอนอ่านโค้ด** — ลิงก์เชื่อมบัญชีคือ `?start=<base64 ของอีเมลคุณ>` ซึ่ง **base64 ไม่ใช่การเข้ารหัส ใครเห็นลิงก์ก็ถอดอ่านอีเมลได้ทันที** อย่าแคปหน้าจอหรือส่งต่อลิงก์นั้นในกลุ่ม; **สิ่งที่ยังไม่ได้ตรวจ** — ไม่ได้ลองใช้บอทจริงเพราะต้องมีบัญชี Telegram พฤติกรรมจริง (ถี่แค่ไหน กรองตามภูมิภาค/สกิลได้ไหม) จึงยังตอบไม่ได้ ที่เขียนมาทั้งหมดมาจาก metadata กับซอร์สโค้ดเท่านั้น
+  <sub>telegram, bot, alerts, bounty, push-notification</sub>
 
 ## Thailand — ชุมชนไทย
 
