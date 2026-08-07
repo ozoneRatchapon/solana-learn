@@ -3,7 +3,7 @@
 > ไฟล์นี้ถูก generate จาก [data/resources.yml](data/resources.yml) — **อย่าแก้ตรงนี้**
 > แก้ที่ YAML แล้วรัน `./scripts/render.sh`
 
-รวม **211** รายการ · ข้อมูลล่าสุด 2026-08-07
+รวม **212** รายการ · ข้อมูลล่าสุด 2026-08-07
 
 หมายเหตุสถานะ: `blocked` = เว็บกัน bot ตอน curl (ลิงก์ยังใช้ได้), `unverified` = เช็คอัตโนมัติไม่ผ่าน ต้องดูด้วยตา
 
@@ -18,7 +18,7 @@
 - [Tokens & NFT — SPL, Token-2022, Metaplex](#tokens--nft--spl-token-2022-metaplex) — 7
 - [Payments & Commerce](#payments--commerce) — 23
 - [Security & Audit](#security--audit) — 7
-- [AI / Agent Skills / MCP](#ai--agent-skills--mcp) — 19
+- [AI / Agent Skills / MCP](#ai--agent-skills--mcp) — 20
 - [Infra & RPC providers](#infra--rpc-providers) — 12
 - [Data & Analytics](#data--analytics) — 13
 - [DeFi & Ecosystem protocols](#defi--ecosystem-protocols) — 13
@@ -432,6 +432,9 @@
 - [Elfa AI / Iris — ข้อมูลเรียลไทม์สำหรับ agent สายการเงิน](https://elfa.ai) `vendor`
   โครงสร้างข้อมูลเรียลไทม์สำหรับ AI ที่ทำงานกับตลาดการเงิน นิยามตัวเองว่าเป็น "ระบบประสาทที่ส่งข้อมูลที่ถูกต้องไปถึงคนตัดสินใจในจังหวะที่ถูก" ตัวสแตกชื่อ Iris; **เกี่ยวกับเราตรงจังหวะ** — สปอนเซอร์เครดิต 4,500 USDC ให้คนที่สร้างบน Iris ในงาน Solana Blitz v7 ที่กำลังแข่งอยู่ ระบุว่าจำนวนจำกัดมาก่อนได้ก่อน; ยังไม่ได้ตรวจว่าเครดิตนั้นได้มายังไงเพราะลิงก์เป็น t.co ที่ curl ตามต่อไม่ได้ ต้องเปิดเบราว์เซอร์ — เก็บไว้เพราะเป็นตัวอย่างของชั้นข้อมูลที่ agent สายเทรดต้องพึ่ง ซึ่งเป็นช่องว่างที่แคตตาล็อกยังบาง
   <sub>realtime-data, agent, market-intelligence, sponsor</sub>
+- [Elfa Agent Quickstart — x402 บน Solana ที่ยิงได้จริงวันนี้](https://docs.elfa.ai/agent-quickstart/) `vendor`
+  ต่างจากสามรายการ x402 ที่มีอยู่แล้วตรงที่**ตัวนี้เป็นของจริงที่ยิงได้เดี๋ยวนี้ ไม่ใช่เดโมหรือคู่มือ** — ผมยิงเองแล้ว `curl -i https://api.elfa.ai/x402/v2/aggregations/trending-tokens` คืน **HTTP 402** จริง; **กับดักที่ต้องรู้ก่อน — body เป็น `{}` เปล่าๆ เงื่อนไขการจ่ายทั้งหมดอยู่ใน header `payment-required` เป็น base64** ถ้าอ่านแต่ body จะนึกว่า API พัง; ถอดออกมาได้ x402Version 2 · 5 เชน · ขา Solana คือ network `solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp` asset `EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v` (USDC) amount `9000` = 0.009 USDC ตรงกับที่เอกสารเขียนเป๊ะ timeout 300 วินาที; **จุดที่ Solana ต่างจากอีก 4 เชนในลิสต์เดียวกัน — มี `extra.feePayer` มาให้ แปลว่าเซิร์ฟเวอร์ออกค่าแก๊สเอง agent ถือแค่ USDC ก็จ่ายได้ ไม่ต้องมี SOL สักหน่วย** นี่คือสิ่งที่ entry x402+Kora สาธิตไว้ แต่ตัวนี้คือของที่รันอยู่จริง; ราคา 0.009 USDC/call มาตรฐาน, 0.045 สำหรับ event-summary กับ trending-narratives, ส่วน `/chat` เลือกได้ระหว่าง `exact` (คงที่ $1 fast / $2 expert) กับ `upto` (อนุมัติ $2/$6 แต่หักตามที่ใช้จริง) — **โมเดล `upto` น่าศึกษาเพราะแก้ปัญหาที่ราคาต่อคำตอบ LLM เดาไม่ได้ล่วงหน้า**; ดูรายการที่จ่ายได้ทั้งหมดที่ `https://api.elfa.ai/.well-known/x402` (12 รายการ); อีกเรื่องที่ควรลอกวิธี — **docs ตัวนี้ตอบคนละอย่างตาม Accept header** `*/*` ได้ดัชนี text/plain 4,913 byte ส่วน `text/html` ได้หน้าเว็บ 8,428 byte และทุกหน้ามี `.md` ต่อท้ายได้ **ตรงข้ามกับกับดัก SPA ที่เราชนมาตลอด**; skill อยู่ที่ elfa-ai/skills (★5 push 6 ส.ค. 2026 สดมาก **แต่ไม่มี license** เอาไปใช้ในงานองค์กรต้องถามก่อน) และมี MCP server 12 tool สำหรับ client ที่รันคำสั่งไม่ได้
+  <sub>x402, agent, mcp, skill, llms-txt, content-negotiation</sub>
 
 ## Infra & RPC providers
 
