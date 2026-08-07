@@ -92,15 +92,15 @@ entities:
   - id: anchor
     name: Anchor
     kind: product
-    evidence: https://github.com/solana-foundation/anchor
-    reach: เฟรมเวิร์กที่คนไทยเริ่มต้นด้วยเกือบทั้งหมด — repo 301 ไป otter-sec แล้ว คนดูแลจริงเปลี่ยนมือ
+    evidence: https://github.com/otter-sec/anchor
+    reach: เฟรมเวิร์กที่คนไทยเริ่มต้นด้วยเกือบทั้งหมด — repo อยู่ใต้ otter-sec แล้ว path เดิมเหลือแค่ 301
     confirmed: 2026-08-05
 
   - id: otter-sec
     name: OtterSec
     kind: org
-    evidence: https://github.com/solana-foundation/anchor
-    reach: ปลายทางที่ repo Anchor redirect ไป — ถ้าจะ contribute เข้า Anchor ต้องคุยฝั่งนี้ ไม่ใช่ Foundation
+    evidence: https://github.com/otter-sec/anchor
+    reach: เจ้าของ repo Anchor ตัวจริง — ถ้าจะ contribute เข้า Anchor ต้องคุยฝั่งนี้ ไม่ใช่ Foundation
     confirmed: 2026-08-05
 
   # ─────────────────────────────── infra
@@ -344,7 +344,7 @@ entities:
 
 relations:
   - { from: anza, type: maintains, to: agave, evidence: https://github.com/anza-xyz/agave }
-  - { from: otter-sec, type: maintains, to: anchor, evidence: https://github.com/solana-foundation/anchor }
+  - { from: otter-sec, type: maintains, to: anchor, evidence: https://github.com/otter-sec/anchor }
   - { from: solana-foundation, type: maintains, to: svmgov, evidence: https://github.com/solana-foundation/solana-governance }
   - { from: solana-foundation, type: maintains, to: subscriptions, evidence: https://github.com/solana-foundation/subscriptions }
   - { from: solana-foundation, type: maintains, to: kora, evidence: https://solana.com/docs/tools/kora }

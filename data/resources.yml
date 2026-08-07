@@ -176,6 +176,8 @@ resources:
     source: foundation
     tags: [github, docs, contributable]
     note: 'ARCHIVED — ตรวจ 4 ส.ค. 2026 ด้วย gh api ได้ archived=true, push ล่าสุด 24 ม.ค. 2025 เปิด PR ไม่ได้แล้ว เนื้อหาย้ายไปอยู่ solana-com เก็บไว้อ้างอิงประวัติเท่านั้น (โน้ตเดิมเขียนว่าเป็นช่องทาง contribute ซึ่งผิด)'
+    deprecated: 'repo ถูก archive ตั้งแต่ ม.ค. 2025 (ยืนยันซ้ำด้วย ghcheck.sh 8 ส.ค. 2026 archived=true) — ยังคืน 200 และอ่านได้ แต่เปิด PR ไม่ได้ เนื้อหาปัจจุบันอยู่ที่ solana-com เก็บไว้อ้างอิงประวัติเท่านั้น อย่าใช้เป็นช่องทาง contribute'
+    superseded_by: https://github.com/solana-foundation/solana-com
     status: ok
     added: 2026-08-04
 
@@ -308,12 +310,12 @@ resources:
     status: ok
     added: 2026-08-04
 
-  - url: https://github.com/solana-developers/program-examples
-    name: solana-developers/program-examples
+  - url: https://github.com/solana-foundation/program-examples
+    name: solana-foundation/program-examples
     category: framework
     source: foundation
-    tags: [examples, anchor, native]
-    note: ตัวอย่าง program แยกตาม pattern — วัตถุดิบชั้นดีสำหรับทำ quest
+    tags: [examples, anchor, native, pinocchio, litesvm]
+    note: 'ตัวอย่าง program 52 ตัวแยกตาม pattern **และเป็นหนึ่งในไม่กี่แหล่งที่ตามเวอร์ชันปัจจุบันจริง** — เช็ค Cargo.toml เมื่อ 8 ส.ค. 2026 ได้ anchor-lang 1.0.2 (★1425 MIT push 7 ส.ค. 2026) เทียบกับ tutorial ทั่วเน็ตที่ยังเป็น 0.3x; แต่ละโจทย์มีทั้งเวอร์ชัน Anchor / native Rust / Pinocchio ให้เทียบกันได้ในที่เดียว **จุดนี้แหละที่ทำให้มันต่างจากตัวอย่างของ vendor** ซึ่งมักมีทางเดียว; ใช้เป็นวัตถุดิบทำ quest ได้เลยเพราะมีชุดเทสจริงมาด้วย; **URL เดิมคือ solana-developers/program-examples** ซึ่งยัง 301 มาที่นี่ แต่เปลี่ยนแล้วเพราะ GitHub เลิก redirect ทันทีที่มีใครสร้าง repo ชื่อเดิมทับ path เก่า'
     status: ok
     added: 2026-08-04
 
@@ -336,12 +338,12 @@ resources:
     status: ok
     added: 2026-08-04
 
-  - url: https://github.com/solana-foundation/anchor
+  - url: https://github.com/otter-sec/anchor
     name: Anchor Repository
     category: framework
-    source: foundation
-    tags: [anchor, github]
-    note: 'URL นี้ 301 ไป github.com/otter-sec/anchor แล้ว (crates.io ของ anchor-lang ก็ชี้ otter-sec) แต่ anchor-lang.com ยังลิงก์ solana-foundation อยู่ — คงไว้แบบนี้เพราะ 301 ยังพาไปถึง แต่ต้องรู้ว่าคนดูแลจริงเปลี่ยนแล้ว'
+    source: community
+    tags: [anchor, github, ownership-moved]
+    note: '**repo จริงของ Anchor อยู่ใต้ otter-sec ไม่ใช่ Foundation แล้ว** (★5108 push 7 ส.ค. 2026) — path เก่าทั้ง coral-xyz/anchor และ solana-foundation/anchor ยัง 301 มาที่นี่ และ crates.io ของ anchor-lang ก็ชี้ otter-sec แล้ว **แต่ anchor-lang.com ยังลิงก์ path เดิมอยู่** จึงยังเจอทั้งสองแบบตามที่ต่างๆ; **เดิมเราเก็บ path เก่าไว้เพราะ 301 ยังพาไปถึง — เปลี่ยนเมื่อ 8 ส.ค. 2026 เพราะเหตุผลนั้นมีเงื่อนไขที่มองข้ามไป: GitHub หยุด redirect ทันทีที่มีใครสร้าง repo ชื่อเดิมขึ้นที่ path เก่า แล้วลิงก์เราจะชี้ของคนอื่นโดยยังคืน 200 เหมือนเดิม**; ผลที่ตามมาที่ต้องรู้ — จะส่ง PR หรือเปิด issue กับ Anchor ต้องคุยกับ OtterSec ซึ่งเป็นบริษัท audit ไม่ใช่ Foundation จึงเปลี่ยน source จาก foundation เป็น community ตามความจริง'
     status: ok
     added: 2026-08-04
 

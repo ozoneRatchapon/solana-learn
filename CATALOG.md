@@ -61,7 +61,9 @@
 - [Solana Foundation GitHub](https://github.com/solana-foundation) `official`
   org GitHub ของ Foundation 99 repo — ประตูเข้าของทุกอย่างฝั่งทางการ แต่หน้านี้โชว์แค่ที่ pin ไว้ ถ้าจะดูครบต้องไปหน้า repositories ที่เก็บแยกไว้แล้ว ซึ่งเป็นที่ที่ของอย่าง subscriptions และ rpc-latency-monitor โผล่มาให้เจอ
   <sub>github, org</sub>
-- [developer-content (repo ของ docs ทั้งหมด)](https://github.com/solana-foundation/developer-content) `official`
+- ~~[developer-content (repo ของ docs ทั้งหมด)](https://github.com/solana-foundation/developer-content)~~ `official` `เลิกใช้`
+  repo ถูก archive ตั้งแต่ ม.ค. 2025 (ยืนยันซ้ำด้วย ghcheck.sh 8 ส.ค. 2026 archived=true) — ยังคืน 200 และอ่านได้ แต่เปิด PR ไม่ได้ เนื้อหาปัจจุบันอยู่ที่ solana-com เก็บไว้อ้างอิงประวัติเท่านั้น อย่าใช้เป็นช่องทาง contribute
+  **ใช้แทน:** https://github.com/solana-foundation/solana-com
   ARCHIVED — ตรวจ 4 ส.ค. 2026 ด้วย gh api ได้ archived=true, push ล่าสุด 24 ม.ค. 2025 เปิด PR ไม่ได้แล้ว เนื้อหาย้ายไปอยู่ solana-com เก็บไว้อ้างอิงประวัติเท่านั้น (โน้ตเดิมเขียนว่าเป็นช่องทาง contribute ซึ่งผิด)
   <sub>github, docs, contributable</sub>
 - [solana-com (เว็บ solana.com)](https://github.com/solana-foundation/solana-com) `official`
@@ -150,18 +152,18 @@
 
 ## Program Frameworks — Anchor / Pinocchio / native
 
-- [solana-developers/program-examples](https://github.com/solana-developers/program-examples) `official`
-  ตัวอย่าง program แยกตาม pattern — วัตถุดิบชั้นดีสำหรับทำ quest
-  <sub>examples, anchor, native</sub>
+- [solana-foundation/program-examples](https://github.com/solana-foundation/program-examples) `official`
+  ตัวอย่าง program 52 ตัวแยกตาม pattern **และเป็นหนึ่งในไม่กี่แหล่งที่ตามเวอร์ชันปัจจุบันจริง** — เช็ค Cargo.toml เมื่อ 8 ส.ค. 2026 ได้ anchor-lang 1.0.2 (★1425 MIT push 7 ส.ค. 2026) เทียบกับ tutorial ทั่วเน็ตที่ยังเป็น 0.3x; แต่ละโจทย์มีทั้งเวอร์ชัน Anchor / native Rust / Pinocchio ให้เทียบกันได้ในที่เดียว **จุดนี้แหละที่ทำให้มันต่างจากตัวอย่างของ vendor** ซึ่งมักมีทางเดียว; ใช้เป็นวัตถุดิบทำ quest ได้เลยเพราะมีชุดเทสจริงมาด้วย; **URL เดิมคือ solana-developers/program-examples** ซึ่งยัง 301 มาที่นี่ แต่เปลี่ยนแล้วเพราะ GitHub เลิก redirect ทันทีที่มีใครสร้าง repo ชื่อเดิมทับ path เก่า
+  <sub>examples, anchor, native, pinocchio, litesvm</sub>
 - [QuickNode — solana-program-examples](https://github.com/quicknode/solana-program-examples) `vendor`
   ตัวอย่าง program สาย Anchor อีกชุด ใช้เสริมกับของ solana-developers ที่เป็นตัวหลัก — repo ยัง active (push ล่าสุด 4 ส.ค. 2026)
   <sub>examples, tested</sub>
 - [Anchor Documentation](https://www.anchor-lang.com/) `official`
   ปัจจุบัน Anchor 1.0 แล้ว (เครื่องคุณ = anchor-cli 1.0.2)
   <sub>anchor, docs, canonical</sub>
-- [Anchor Repository](https://github.com/solana-foundation/anchor) `official`
-  URL นี้ 301 ไป github.com/otter-sec/anchor แล้ว (crates.io ของ anchor-lang ก็ชี้ otter-sec) แต่ anchor-lang.com ยังลิงก์ solana-foundation อยู่ — คงไว้แบบนี้เพราะ 301 ยังพาไปถึง แต่ต้องรู้ว่าคนดูแลจริงเปลี่ยนแล้ว
-  <sub>anchor, github</sub>
+- [Anchor Repository](https://github.com/otter-sec/anchor)
+  **repo จริงของ Anchor อยู่ใต้ otter-sec ไม่ใช่ Foundation แล้ว** (★5108 push 7 ส.ค. 2026) — path เก่าทั้ง coral-xyz/anchor และ solana-foundation/anchor ยัง 301 มาที่นี่ และ crates.io ของ anchor-lang ก็ชี้ otter-sec แล้ว **แต่ anchor-lang.com ยังลิงก์ path เดิมอยู่** จึงยังเจอทั้งสองแบบตามที่ต่างๆ; **เดิมเราเก็บ path เก่าไว้เพราะ 301 ยังพาไปถึง — เปลี่ยนเมื่อ 8 ส.ค. 2026 เพราะเหตุผลนั้นมีเงื่อนไขที่มองข้ามไป: GitHub หยุด redirect ทันทีที่มีใครสร้าง repo ชื่อเดิมขึ้นที่ path เก่า แล้วลิงก์เราจะชี้ของคนอื่นโดยยังคืน 200 เหมือนเดิม**; ผลที่ตามมาที่ต้องรู้ — จะส่ง PR หรือเปิด issue กับ Anchor ต้องคุยกับ OtterSec ซึ่งเป็นบริษัท audit ไม่ใช่ Foundation จึงเปลี่ยน source จาก foundation เป็น community ตามความจริง
+  <sub>anchor, github, ownership-moved</sub>
 - [Anchor Version Manager (AVM)](https://www.anchor-lang.com/docs/avm) `official`
   ตัวสลับเวอร์ชัน Anchor — สำคัญมากกับงานตารางความเข้ากันได้ที่ตั้งเป็นธง เพราะทำให้ทดสอบหลายสายได้โดยไม่ต้องถอนของเดิม เครื่องเจ้าของติดตั้ง 1.0.2 อยู่และไม่ควรอัปทับ ให้ใช้ AVM เพิ่มสายอื่นแทน
   <sub>anchor, versioning</sub>

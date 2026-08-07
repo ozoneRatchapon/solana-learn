@@ -3,7 +3,7 @@
 > ไฟล์นี้ถูก generate จาก [data/entities.yml](data/entities.yml) — **อย่าแก้ตรงนี้**
 > แก้ YAML แล้วรัน `./scripts/render-graph.sh`
 
-**39** หน่วยงาน · **21** ความสัมพันธ์ · อัปเดต 2026-08-05
+**39** หน่วยงาน · **21** ความสัมพันธ์ · อัปเดต 2026-08-08
 
 ตอบคำถามที่ [CATALOG.md](CATALOG.md) ไม่ตอบ — ไม่ใช่ "ของอยู่ที่ไหน" แต่คือ **ใครทำ ใครดูแล ใครจ่ายเงิน ใครตรวจ**
 
@@ -84,7 +84,7 @@ graph LR
 |---|---|---|
 | [Solana Foundation](https://github.com/solana-foundation) | เจ้าของ solana.com, เอกสารทางการ, ทุน grant, ปฏิทินอีเวนต์โลก — ช่องที่คนไทยเข้าถึงได้จริงโดยไม่ต้องมีคนแนะนำคือฟอร์มส่งอีเวนต์และ open application สาย engineer | 2026-08-05 |
 | [Anza](https://www.anza.xyz/) | คนทำ core จริง (agave, kit, solana-sdk, pinocchio, mollusk) — เวลาข้อมูลเรื่อง client ขัดกันให้ยึดฝั่งนี้ ไม่ใช่ Foundation | 2026-08-05 |
-| [OtterSec](https://github.com/solana-foundation/anchor) | ปลายทางที่ repo Anchor redirect ไป — ถ้าจะ contribute เข้า Anchor ต้องคุยฝั่งนี้ ไม่ใช่ Foundation | 2026-08-05 |
+| [OtterSec](https://github.com/otter-sec/anchor) | เจ้าของ repo Anchor ตัวจริง — ถ้าจะ contribute เข้า Anchor ต้องคุยฝั่งนี้ ไม่ใช่ Foundation | 2026-08-05 |
 | [Helius](https://www.helius.dev/) | ผู้ให้บริการ RPC/API ที่คนไทยใช้เยอะสุดเจ้าหนึ่ง มีบล็อกที่ใช้เป็นสื่อการสอนได้จริง | 2026-08-05 |
 | [Triton One](https://triton.one/) | RPC + validator ที่เปิดโค้ดจริง — เลิกใช้บริการแล้วยังรันเองต่อได้ org GitHub ชื่อ rpcpool ไม่ใช่ triton | 2026-08-05 |
 | [MagicBlock](https://www.magicblock.xyz/) | Ephemeral Rollup สำหรับงาน real-time เปิดโค้ดทั้งกอง และมีเส้นทาง builder → ทุน ที่ไม่ต้องรอคนแนะนำ | 2026-08-05 |
@@ -132,7 +132,7 @@ graph LR
 
 | ชื่อ | ติดต่อเรื่องอะไรได้ | ยืนยันเมื่อ |
 |---|---|---|
-| [Anchor](https://github.com/solana-foundation/anchor) | เฟรมเวิร์กที่คนไทยเริ่มต้นด้วยเกือบทั้งหมด — repo 301 ไป otter-sec แล้ว คนดูแลจริงเปลี่ยนมือ | 2026-08-05 |
+| [Anchor](https://github.com/otter-sec/anchor) | เฟรมเวิร์กที่คนไทยเริ่มต้นด้วยเกือบทั้งหมด — repo อยู่ใต้ otter-sec แล้ว path เดิมเหลือแค่ 301 | 2026-08-05 |
 | [Yellowstone gRPC (Dragon's Mouth)](https://github.com/orgs/rpcpool/repositories) | มาตรฐานโดยพฤตินัยของการดูดข้อมูลสด — เอกสาร indexing ทางการชี้มาที่นี่ | 2026-08-05 |
 | [Kora (relayer)](https://solana.com/docs/tools/kora) | ทำให้ผู้ใช้ทำธุรกรรมได้โดยไม่ต้องมี SOL — คำตอบของกำแพงแรกที่เจอทุกเวิร์กช็อป | 2026-08-05 |
 | [pay.sh](https://pay.sh/) | x402 ที่ใช้งานจริง เติมเงินผ่าน PayPal/Apple Pay ได้ — คนที่ไม่มีคริปโตเลยก็เริ่มได้ | 2026-08-05 |
@@ -142,7 +142,7 @@ graph LR
 | จาก | ความสัมพันธ์ | ถึง | หลักฐาน |
 |---|---|---|---|
 | `anza` | ดูแลพัฒนา | `agave` | [ที่มา](https://github.com/anza-xyz/agave) |
-| `otter-sec` | ดูแลพัฒนา | `anchor` | [ที่มา](https://github.com/solana-foundation/anchor) |
+| `otter-sec` | ดูแลพัฒนา | `anchor` | [ที่มา](https://github.com/otter-sec/anchor) |
 | `solana-foundation` | ดูแลพัฒนา | `svmgov` | [ที่มา](https://github.com/solana-foundation/solana-governance) |
 | `solana-foundation` | ดูแลพัฒนา | `subscriptions` | [ที่มา](https://github.com/solana-foundation/subscriptions) |
 | `solana-foundation` | ดูแลพัฒนา | `kora` | [ที่มา](https://solana.com/docs/tools/kora) |
