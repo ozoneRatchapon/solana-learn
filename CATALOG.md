@@ -3,7 +3,7 @@
 > ไฟล์นี้ถูก generate จาก [data/resources.yml](data/resources.yml) — **อย่าแก้ตรงนี้**
 > แก้ที่ YAML แล้วรัน `./scripts/render.sh`
 
-รวม **210** รายการ · ข้อมูลล่าสุด 2026-08-07
+รวม **211** รายการ · ข้อมูลล่าสุด 2026-08-07
 
 หมายเหตุสถานะ: `blocked` = เว็บกัน bot ตอน curl (ลิงก์ยังใช้ได้), `unverified` = เช็คอัตโนมัติไม่ผ่าน ต้องดูด้วยตา
 
@@ -26,7 +26,7 @@
 - [Protocol internals — Agave, Firedancer, network upgrades](#protocol-internals--agave-firedancer-network-upgrades) — 10
 - [Governance — SGP, SIMD, โหวตบนเชน](#governance--sgp-simd-โหวตบนเชน) — 9
 - [Green software — พลังงาน คาร์บอน ประสิทธิภาพ](#green-software--พลังงาน-คาร์บอน-ประสิทธิภาพ) — 4
-- [Funding — grants, hackathon, bounty, jobs](#funding--grants-hackathon-bounty-jobs) — 19
+- [Funding — grants, hackathon, bounty, jobs](#funding--grants-hackathon-bounty-jobs) — 20
 - [Thailand — ชุมชนไทย](#thailand--ชุมชนไทย) — 4
 
 ## Official — Foundation & Anza (source of truth ตัวจริง)
@@ -702,6 +702,9 @@
 - [Alpenglow Bug Bounty — กติกาฉบับเต็ม](https://github.com/anza-xyz/alpenglow/blob/master/RULES.md) `anza`
   กติกาตัวจริงของ bounty ที่ปิด 19 ส.ค. 2026 — **อ่านตัวนี้ก่อนบอกต่อ เพราะสรุปที่วนอยู่ในข่าวไม่ครบ**; มีสองตารางไม่ใช่ตารางเดียว — กองเงินปลดล็อกตามความรุนแรงสูงสุดที่พบ (DoS 10,000 / liveness 20,000 / consensus 30,000 / loss of funds 50,000 SOL) ส่วนแต่ละ finding ได้ 315–1,250 (DoS), 1,250–5,000 (liveness), 3,125–12,500 (consensus), 6,250–25,000 (loss of funds) **เจอบั๊กร้ายแรงหนึ่งตัวไม่ได้ 50,000**; เงื่อนไขที่คนมักไม่รู้ — ส่งต้องเผา 0.5 SOL ทิ้งไม่คืนต่อรายงาน, ต้องมี PoC รันซ้ำได้บน local fork ห้ามยิง mainnet, ต้องอ้าง commit และบั๊กต้องยังไม่ถูกแก้บน master ตอนส่ง, จ่ายเป็น SOL ล็อก 12 เดือนหลัง KYC, ขอบเขตวิ่งตาม master HEAD ตลอดจึงเปลี่ยนได้ระหว่างทาง; in-scope คือ votor, votor-messages, bls-sigverify, bls-cert-verify และเส้นทางย้ายจาก TowerBFT
   <sub>bounty, rules, severity, scope, alpenglow</sub>
+- [Solana Pulse (Kyzzen) — จดหมายข่าวรายวันเชิงตัวเลข](https://solanapulse.kyzzen.io/) `vendor`
+  จุดที่ใช้จริงไม่ใช่หน้าเว็บ แต่คือ **https://solanapulse.kyzzen.io/rss/ ซึ่งให้เนื้อฉบับเต็มฟรี ไม่ต้องกรอกอีเมล** — ตรวจแล้วใน content:encoded มีข้อความเต็ม 3,887 ตัวอักษร ไม่มีร่องรอย members-only จึงให้สคริปต์หรือ agent ดึงเองได้; ทุกฉบับมีหัวข้อ **Opportunities** ที่ระบุ **วันปิดชัดเจน** เช่นฉบับ 4 ส.ค. 2026 — Jupiter Gacha $100K (ปิด 9 ส.ค.), PhoenixTrade USDC 420K (ปิด 23 ส.ค.), Solana Foundation $25K equity perps (ปิด 30 ส.ค.), Seeker Summer (ปิด 30 ส.ค.), Kamino USDG $300K (ปิด 13 ต.ค.) พ่วง Bounties Ending Soon กับ New Job Listings; **ระวังสองอย่าง** — (1) หน้า About เขียนว่า delivered daily แต่ฟีดจริงมี 15 ฉบับใน 42 วัน (24 มิ.ย.–4 ส.ค.) ราว 2–3 ครั้ง/สัปดาห์ เจ้าตัวยอมรับเองว่าข้ามไปหลายฉบับตอนไปงาน Malaysia Blockchain Week **อย่าใช้แทนการเช็คต้นทาง** (2) แคมเปญส่วนใหญ่เป็น incentive ฝั่งเทรด/ฟาร์มยิลด์ที่ต้องใส่เงินและขาดทุนได้ **ไม่ใช่โอกาสสาย builder แบบ grant/hackathon** ห้ามยกเข้าเรดาร์รวมกันโดยไม่แยก; ผู้ทำคือ Kyzzen ซึ่งเป็นแพลตฟอร์ม analytics บน Solana เอง จึงไม่ใช่กองบรรณาธิการเป็นกลาง; ใช้คู่กับ Colosseum Codex ไม่ใช่แทนกัน — Codex เกาะฝั่ง builder/โปรโตคอล/governance ส่วนตัวนี้เกาะฝั่งตลาด ยิลด์ และแคมเปญที่มีเดดไลน์
+  <sub>newsletter, rss, market, opportunities, deadlines</sub>
 
 ## Thailand — ชุมชนไทย
 
