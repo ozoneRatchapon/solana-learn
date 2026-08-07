@@ -1943,3 +1943,12 @@ resources:
     note: 'มาตรฐานเปิดสำหรับจัดการกระเป๋าและเซ็นธุรกรรมที่รันในเครื่อง โดยมีชั้นนโยบายกำกับว่าอะไรเซ็นได้บ้าง รองรับหลายเชนไม่ใช่แค่ Solana (Rust, MIT, ★363, สร้าง ก.พ. 2026 push ก.ค. 2026); **เกี่ยวกับสายที่เก็บมาสองวันโดยตรง** — พอ agent เริ่มถือเงินและรับงานได้ (Agent Registry, Superteam Earn, pay.sh, payment-channels) คำถามถัดมาคือจะให้มันเซ็นอะไรได้บ้างโดยไม่ต้องมอบกุญแจทั้งดอก ตัวนี้ตอบข้อนั้น ต่อกับ spend-permissions ในหมวด payments ที่ทำเรื่องเดียวกันแต่ระดับ token; ยังไม่ได้ตรวจว่ามีใครใช้ใน production จริงหรือยัง ★363 บ่งว่ามีคนสนใจแต่ไม่ได้บอกว่าใช้จริง'
     status: ok
     added: 2026-08-07
+
+  - url: https://github.com/anza-xyz/alpenglow/blob/master/RULES.md
+    name: 'Alpenglow Bug Bounty — กติกาฉบับเต็ม'
+    category: funding
+    source: anza
+    tags: [bounty, rules, severity, scope, alpenglow]
+    note: 'กติกาตัวจริงของ bounty ที่ปิด 19 ส.ค. 2026 — **อ่านตัวนี้ก่อนบอกต่อ เพราะสรุปที่วนอยู่ในข่าวไม่ครบ**; มีสองตารางไม่ใช่ตารางเดียว — กองเงินปลดล็อกตามความรุนแรงสูงสุดที่พบ (DoS 10,000 / liveness 20,000 / consensus 30,000 / loss of funds 50,000 SOL) ส่วนแต่ละ finding ได้ 315–1,250 (DoS), 1,250–5,000 (liveness), 3,125–12,500 (consensus), 6,250–25,000 (loss of funds) **เจอบั๊กร้ายแรงหนึ่งตัวไม่ได้ 50,000**; เงื่อนไขที่คนมักไม่รู้ — ส่งต้องเผา 0.5 SOL ทิ้งไม่คืนต่อรายงาน, ต้องมี PoC รันซ้ำได้บน local fork ห้ามยิง mainnet, ต้องอ้าง commit และบั๊กต้องยังไม่ถูกแก้บน master ตอนส่ง, จ่ายเป็น SOL ล็อก 12 เดือนหลัง KYC, ขอบเขตวิ่งตาม master HEAD ตลอดจึงเปลี่ยนได้ระหว่างทาง; in-scope คือ votor, votor-messages, bls-sigverify, bls-cert-verify และเส้นทางย้ายจาก TowerBFT'
+    status: ok
+    added: 2026-08-07

@@ -3,7 +3,7 @@
 > ไฟล์นี้ถูก generate จาก [data/resources.yml](data/resources.yml) — **อย่าแก้ตรงนี้**
 > แก้ที่ YAML แล้วรัน `./scripts/render.sh`
 
-รวม **209** รายการ · ข้อมูลล่าสุด 2026-08-07
+รวม **210** รายการ · ข้อมูลล่าสุด 2026-08-07
 
 หมายเหตุสถานะ: `blocked` = เว็บกัน bot ตอน curl (ลิงก์ยังใช้ได้), `unverified` = เช็คอัตโนมัติไม่ผ่าน ต้องดูด้วยตา
 
@@ -26,7 +26,7 @@
 - [Protocol internals — Agave, Firedancer, network upgrades](#protocol-internals--agave-firedancer-network-upgrades) — 10
 - [Governance — SGP, SIMD, โหวตบนเชน](#governance--sgp-simd-โหวตบนเชน) — 9
 - [Green software — พลังงาน คาร์บอน ประสิทธิภาพ](#green-software--พลังงาน-คาร์บอน-ประสิทธิภาพ) — 4
-- [Funding — grants, hackathon, bounty, jobs](#funding--grants-hackathon-bounty-jobs) — 18
+- [Funding — grants, hackathon, bounty, jobs](#funding--grants-hackathon-bounty-jobs) — 19
 - [Thailand — ชุมชนไทย](#thailand--ชุมชนไทย) — 4
 
 ## Official — Foundation & Anza (source of truth ตัวจริง)
@@ -699,6 +699,9 @@
 - [Alchemy Solana Fund — เครดิต $20M (ไม่ใช่เงินสด)](https://www.alchemy.com/solana-20m-fund) `vendor`
   โครงการมูลค่ารวม $20M ให้ทีมที่สร้างบน Solana **สูงสุด $25K ต่อทีม** ทำร่วมกับ Superteam, Solana Foundation และ Monke Foundry — สมัครผ่านฟอร์ม (ชื่อ บริษัท เว็บโปรเจกต์ อีเมล Telegram ผู้ให้บริการ infra ปัจจุบัน คำอธิบายโปรเจกต์) ตอบกลับภายใน 5 วันทำการ ให้ทดลอง 90 วัน ระบุว่าไม่มี lock-in และไม่มี proprietary API; **จุดที่ต้องเข้าใจก่อนตื่นเต้น — เป็นเครดิตค่าบริการ infra ของ Alchemy ไม่ใช่เงินที่เอาไปใช้อะไรก็ได้** ต่างจาก grant ของ Foundation หรือ Superteam Microgrant $10k ที่เป็นเงินจริง มีค่าถ้ากำลังจะจ่ายค่า RPC อยู่แล้ว แต่ไม่ได้แก้ปัญหาว่าไม่มีทุนทำงาน; ไม่ระบุเดดไลน์ เป็นการรับต่อเนื่อง
   <sub>credits, infrastructure, rpc, superteam, rolling</sub>
+- [Alpenglow Bug Bounty — กติกาฉบับเต็ม](https://github.com/anza-xyz/alpenglow/blob/master/RULES.md) `anza`
+  กติกาตัวจริงของ bounty ที่ปิด 19 ส.ค. 2026 — **อ่านตัวนี้ก่อนบอกต่อ เพราะสรุปที่วนอยู่ในข่าวไม่ครบ**; มีสองตารางไม่ใช่ตารางเดียว — กองเงินปลดล็อกตามความรุนแรงสูงสุดที่พบ (DoS 10,000 / liveness 20,000 / consensus 30,000 / loss of funds 50,000 SOL) ส่วนแต่ละ finding ได้ 315–1,250 (DoS), 1,250–5,000 (liveness), 3,125–12,500 (consensus), 6,250–25,000 (loss of funds) **เจอบั๊กร้ายแรงหนึ่งตัวไม่ได้ 50,000**; เงื่อนไขที่คนมักไม่รู้ — ส่งต้องเผา 0.5 SOL ทิ้งไม่คืนต่อรายงาน, ต้องมี PoC รันซ้ำได้บน local fork ห้ามยิง mainnet, ต้องอ้าง commit และบั๊กต้องยังไม่ถูกแก้บน master ตอนส่ง, จ่ายเป็น SOL ล็อก 12 เดือนหลัง KYC, ขอบเขตวิ่งตาม master HEAD ตลอดจึงเปลี่ยนได้ระหว่างทาง; in-scope คือ votor, votor-messages, bls-sigverify, bls-cert-verify และเส้นทางย้ายจาก TowerBFT
+  <sub>bounty, rules, severity, scope, alpenglow</sub>
 
 ## Thailand — ชุมชนไทย
 
