@@ -3,7 +3,7 @@
 > ไฟล์นี้ถูก generate จาก [data/resources.yml](data/resources.yml) — **อย่าแก้ตรงนี้**
 > แก้ที่ YAML แล้วรัน `./scripts/render.sh`
 
-รวม **213** รายการ · ข้อมูลล่าสุด 2026-08-07
+รวม **214** รายการ · ข้อมูลล่าสุด 2026-08-07
 
 หมายเหตุสถานะ: `blocked` = เว็บกัน bot ตอน curl (ลิงก์ยังใช้ได้), `unverified` = เช็คอัตโนมัติไม่ผ่าน ต้องดูด้วยตา
 
@@ -26,7 +26,7 @@
 - [Protocol internals — Agave, Firedancer, network upgrades](#protocol-internals--agave-firedancer-network-upgrades) — 10
 - [Governance — SGP, SIMD, โหวตบนเชน](#governance--sgp-simd-โหวตบนเชน) — 9
 - [Green software — พลังงาน คาร์บอน ประสิทธิภาพ](#green-software--พลังงาน-คาร์บอน-ประสิทธิภาพ) — 4
-- [Funding — grants, hackathon, bounty, jobs](#funding--grants-hackathon-bounty-jobs) — 21
+- [Funding — grants, hackathon, bounty, jobs](#funding--grants-hackathon-bounty-jobs) — 22
 - [Thailand — ชุมชนไทย](#thailand--ชุมชนไทย) — 4
 
 ## Official — Foundation & Anza (source of truth ตัวจริง)
@@ -711,6 +711,9 @@
 - [Superteam Earn Telegram Bot — แจ้งเตือน bounty ใหม่](https://t.me/STEarnBot)
   **ยืนยันว่าเป็นของทางการจากซอร์สโค้ด ไม่ใช่จากคำโฆษณาของบอทเอง** — hardcode อยู่ใน `src/constants/Telegram.ts` ของ repo SuperteamDAO/earn (★253 push 7 ส.ค. 2026) เป็นค่า production ส่วน staging คือ @EarnNotificationsStagingBot; **เรื่องนี้ต้องเช็คทุกครั้งกับบอท Telegram สายคริปโต** เพราะบอทปลอมที่ก็อปชื่อกับรูปมาแล้วหลอกให้ต่อกระเป๋าเป็นรูปแบบหลอกลวงที่พบบ่อยที่สุด **ห้ามส่งต่อบอทให้ชุมชนโดยไม่ตามไปดูซอร์ส**; ประโยชน์กับเราคือ **เปลี่ยนจากไปเปิดเว็บดูเอง เป็นให้มันเด้งมาหา** — คู่กับ superteam.fun/earn/agents ที่เก็บไว้แล้วซึ่งเป็นฝั่ง API สำหรับ agent ตัวนี้คือฝั่งคน เอาเข้ากลุ่มชุมชนไทยได้เลยไม่ต้องมีใครคอยไล่เช็ค; **กับดักความเป็นส่วนตัวที่เจอตอนอ่านโค้ด** — ลิงก์เชื่อมบัญชีคือ `?start=<base64 ของอีเมลคุณ>` ซึ่ง **base64 ไม่ใช่การเข้ารหัส ใครเห็นลิงก์ก็ถอดอ่านอีเมลได้ทันที** อย่าแคปหน้าจอหรือส่งต่อลิงก์นั้นในกลุ่ม; **สิ่งที่ยังไม่ได้ตรวจ** — ไม่ได้ลองใช้บอทจริงเพราะต้องมีบัญชี Telegram พฤติกรรมจริง (ถี่แค่ไหน กรองตามภูมิภาค/สกิลได้ไหม) จึงยังตอบไม่ได้ ที่เขียนมาทั้งหมดมาจาก metadata กับซอร์สโค้ดเท่านั้น
   <sub>telegram, bot, alerts, bounty, push-notification</sub>
+- [devs.events — ปฏิทินอีเวนต์นักพัฒนาทั่วโลก กรองไทยได้](https://devs.events/)
+  ดัชนีอีเวนต์นักพัฒนา 1,735 งานใน 96 ประเทศ (Solana / crypto / AI / tech ทั่วไป) **มีตัวกรอง Thailand และมีของไทยจริง** — เช็คหน้าแรกวันที่ 7 ส.ค. 2026 เจอ 4 งาน: MagicBlock Workshop with Superteam Thailand (ออนไลน์ 8 ส.ค. luma.com/gf0kd65i), Superteam Blitz: Thailand Build Station (กรุงเทพฯ 8 ส.ค. luma.com/8hf5xv6n **ตรงกับ Blitz V7 ที่ปิด 9 ส.ค. พอดี**), Solana Co-Working BKK 11 ส.ค. (luma.com/5dtjffiy) และ 18 ส.ค. (luma.com/nzury1e5) — ยิงเช็คทั้ง 4 ลิงก์แล้วได้ 200 ชื่อตรงทุกอัน; **กับดักสองอย่างที่ต้องรู้ก่อนใช้** — (1) `https://devs.events/api/events` **มีอยู่จริงและตอบ 200 แต่คืนอีเวนต์ตัวอย่างตัวเดียวตายตัว** และฟิลด์ createdAt เป็นสตริง `CURRENT_TIMESTAMP` ที่ยังไม่ถูกแทนค่า **มันคือ stub ไม่ใช่ API จริง** ใครหรือ agent ตัวไหนเชื่อ endpoint นี้จะสรุปว่าเว็บมีอีเวนต์เดียวที่ไนจีเรีย · ส่ง `?country=` `?page=` `?limit=` ไปก็ไม่มีผล ได้ตัวเดิมทุกครั้ง (2) HTML หน้าแรกบรรจุ **แค่ 100 งานจาก 1,735** เรียงตามวันที่ใกล้สุด ที่เหลืออยู่หลังปุ่ม Load more และไม่มี payload ซ่อนใน script (สคริปต์รวมกันแค่ 4,969 byte) **จึงห้ามสรุปว่าประเทศไหนไม่มีงานจากการยิงครั้งเดียว**; ของจริงต้องอ่านจาก HTML ไม่ใช่จาก API ซึ่งเป็นสถานการณ์กลับด้านกับที่เจอบ่อย
+  <sub>events, calendar, meetup, thailand, superteam</sub>
 
 ## Thailand — ชุมชนไทย
 
