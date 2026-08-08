@@ -124,3 +124,8 @@ rejected:
     reason: 'พอร์ทัลรับรายงานของ Alpenglow Bug Bounty — ไม่เก็บแยกเพราะเป็นหน้าสมัคร/ส่งงานที่ไม่มีเนื้อหาอ่าน กติกาตัวจริงอยู่ที่ RULES.md ซึ่งเก็บไว้แล้ว และเดดไลน์ 19 ส.ค. อยู่ในเรดาร์แล้ว การเก็บทั้งสองจะทำให้คนอ่านสับสนว่าอันไหนคือแหล่งอ้างอิง'
     superseded_by: https://github.com/anza-xyz/alpenglow/blob/master/RULES.md
     checked: 2026-08-08
+
+  - url: https://www.quicknode.com/chains/solana
+    reason: 'หน้าการตลาดของ QuickNode สำหรับ Solana — probe.sh ตัดสินว่าอ่านได้แค่ 2% ของไฟล์ 570 KB ที่เหลือเป็นสคริปต์ และ curl ได้ข้อความ "Loading content..." กับเมนูนำทางเท่านั้น ไม่มีข้อมูลสำหรับนักพัฒนาเลยสักบรรทัด (ตรงกับกฎในโปรเจกต์ว่าหน้า landing ของ vendor ต้องไปอ่าน docs แทน); เก็บ quicknode.com/llms.txt แทน ซึ่งเป็นสารบัญ text/plain 400 บรรทัดที่พาไปถึงของจริงทั้ง Solana gRPC, DAS API, x402 และ MPP'
+    superseded_by: https://quicknode.com/llms.txt
+    checked: 2026-08-08

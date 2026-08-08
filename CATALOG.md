@@ -3,7 +3,7 @@
 > ไฟล์นี้ถูก generate จาก [data/resources.yml](data/resources.yml) — **อย่าแก้ตรงนี้**
 > แก้ที่ YAML แล้วรัน `./scripts/render.sh`
 
-รวม **218** รายการ · ข้อมูลล่าสุด 2026-08-08
+รวม **220** รายการ · ข้อมูลล่าสุด 2026-08-08
 
 หมายเหตุสถานะ: `blocked` = เว็บกัน bot ตอน curl (ลิงก์ยังใช้ได้), `unverified` = เช็คอัตโนมัติไม่ผ่าน ต้องดูด้วยตา
 
@@ -16,9 +16,9 @@
 - [Testing — LiteSVM, Mollusk, Surfpool](#testing--litesvm-mollusk-surfpool) — 5
 - [IDL & Codegen](#idl--codegen) — 4
 - [Tokens & NFT — SPL, Token-2022, Metaplex](#tokens--nft--spl-token-2022-metaplex) — 7
-- [Payments & Commerce](#payments--commerce) — 23
+- [Payments & Commerce](#payments--commerce) — 24
 - [Security & Audit](#security--audit) — 7
-- [AI / Agent Skills / MCP](#ai--agent-skills--mcp) — 20
+- [AI / Agent Skills / MCP](#ai--agent-skills--mcp) — 21
 - [Infra & RPC providers](#infra--rpc-providers) — 12
 - [Data & Analytics](#data--analytics) — 13
 - [DeFi & Ecosystem protocols](#defi--ecosystem-protocols) — 14
@@ -353,6 +353,9 @@
 - [payment-channels — primitive จ่ายเงินให้ agent (ยังไม่เสร็จ)](https://github.com/solana-foundation/payment-channels) `official`
   primitive สำหรับการจ่ายเงินแบบ agentic รองรับ x402 กับ MPP — **README ขึ้นธง 🚧 Work in progress เอง** ★4 สร้าง เม.ย. 2026 แต่ push วันนี้ (6 ส.ค. 2026) แปลว่ายังทำอยู่จริงไม่ใช่ของทิ้ง; **อย่าสับสนกับ solana-private-channels ที่เก็บไว้แล้ว** — ตัวนั้น ★61 เป็น payment channel ระดับองค์กรที่เน้นความเป็นส่วนตัวและ throughput ส่วนตัวนี้เป็น primitive ฝั่ง agentic payment คนละโจทย์กัน; เก็บเพราะเป็นชิ้นที่หายไปในภาพรวมสาย agent ที่เก็บมาทั้งวัน (Agent Registry ให้ตัวตน · Earn ให้งาน · pay.sh ให้จ่าย) ตัวนี้คือชั้น primitive ที่อยู่ใต้ pay.sh อีกที — **ยังใช้ทำอะไรจริงไม่ได้ เก็บไว้ดูทิศทาง ไม่ใช่เอาไปใช้**
   <sub>x402, mpp, agentic, payment-channel, rust, wip</sub>
+- [QuickNode MPP — จ่ายค่า RPC ทีละครั้งด้วย USDC ไม่ต้องมี API key](https://mpp.quicknode.com) `vendor`
+  **คนละโปรโตคอลกับ x402 ไม่ใช่ชื่อเรียกอีกแบบ** — MPP ใช้ header `WWW-Authenticate: Payment` / `Authorization: Payment` / `Payment-Receipt` ตามสเปก IETF ที่ paymentauth.org ส่วน x402 ใช้ `PAYMENT-REQUIRED` / `PAYMENT-SIGNATURE` เอกสารของเขาเองก็เขียนแยกไว้ชัด; ยิงเองแล้ว — `curl -i -X POST https://mpp.quicknode.com/solana-mainnet -d "{...getSlot...}"` คืน **402 พร้อม 4 challenge ใน header เดียว** (tempo 3 + solana 1) ถอด challenge ฝั่ง Solana ได้ amount 0.001 USDC (mint EPjFWdd5…Dt1v, decimals 6), tokenProgram Tokenkeg…, network mainnet-beta, มี `recentBlockhash` ติดมาและหมดอายุใน 5 นาที; **สองอย่างที่หน้าโฆษณาไม่บอกและเจอได้จากการยิงจริงเท่านั้น** — (1) โหมด session ที่ถูกกว่า 100 เท่า ($0.00001/ครั้ง = $10 ต่อล้านครั้ง ใช้ payment channel + voucher EIP-712 นอกเชน) **ใช้กับ Solana ไม่ได้** ยิง `/session/solana-mainnet` ตรงๆ ก็ยังได้แต่ challenge ของ Tempo ทั้งสามอัน บน Solana เหลือแค่ charge $0.001/ครั้ง (2) challenge ของ Tempo มี `feePayer: true` **แต่ของ Solana ไม่มี แปลว่าต้องมี SOL จ่ายค่าแก๊สเอง** ต่างจาก Elfa x402 ในแคตตาล็อกที่เซิร์ฟเวอร์ออกให้; เทียบราคาบน Solana ที่ตรวจเองแล้วทั้งคู่ — **Elfa x402 $0.009/ครั้ง (ไม่ต้องมี SOL) · MPP charge $0.001/ครั้ง (ต้องมี SOL)** เลือกตามว่า agent ถือ SOL ได้ไหม ไม่ใช่ตามราคาอย่างเดียว
+  <sub>mpp, micropayment, rpc, agent, payment-channel, ietf</sub>
 
 ## Security & Audit
 
@@ -440,6 +443,9 @@
 - [Elfa Agent Quickstart — x402 บน Solana ที่ยิงได้จริงวันนี้](https://docs.elfa.ai/agent-quickstart/) `vendor`
   ต่างจากสามรายการ x402 ที่มีอยู่แล้วตรงที่**ตัวนี้เป็นของจริงที่ยิงได้เดี๋ยวนี้ ไม่ใช่เดโมหรือคู่มือ** — ผมยิงเองแล้ว `curl -i https://api.elfa.ai/x402/v2/aggregations/trending-tokens` คืน **HTTP 402** จริง; **กับดักที่ต้องรู้ก่อน — body เป็น `{}` เปล่าๆ เงื่อนไขการจ่ายทั้งหมดอยู่ใน header `payment-required` เป็น base64** ถ้าอ่านแต่ body จะนึกว่า API พัง; ถอดออกมาได้ x402Version 2 · 5 เชน · ขา Solana คือ network `solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp` asset `EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v` (USDC) amount `9000` = 0.009 USDC ตรงกับที่เอกสารเขียนเป๊ะ timeout 300 วินาที; **จุดที่ Solana ต่างจากอีก 4 เชนในลิสต์เดียวกัน — มี `extra.feePayer` มาให้ แปลว่าเซิร์ฟเวอร์ออกค่าแก๊สเอง agent ถือแค่ USDC ก็จ่ายได้ ไม่ต้องมี SOL สักหน่วย** นี่คือสิ่งที่ entry x402+Kora สาธิตไว้ แต่ตัวนี้คือของที่รันอยู่จริง; ราคา 0.009 USDC/call มาตรฐาน, 0.045 สำหรับ event-summary กับ trending-narratives, ส่วน `/chat` เลือกได้ระหว่าง `exact` (คงที่ $1 fast / $2 expert) กับ `upto` (อนุมัติ $2/$6 แต่หักตามที่ใช้จริง) — **โมเดล `upto` น่าศึกษาเพราะแก้ปัญหาที่ราคาต่อคำตอบ LLM เดาไม่ได้ล่วงหน้า**; ดูรายการที่จ่ายได้ทั้งหมดที่ `https://api.elfa.ai/.well-known/x402` (12 รายการ); อีกเรื่องที่ควรลอกวิธี — **docs ตัวนี้ตอบคนละอย่างตาม Accept header** `*/*` ได้ดัชนี text/plain 4,913 byte ส่วน `text/html` ได้หน้าเว็บ 8,428 byte และทุกหน้ามี `.md` ต่อท้ายได้ **ตรงข้ามกับกับดัก SPA ที่เราชนมาตลอด**; skill อยู่ที่ elfa-ai/skills (★5 push 6 ส.ค. 2026 สดมาก **แต่ไม่มี license** เอาไปใช้ในงานองค์กรต้องถามก่อน) และมี MCP server 12 tool สำหรับ client ที่รันคำสั่งไม่ได้
   <sub>x402, agent, mcp, skill, llms-txt, content-negotiation</sub>
+- [QuickNode llms.txt — สารบัญที่ใช้แทนหน้าเว็บได้จริง](https://quicknode.com/llms.txt) `vendor`
+  เก็บตัวนี้แทนหน้า `quicknode.com/chains/solana` **เพราะหน้านั้นเป็นหน้าการตลาด 570 KB ที่เป็นสคริปต์ 98% ขึ้น "Loading content…" ให้ curl** ส่วนไฟล์นี้ 400 บรรทัด text/plain อ่านครบในครั้งเดียว; **ที่คุ้มจริงคือมันชี้ไปยังของที่ไม่มีทางเจอจากหน้าแรก** — `x402.quicknode.com` (สามโมเดล: ต่อ request $0.001, nanopayment $0.0001 ผ่าน Circle Gateway, credit drawdown $10/1M), `mpp.quicknode.com` ที่เก็บแยกไว้แล้ว, Solana gRPC ที่เข้ากันได้กับ Yellowstone, และ Metaplex DAS API 12 method สำหรับ cNFT / MPL Core / Token-2022 บน endpoint เดิม; **ยังเป็นตัวอย่างที่ควรลอกวิธี** — ระบุไว้ด้วยซ้ำว่ารายการไหนซ้ำโดยตั้งใจ (`intentional duplicate: dual taxonomy`) ซึ่งเป็นการเขียนเพื่อเครื่องอ่านที่พบน้อยมาก; **ข้อควรระวัง** — เติม `.md` ท้าย URL ของ QuickNode **ได้ HTML กลับมา ไม่ใช่ markdown** (`/chains/solana.md` คืน text/html 43 KB) probe.sh ไม่หลงเพราะเช็ค content-type ก่อน แต่ถ้าเดาเองจะเข้าใจผิด
+  <sub>llms-txt, index, grpc, das-api, discovery</sub>
 
 ## Infra & RPC providers
 

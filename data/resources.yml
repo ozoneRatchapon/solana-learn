@@ -2026,3 +2026,21 @@ resources:
     note: 'หนังสือ **เสียเงิน $9** (EPUB+PDF ไม่มี DRM อัปเดตฟรีตลอด) เล่มแรกชื่อ Basics จาก 4 เล่มที่วางไว้ — ไม่ใช่ tutorial แต่คือการ **พาอ่าน `solana-foundation/program-examples` ทั้ง 52 ตัวแบบรีวิว PR** ว่าทำอะไร ทำไมทำแบบนั้น และเวลาเขียนเองต้องระวังอะไร; **เหตุผลที่เก็บทั้งที่เสียเงินและไม่เป็นทางการ** — ผมเช็ค `Cargo.toml` ของต้นทางแล้วได้ `anchor-lang = "1.0.2"` (repo ★1425 MIT push 7 ส.ค. 2026) **ซึ่งหมายความว่าเนื้อหาอิงของปัจจุบัน ไม่ใช่ Anchor 0.3x เหมือนคอร์สเกือบทั้งเน็ต** และเล่มนี้ยังพา Hello World เดียวกันผ่านทั้ง Anchor / native Rust / Pinocchio เพื่อให้เห็นว่าเฟรมเวิร์กเป็นตัวเลือกไม่ใช่ข้อบังคับ พร้อมใช้ LiteSVM เทส ตรงกับสแตกที่เราแนะนำอยู่แล้ว; **สิ่งที่ยังตรวจไม่ได้และต้องถามก่อนซื้อ** — หน้าเว็บบอกว่า pin ไว้ที่ commit เดียวแต่ **ไม่ระบุว่า commit ไหน** ถ้า pin ไว้นานแล้วก็เจอปัญหาเดียวกับที่หนังสือเล่มนี้ตั้งใจแก้; ผู้เขียน Jose Ferrer ทำในนาม Moviendome Limited (ฮ่องกง) **ประกาศเองว่าไม่ได้สังกัด Solana Foundation** ส่วนการยกโค้ดทำได้เพราะต้นทางเป็น MIT'
     status: ok
     added: 2026-08-08
+
+  - url: https://mpp.quicknode.com
+    name: 'QuickNode MPP — จ่ายค่า RPC ทีละครั้งด้วย USDC ไม่ต้องมี API key'
+    category: payments
+    source: vendor
+    tags: [mpp, micropayment, rpc, agent, payment-channel, ietf]
+    note: '**คนละโปรโตคอลกับ x402 ไม่ใช่ชื่อเรียกอีกแบบ** — MPP ใช้ header `WWW-Authenticate: Payment` / `Authorization: Payment` / `Payment-Receipt` ตามสเปก IETF ที่ paymentauth.org ส่วน x402 ใช้ `PAYMENT-REQUIRED` / `PAYMENT-SIGNATURE` เอกสารของเขาเองก็เขียนแยกไว้ชัด; ยิงเองแล้ว — `curl -i -X POST https://mpp.quicknode.com/solana-mainnet -d "{...getSlot...}"` คืน **402 พร้อม 4 challenge ใน header เดียว** (tempo 3 + solana 1) ถอด challenge ฝั่ง Solana ได้ amount 0.001 USDC (mint EPjFWdd5…Dt1v, decimals 6), tokenProgram Tokenkeg…, network mainnet-beta, มี `recentBlockhash` ติดมาและหมดอายุใน 5 นาที; **สองอย่างที่หน้าโฆษณาไม่บอกและเจอได้จากการยิงจริงเท่านั้น** — (1) โหมด session ที่ถูกกว่า 100 เท่า ($0.00001/ครั้ง = $10 ต่อล้านครั้ง ใช้ payment channel + voucher EIP-712 นอกเชน) **ใช้กับ Solana ไม่ได้** ยิง `/session/solana-mainnet` ตรงๆ ก็ยังได้แต่ challenge ของ Tempo ทั้งสามอัน บน Solana เหลือแค่ charge $0.001/ครั้ง (2) challenge ของ Tempo มี `feePayer: true` **แต่ของ Solana ไม่มี แปลว่าต้องมี SOL จ่ายค่าแก๊สเอง** ต่างจาก Elfa x402 ในแคตตาล็อกที่เซิร์ฟเวอร์ออกให้; เทียบราคาบน Solana ที่ตรวจเองแล้วทั้งคู่ — **Elfa x402 $0.009/ครั้ง (ไม่ต้องมี SOL) · MPP charge $0.001/ครั้ง (ต้องมี SOL)** เลือกตามว่า agent ถือ SOL ได้ไหม ไม่ใช่ตามราคาอย่างเดียว'
+    status: ok
+    added: 2026-08-08
+
+  - url: https://quicknode.com/llms.txt
+    name: 'QuickNode llms.txt — สารบัญที่ใช้แทนหน้าเว็บได้จริง'
+    category: ai-agent
+    source: vendor
+    tags: [llms-txt, index, grpc, das-api, discovery]
+    note: 'เก็บตัวนี้แทนหน้า `quicknode.com/chains/solana` **เพราะหน้านั้นเป็นหน้าการตลาด 570 KB ที่เป็นสคริปต์ 98% ขึ้น "Loading content…" ให้ curl** ส่วนไฟล์นี้ 400 บรรทัด text/plain อ่านครบในครั้งเดียว; **ที่คุ้มจริงคือมันชี้ไปยังของที่ไม่มีทางเจอจากหน้าแรก** — `x402.quicknode.com` (สามโมเดล: ต่อ request $0.001, nanopayment $0.0001 ผ่าน Circle Gateway, credit drawdown $10/1M), `mpp.quicknode.com` ที่เก็บแยกไว้แล้ว, Solana gRPC ที่เข้ากันได้กับ Yellowstone, และ Metaplex DAS API 12 method สำหรับ cNFT / MPL Core / Token-2022 บน endpoint เดิม; **ยังเป็นตัวอย่างที่ควรลอกวิธี** — ระบุไว้ด้วยซ้ำว่ารายการไหนซ้ำโดยตั้งใจ (`intentional duplicate: dual taxonomy`) ซึ่งเป็นการเขียนเพื่อเครื่องอ่านที่พบน้อยมาก; **ข้อควรระวัง** — เติม `.md` ท้าย URL ของ QuickNode **ได้ HTML กลับมา ไม่ใช่ markdown** (`/chains/solana.md` คืน text/html 43 KB) probe.sh ไม่หลงเพราะเช็ค content-type ก่อน แต่ถ้าเดาเองจะเข้าใจผิด'
+    status: ok
+    added: 2026-08-08
