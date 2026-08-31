@@ -158,7 +158,7 @@ resources:
     source: foundation
     tags: [explorer]
     note: 'explorer ทางการ — ใช้ตรวจธุรกรรมและ account แบบดิบที่สุด ไม่มีชั้นตีความเหมือน explorer ของ vendor ซึ่งสำคัญเวลาต้องยืนยันว่าอะไรเกิดขึ้นจริงบนเชน; เวลาสอนควรใช้ตัวนี้เพราะไม่ผูกกับบริการเจ้าไหน'
-    status: ok
+    status: blocked
     added: 2026-08-04
 
   - url: https://github.com/solana-foundation
@@ -912,7 +912,7 @@ resources:
     source: vendor
     tags: [portfolio, dashboard]
     note: 'ระวัง หน้าแรกเปลี่ยนไปแล้ว — ตอนนี้ชูเรื่อง validator ของ Step และการ delegate SOL เป็นหลัก ส่วนแดชบอร์ดพอร์ตที่เป็นเหตุผลเดิมที่เก็บไว้ ย้ายไปอยู่ที่ app.step.finance ถ้าจะส่งให้ใครดูพอร์ตต้องส่งลิงก์ app ไม่ใช่หน้าแรก'
-    status: ok
+    status: dead
     added: 2026-08-04
 
   # -------------------------------------------------------------------- defi
@@ -1565,7 +1565,7 @@ resources:
     source: vendor
     tags: [rwa, tokenized-equity, xstocks, cross-chain, registry]
     note: 'ทะเบียนหุ้นและ ETF ที่ออกเป็นโทเคน ดูข้ามเชนได้ในที่เดียว มี Solana อยู่ในนั้นเยอะ (Tesla xStock, Circle, Securitize) ตอนเช็ค 4 ส.ค. 2026 ทั้งตลาดมีมูลค่ากระจายอยู่ ~$2.28B จาก 3,315 โทเคน ผู้ถือ ~983K แพลตฟอร์มใหญ่สุดคือ Ondo / bStocks / xStocks; ใช้ตอบคำถามที่คนไทยถามบ่อยที่สุดข้อหนึ่งคือซื้อหุ้นสหรัฐบนเชนได้จริงไหมและใครออก — และใช้ cross-check กับตัวเลข tokenized equities ที่ Solana State รายงาน ถ้าสองที่ไม่ตรงแปลว่านิยามการนับต่างกัน ต้องดูก่อนเอาไปอ้าง; เป็นของ vendor ไม่ใช่ตัวเลขทางการ'
-    status: ok
+    status: blocked
     added: 2026-08-04
 
   - url: https://blockworks.com/analytics/chain-comparison/chain-comparison-spot-dex
@@ -1781,7 +1781,7 @@ resources:
     source: foundation
     tags: [carbon, emission, trycarbonara, announcement, methodology]
     note: 'บทความที่อธิบายว่าวัดคาร์บอนยังไง — ฝังซอฟต์แวร์ลงบนโหนดโดยตรงร่วมกับ Trycarbonara ไม่ใช่ประมาณจากข้อมูลบนเชนอย่างเดียว ครอบทั้งพลังงานที่ใช้ การปล่อยของโหนด RPC คาร์บอนของ validator รายตัว และ embodied emission จากการผลิตและขนส่งฮาร์ดแวร์ Solana เคลมว่าเป็นเชนสัญญาอัจฉริยะรายใหญ่รายแรกที่วัดแบบเรียลไทม์; **เก็บตัวบทความไม่ใช่หน้าแท็ก** เพราะหน้าแท็ก energy-use-reports ตอบ 200 แต่ไม่มีโพสต์เรื่องพลังงานเลย (บันทึกไว้ใน rejected.yml แล้ว) — ตัวนี้คือที่ที่วิธีวัดถูกอธิบายไว้จริงและใช้อ้างอิงได้'
-    status: ok
+    status: unverified
     added: 2026-08-05
 
   - url: https://solana.com/agent-registry
@@ -1907,7 +1907,7 @@ resources:
     source: vendor
     tags: [zk, solana, applications, confidential-transfer, compression]
     note: 'ตอนที่ 2 ต่อจากพื้นฐาน — ว่าด้วยว่า ZK ถูกใช้จริงตรงไหนบน Solana; **ตัวนี้คือสะพานที่หายไป** ระหว่างทฤษฎีกับของที่เก็บไว้ในแคตตาล็อกแล้ว: Token-2022 confidential transfer, ZK compression ของ Light Protocol, และ solana-private-channels ที่ใช้ ZK proof ตอนถอนเงิน ทั้งสามตัวนั้นสมมติว่าผู้อ่านรู้แล้วว่า ZK ทำงานยังไง; อ่านคู่กับตอนที่ 1 ตามลำดับ อย่าข้ามมาอ่านตัวนี้ก่อน'
-    status: ok
+    status: unverified
     added: 2026-08-06
 
   - url: https://github.com/solana-foundation/curriculum
