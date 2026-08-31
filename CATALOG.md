@@ -377,7 +377,7 @@
 - [Helius — ZK proof ตอนที่ 1: พื้นฐาน](https://www.helius.dev/blog/zero-knowledge-proofs-an-introduction-to-the-fundamentals) `vendor`
   บทความยาวมาก (ข้อความล้วนราว 67,000 ตัวอักษร) ปูพื้น zero-knowledge proof ตั้งแต่ต้น — เป็นตอนที่ 1 ของสองตอน ตอนที่ 2 ว่าด้วยการใช้งานบน Solana โดยเฉพาะ; **อ่านตัวนี้ก่อนถ้ายังไม่เคยแตะ ZK** เพราะเนื้อหาฝั่ง Solana อย่าง Token-2022 confidential transfer, ZK compression ของ Light Protocol และ private channels สมมติว่าผู้อ่านรู้พื้นฐานแล้วทั้งหมด; เป็นของ vendor แต่เขียนแบบสอนไม่ใช่ขายของ ยาวขนาดนี้เอามาย่อยเป็นคอนเทนต์ไทยได้หลายตอน
   <sub>zk, cryptography, fundamentals, longform, explainer</sub>
-- [Helius — ZK proof ตอนที่ 2: ใช้จริงบน Solana](https://www.helius.dev/blog/zero-knowledge-proofs-its-applications-on-solana) `vendor`
+- [Helius — ZK proof ตอนที่ 2: ใช้จริงบน Solana](https://www.helius.dev/blog/zero-knowledge-proofs-its-applications-on-solana) `vendor` `unverified`
   ตอนที่ 2 ต่อจากพื้นฐาน — ว่าด้วยว่า ZK ถูกใช้จริงตรงไหนบน Solana; **ตัวนี้คือสะพานที่หายไป** ระหว่างทฤษฎีกับของที่เก็บไว้ในแคตตาล็อกแล้ว: Token-2022 confidential transfer, ZK compression ของ Light Protocol, และ solana-private-channels ที่ใช้ ZK proof ตอนถอนเงิน ทั้งสามตัวนั้นสมมติว่าผู้อ่านรู้แล้วว่า ZK ทำงานยังไง; อ่านคู่กับตอนที่ 1 ตามลำดับ อย่าข้ามมาอ่านตัวนี้ก่อน
   <sub>zk, solana, applications, confidential-transfer, compression</sub>
 
@@ -488,7 +488,7 @@
 
 ## Data & Analytics
 
-- [Solana Explorer (first-party)](https://explorer.solana.com/) `official`
+- [Solana Explorer (first-party)](https://explorer.solana.com/) `official` `blocked`
   explorer ทางการ — ใช้ตรวจธุรกรรมและ account แบบดิบที่สุด ไม่มีชั้นตีความเหมือน explorer ของ vendor ซึ่งสำคัญเวลาต้องยืนยันว่าอะไรเกิดขึ้นจริงบนเชน; เวลาสอนควรใช้ตัวนี้เพราะไม่ผูกกับบริการเจ้าไหน
   <sub>explorer</sub>
 - [Solscan](https://solscan.io/) `vendor` `blocked`
@@ -509,7 +509,7 @@
 - [Birdeye](https://birdeye.so/) `vendor` `blocked`
   ข้อมูลราคาและสภาพคล่องรายโทเคนข้าม DEX — ใช้ตอนต้องดูว่าโทเคนหนึ่งซื้อขายกันจริงที่ไหนและลึกแค่ไหน ซึ่ง explorer ไม่ตอบให้; ตอบ 403 ตอน curl เพราะกัน bot ลิงก์ยังใช้ได้ปกติ เป็นของ vendor ไม่ใช่ตัวเลขทางการ
   <sub>token, price, dex</sub>
-- [Step Finance](https://www.step.finance/) `vendor`
+- [Step Finance](https://www.step.finance/) `vendor` `DEAD`
   ระวัง หน้าแรกเปลี่ยนไปแล้ว — ตอนนี้ชูเรื่อง validator ของ Step และการ delegate SOL เป็นหลัก ส่วนแดชบอร์ดพอร์ตที่เป็นเหตุผลเดิมที่เก็บไว้ ย้ายไปอยู่ที่ app.step.finance ถ้าจะส่งให้ใครดูพอร์ตต้องส่งลิงก์ app ไม่ใช่หน้าแรก
   <sub>portfolio, dashboard</sub>
 - [Solana Network Data (first-party)](https://solana.com/data) `official`
@@ -521,7 +521,7 @@
 - [solana-data-aggregator (เครื่องยนต์หลัง solana.com/data)](https://github.com/solana-foundation/solana-data-aggregator) `official`
   Python + MIT — ตัวที่ประมวลผลตัวเลขให้หน้า solana.com/data ทั้งหมด เปิดโค้ดให้ดูว่านิยามของแต่ละ metric คำนวณมายังไงจริงๆ (เช่นนับ non-vote tx ยังไง) แทนที่จะเชื่อตัวเลขบนหน้าเว็บอย่างเดียว — มีประโยชน์ตอนต้องตอบคำถามว่า TPS ที่เห็นนับแบบไหน ซึ่งเถียงกันบ่อยมาก
   <sub>python, mit, pipeline, opensource, metrics</sub>
-- [RWA.xyz — หุ้น/ETF ที่ถูก tokenize](https://app.rwa.xyz/stocks) `vendor`
+- [RWA.xyz — หุ้น/ETF ที่ถูก tokenize](https://app.rwa.xyz/stocks) `vendor` `blocked`
   ทะเบียนหุ้นและ ETF ที่ออกเป็นโทเคน ดูข้ามเชนได้ในที่เดียว มี Solana อยู่ในนั้นเยอะ (Tesla xStock, Circle, Securitize) ตอนเช็ค 4 ส.ค. 2026 ทั้งตลาดมีมูลค่ากระจายอยู่ ~$2.28B จาก 3,315 โทเคน ผู้ถือ ~983K แพลตฟอร์มใหญ่สุดคือ Ondo / bStocks / xStocks; ใช้ตอบคำถามที่คนไทยถามบ่อยที่สุดข้อหนึ่งคือซื้อหุ้นสหรัฐบนเชนได้จริงไหมและใครออก — และใช้ cross-check กับตัวเลข tokenized equities ที่ Solana State รายงาน ถ้าสองที่ไม่ตรงแปลว่านิยามการนับต่างกัน ต้องดูก่อนเอาไปอ้าง; เป็นของ vendor ไม่ใช่ตัวเลขทางการ
   <sub>rwa, tokenized-equity, xstocks, cross-chain, registry</sub>
 - [Blockworks — เทียบเชนแบบเคียงข้าง (Spot DEX)](https://blockworks.com/analytics/chain-comparison/chain-comparison-spot-dex) `vendor`
@@ -659,7 +659,7 @@
 - [Awesome Green Software (Green Software Foundation)](https://github.com/Green-Software-Foundation/awesome-green-software)
   ลิสต์อ้างอิงของ Green Software Foundation (★691 ยัง active ส.ค. 2026) แยกเป็นเครื่องมือวัด/ลดการใช้พลังงาน องค์กร คอร์ส บทความ หนังสือ และงานวิจัย ครอบทั้งฝั่ง AI workload, cloud, source code และเว็บ; **ไม่ใช่ของ Solana** แต่เก็บด้วยเหตุผลเดียวกับที่เก็บสเปค Agent Skills — เป็นมาตรฐานอ้างอิงที่งานฝั่ง Solana ต้องยืนอยู่บนมัน จะพูดเรื่องพลังงานของเชนให้คนนอกวงเชื่อ ต้องใช้วิธีวัดที่วงการนี้ยอมรับ ไม่ใช่คิดเกณฑ์เอง; license เป็น NOASSERTION ต้องดูเงื่อนไขก่อนเอาเนื้อหาไปใช้ต่อ
   <sub>reference, tooling, standard, course, measurement</sub>
-- [ประกาศวัดคาร์บอนแบบเรียลไทม์ (บทความต้นทาง)](https://solana.com/news/announcing-real-time-emissions-measurement-on-the-solana-blockchain) `official`
+- [ประกาศวัดคาร์บอนแบบเรียลไทม์ (บทความต้นทาง)](https://solana.com/news/announcing-real-time-emissions-measurement-on-the-solana-blockchain) `official` `unverified`
   บทความที่อธิบายว่าวัดคาร์บอนยังไง — ฝังซอฟต์แวร์ลงบนโหนดโดยตรงร่วมกับ Trycarbonara ไม่ใช่ประมาณจากข้อมูลบนเชนอย่างเดียว ครอบทั้งพลังงานที่ใช้ การปล่อยของโหนด RPC คาร์บอนของ validator รายตัว และ embodied emission จากการผลิตและขนส่งฮาร์ดแวร์ Solana เคลมว่าเป็นเชนสัญญาอัจฉริยะรายใหญ่รายแรกที่วัดแบบเรียลไทม์; **เก็บตัวบทความไม่ใช่หน้าแท็ก** เพราะหน้าแท็ก energy-use-reports ตอบ 200 แต่ไม่มีโพสต์เรื่องพลังงานเลย (บันทึกไว้ใน rejected.yml แล้ว) — ตัวนี้คือที่ที่วิธีวัดถูกอธิบายไว้จริงและใช้อ้างอิงได้
   <sub>carbon, emission, trycarbonara, announcement, methodology</sub>
 - [Cambridge CBNSI — วิธีวัดพลังงานเชนที่อ้างอิงได้ (ไม่ครอบ Solana)](https://ccaf.io/cbnsi/ethereum)
