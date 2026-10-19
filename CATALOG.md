@@ -488,7 +488,7 @@
 
 ## Data & Analytics
 
-- [Solana Explorer (first-party)](https://explorer.solana.com/) `official`
+- [Solana Explorer (first-party)](https://explorer.solana.com/) `official` `blocked`
   explorer ทางการ — ใช้ตรวจธุรกรรมและ account แบบดิบที่สุด ไม่มีชั้นตีความเหมือน explorer ของ vendor ซึ่งสำคัญเวลาต้องยืนยันว่าอะไรเกิดขึ้นจริงบนเชน; เวลาสอนควรใช้ตัวนี้เพราะไม่ผูกกับบริการเจ้าไหน
   <sub>explorer</sub>
 - [Solscan](https://solscan.io/) `vendor` `blocked`
@@ -500,7 +500,7 @@
 - [DefiLlama — Solana](https://defillama.com/chain/Solana) `vendor` `blocked`
   TVL และภาพรวม DeFi ของ Solana จากแหล่งที่วัดทุกเชนด้วยวิธีเดียวกัน — จุดแข็งคือเทียบข้ามเชนได้อย่างยุติธรรม เลยน่าเชื่อกว่าเอาตัวเลขฝั่ง Solana มาพูดเอง ใช้คู่กับ Blockworks ในหมวดเดียวกัน; 403 ตอน curl เพราะกัน bot
   <sub>tvl, defi</sub>
-- [Solana Compass](https://solanacompass.com/)
+- [Solana Compass](https://solanacompass.com/) `blocked`
   มี transcript พอดแคสต์ให้ค้นด้วย — วัตถุดิบทำ content ดี
   <sub>projects, metrics, podcast-transcript</sub>
 - [Helius — Analyzing Solana On-chain Data: Tools & Dashboards](https://www.helius.dev/blog/solana-data-tools) `vendor`
@@ -509,7 +509,7 @@
 - [Birdeye](https://birdeye.so/) `vendor` `blocked`
   ข้อมูลราคาและสภาพคล่องรายโทเคนข้าม DEX — ใช้ตอนต้องดูว่าโทเคนหนึ่งซื้อขายกันจริงที่ไหนและลึกแค่ไหน ซึ่ง explorer ไม่ตอบให้; ตอบ 403 ตอน curl เพราะกัน bot ลิงก์ยังใช้ได้ปกติ เป็นของ vendor ไม่ใช่ตัวเลขทางการ
   <sub>token, price, dex</sub>
-- [Step Finance](https://www.step.finance/) `vendor`
+- [Step Finance](https://www.step.finance/) `vendor` `DEAD`
   ระวัง หน้าแรกเปลี่ยนไปแล้ว — ตอนนี้ชูเรื่อง validator ของ Step และการ delegate SOL เป็นหลัก ส่วนแดชบอร์ดพอร์ตที่เป็นเหตุผลเดิมที่เก็บไว้ ย้ายไปอยู่ที่ app.step.finance ถ้าจะส่งให้ใครดูพอร์ตต้องส่งลิงก์ app ไม่ใช่หน้าแรก
   <sub>portfolio, dashboard</sub>
 - [Solana Network Data (first-party)](https://solana.com/data) `official`
