@@ -158,7 +158,7 @@ resources:
     source: foundation
     tags: [explorer]
     note: 'explorer ทางการ — ใช้ตรวจธุรกรรมและ account แบบดิบที่สุด ไม่มีชั้นตีความเหมือน explorer ของ vendor ซึ่งสำคัญเวลาต้องยืนยันว่าอะไรเกิดขึ้นจริงบนเชน; เวลาสอนควรใช้ตัวนี้เพราะไม่ผูกกับบริการเจ้าไหน'
-    status: ok
+    status: blocked
     added: 2026-08-04
 
   - url: https://github.com/solana-foundation
@@ -637,7 +637,7 @@ resources:
     source: foundation
     tags: [payment, qr]
     note: 'สเปคและ reference implementation ของ Solana Pay — มาตรฐาน URL/QR สำหรับรับเงิน มีรายชื่อกระเป๋าที่รองรับอยู่ในนั้นด้วย ซึ่งเป็นข้อมูลที่ต้องดูก่อนตัดสินใจใช้จริงเพราะถ้ากระเป๋าที่ผู้ใช้ไทยใช้ไม่รองรับก็จบ; สำหรับของใหม่ปี 2026 ควรเทียบกับ Commerce Kit และ payment button ในหมวดเดียวกันก่อนเลือก'
-    status: ok
+    status: unverified
     added: 2026-08-04
 
   - url: https://solana.com/docs/payments
@@ -912,7 +912,7 @@ resources:
     source: vendor
     tags: [portfolio, dashboard]
     note: 'ระวัง หน้าแรกเปลี่ยนไปแล้ว — ตอนนี้ชูเรื่อง validator ของ Step และการ delegate SOL เป็นหลัก ส่วนแดชบอร์ดพอร์ตที่เป็นเหตุผลเดิมที่เก็บไว้ ย้ายไปอยู่ที่ app.step.finance ถ้าจะส่งให้ใครดูพอร์ตต้องส่งลิงก์ app ไม่ใช่หน้าแรก'
-    status: ok
+    status: dead
     added: 2026-08-04
 
   # -------------------------------------------------------------------- defi
